@@ -10,6 +10,10 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { HomeModule } from './Home/home.module';
 import { IdeasModule } from './ideas/ideas.module';
+import { DiscoveryModule } from './discovery/discovery.module';
+import { InsightsModule } from './insights/insights.module';
+import { StockReportModule } from './stock-report/stock.module';
+import { ProfileModule } from './profile/profile.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { IdeasModule } from './ideas/ideas.module';
     HttpModule,
     SharedModule,
     HomeModule,
-    IdeasModule
+    IdeasModule,
+    DiscoveryModule,
+    InsightsModule,
+    StockReportModule,
+    ProfileModule
   ],
   providers: [],
   bootstrap: [AppComponent]

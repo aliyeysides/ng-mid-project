@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { MidTierHeaderComponent } from './mid-tier-header.component';
 
@@ -10,7 +11,8 @@ import { MidTierHeaderComponent } from './mid-tier-header.component';
   imports: [
     CommonModule,
     BrowserModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   exports: [
     MidTierHeaderComponent

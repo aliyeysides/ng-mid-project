@@ -1,45 +1,98 @@
-<div class="row primary-nav">
-	<div class="col-sm-6 col-md-2 primary-nav__logo">
-		<img class="align-absolute" src="../assets/images/cmt-logo.svg">
+<!-- SECTION: NAV  -->
+	<div class="row primary-nav">
+		<div class="col-sm-3 col-md-2 col-lg-2 primary-nav__logo">
+			<img class="align-absolute" src="../assets/images/cmt-logo.svg" routerLink="/home" routerLinkActive="active">
+		</div>
+
+		<div class="col-sm-9 col-md-5 col-lg-6  primary-nav__nav">
+			<ul class="nav nav-justified">
+				<!-- <li class="nav-item">
+			    	<a class="nav-link"  routerLink="/home" routerLinkActive="active">Home</a>
+			  	</li> -->
+			  	<li class="nav-item">
+			    	<a class="nav-link" routerLink="/ideas" routerLinkActive="active">Ideas</a>
+			  	</li>
+			  	<li class="nav-item">
+			    	<a class="nav-link" routerLink="/discovery" routerLinkActive="active">Discovery</a>
+			  	</li>
+			  	<li class="nav-item">
+			    	<a class="nav-link" routerLink="/insights" routerLinkActive="active">Insights</a>
+			  	</li>
+			  	<li class="nav-item">
+			    	<a class="nav-link" routerLink="/report" routerLinkActive="active">Reports</a>
+			  	</li>
+			  	<li class="nav-item">
+			    	<a class="nav-link" routerLink="/profile" routerLinkActive="active">Profile</a>
+			  	</li>
+			</ul>
+		</div>
+
+	
+		
+<!-- SECTION: SEARCH  -->
+	<div class="col-sm-8 col-md-4 col-lg-3 primary-nav__search">
+
+   	<!--<form  class="form-inline" #userform="ngForm" (ngSubmit)="onFormSubmit(userform)">
+			<div class="form-group">
+				<span class="search-submit" id="basic-addon1"><i class="fa fa-search" aria-hidden="true"></i></span>
+				<input type="text" class="form-control search-box" placeholder="Search a stock" aria-describedby="basic-addon1" name="search-symbol"  ngModel required #symbol="ngModel" (ngModelChange)="doSomething($event,symbol)" >
+			</div>
+		</form> --> 
+
+		<form class="form-inline">
+		<div class="form-group">
+			<span class="search-submit" id="basic-addon1"><i class="fa fa-search" aria-hidden="true"></i></span>
+		  	<input type="text" class="form-control search-box" placeholder="Search a stock" aria-describedby="basic-addon1">
+		</div>
+		</form>
 	</div>
 
-	<div class="col-sm-6 col-md-6 primary-nav__nav">
-		<ul class="nav nav-justified">
-			<li class="nav-item">
-		    	<a class="nav-link"  routerLink="/home" routerLinkActive="active">Home</a>
-		  	</li>
-		  	<li class="nav-item">
-		    	<a class="nav-link" routerLink="/ideas" routerLinkActive="active">Ideas</a>
-		  	</li>
-		  	<li class="nav-item">
-		    	<a class="nav-link" routerLink="/discovery" routerLinkActive="active">Discovery</a>
-		  	</li>
-		  	<li class="nav-item">
-		    	<a class="nav-link" routerLink="/insights" routerLinkActive="active">Insights</a>
-		  	</li>
-		  	<li class="nav-item">
-		    	<a class="nav-link" routerLink="/report" routerLinkActive="active">Reports</a>
-		  	</li>
-		  	<li class="nav-item">
-		    	<a class="nav-link" routerLink="/profile" routerLinkActive="active">Profile</a>
-		  	</li>
-		</ul>
-	</div>
-
-	<div class="col-sm-8 col-md-3 primary-nav__search">
-	  <form class="form-inline">
-	    <div class="form-group">
-	    	<span class="search-submit" id="basic-addon1"><i class="fa fa-search" aria-hidden="true"></i></span>
-	      	<input type="text" class="form-control search-box" placeholder="Search a stock" aria-describedby="basic-addon1">
-	    </div>
-	  </form>
-	</div>
-
-	<div class="col-sm-4 col-md-1 primary-nav__settings">
-		<ul class="nav nav-justified">
-			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-question-circle" aria-hidden="true"></i></a></li>
-			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
-			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-cog" aria-hidden="true"></i></a></li>
-		</ul>
-	</div>
+		<!-- SECTION: SETTINGS  -->
+	    	<div class="col-sm-4 col-md-1 col-lg-1 primary-nav__settings">
+	    		<ul class="nav nav-justified">
+	    			<li class="nav-item dropdown">
+						<a class="dropdown-toggle nav-link" data-toggle="dropdown"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+						  	<li>
+							  	<a class="dropdown-toggle dropdown-subtoggle"  data-toggle="dropdown" tabindex="-1" href=""><i class="fa fa-book" aria-hidden="true"></i>
+ &nbsp; Settings Link 1</a>
+						  	</li>
+						  	<li>
+							  	<a class="dropdown-toggle dropdown-subtoggle"  data-toggle="dropdown" tabindex="-1" href=""><i class="fa fa-user" aria-hidden="true"></i>&nbsp; Settings Link 2</a>
+						  	</li>
+						  	<li>
+							  	<a class="dropdown-toggle dropdown-subtoggle"  data-toggle="dropdown" tabindex="-1" href=""><i class="fa fa-life-ring" aria-hidden="true"></i>&nbsp; Settings Link 3</a>
+						  	</li>
+						</ul>
+					</li>
+	    			<li class="nav-item dropdown">
+						<a class="dropdown-toggle nav-link" data-toggle="dropdown"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+						  	<li>
+							  	<a class="dropdown-toggle dropdown-subtoggle"  data-toggle="dropdown" tabindex="-1" href="">Company Name</a>
+						  	</li>
+						  	<li>
+							  	<a class="dropdown-toggle dropdown-subtoggle"  data-toggle="dropdown" tabindex="-1" href="">Company Name</a>
+						  	</li>
+						  	<li>
+							  	<a class="dropdown-toggle dropdown-subtoggle"  data-toggle="dropdown" tabindex="-1" href="">Company Name</a>
+						  	</li>
+						</ul>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="dropdown-toggle nav-link" data-toggle="dropdown"><i class="fa fa-cog" aria-hidden="true"></i></a>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+						  	<li>
+							  	<a class="dropdown-toggle dropdown-subtoggle"  data-toggle="dropdown" tabindex="-1" href="#">Company Name</a>
+						  	</li>
+						  	<li>
+							  	<a class="dropdown-toggle dropdown-subtoggle"  data-toggle="dropdown" tabindex="-1" href="#">Company Name</a>
+						  	</li>
+						  	<li>
+							  	<a class="dropdown-toggle dropdown-subtoggle"  data-toggle="dropdown" tabindex="-1" href="#">Company Name</a>
+						  	</li>
+						</ul>
+					</li>
+	    		</ul>
+	    	</div>
 </div>

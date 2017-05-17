@@ -5,6 +5,10 @@ import { RouterModule, Routes } from '@angular/router';
 /*import { AppComponent } from './app.component';*/
 import { HomeComponent } from './Home/home.component';
 import { IdeasComponent } from './ideas/ideas.component';
+import { DiscoveryComponent } from './discovery/discovery.component';
+import { InsightsComponent } from './insights/insights.component';
+import { StockComponent } from './stock-report/stock.component';
+import { ProfileComponent } from './profile/profile.component';
 /*
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MarketInsightsComponent } from './market-insights/market-insights.component';
@@ -32,7 +36,12 @@ import { LoginComponent } from './shared/session/login.component';
 const routes: Routes = [
 	{ path: '', redirectTo: '/home', pathMatch: 'full' },
 	{ path: 'home', component: HomeComponent },
-	{ path: 'ideas', component: IdeasComponent }
+	{ path: 'ideas', component: IdeasComponent },
+	{ path: 'discovery', component: DiscoveryComponent },
+	{ path: 'insights', component: InsightsComponent },
+	{ path: 'report', component: StockComponent },
+	{ path: 'profile', component: ProfileComponent }
+	
 ];
 
 @NgModule({

@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-
-import { MidTierHeaderComponent } from './mid-tier-header.component';
+import { SharedService } from '../shared.service';
+import { MidTierHeaderComponent, SymbolLookupComponent } from './mid-tier-header.component';
 
 
 @NgModule({
@@ -12,14 +12,17 @@ import { MidTierHeaderComponent } from './mid-tier-header.component';
     CommonModule,
     BrowserModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     MidTierHeaderComponent
   ],
   declarations: [
-    MidTierHeaderComponent
-  ]
+    MidTierHeaderComponent, SymbolLookupComponent
+  ],
+  bootstrap: [SymbolLookupComponent],
+  providers: [SharedService]
 })
 export class MidTierHeaderModule {
 }

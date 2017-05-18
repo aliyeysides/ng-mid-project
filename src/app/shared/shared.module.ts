@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from '../app-routing.module';
 import { MidTierHeaderModule } from './Mid-Tier-Header/mid-tier-header.module';
+import { SharedService } from './shared.service';
 
 @NgModule({
 	imports: [
@@ -19,7 +20,7 @@ import { MidTierHeaderModule } from './Mid-Tier-Header/mid-tier-header.module';
 		MidTierHeaderModule
 	],
 	declarations: [],
-	providers: []
+	providers: [SharedService]
 })
 export class SharedModule {
 

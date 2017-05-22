@@ -28,7 +28,9 @@ export class SymbolLookupComponent implements OnInit {
 
   ngOnInit() {
     this.searchResults = [];
-    
+   /* $window.open(`https://dev.chaikinanalytics.com/CPTRestSecure/
+      ResearchReport/index.jsp?lang=English&uid=9582&environment
+      =desktop&subEnvironment=chaikinAnalytics&version=1.3.2&symbol=ILMN&userType=CAUser`);*/
     this.symbolSearchForm.valueChanges
       .debounceTime(700)
       .switchMap(val => this.sharedService.symbolLookup(val))
@@ -36,7 +38,8 @@ export class SymbolLookupComponent implements OnInit {
   }
 
   onSubmit() {
-    this.symbolSearchForm.reset();
+    console.log(this.searchResults);
+   // this.symbolSearchForm.reset();
   }
 }
 

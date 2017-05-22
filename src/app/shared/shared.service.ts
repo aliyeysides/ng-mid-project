@@ -16,7 +16,7 @@ export class SharedService {
 
   public symbolLookup(query: string): Observable<Array<object>> {
     let symbolLookupUrl = `${this.apiHostName}/CPTRestSecure/app/stocks/symbol-lookupV1?`;
-
+  //  let symbolLookupUrl = `http://localhost:8080/CPTRestSecure/app/stocks/symbol-lookupV1?`;
     this.symbolLookupParams.set('q', query);
     this.symbolLookupParams.set('searchColumn', "symbol");
 

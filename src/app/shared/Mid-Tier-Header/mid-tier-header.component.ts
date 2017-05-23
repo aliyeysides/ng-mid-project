@@ -31,15 +31,22 @@ export class SymbolLookupComponent implements OnInit {
    /* $window.open(`https://dev.chaikinanalytics.com/CPTRestSecure/
       ResearchReport/index.jsp?lang=English&uid=9582&environment
       =desktop&subEnvironment=chaikinAnalytics&version=1.3.2&symbol=ILMN&userType=CAUser`);*/
+   
     this.symbolSearchForm.valueChanges
-      .debounceTime(700)
-      .switchMap(val => this.sharedService.symbolLookup(val))
+      .debounceTime(500)
+      .switchMap(val => this.sharedService.symbolLookup(val))  
+   // .switchMap(val => this.doSomething(val))   
       .subscribe(val => this.searchResults = val);
   }
-
+ doSomething(val){
+   return [];
+ //  (val != null || val != undefined || val != '') ? this.sharedService.symbolLookup(val) : ''
+ }
   onSubmit() {
+
+    console.log(this.symbolSearchForm);
     console.log(this.searchResults);
-   // this.symbolSearchForm.reset();
+    this.symbolSearchForm.reset();
   }
 }
 

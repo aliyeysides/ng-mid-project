@@ -1,0 +1,268 @@
+
+.search-panel-container {
+    position: absolute;
+    top: 46px;
+    border-radius: 6px;
+    z-index: 10000;
+}
+
+.search-panel {
+    position: relative;
+    border-radius: 5px;
+    padding-bottom: 1px;
+}
+
+.search-panel .arrow {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    top: -10px;
+    left: 60px;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 0 1px rgba(90, 97, 124, 0.7);
+}
+.search-panel .body {
+    margin: 6px;
+    border-radius: 6px;
+    width: 412px;
+}
+
+.search-panel ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 0 0px 0;
+    color: black;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.search-panel li {
+    background-color: rgba(246, 246, 246, 0.98);
+    height: 50px;
+    border: 1px solid #ABABAB;
+    border-bottom: none;
+    position: relative;
+    width: 393px;
+}
+
+.search-panel li:first-child {
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+}
+
+.search-panel li:last-child {
+    border-bottom-left-radius: 9px;
+    border-bottom-right-radius: 9px;
+}
+
+.search-panel li:active {
+    background-color: rgb(194, 194, 194);
+}
+
+.search-panel .signal-icon {
+    width: 18px;
+    height: 14px;
+    display: block;
+    position: absolute;
+    top: 12px;
+    left: 18px;
+}
+
+.search-panel .check-mark {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    top: 14px;
+    right: 9px;
+}
+
+
+/*CPT-2214 ETF Ticker Look up */
+
+
+/*CHANES done for font-size ,font-family,color and add hover on searchPanel Li*/
+
+.search-panel .company-label {
+    position: absolute;
+    margin-top: 28px;
+    margin-left: 13px;
+    width: 285px;
+    align-content: center;
+    word-wrap: break-word;
+    font-family: Helvetica Neue;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0px;
+    color: #3d3d3d;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 18px;
+    max-height: 36px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.search-panel .symbol-label {
+    position: absolute;
+    top: 10px;
+    left: 13px;
+    font-size: 14px;
+    font-weight: 900;
+    font-family: Helvetica Neue;
+    color: #3d3d3d;
+    letter-spacing: .04em;
+    text-align: left;
+}
+
+.search-panel li:hover{
+    background:#2b63e5  !important;
+}
+.search-panel li.hovered {
+    color: white !important;
+    background: #2b63e5;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod�EiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top, #2b63e5 0%, #2b63e5 50%, #1956e3 50%, #1956e3 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2b63e5), color-stop(50%, #2b63e5), color-stop(50%, #1956e3), color-stop(100%, #1956e3));
+    background: -webkit-linear-gradient(top, #2b63e5 0%, #2b63e5 50%, #1956e3 50%, #1956e3 100%);
+    background: -o-linear-gradient(top, #2b63e5 0%, #2b63e5 50%, #1956e3 50%, #1956e3 100%);
+    background: -ms-linear-gradient(top, #2b63e5 0%, #2b63e5 50%, #1956e3 50%, #1956e3 100%);
+    background: linear-gradient(to bottom, #2b63e5 0%, #2b63e5 50%, #1956e3 50%, #1956e3 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#2b63e5', endColorstr='#1956e3', GradientType=0);
+}
+
+
+.search-panel .borderTop {
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+}
+
+.search-panel li:hover .company-label{
+    color: white;
+}
+
+.search-panel li:hover .symbol-label{
+    color: white;
+}
+
+.search-panel li:hover .listing-link{
+    color: white;
+}
+
+/*.search-panel li.hovered .company-label {
+    color: white;
+}
+
+.search-panel li.hovered .symbol-label {
+    color: white;
+}
+
+.search-panel li:active .company-label {
+    color: white;
+}
+
+.search-panel li:active .symbol-label {
+    color: white;
+}*/
+/*
+.search-panel .top-row {
+    color: white !important;
+    background: #2b63e5;
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJod�EiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top, #2b63e5 0%, #2b63e5 50%, #1956e3 50%, #1956e3 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #2b63e5), color-stop(50%, #2b63e5), color-stop(50%, #1956e3), color-stop(100%, #1956e3));
+    background: -webkit-linear-gradient(top, #2b63e5 0%, #2b63e5 50%, #1956e3 50%, #1956e3 100%);
+    background: -o-linear-gradient(top, #2b63e5 0%, #2b63e5 50%, #1956e3 50%, #1956e3 100%);
+    background: -ms-linear-gradient(top, #2b63e5 0%, #2b63e5 50%, #1956e3 50%, #1956e3 100%);
+    background: linear-gradient(to bottom, #2b63e5 0%, #2b63e5 50%, #1956e3 50%, #1956e3 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#2b63e5', endColorstr='#1956e3', GradientType=0);
+}*/
+
+.search-panel .top-row .company-label {
+    color: white;
+}
+
+.search-panel .top-row .symbol-label {
+    color: white;
+}
+
+.search-panel .top-row .signal-icon {
+    display: none;
+}
+/*
+.search-panel .bottom-row {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px border-bottom: 1px solid #ababab;
+    font-size: 13px;
+}*/
+
+.search-panel .add-to-watchlist {
+    width: 34px;
+    height: 30px;
+    color: #000;
+    right: 51px;
+    top: 14px;
+    position: absolute;
+}
+
+.add-drop-indicator {
+    position: absolute;
+    top: -9px;
+    left: 4px;
+    z-index: 1;
+    display: block;
+}
+
+.search-panel .show-chart {
+    width: 33px;
+    height: 30px;
+    right: 12px;
+    top: 10px;
+    position: absolute;
+    background: #33363E;
+    border-radius: 6px;
+}
+
+.search-panel .show-chart:hover {
+    background: #585E6E;
+}
+
+.search-panel .show-chart:active {
+    background: #ACACAA;
+}
+.listing-link { 
+    right: 54px;
+    top: 4px;
+    position: absolute;
+    color:#333;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+ }
+.listing-link:last-child {
+    right: 132px;
+}
+.search-panel .show-chart .icon-chart-o {
+    fill: white;
+}
+.listing-link:hover { color:#fff; }
+
+.search-panel .show-chart .icon-reports-01 {
+    display: none;
+}
+
+.search-panel .show-chart:active .icon-chart-o {
+    fill: #137AFF;
+    ;
+}
+
+.search-panel .text {
+    text-align: center;
+    color: black;
+    font-size: 16px;
+    font-weight: normal;
+    margin-top: 12px;
+}

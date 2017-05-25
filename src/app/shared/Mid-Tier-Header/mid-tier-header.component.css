@@ -899,7 +899,7 @@ a.icon__pin:active {
 	white-space: nowrap;
 }
 
-
+.nav-right>.dropdown .dropdown-menu{right: 0!important; top:auto;}
 
 
 

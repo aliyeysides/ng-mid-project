@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from '../app-routing.module';
 import { MidTierHeaderModule } from './Mid-Tier-Header/mid-tier-header.module';
+import { SearchPanelModule } from './search-panel/search-panel.module';
 import { SharedService } from './shared.service';
 
 @NgModule({
@@ -11,13 +12,15 @@ import { SharedService } from './shared.service';
 		CommonModule,
 		BrowserModule,
 		AppRoutingModule,
-		MidTierHeaderModule
+		MidTierHeaderModule,
+		SearchPanelModule
 	],
 	exports: [
 		CommonModule,
 		BrowserModule,
 		AppRoutingModule,
-		MidTierHeaderModule
+		MidTierHeaderModule,
+		SearchPanelModule
 	],
 	declarations: [],
 	providers: [SharedService]

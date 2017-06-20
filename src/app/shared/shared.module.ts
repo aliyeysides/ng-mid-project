@@ -6,6 +6,7 @@ import { AppRoutingModule } from '../app-routing.module';
 import { MidTierHeaderModule } from './Mid-Tier-Header/mid-tier-header.module';
 import { SearchPanelModule } from './search-panel/search-panel.module';
 import { SharedService } from './shared.service';
+import { SignalService } from './signal.service';
 
 @NgModule({
 	imports: [
@@ -23,7 +24,7 @@ import { SharedService } from './shared.service';
 		SearchPanelModule
 	],
 	declarations: [],
-	providers: [SharedService]
+	providers: [SharedService, SignalService]
 })
 export class SharedModule {
 

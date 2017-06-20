@@ -12,9 +12,9 @@
 				<div class="sidebar sidebar--lists">
 					<ul>
 						
-						<li><a class="idea__list">Holding</a> <a class="icon__drag" href=""><i class="fa fa-bars" aria-hidden="true"></i></a><a href="" class="icon__pin"><img src="assets/images/icon_pin-ON-white.svg"></a></li>
+						<!-- <li><a class="idea__list">Holding</a> <a class="icon__drag" href=""><i class="fa fa-bars" aria-hidden="true"></i></a><a href="" class="icon__pin"><img src="assets/images/icon_pin-ON-white.svg"></a></li>
 						<li><a class="idea__list">Watchlist</a> <a class="icon__drag" href=""><i class="fa fa-bars" aria-hidden="true"></i></a><a href="" class="icon__pin"><img src="assets/images/icon_pin-ON-white.svg"></a></li>
-						<li><a class="idea__list">Ideas For You</a> <a class="icon__drag" href=""><i class="fa fa-bars" aria-hidden="true"></i></a><a href="" class="icon__pin"><img src="assets/images/icon_pin-ON-white.svg"></a></li>
+						<li><a class="idea__list">Ideas For You</a> <a class="icon__drag" href=""><i class="fa fa-bars" aria-hidden="true"></i></a><a href="" class="icon__pin"><img src="assets/images/icon_pin-ON-white.svg"></a></li> -->
 						
 						<li *ngFor="let list of userList" [class.active]="list===activeUserList" (click)="updateActiveUser(list)" ><a class="idea__list">{{list.name}}</a> <a class="icon__drag" href=""><i class="fa fa-bars" aria-hidden="true"></i></a><a href="" class="icon__pin"><img src="assets/images/icon_pin-ON-white.svg"></a></li>
 	<!--					<li><a class="idea__list">Biggest Shorts</a> <a class="icon__drag" href=""><i class="fa fa-bars" aria-hidden="true"></i></a><a href="" class="icon__pin"><img src="assets/images/icon_pin-ON-white.svg"></a></li>
@@ -39,7 +39,7 @@
 				<div class="row no-gutters ideas__header">
 					<div class="col-sm-6 col-md-5">
 						<img class="list__icon" src="assets/images/listview-Art_DividendsChamps.svg">
-						<p class="list__name">google<!-- {{activeUserList.name}} --></p>
+						<p class="list__name">{{activeUserList.name}}</p>
 					</div>
 					<div class="col-sm-5 col-md-6 list__description">
 						<p class="align-absolute">Donec vel gravida augue. Vivamus ac nulla non justo suscipit dictum. Quisque magna augue, mattis in sodales vitae, accumsan nec erat. Etiam ac nulla nec nunc egestas lacinia nec non mauris.</p>
@@ -106,32 +106,53 @@
 				<div class="row no-gutters list-list">
 					<ul class="list__container">
 
-						<li class="row list__row">
+						<li class="row list__row" *ngFor="let list of symbolList">
 							<div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 list__PGR ">
-								<a><img src="assets/images/arc_VeryBullish.svg"></a>
+								<a><img src="{{appendPGRImage(list.PGR)}}"></a>
 							</div>
 							<div class="col-xs-10 col-sm-6 col-md-4 col-lg-3 list__company">
-								<p class="list__company-ticker">GOOGL</p><p><span class="list__company-name">Alphabet Inc-A</span></p>
-								<p class="list__company-industry">Computer Software-Services</p>
+								<p class="list__company-ticker">{{list.symbol}}</p><p><span class="list__company-name">{{list.name}}</span></p>
+								<p class="list__company-industry">{{list.industry_name}}</p>
 							</div>
 
 							<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 list__price">
-								<p class="list__price-dollar strong">$953.57</p>
-								<p class="list__price-change strong">(+0.36%)</p>
+								<p class="list__price-dollar" [ngClass]="getClassStyle(list['Percentage '])">${{list.Last}}</p>
+								<!--  -->
+								<p class="list__price-change" [ngClass]="getClassStyle(list['Percentage '])">({{list['Percentage ']}}%)</p>
 							</div>
 
 							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Mkt&nbsp;Cap:</span> <span class="data">$657.70b</span></p>
-								<p><span class="label">Yield:</span> <span class="data">0.00%</span></p>
+								<p class="list__data--first"><span class="label">Mkt&nbsp;Cap:</span> <span class="data">${{calculateMarketCap(list.market_cap)}}</span></p>
+								<p><span class="label">Yield:</span> <span class="data" >{{roundOff(list.div_yield)}}%</span></p>
 							</div>
 
 							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Industry:</span> <span class="data strong">STRONG</span></p>
-								<p><span class="label">Trend:</span> <span class="data strong">STRONG</span></p>
+								<p class="list__data--first"><span class="label">Industry:</span> <span class="data" [ngClass]="industryRating(list['industry_ListID '],list['list_rating']) | lowercase">{{industryRating(list['industry_ListID '],list['list_rating'])}}</span></p>
+								<p><span class="label">Trend:</span> <span class="data" [ngClass]="trendRating(list['TechnicalRating ']) | lowercase ">{{trendRating(list['TechnicalRating '])}}</span></p>
 							</div>
-							<div class="list__signal list__signal--buy col-xs-6 col-sm-6 col-md-1 col-lg-1">
+							<div class="list__signal list__signalblue col-xs-6 col-sm-6 col-md-1 col-lg-1" [ngSwitch]="getSignal(list['parsedSignals'])">
+								<div *ngSwitchCase="0">
+									<div class="list__signal--sell">
+									<p class="signal align-absolute"><i class="fa fa-play" aria-hidden="true"></i>&nbsp;SELL</p>
+									</div>
+								</div>
+								<!-- <div *ngSwitchCase="1">
+									<div class="list__signal--buy">
+									<p class="signal align-absolute"><i class="fa fa-play" aria-hidden="true"></i></p>
+									</div>
+									<div class="list__signal--sell">
+									<p class="signal align-absolute"><i class="fa fa-play" aria-hidden="true"></i></p>
+									</div>
+								</div> -->
+								<div  *ngSwitchCase="2">
+									<div class="list__signal--buy">
+									<p class="signal align-absolute"><i class="fa fa-play" aria-hidden="true"></i>&nbsp;BUY</p>
+									</div>
+								</div>
+							</div>
+							<!-- <div class="list__signal list__signal--buy col-xs-6 col-sm-6 col-md-1 col-lg-1">
 								<p class="signal align-absolute"><i class="fa fa-play" aria-hidden="true"></i>&nbsp;BUY</p>
-							</div>
+							</div> -->
 							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 list__action-buttons">
 					    		<ul class="nav nav-justified">
 					    			<li class="nav-item"><a class="nav-link align-absolute" href=""><i class="fa fa-binoculars" aria-hidden="true"></i></a></li>

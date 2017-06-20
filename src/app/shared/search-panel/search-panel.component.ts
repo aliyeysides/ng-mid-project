@@ -18,7 +18,7 @@ export class SearchPanelComponent implements OnInit {
 	constructor() { 
 		this.searchResult = [];
 		this.test = "sdasdsa"
-		console.log("value", this.test);
+		/*console.log("value", this.test);*/
 	}
 
 	ngOnInit() { }

@@ -38,7 +38,7 @@ export class SharedService {
   public getJson(url,params): Observable<Array<object>>{
     return this.http.get(url, {
       search: params,
-      withCredentials: false
+      withCredentials: true
     }).map(res => {
       return res.json();
     })

@@ -25,7 +25,7 @@ export class SymbolLookupComponent implements OnInit {
   public searchResults: Array<object>;
   constructor(private sharedService: SharedService, private searchPanelComponent : SearchPanelComponent) {
     this.symbolSearchForm = new FormControl();
-    console.log(searchPanelComponent.test)
+   /* console.log(searchPanelComponent.test)*/
   }
 
   ngOnInit() {

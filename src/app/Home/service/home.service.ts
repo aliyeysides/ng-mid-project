@@ -10,8 +10,8 @@ export class HomeService {
 	
 	constructor(private http: Http) {
 	    this.params = new URLSearchParams;
-	    console.log("initialise");
-	    this.fetchInsights();
+	   /* console.log("initialise");*/
+	  //  this.fetchInsights();
  	}
 
  	/* TODO: implement http call to fetch insights */

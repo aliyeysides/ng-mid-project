@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { SharedService } from '../shared/shared.service';
+import { SignalService } from '../shared/signal.service';
 import { IdeasComponent } from './ideas.component';
 
 @NgModule({
@@ -12,7 +13,7 @@ import { IdeasComponent } from './ideas.component';
 	],
 	declarations: [IdeasComponent],
 	bootstrap: [IdeasComponent],
-	providers: [SharedService]
+	providers: [SharedService, SignalService]
 })
 export class IdeasModule {
 }

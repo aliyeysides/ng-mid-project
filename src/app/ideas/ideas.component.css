@@ -41,7 +41,7 @@ body {
 	color:#6ACC00;
 }
 
-.neutral, .hold {
+.neutral, .hold , .neutral{
 	color:#FF9900;
 }
 
@@ -874,6 +874,10 @@ a.icon__pin:active {
 .list__signal--buy {
 	background: #E6F2E3;
 }
+.list__signalblue {
+	background: #E6F2E3;
+}
+
 
 .list__signal--sell {
 	background: #F9DEE1;

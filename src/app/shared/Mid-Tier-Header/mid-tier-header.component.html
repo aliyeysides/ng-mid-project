@@ -1,87 +1,85 @@
 <!-- SECTION: NAV  -->
-	<div class="row primary-nav">
-		<div class="col-sm-3 col-md-2 col-lg-2 primary-nav__logo">
-			<img class="align-absolute" src="assets/images/cmt-logo.svg" routerLink="/home" routerLinkActive="active" style="outline: none;">
-		</div>
+<div class="row primary-nav">
+  <div class="col-sm-3 col-md-2 col-lg-2 primary-nav__logo">
+    <img class="align-absolute" src="assets/images/cmt-logo.svg" routerLink="/home" routerLinkActive="active"
+         style="outline: none;">
+  </div>
 
-		<div class="col-sm-9 col-md-5 col-lg-6  primary-nav__nav">
-			<ul class="nav nav-justified">
-				<!-- <li class="nav-item">
-			    	<a class="nav-link"  routerLink="/home" routerLinkActive="active">Home</a>
-			  	</li> -->
-			  	<li class="nav-item">
-			    	<a class="nav-link" routerLink="/ideas" routerLinkActive="active">Ideas</a>
-			  	</li>
-			  	<li class="nav-item">
-			    	<a class="nav-link" routerLink="/discovery" routerLinkActive="active">Discovery</a>
-			  	</li>
-			  	<li class="nav-item">
-			    	<a class="nav-link" routerLink="/insights" routerLinkActive="active">Insights</a>
-			  	</li>
-			  	<li class="nav-item">
-			    	<a class="nav-link" routerLink="/report" routerLinkActive="active">Reports</a>
-			  	</li>
-			  	<li class="nav-item">
-			    	<a class="nav-link" routerLink="/profile" routerLinkActive="active">Profile</a>
-			  	</li>
-			</ul>
-		</div>
+  <div class="col-sm-9 col-md-5 col-lg-6  primary-nav__nav">
+    <ul class="nav nav-justified">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/discovery" routerLinkActive="active">Discovery</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/insights" routerLinkActive="active">Insights</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/report" routerLinkActive="active">Stock View</a>
+      </li>
+    </ul>
+  </div>
 
-	
-		
-<!-- SECTION: SEARCH  -->
-<div class="col-sm-8 col-md-4 col-lg-3">
-	<div class="primary-nav__search">
-	<symbol-search> </symbol-search>
-	</div>	
-	<search-panel ></search-panel>
-</div>
 
-		<!-- SECTION: SETTINGS  -->
-	    	<div class="col-sm-4 col-md-1 col-lg-1 primary-nav__settings">
-	    		<ul class="nav nav-justified nav-right">
-	    			<li class="nav-item dropdown">
-						<a class="dropdown-toggle nav-link" data-toggle="dropdown"><i class="fa fa-question-circle" aria-hidden="true"></i></a>
-						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-						  	<li>
-							  	<a class="dropdown-toggle dropdown-subtoggle"  data-toggle="dropdown" tabindex="-1" href=""><i class="fa fa-book" aria-hidden="true"></i>&nbsp; Settings Link 1</a>
-						  	</li>
-						  	<li>
-							  	<a class="dropdown-toggle dropdown-subtoggle"  data-toggle="dropdown" tabindex="-1" href=""><i class="fa fa-user" aria-hidden="true"></i>&nbsp; Settings Link 2</a>
-						  	</li>
-						  	<li>
-							  	<a class="dropdown-toggle dropdown-subtoggle"  data-toggle="dropdown" tabindex="-1" href=""><i class="fa fa-life-ring" aria-hidden="true"></i>&nbsp; Settings Link 3</a>
-						  	</li>
-						</ul>
-					</li>
-	    			<li class="nav-item dropdown">
-						<a class="dropdown-toggle nav-link" data-toggle="dropdown"><i class="fa fa-envelope" aria-hidden="true"></i></a>
-						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-						  	<li>
-							  	<a class="dropdown-toggle dropdown-subtoggle"  data-toggle="dropdown" tabindex="-1" href="">Company Name</a>
-						  	</li>
-						  	<li>
-							  	<a class="dropdown-toggle dropdown-subtoggle"  data-toggle="dropdown" tabindex="-1" href="">Company Name</a>
-						  	</li>
-						  	<li>
-							  	<a class="dropdown-toggle dropdown-subtoggle"  data-toggle="dropdown" tabindex="-1" href="">Company Name</a>
-						  	</li>
-						</ul>
-					</li>
-					<li class="nav-item dropdown">
-						<a class="dropdown-toggle nav-link" data-toggle="dropdown"><i class="fa fa-cog" aria-hidden="true"></i></a>
-						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-						  	<li>
-							  	<a class="dropdown-toggle dropdown-subtoggle"  data-toggle="dropdown" tabindex="-1" href="#">Company Name</a>
-						  	</li>
-						  	<li>
-							  	<a class="dropdown-toggle dropdown-subtoggle"  data-toggle="dropdown" tabindex="-1" href="#">Company Name</a>
-						  	</li>
-						  	<li>
-							  	<a class="dropdown-toggle dropdown-subtoggle"  data-toggle="dropdown" tabindex="-1" href="#">Company Name</a>
-						  	</li>
-						</ul>
-					</li>
-	    		</ul>
-	    	</div>
+  <!-- SECTION: SEARCH  -->
+  <div class="col-sm-8 col-md-4 col-lg-3">
+    <div class="primary-nav__search">
+      <symbol-search></symbol-search>
+    </div>
+    <search-panel></search-panel>
+  </div>
+
+  <!-- SECTION: SETTINGS  -->
+  <div class="col-sm-4 col-md-1 col-lg-1 primary-nav__settings">
+    <ul class="nav nav-justified nav-right">
+      <li class="nav-item dropdown">
+        <a class="dropdown-toggle nav-link" data-toggle="dropdown"><i class="fa fa-question-circle"
+                                                                      aria-hidden="true"></i></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+          <li>
+            <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href=""><i
+              class="fa fa-book" aria-hidden="true"></i>&nbsp; Settings Link 1</a>
+          </li>
+          <li>
+            <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href=""><i
+              class="fa fa-user" aria-hidden="true"></i>&nbsp; Settings Link 2</a>
+          </li>
+          <li>
+            <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href=""><i
+              class="fa fa-life-ring" aria-hidden="true"></i>&nbsp; Settings Link 3</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="dropdown-toggle nav-link" data-toggle="dropdown"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+          <li>
+            <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="">Company Name</a>
+          </li>
+          <li>
+            <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="">Company Name</a>
+          </li>
+          <li>
+            <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="">Company Name</a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="dropdown-toggle nav-link" data-toggle="dropdown"><i class="fa fa-cog" aria-hidden="true"></i></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+          <li>
+            <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="#">Quick start walkthrough</a>
+          </li>
+          <li>
+            <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="#">User guide</a>
+          </li>
+          <li>
+            <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="#">Log out</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 </div>

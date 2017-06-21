@@ -1,7 +1,4 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { SharedService } from '../shared.service';
-/*import { SymbolLookupComponent } from '../mid-tier-header/mid-tier-header.component';
-providers: [SymbolLookupComponent],*/
 
 @Component({
 	selector: 'search-panel',
@@ -15,7 +12,7 @@ export class SearchPanelComponent implements OnInit {
 	public test: string;
 	public searchResult: Array<object>;
 	//private symbolLookupComponent : SymbolLookupComponent
-	constructor() { 
+	constructor() {
 		this.searchResult = [];
 		this.test = "sdasdsa"
 		/*console.log("value", this.test);*/

@@ -7,10 +7,14 @@ import { HomeService } from './service/home.service';
 import { IdeasModule } from '../ideas/ideas.module';
 import { ListViewComponent } from './list-view/list-view.component';
 
+import { SymbolSearchModule } from '../shared/symbol-search/symbol-search.module';
+
 @NgModule({
 	imports: [
 		SharedModule,
-		IdeasModule
+		IdeasModule,
+		SharedModule,
+    SymbolSearchModule
 	],
 	exports: [
 		HomeComponent

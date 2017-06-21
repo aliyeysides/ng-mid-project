@@ -58,11 +58,9 @@ export class IdeasComponent implements OnInit {
     let returnVal: string;
     if (val > 0) {
       returnVal = this.activeClassStyle[0];
-    }
-    else if (val < 0) {
+    } else if (val < 0) {
       returnVal = this.activeClassStyle[2];
-    }
-    else {
+    } else {
       returnVal = this.activeClassStyle[1];
     }
     return returnVal;

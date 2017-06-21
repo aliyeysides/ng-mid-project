@@ -5,6 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { HomeComponent } from './home.component';
 import { HomeService } from './service/home.service';
 import { IdeasModule } from '../ideas/ideas.module';
+import { ListViewComponent } from './list-view/list-view.component';
 
 @NgModule({
 	imports: [
@@ -14,7 +15,7 @@ import { IdeasModule } from '../ideas/ideas.module';
 	exports: [
 		HomeComponent
 	],
-	declarations: [HomeComponent],
+	declarations: [HomeComponent, ListViewComponent],
 	providers: [HomeService]
 })
 export class HomeModule {

@@ -5,7 +5,7 @@ import {SignalService} from '../shared/signal.service';
 @Component({
   selector: 'mid-tier-ideas',
   templateUrl: './ideas.component.html',
-  styleUrls: ['./ideas.component.css'],
+  styleUrls: ['./ideas.component.scss'],
   encapsulation: ViewEncapsulation.None
 
 })

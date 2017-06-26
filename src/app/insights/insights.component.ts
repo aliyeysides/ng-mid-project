@@ -8,7 +8,7 @@ import 'rxjs/add/operator/switchMap';
 @Component({
 	selector: 'mid-tier-insights',
 	templateUrl: './insights.component.html',
-	styleUrls: ['./insights.component.css']
+	styleUrls: ['./insights.component.scss']
 })
 export class InsightsComponent implements OnInit {
 

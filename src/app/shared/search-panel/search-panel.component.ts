@@ -3,7 +3,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 @Component({
 	selector: 'search-panel',
 	templateUrl: './search-panel.component.html',
-	styleUrls: ['./search-panel.component.css'],
+	styleUrls: ['./search-panel.component.scss'],
 	encapsulation: ViewEncapsulation.None
 })
 export class SearchPanelComponent implements OnInit {

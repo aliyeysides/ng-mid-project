@@ -8,7 +8,7 @@ import {Observable} from 'rxjs/Observable';
 @Component({
   selector: 'symbol-search',
   templateUrl: './symbol-search.component.html',
-  styleUrls: ['./symbol-search.component.css'],
+  styleUrls: ['./symbol-search.component.scss'],
   providers: [SearchPanelComponent],
   encapsulation: ViewEncapsulation.None
 })

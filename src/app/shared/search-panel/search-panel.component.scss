@@ -131,7 +131,7 @@
     background: -o-linear-gradient(top, #2b63e5 0%, #2b63e5 50%, #1956e3 50%, #1956e3 100%);
     background: -ms-linear-gradient(top, #2b63e5 0%, #2b63e5 50%, #1956e3 50%, #1956e3 100%);
     background: linear-gradient(to bottom, #2b63e5 0%, #2b63e5 50%, #1956e3 50%, #1956e3 100%);
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#2b63e5', endColorstr='#1956e3', GradientType=0);
+    // filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#2b63e5', endColorstr='#1956e3', GradientType=0);
 }
 
 
@@ -233,7 +233,7 @@
 .search-panel .show-chart:active {
     background: #ACACAA;
 }
-.listing-link { 
+.listing-link {
     right: 54px;
     top: 4px;
     position: absolute;

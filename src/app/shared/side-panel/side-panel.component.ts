@@ -4,7 +4,7 @@ import { SharedService } from '../shared.service';
 @Component({
 	selector: 'side-panel',
 	templateUrl: './side-panel.component.html',
-	styleUrls: ['./side-panel.component.css']
+	styleUrls: ['./side-panel.component.scss']
 })
 export class SidePanelComponent implements OnInit {
 
@@ -12,7 +12,7 @@ export class SidePanelComponent implements OnInit {
 	public test: string;
 	public searchResult: Array<object>;
 	constructor() {
-	
+
 	}
 
 	ngOnInit() { }

@@ -5,7 +5,7 @@ import 'rxjs/add/operator/switchMap';
 @Component({
   selector: 'mid-tier-header',
   templateUrl: './mid-tier-header.component.html',
-  styleUrls: ['./mid-tier-header.component.css'],
+  styleUrls: ['./mid-tier-header.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class MidTierHeaderComponent implements OnInit {

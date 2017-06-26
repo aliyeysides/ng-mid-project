@@ -1,566 +1,96 @@
-
-<!-- <div class="container-fluid">
- Ideas Page!.....
-</div> -->
-
-
-
-<!-- SECTION: BODY  -->
-		<div class="row body__container">
-	<!-- SECTION: SIDEBAR  -->
-			<div class="col-sm-4 col-md-3 col-lg-2 body__sidebar">
-				<div class="sidebar sidebar--lists">
-					<ul>
-						
-						<!-- <li><a class="idea__list">Holding</a> <a class="icon__drag" href=""><i class="fa fa-bars" aria-hidden="true"></i></a><a href="" class="icon__pin"><img src="assets/images/icon_pin-ON-white.svg"></a></li>
-						<li><a class="idea__list">Watchlist</a> <a class="icon__drag" href=""><i class="fa fa-bars" aria-hidden="true"></i></a><a href="" class="icon__pin"><img src="assets/images/icon_pin-ON-white.svg"></a></li>
-						<li><a class="idea__list">Ideas For You</a> <a class="icon__drag" href=""><i class="fa fa-bars" aria-hidden="true"></i></a><a href="" class="icon__pin"><img src="assets/images/icon_pin-ON-white.svg"></a></li> -->
-						
-						<li *ngFor="let list of userList" [class.active]="list===activeUserList" (click)="updateActiveUser(list)" ><a class="idea__list">{{list.name}}</a> <a class="icon__drag" href=""><i class="fa fa-bars" aria-hidden="true"></i></a><a href="" class="icon__pin"><img src="assets/images/icon_pin-ON-white.svg"></a></li>
-	<!--					<li><a class="idea__list">Biggest Shorts</a> <a class="icon__drag" href=""><i class="fa fa-bars" aria-hidden="true"></i></a><a href="" class="icon__pin"><img src="assets/images/icon_pin-ON-white.svg"></a></li>
-						<li class="active"><a class="idea__list">Dividends Champs</a> <a class="icon__drag" href=""><i class="fa fa-bars" aria-hidden="true"></i></a><a href="" class="icon__pin"><img src="assets/images/icon_pin-ON-white.svg"></a></li>
-						<li><a class="idea__list">Tried &amp; True</a> <a class="icon__drag" href=""><i class="fa fa-bars" aria-hidden="true"></i></a><a href="" class="icon__pin"><img src="assets/images/icon_pin-ON-white.svg"></a></li>
-						<li><a class="idea__list">Don't Fight the Shorts</a> <a class="icon__drag" href=""><i class="fa fa-bars" aria-hidden="true"></i></a><a href="" class="icon__pin"><img src="assets/images/icon_pin-ON-white.svg"></a></li>
-						<li><a class="idea__list">Dogs of the DOW</a> <a class="icon__drag" href=""><i class="fa fa-bars" aria-hidden="true"></i></a><a href="" class="icon__pin"><img src="assets/images/icon_pin-ON-white.svg"></a></li>
-						<li><a class="idea__list">Money Makers</a> <a class="icon__drag" href=""><i class="fa fa-bars" aria-hidden="true"></i></a><a href="" class="icon__pin"><img src="assets/images/icon_pin-ON-white.svg"></a></li>
-						<li><a class="idea__list">Dogs of the DOW</a> <a class="icon__drag" href=""><i class="fa fa-bars" aria-hidden="true"></i></a><a href="" class="icon__pin"><img src="assets/images/icon_pin-ON-white.svg"></a></li>
-						<li><a class="idea__list">Money Makers</a> <a class="icon__drag" href=""><i class="fa fa-bars" aria-hidden="true"></i></a><a href="" class="icon__pin"><img src="assets/images/icon_pin-ON-white.svg"></a></li>
-						<li class=""><a class="idea__list">Dividends Champs</a> <a class="icon__drag" href=""><i class="fa fa-bars" aria-hidden="true"></i></a><a href="" class="icon__pin"><i class="fa fa-map-pin" aria-hidden="true"></i></a></li>
-						<li><a class="idea__list">Money Makers</a> <a class="icon__drag" href=""><i class="fa fa-bars" aria-hidden="true"></i></a><a href="" class="icon__pin"><img src="assets/images/icon_pin-ON-white.svg"></a></li>
-						<li><a class="idea__list">Dogs of the DOW</a> <a class="icon__drag" href=""><i class="fa fa-bars" aria-hidden="true"></i></a><a href="" class="icon__pin"><img src="assets/images/icon_pin-ON-white.svg"></a></li>
-						<li><a class="idea__list">Money</a> <a class="icon__drag" href=""><i class="fa fa-bars" aria-hidden="true"></i></a><a href="" class="icon__pin"><img src="assets/images/icon_pin-ON-white.svg"></a></li> -->
-					</ul>
-				</div>
-			</div>
-	
-	<!-- SECTION: IDEAS BODY  -->
-			<div class="col-sm-8 col-md-9 col-lg-10 body">
-		<!-- SECTION: IDEAS HEADER  -->
-				<div class="row no-gutters ideas__header">
-					<div class="col-sm-6 col-md-5">
-						<img class="list__icon" src="assets/images/listview-Art_DividendsChamps.svg">
-						<p class="list__name">{{activeUserList.name}}</p>
-					</div>
-					<div class="col-sm-5 col-md-6 list__description">
-						<p class="align-absolute">Donec vel gravida augue. Vivamus ac nulla non justo suscipit dictum. Quisque magna augue, mattis in sodales vitae, accumsan nec erat. Etiam ac nulla nec nunc egestas lacinia nec non mauris.</p>
-					</div>
-					<div class="col-sm-1 col-md-1">
-						<img class="align-absolute" src="assets/images/icon_pin-ON.svg">
-					</div>
-				</div>
-		<!-- SECTION: SORT  -->
-				<div class="row no-gutters ideas__list-sort">
-					<ul>
-						<li class="list-sort__button list-sort__button--arc active">
-							<a><img class="align-absolute" src="assets/images/icon_Sort-arc.svg"></a>
-						</li>
-						<li class="list-sort__button list-sort__button--alpha">
-							<a><img class="align-absolute" src="assets/images/icon_Sort-alpha.svg"></a>
-						</li>
-						<li class="list-sort__button list-sort__button--drop dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown"><img class="align-absolute" src="assets/images/icon_Sort-dropdown.svg"></a>
-							<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-							  	<li class="dropdown-submenu">
-								  	<a class="dropdown-toggle dropdown-subtoggle"  data-toggle="dropdown" tabindex="-1" href="#">Company Name</a>
-							  		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-							  			<li><a class="dropdown-subtoggle" tabindex="-1" href="#">A-Z</a></li>
-							  			<li><a class="dropdown-subtoggle" tabindex="-1" href="#">Z-A</a></li>
-							  		</ul>
-							  	</li>
-							  	<li class="dropdown-submenu">
-								  	<a class="dropdown-toggle dropdown-subtoggle"  data-toggle="dropdown" tabindex="-1" href="#">Stock Price</a>
-							  		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-							  			<li><a class="dropdown-subtoggle" tabindex="-1" href="#">High to Low</a></li>
-							  			<li><a class="dropdown-subtoggle" tabindex="-1" href="#">Low to High</a></li>
-							  		</ul>
-							  	</li>
-							  	<li class="dropdown-submenu">
-								  	<a class="dropdown-toggle dropdown-subtoggle"  data-toggle="dropdown" tabindex="-1" href="#">% Change</a>
-							  		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-							  			<li><a class="dropdown-subtoggle" tabindex="-1" href="#">High to Low</a></li>
-							  			<li><a class="dropdown-subtoggle" tabindex="-1" href="#">Low to High</a></li>
-							  		</ul>
-							  	</li>
-								<li class="dropdown-submenu">
-								  	<a class="dropdown-toggle dropdown-subtoggle"  data-toggle="dropdown" tabindex="-1" href="#">Market Cap</a>
-							  		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-							  			<li><a class="dropdown-subtoggle" tabindex="-1" href="#">High to Low</a></li>
-							  			<li><a class="dropdown-subtoggle" tabindex="-1" href="#">Low to High</a></li>
-							  		</ul>
-							  	</li>
-							  	<li class="dropdown-submenu">
-								  	<a class="dropdown-toggle dropdown-subtoggle"  data-toggle="dropdown" tabindex="-1" href="#">% Yield</a>
-							  		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-							  			<li><a class="dropdown-subtoggle" tabindex="-1" href="#">High to Low</a></li>
-							  			<li><a class="dropdown-subtoggle" tabindex="-1" href="#">Low to High</a></li>
-							  		</ul>
-							  	</li>
-							</ul>		
-						</li>
-					</ul>
-					<div class="list-sort__text">
-						<p>Sorted by: <span id="sort-pgr">Power Gauge Rating</span></p>
-					</div>
-				</div>
-		<!-- SECTION: LIST  -->
-				<div class="row no-gutters list-list">
-					<ul class="list__container">
-
-						<li class="row list__row" *ngFor="let list of symbolList">
-							<div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 list__PGR ">
-								<a><img src="{{appendPGRImage(list.PGR)}}"></a>
+	<!-- ROW: CAROUSEL  -->
+					<div class="row no-gutters">
+						<div class="list-carousel">
+							<div class="list-category list-category--mylists">
+								<p>MY LISTS</p>
 							</div>
-							<div class="col-xs-10 col-sm-6 col-md-4 col-lg-3 list__company">
-								<p class="list__company-ticker">{{list.symbol}}</p><p><span class="list__company-name">{{list.name}}</span></p>
-								<p class="list__company-industry">{{list.industry_name}}</p>
-							</div>
+							<div class="list-category list-category--ideas">
+								<p>IDEAS</p>
 
-							<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 list__price">
-								<p class="list__price-dollar" [ngClass]="getClassStyle(list['Percentage '])">${{list.Last}}</p>
-								<!--  -->
-								<p class="list__price-change" [ngClass]="getClassStyle(list['Percentage '])">({{list['Percentage ']}}%)</p>
 							</div>
-
-							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Mkt&nbsp;Cap:</span> <span class="data">${{calculateMarketCap(list.market_cap)}}</span></p>
-								<p><span class="label">Yield:</span> <span class="data" >{{roundOff(list.div_yield)}}%</span></p>
-							</div>
-
-							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Industry:</span> <span class="data" [ngClass]="industryRating(list['industry_ListID '],list['list_rating']) | lowercase">{{industryRating(list['industry_ListID '],list['list_rating'])}}</span></p>
-								<p><span class="label">Trend:</span> <span class="data" [ngClass]="trendRating(list['TechnicalRating ']) | lowercase ">{{trendRating(list['TechnicalRating '])}}</span></p>
-							</div>
-							<div class="list__signal list__signalblue col-xs-6 col-sm-6 col-md-1 col-lg-1" [ngSwitch]="getSignal(list['parsedSignals'])">
-								<div *ngSwitchCase="0">
-									<div class="list__signal--sell">
-									<p class="signal align-absolute"><i class="fa fa-play" aria-hidden="true"></i>&nbsp;SELL</p>
+							<ul class="">
+								<li class="list__option list__option--userlist list__option--holding selected">
+									<div class="list__image">
+										<img class="align-absolute" src="assets/imgs/img_list-holding.svg">
 									</div>
-								</div>
-								<!-- <div *ngSwitchCase="1">
-									<div class="list__signal--buy">
-									<p class="signal align-absolute"><i class="fa fa-play" aria-hidden="true"></i></p>
+									<p class="list__label">Holding</p>
+								</li>
+								<li class="list__option list__option--userlist list__option--watching">
+									<div class="list__image">
+										<img class="align-absolute" src="assets/imgs/img_list-watching.svg">
 									</div>
-									<div class="list__signal--sell">
-									<p class="signal align-absolute"><i class="fa fa-play" aria-hidden="true"></i></p>
+									<p class="list__label">Watching</p>
+								</li>
+								<li class="list__option list__option--idealist list__option--ideasforyou">
+									<div class="list__image">
+										<img class="align-absolute" src="assets/imgs/img_list-ideasforyou.svg">
 									</div>
-								</div> -->
-								<div  *ngSwitchCase="2">
-									<div class="list__signal--buy">
-									<p class="signal align-absolute"><i class="fa fa-play" aria-hidden="true"></i>&nbsp;BUY</p>
+									<p class="list__label">Ideas For You</p>
+								</li>
+								<li class="list__option list__option--IPlist list__option--classicbulls">
+									<div class="list__image">
+										<img class="align-absolute" src="assets/imgs/img_list-classicbulls.svg">
 									</div>
-								</div>
-							</div>
-							<!-- <div class="list__signal list__signal--buy col-xs-6 col-sm-6 col-md-1 col-lg-1">
-								<p class="signal align-absolute"><i class="fa fa-play" aria-hidden="true"></i>&nbsp;BUY</p>
-							</div> -->
-							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 list__action-buttons">
-					    		<ul class="nav nav-justified">
-					    			<li class="nav-item"><a class="nav-link align-absolute" href=""><i class="fa fa-binoculars" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link align-absolute" href=""><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link align-absolute" href=""><i class="fa fa-plus-square" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link align-absolute" href=""><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
-					    		</ul>
-							</div>
-						</li>
- <!-- 
-						<li class="row list__row">
-							<div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 list__PGR ">
-								<a><img src="assets/images/arc_VeryBullish.svg"></a>
-							</div>
-							<div class="col-xs-10 col-sm-6 col-md-4 col-lg-3 list__company">
-								<p class="list__company-ticker">NOC</p><p><span class="list__company-name">Northrop Grummn</span></p>
-								<p class="list__company-industry">Aerospace-Defense</p>
-							</div>
-
-							<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 list__price">
-								<p class="list__price-dollar strong">$248.89</p>
-								<p class="list__price-change strong">(+0.10%)</p>
-							</div>
-
-							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Mkt&nbsp;Cap:</span> <span class="data">$43.45b</span></p>
-								<p><span class="label">Yield:</span> <span class="data">1.45%</span></p>
-							</div>
-
-							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Industry:</span> <span class="data strong">STRONG</span></p>
-								<p><span class="label">Trend:</span> <span class="data strong">STRONG</span></p>
-							</div>
-							<div class="list__signal col-xs-6 col-sm-6 col-md-1 col-lg-1">
-								
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 list__action-buttons">
-					    		<ul class="nav nav-justified">
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-binoculars" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-plus-square" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
-					    		</ul>
-							</div>
-
-						</li>
-						<li class="row list__row">
-							<div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 list__PGR ">
-								<a><img src="assets/images/arc_VeryBullish.svg"></a>
-							</div>
-							<div class="col-xs-10 col-sm-6 col-md-4 col-lg-3 list__company">
-								<p class="list__company-ticker">UNH</p><p><span class="list__company-name">Unitedhealth Gp</span></p>
-								<p class="list__company-industry">Medical Care</p>
-							</div>
-
-							<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 list__price">
-								<p class="list__price-dollar weak">$173.86</p>
-								<p class="list__price-change weak">(-0.15%)</p>
-							</div>
-
-							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Mkt&nbsp;Cap:</span> <span class="data">$167.87b</span></p>
-								<p><span class="label">Yield:</span> <span class="data">1.25%</span></p>
-							</div>
-
-							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Industry:</span> <span class="data strong">STRONG</span></p>
-								<p><span class="label">Trend:</span> <span class="data weak">WEAK</span></p>
-							</div>
-							<div class="list__signal list__signal--sell col-xs-6 col-sm-6 col-md-1 col-lg-1">
-								<p class="signal align-absolute"><i class="fa fa-play" aria-hidden="true"></i>&nbsp;SELL</p>
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 list__action-buttons">
-					    		<ul class="nav nav-justified">
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-binoculars" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-plus-square" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
-					    		</ul>
-							</div>
-
-						</li>
-						<li class="row list__row">
-							<div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 list__PGR ">
-								<a><img src="assets/images/arc_Bullish.svg"></a>
-							</div>
-							<div class="col-xs-10 col-sm-6 col-md-4 col-lg-3 list__company">
-								<p class="list__company-ticker">ATO</p><p><span class="list__company-name">Atmos Energy Cp</span></p>
-								<p class="list__company-industry">Utility-Gas Distr</p>
-							</div>
-
-							<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 list__price">
-								<p class="list__price-dollar weak">$81.99</p>
-								<p class="list__price-change weak">(+0.22%)</p>
-							</div>
-
-							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Mkt&nbsp;Cap:</span> <span class="data">$8.65b</span></p>
-								<p><span class="label">Yield:</span> <span class="data">2.19%</span></p>
-							</div>
-
-							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Industry:</span> <span class="data weak">WEAK</span></p>
-								<p><span class="label">Trend:</span> <span class="data weak">WEAK</span></p>
-							</div>
-							<div class="list__signal list__signal--sell col-xs-6 col-sm-6 col-md-1 col-lg-1">
-								<p class="signal align-absolute"><i class="fa fa-play" aria-hidden="true"></i>&nbsp;SELL</p>
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 list__action-buttons">
-					    		<ul class="nav nav-justified">
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-binoculars" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-plus-square" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
-					    		</ul>
-							</div>
-						</li>
-
-						<li class="row list__row">
-							<div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 list__PGR ">
-								<a><img src="assets/images/arc_Bullish.svg"></a>
-							</div>
-							<div class="col-xs-10 col-sm-6 col-md-4 col-lg-3 list__company">
-								<p class="list__company-ticker">DD</p><p><span class="list__company-name">Du Pont (Ei) De</span></p>
-								<p class="list__company-industry">Chemicals</p>
-							</div>
-
-							<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 list__price">
-								<p class="list__price-dollar weak">$80.29</p>
-								<p class="list__price-change weak">(-1.05%)</p>
-							</div>
-
-							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Mkt&nbsp;Cap:</span> <span class="data">$43.45b</span></p>
-								<p><span class="label">Yield:</span> <span class="data">1.45%</span></p>
-							</div>
-
-							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Industry:</span> <span class="data strong">STRONG</span></p>
-								<p><span class="label">Trend:</span> <span class="data strong">STRONG</span></p>
-							</div>
-							<div class="list__signal col-xs-6 col-sm-6 col-md-1 col-lg-1">
-								
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 list__action-buttons">
-					    		<ul class="nav nav-justified">
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-binoculars" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-plus-square" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
-					    		</ul>
-							</div>
-						</li>
-
-						<li class="row list__row">
-							<div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 list__PGR ">
-								<a><img src="assets/images/arc_Bullish.svg"></a>
-							</div>
-							<div class="col-xs-10 col-sm-6 col-md-4 col-lg-3 list__company">
-								<p class="list__company-ticker">MSFT</p><p><span class="list__company-name">Microsoft Corp</span></p>
-								<p class="list__company-industry">Computer Software-Services</p>
-							</div>
-
-							<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 list__price">
-								<p class="list__price-dollar strong">$953.57</p>
-								<p class="list__price-change strong">(+0.36%)</p>
-							</div>
-
-							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Mkt&nbsp;Cap:</span> <span class="data">$657.70b</span></p>
-								<p><span class="label">Yield:</span> <span class="data">0.00%</span></p>
-							</div>
-
-							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Industry:</span> <span class="data strong">STRONG</span></p>
-								<p><span class="label">Trend:</span> <span class="data strong">STRONG</span></p>
-							</div>
-							<div class="list__signal col-xs-6 col-sm-6 col-md-1 col-lg-1">
-								
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 list__action-buttons">
-					    		<ul class="nav nav-justified">
-					    			<li class="nav-item"><a class="nav-link align-absolute" href=""><i class="fa fa-binoculars" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link align-absolute" href=""><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link align-absolute" href=""><i class="fa fa-plus-square" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link align-absolute" href=""><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
-					    		</ul>
-							</div>
-						</li>
-
-						<li class="row list__row">
-							<div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 list__PGR ">
-								<a><img src="assets/images/arc_Neutral.svg"></a>
-							</div>
-							<div class="col-xs-10 col-sm-6 col-md-4 col-lg-3 list__company">
-								<p class="list__company-ticker">CMCSA</p><p><span class="list__company-name">Comcast Corp</span></p>
-								<p class="list__company-industry">Media</p>
-							</div>
-
-							<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 list__price">
-								<p class="list__price-dollar strong">$39.03</p>
-								<p class="list__price-change strong">(+1.02%)</p>
-							</div>
-
-							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Mkt&nbsp;Cap:</span> <span class="data">$239.39b</span></p>
-								<p><span class="label">Yield:</span> <span class="data">1.62%</span></p>
-							</div>
-
-							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Industry:</span> <span class="data strong">STRONG</span></p>
-								<p><span class="label">Trend:</span> <span class="data weak">WEAK</span></p>
-							</div>
-							<div class="list__signal list__signal--buy col-xs-6 col-sm-6 col-md-1 col-lg-1">
-								<p class="signal align-absolute"><i class="fa fa-play" aria-hidden="true"></i>&nbsp;BUY</p>
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 list__action-buttons">
-					    		<ul class="nav nav-justified">
-					    			<li class="nav-item"><a class="nav-link align-absolute" href=""><i class="fa fa-binoculars" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link align-absolute" href=""><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link align-absolute" href=""><i class="fa fa-plus-square" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link align-absolute" href=""><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
-					    		</ul>
-							</div>
-						</li>
-
-						<li class="row list__row">
-							<div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 list__PGR ">
-								<a><img src="assets/images/arc_VeryBullish.svg"></a>
-							</div>
-							<div class="col-xs-10 col-sm-6 col-md-4 col-lg-3 list__company">
-								<p class="list__company-ticker">NOC</p><p><span class="list__company-name">Northrop Grummn</span></p>
-								<p class="list__company-industry">Aerospace-Defense</p>
-							</div>
-
-							<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 list__price">
-								<p class="list__price-dollar strong">$248.89</p>
-								<p class="list__price-change strong">(+0.10%)</p>
-							</div>
-
-							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Mkt&nbsp;Cap:</span> <span class="data">$43.45b</span></p>
-								<p><span class="label">Yield:</span> <span class="data">1.45%</span></p>
-							</div>
-
-							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Industry:</span> <span class="data strong">STRONG</span></p>
-								<p><span class="label">Trend:</span> <span class="data strong">STRONG</span></p>
-							</div>
-							<div class="list__signal col-xs-6 col-sm-6 col-md-1 col-lg-1">
-								
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 list__action-buttons">
-					    		<ul class="nav nav-justified">
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-binoculars" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-plus-square" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
-					    		</ul>
-							</div>
-
-						</li>
-						<li class="row list__row">
-							<div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 list__PGR ">
-								<a><img src="assets/images/arc_VeryBullish.svg"></a>
-							</div>
-							<div class="col-xs-10 col-sm-6 col-md-4 col-lg-3 list__company">
-								<p class="list__company-ticker">UNH</p><p><span class="list__company-name">Unitedhealth Gp</span></p>
-								<p class="list__company-industry">Medical Care</p>
-							</div>
-
-							<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 list__price">
-								<p class="list__price-dollar weak">$173.86</p>
-								<p class="list__price-change weak">(-0.15%)</p>
-							</div>
-
-							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Mkt&nbsp;Cap:</span> <span class="data">$167.87b</span></p>
-								<p><span class="label">Yield:</span> <span class="data">1.25%</span></p>
-							</div>
-
-							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Industry:</span> <span class="data strong">STRONG</span></p>
-								<p><span class="label">Trend:</span> <span class="data weak">WEAK</span></p>
-							</div>
-							<div class="list__signal list__signal--sell col-xs-6 col-sm-6 col-md-1 col-lg-1">
-								<p class="signal align-absolute"><i class="fa fa-play" aria-hidden="true"></i>&nbsp;SELL</p>
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 list__action-buttons">
-					    		<ul class="nav nav-justified">
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-binoculars" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-plus-square" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
-					    		</ul>
-							</div>
-
-						</li>
-						<li class="row list__row">
-							<div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 list__PGR ">
-								<a><img src="assets/images/arc_Bullish.svg"></a>
-							</div>
-							<div class="col-xs-10 col-sm-6 col-md-4 col-lg-3 list__company">
-								<p class="list__company-ticker">ATO</p><p><span class="list__company-name">Atmos Energy Cp</span></p>
-								<p class="list__company-industry">Utility-Gas Distr</p>
-							</div>
-
-							<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 list__price">
-								<p class="list__price-dollar weak">$81.99</p>
-								<p class="list__price-change weak">(+0.22%)</p>
-							</div>
-
-							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Mkt&nbsp;Cap:</span> <span class="data">$8.65b</span></p>
-								<p><span class="label">Yield:</span> <span class="data">2.19%</span></p>
-							</div>
-
-							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Industry:</span> <span class="data weak">WEAK</span></p>
-								<p><span class="label">Trend:</span> <span class="data weak">WEAK</span></p>
-							</div>
-							<div class="list__signal list__signal--sell col-xs-6 col-sm-6 col-md-1 col-lg-1">
-								<p class="signal align-absolute"><i class="fa fa-play" aria-hidden="true"></i>&nbsp;SELL</p>
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 list__action-buttons">
-					    		<ul class="nav nav-justified">
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-binoculars" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-plus-square" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
-					    		</ul>
-							</div>
-						</li>
-
-						<li class="row list__row">
-							<div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 list__PGR ">
-								<a><img src="assets/images/arc_Bullish.svg"></a>
-							</div>
-							<div class="col-xs-10 col-sm-6 col-md-4 col-lg-3 list__company">
-								<p class="list__company-ticker">DD</p><p><span class="list__company-name">Du Pont (Ei) De</span></p>
-								<p class="list__company-industry">Chemicals</p>
-							</div>
-
-							<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 list__price">
-								<p class="list__price-dollar weak">$80.29</p>
-								<p class="list__price-change weak">(-1.05%)</p>
-							</div>
-
-							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Mkt&nbsp;Cap:</span> <span class="data">$43.45b</span></p>
-								<p><span class="label">Yield:</span> <span class="data">1.45%</span></p>
-							</div>
-
-							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Industry:</span> <span class="data strong">STRONG</span></p>
-								<p><span class="label">Trend:</span> <span class="data strong">STRONG</span></p>
-							</div>
-							<div class="list__signal col-xs-6 col-sm-6 col-md-1 col-lg-1">
-								
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 list__action-buttons">
-					    		<ul class="nav nav-justified">
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-binoculars" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-plus-square" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link" href=""><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
-					    		</ul>
-							</div>
-						</li>
-
-						<li class="row list__row">
-							<div class="col-xs-2 col-sm-1 col-md-1 col-lg-1 list__PGR ">
-								<a><img src="assets/images/arc_VeryBullish.svg"></a>
-							</div>
-							<div class="col-xs-10 col-sm-6 col-md-4 col-lg-3 list__company">
-								<p class="list__company-ticker">GOOGL</p><p><span class="list__company-name">Alphabet Inc-A</span></p>
-								<p class="list__company-industry">Computer Software-Services</p>
-							</div>
-
-							<div class="col-xs-2 col-sm-2 col-md-1 col-lg-1 list__price">
-								<p class="list__price-dollar strong">$953.57</p>
-								<p class="list__price-change strong">(+0.36%)</p>
-							</div>
-
-							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Mkt&nbsp;Cap:</span> <span class="data">$657.70b</span></p>
-								<p><span class="label">Yield:</span> <span class="data">0.00%</span></p>
-							</div>
-
-							<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2 list__data">
-								<p class="list__data--first"><span class="label">Industry:</span> <span class="data strong">STRONG</span></p>
-								<p><span class="label">Trend:</span> <span class="data strong">STRONG</span></p>
-							</div>
-							<div class="list__signal list__signal--buy col-xs-6 col-sm-6 col-md-1 col-lg-1">
-								<p class="signal align-absolute"><i class="fa fa-play" aria-hidden="true"></i>&nbsp;BUY</p>
-							</div>
-							<div class="col-xs-12 col-sm-12 col-md-2 col-lg-2 list__action-buttons">
-					    		<ul class="nav nav-justified">
-					    			<li class="nav-item"><a class="nav-link align-absolute" href=""><i class="fa fa-binoculars" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link align-absolute" href=""><i class="fa fa-eye" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link align-absolute" href=""><i class="fa fa-plus-square" aria-hidden="true"></i></a></li>
-					    			<li class="nav-item"><a class="nav-link align-absolute" href=""><i class="fa fa-chevron-right" aria-hidden="true"></i></a></li>
-					    		</ul>
-							</div>
-						</li> -->
-						<div style="height: 203px;">
+									<p class="list__label">Classic Bulls</p>
+								</li>
+								<li class="list__option list__option--IPlist list__option--classicbears">
+									<div class="list__image">
+										<img class="align-absolute" src="assets/imgs/img_list-classicbears.svg">
+									</div>
+									<p class="list__label">Classic Bears</p>
+								</li>
+								<li class="list__option list__option--chartlist list__option--selldips">
+									<div class="list__image">
+										<img class="align-absolute" src="assets/imgs/img_list-selldips.svg">
+									</div>
+									<p class="list__label">Sell the Dips</p>
+								</li>
+								<li class="list__option list__option--chartlist list__option--buyrallies">
+									<div class="list__image">
+										<img class="align-absolute" src="assets/imgs/img_list-buyrallies.svg">
+									</div>
+									<p class="list__label">Buy the Rallies</p>
+								</li>
+								<li class="list__option list__option--companylist list__option--largecap">
+									<div class="list__image">
+										<img class="align-absolute" src="assets/imgs/img_list-largecap.svg">
+									</div>
+									<p class="list__label">Best of the<br>Large Caps</p>
+								</li>
+								<li class="list__option list__option--addlist list__option--add">
+									<div class="list__image">
+										<i class="align-absolute fa fa-plus-circle" aria-hidden="true"></i>
+									</div>
+									<p class="list__label">Add a list...</p>
+								</li>
+							</ul>
 						</div>
-					</ul>
-				</div>
-			</div>
-		</div>
+					</div>
+			<!-- END: CAROUSEL  -->
+
+			<!-- ROW: LIST DESCRIPTION  -->
+					<div class="list-description__container">
+						<p class="list-description align-absolute">
+							<span class="list-description--holding selected">This is the list of stocks you currently hold in your portfolio.</span>
+							<span class="list-description--watching">Here are the stocks you are keeping an eye on.</span>
+							<span class="list-description--ideasforyou">These ideas have been highlihted as some you might be interested in.</span>
+							<span class="list-description--classicbears">Bears, bears, and bears, Oh My!</span>
+							<span class="list-description--classicbulls">Run with the bulls here.</span>
+							<span class="list-description--selldips">Sell these stocks after they dip.</span>
+							<span class="list-description--buyrallies">Buy these stocks after they rally.</span>
+							<span class="list-description--largecap">These are companies that make a lot of money.</span>
+							<span class="list-description--addlist">Add a new list here...</span>
+						</p>
+						<div class="toggle-arrow toggle-arrow--left">
+							<i class="fa fa-angle-left" aria-hidden="true"></i>
+						</div>
+						<div class="toggle-arrow toggle-arrow--right">
+							<i class="fa fa-angle-right" aria-hidden="true"></i>
+						</div>
+					</div>
+			<!-- END: LIST DESCRIPTION  -->
+
+
+
+
+

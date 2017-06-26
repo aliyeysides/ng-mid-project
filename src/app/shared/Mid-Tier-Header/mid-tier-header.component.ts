@@ -25,14 +25,10 @@ export class SymbolLookupComponent implements OnInit {
   public searchResults: Array<object>;
   constructor(private sharedService: SharedService, private searchPanelComponent : SearchPanelComponent) {
     this.symbolSearchForm = new FormControl();
-   /* console.log(searchPanelComponent.test)*/
   }
 
   ngOnInit() {
     this.searchResults = [];
-   /* $window.open(`https://dev.chaikinanalytics.com/CPTRestSecure/
-      ResearchReport/index.jsp?lang=English&uid=9582&environment
-      =desktop&subEnvironment=chaikinAnalytics&version=1.3.2&symbol=ILMN&userType=CAUser`);*/
    
     this.symbolSearchForm.valueChanges
       .debounceTime(500)

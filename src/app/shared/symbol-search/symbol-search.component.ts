@@ -34,12 +34,16 @@ export class SymbolSearchComponent implements OnInit {
       .subscribe(val => this.searchResults = val);
   }
 
+  gotoReport() {
+    // doSomething();
+  }
+
   doSomething(val) {
     return [];
     //  (val != null || val != undefined || val != '') ? this.sharedService.symbolLookup(val) : ''
   }
 
-  onSubmit() {
+  onSubmit(event: Event) {
     console.log(this.searchResults);
     // this.symbolSearchForm.reset();
   }

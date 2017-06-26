@@ -1,33 +1,3 @@
-<!--<table class="table table-hover">-->
-<!--<thead>-->
-<!--<tr>-->
-<!--<th>Rating</th>-->
-<!--<th>Ticker</th>-->
-<!--<th>Name</th>-->
-<!--<th>Price</th>-->
-<!--<th>% CHG</th>-->
-<!--</tr>-->
-<!--</thead>-->
-<!--<tbody>-->
-<!--<tr *ngFor="let item of list">-->
-<!--<td>-->
-<!--{{ item.rating }}-->
-<!--</td>-->
-<!--<td>-->
-<!--{{ item.ticker }}-->
-<!--</td>-->
-<!--<td>-->
-<!--{{ item.name }}-->
-<!--</td>-->
-<!--<td>-->
-<!--{{ item.price }}-->
-<!--</td>-->
-<!--<td>-->
-<!--{{ item.change }}-->
-<!--</td>-->
-<!--</tr>-->
-<!--</tbody>-->
-<!--</table>-->
 
 <!-- SECTION: HOME BODY BOTTOM  -->
 <div class="body__bottom">
@@ -93,19 +63,9 @@
       <a class="view-toggle view-toggle--list-view active"><i class="fa fa-list align-absolute" aria-hidden="true"></i></a>
     </div>
 
-    <!--<div class="col-md-6">-->
-      <!--<form class="form-inline" (submit)="onSubmit($event)">-->
-        <!--<div class="form-group">-->
-          <!--<span (click)="gotoReport(searchResults && searchResults.length != 0 ? searchResults[0].Symbol : null)"-->
-                <!--class="search-submit" id="basic-addon1"><i class="fa fa-search align-absolute"-->
-                                                           <!--aria-hidden="true"></i></span>-->
-          <!--<input [formControl]="symbolSearchForm" type="search" class="form-control search-box"-->
-                 <!--placeholder="Search a ticker or company"-->
-                 <!--aria-describedby="basic-addon1">-->
-          <!--<button type="submit" style="display:none">hidden submit</button>-->
-        <!--</div>-->
-      <!--</form>-->
-    <!--</div>-->
+    <div class="col-md-6">
+      <symbol-search></symbol-search>
+    </div>
   </div>
 
   <!-- ROW: CURRENT LIST  -->
@@ -135,24 +95,24 @@
             <div class="stock-options__popup">
               <ul class="nav nav-justified">
                 <li class="nav-item stock-option--hold">
-                  <img src="imgs/icon-plus.svg">
+                  <img src="assets/imgs/icon-plus.svg">
                   <p>Hold</p>
                 </li>
                 <li class="nav-item stock-option--watch">
-                  <img src="imgs/icon-watch.svg">
+                  <img src="assets/imgs/icon-watch.svg">
                   <p>Watch</p>
                 </li>
                 <li class="nav-item stock-option--view">
-                  <img src="imgs/icon-stockview.svg">
+                  <img src="assets/imgs/icon-stockview.svg">
                   <p>View</p>
                 </li>
               </ul>
               <div class="stock__options-button">
-                <img src="imgs/icon_threedots.svg">
+                <img src="assets/imgs/icon_threedots.svg">
               </div>
             </div>
             <div class="col-lg-2 col-xl-2 stock__PGR">
-              <img class="align-absolute" src="imgs/arc_VeryBullish.svg">
+              <img class="align-absolute" src="assets/imgs/arc_VeryBullish.svg">
             </div>
             <div class="col-lg-3 col-xl-2 stock__ticker">
               <p class="">GOOGL</p>
@@ -167,31 +127,31 @@
               <p class="data up-change">+1.03%</p>
             </div>
             <div class="stock__options-button">
-              <img src="imgs/icon_threedots.svg">
+              <img src="assets/imgs/icon_threedots.svg">
             </div>
           </li>
           <li class="row no-gutters list__entry">
             <div class="stock-options__popup">
               <ul class="nav nav-justified">
                 <li class="nav-item">
-                  <img src="imgs/icon-plus.svg">
+                  <img src="assets/imgs/icon-plus.svg">
                   <p>Hold</p>
                 </li>
                 <li class="nav-item">
-                  <img src="imgs/icon-watch.svg">
+                  <img src="assets/imgs/icon-watch.svg">
                   <p>Watch</p>
                 </li>
                 <li class="nav-item">
-                  <img src="imgs/icon-stockview.svg">
+                  <img src="assets/imgs/icon-stockview.svg">
                   <p>View</p>
                 </li>
               </ul>
               <div class="stock__options-button">
-                <img src="imgs/icon_threedots.svg">
+                <img src="assets/imgs/icon_threedots.svg">
               </div>
             </div>
             <div class="col-lg-2 col-xl-2 stock__PGR ">
-              <img class="align-absolute" src="imgs/arc_VeryBullish.svg">
+              <img class="align-absolute" src="assets/imgs/arc_VeryBullish.svg">
             </div>
             <div class="col-lg-3 col-xl-2 stock__ticker">
               <p class="">NOC</p>
@@ -206,31 +166,31 @@
               <p class="data down-change">-2.12%</p>
             </div>
             <div class="stock__options-button">
-              <img src="imgs/icon_threedots.svg">
+              <img src="assets/imgs/icon_threedots.svg">
             </div>
           </li>
           <li class="row no-gutters list__entry">
             <div class="stock-options__popup">
               <ul class="nav nav-justified">
                 <li class="nav-item stock-option--hold">
-                  <img src="imgs/icon-plus.svg">
+                  <img src="assets/imgs/icon-plus.svg">
                   <p>Hold</p>
                 </li>
                 <li class="nav-item stock-option--watch">
-                  <img src="imgs/icon-watch.svg">
+                  <img src="assets/imgs/icon-watch.svg">
                   <p>Watch</p>
                 </li>
                 <li class="nav-item stock-option--view">
-                  <img src="imgs/icon-stockview.svg">
+                  <img src="assets/imgs/icon-stockview.svg">
                   <p>View</p>
                 </li>
               </ul>
               <div class="stock__options-button">
-                <img src="imgs/icon_threedots.svg">
+                <img src="assets/imgs/icon_threedots.svg">
               </div>
             </div>
             <div class="col-lg-2 col-xl-2 stock__PGR ">
-              <img class="align-absolute" src="imgs/arc_bullish.svg">
+              <img class="align-absolute" src="assets/imgs/arc_bullish.svg">
             </div>
             <div class="col-lg-3 col-xl-2 stock__ticker">
               <p class="">MSFT</p>
@@ -245,31 +205,31 @@
               <p class="up-change">+0.76%</p>
             </div>
             <div class="stock__options-button">
-              <img src="imgs/icon_threedots.svg">
+              <img src="assets/imgs/icon_threedots.svg">
             </div>
           </li>
           <li class="row no-gutters list__entry">
             <div class="stock-options__popup">
               <ul class="nav nav-justified">
                 <li class="nav-item stock-option--hold">
-                  <img src="imgs/icon-plus.svg">
+                  <img src="assets/imgs/icon-plus.svg">
                   <p>Hold</p>
                 </li>
                 <li class="nav-item stock-option--watch">
-                  <img src="imgs/icon-watch.svg">
+                  <img src="assets/imgs/icon-watch.svg">
                   <p>Watch</p>
                 </li>
                 <li class="nav-item stock-option--view">
-                  <img src="imgs/icon-stockview.svg">
+                  <img src="assets/imgs/icon-stockview.svg">
                   <p>View</p>
                 </li>
               </ul>
               <div class="stock__options-button">
-                <img src="imgs/icon_threedots.svg">
+                <img src="assets/imgs/icon_threedots.svg">
               </div>
             </div>
             <div class="col-lg-2 col-xl-2 stock__PGR">
-              <img class="align-absolute" src="imgs/arc_bullish.svg">
+              <img class="align-absolute" src="assets/imgs/arc_bullish.svg">
             </div>
             <div class="col-lg-3 col-xl-2 stock__ticker">
               <p class="">T</p>
@@ -284,31 +244,31 @@
               <p class="data up-change">+4.93%</p>
             </div>
             <div class="stock__options-button">
-              <img src="imgs/icon_threedots.svg">
+              <img src="assets/imgs/icon_threedots.svg">
             </div>
           </li>
           <li class="row no-gutters list__entry">
             <div class="stock-options__popup">
               <ul class="nav nav-justified">
                 <li class="nav-item stock-option--hold">
-                  <img src="imgs/icon-plus.svg">
+                  <img src="assets/imgs/icon-plus.svg">
                   <p>Hold</p>
                 </li>
                 <li class="nav-item stock-option--watch">
-                  <img src="imgs/icon-watch.svg">
+                  <img src="assets/imgs/icon-watch.svg">
                   <p>Watch</p>
                 </li>
                 <li class="nav-item stock-option--view">
-                  <img src="imgs/icon-stockview.svg">
+                  <img src="assets/imgs/icon-stockview.svg">
                   <p>View</p>
                 </li>
               </ul>
               <div class="stock__options-button">
-                <img src="imgs/icon_threedots.svg">
+                <img src="assets/imgs/icon_threedots.svg">
               </div>
             </div>
             <div class="col-lg-2 col-xl-2 stock__PGR ">
-              <img class="align-absolute" src="imgs/arc_bullish.svg">
+              <img class="align-absolute" src="assets/imgs/arc_bullish.svg">
             </div>
             <div class="col-lg-3 col-xl-2 stock__ticker">
               <p class="">NOC</p>
@@ -323,31 +283,31 @@
               <p class="data down-change">-2.12%</p>
             </div>
             <div class="stock__options-button">
-              <img src="imgs/icon_threedots.svg">
+              <img src="assets/imgs/icon_threedots.svg">
             </div>
           </li>
           <li class="row no-gutters list__entry">
             <div class="stock-options__popup">
               <ul class="nav nav-justified">
                 <li class="nav-item stock-option--hold">
-                  <img src="imgs/icon-plus.svg">
+                  <img src="assets/imgs/icon-plus.svg">
                   <p>Hold</p>
                 </li>
                 <li class="nav-item stock-option--watch">
-                  <img src="imgs/icon-watch.svg">
+                  <img src="assets/imgs/icon-watch.svg">
                   <p>Watch</p>
                 </li>
                 <li class="nav-item stock-option--view">
-                  <img src="imgs/icon-stockview.svg">
+                  <img src="assets/imgs/icon-stockview.svg">
                   <p>View</p>
                 </li>
               </ul>
               <div class="stock__options-button">
-                <img src="imgs/icon_threedots.svg">
+                <img src="assets/imgs/icon_threedots.svg">
               </div>
             </div>
             <div class="col-lg-2 col-xl-2 stock__PGR ">
-              <img class="align-absolute" src="imgs/arc_neutral.svg">
+              <img class="align-absolute" src="assets/imgs/arc_neutral.svg">
             </div>
             <div class="col-lg-3 col-xl-2 stock__ticker">
               <p class="">CMCSA</p>
@@ -362,31 +322,31 @@
               <p class="data up-change">+1.44%</p>
             </div>
             <div class="stock__options-button">
-              <img src="imgs/icon_threedots.svg">
+              <img src="assets/imgs/icon_threedots.svg">
             </div>
           </li>
           <li class="row no-gutters list__entry">
             <div class="stock-options__popup">
               <ul class="nav nav-justified">
                 <li class="nav-item stock-option--hold">
-                  <img src="imgs/icon-plus.svg">
+                  <img src="assets/imgs/icon-plus.svg">
                   <p>Hold</p>
                 </li>
                 <li class="nav-item stock-option--watch">
-                  <img src="imgs/icon-watch.svg">
+                  <img src="assets/imgs/icon-watch.svg">
                   <p>Watch</p>
                 </li>
                 <li class="nav-item stock-option--view">
-                  <img src="imgs/icon-stockview.svg">
+                  <img src="assets/imgs/icon-stockview.svg">
                   <p>View</p>
                 </li>
               </ul>
               <div class="stock__options-button">
-                <img src="imgs/icon_threedots.svg">
+                <img src="assets/imgs/icon_threedots.svg">
               </div>
             </div>
             <div class="col-lg-2 col-xl-2 stock__PGR ">
-              <img class="align-absolute" src="imgs/arc_neutral.svg">
+              <img class="align-absolute" src="assets/imgs/arc_neutral.svg">
             </div>
             <div class="col-lg-3 col-xl-2 stock__ticker">
               <p class="">NOC</p>
@@ -401,31 +361,31 @@
               <p class="data down-change">-2.12%</p>
             </div>
             <div class="stock__options-button">
-              <img src="imgs/icon_threedots.svg">
+              <img src="assets/imgs/icon_threedots.svg">
             </div>
           </li>
           <li class="row no-gutters list__entry">
             <div class="stock-options__popup">
               <ul class="nav nav-justified">
                 <li class="nav-item stock-option--hold">
-                  <img src="imgs/icon-plus.svg">
+                  <img src="assets/imgs/icon-plus.svg">
                   <p>Hold</p>
                 </li>
                 <li class="nav-item stock-option--watch">
-                  <img src="imgs/icon-watch.svg">
+                  <img src="assets/imgs/icon-watch.svg">
                   <p>Watch</p>
                 </li>
                 <li class="nav-item stock-option--view">
-                  <img src="imgs/icon-stockview.svg">
+                  <img src="assets/imgs/icon-stockview.svg">
                   <p>View</p>
                 </li>
               </ul>
               <div class="stock__options-button">
-                <img src="imgs/icon_threedots.svg">
+                <img src="assets/imgs/icon_threedots.svg">
               </div>
             </div>
             <div class="col-lg-2 col-xl-2 stock__PGR ">
-              <img class="align-absolute" src="imgs/arc_bearish.svg">
+              <img class="align-absolute" src="assets/imgs/arc_bearish.svg">
             </div>
             <div class="col-lg-3 col-xl-2 stock__ticker">
               <p class="">NOC</p>
@@ -440,31 +400,31 @@
               <p class="data down-change">-2.12%</p>
             </div>
             <div class="stock__options-button">
-              <img src="imgs/icon_threedots.svg">
+              <img src="assets/imgs/icon_threedots.svg">
             </div>
           </li>
           <li class="row no-gutters list__entry">
             <div class="stock-options__popup">
               <ul class="nav nav-justified">
                 <li class="nav-item stock-option--hold">
-                  <img src="imgs/icon-plus.svg">
+                  <img src="assets/imgs/icon-plus.svg">
                   <p>Hold</p>
                 </li>
                 <li class="nav-item stock-option--watch">
-                  <img src="imgs/icon-watch.svg">
+                  <img src="assets/imgs/icon-watch.svg">
                   <p>Watch</p>
                 </li>
                 <li class="nav-item stock-option--view">
-                  <img src="imgs/icon-stockview.svg">
+                  <img src="assets/imgs/icon-stockview.svg">
                   <p>View</p>
                 </li>
               </ul>
               <div class="stock__options-button">
-                <img src="imgs/icon_threedots.svg">
+                <img src="assets/imgs/icon_threedots.svg">
               </div>
             </div>
             <div class="col-lg-2 col-xl-2 stock__PGR ">
-              <img class="align-absolute" src="imgs/arc_bearish.svg">
+              <img class="align-absolute" src="assets/imgs/arc_bearish.svg">
             </div>
             <div class="col-lg-3 col-xl-2 stock__ticker">
               <p class="">NOC</p>
@@ -479,31 +439,31 @@
               <p class="data down-change">-2.12%</p>
             </div>
             <div class="stock__options-button">
-              <img src="imgs/icon_threedots.svg">
+              <img src="assets/imgs/icon_threedots.svg">
             </div>
           </li>
           <li class="row no-gutters list__entry">
             <div class="stock-options__popup">
               <ul class="nav nav-justified">
                 <li class="nav-item stock-option--hold">
-                  <img src="imgs/icon-plus.svg">
+                  <img src="assets/imgs/icon-plus.svg">
                   <p>Hold</p>
                 </li>
                 <li class="nav-item stock-option--watch">
-                  <img src="imgs/icon-watch.svg">
+                  <img src="assets/imgs/icon-watch.svg">
                   <p>Watch</p>
                 </li>
                 <li class="nav-item stock-option--view">
-                  <img src="imgs/icon-stockview.svg">
+                  <img src="assets/imgs/icon-stockview.svg">
                   <p>View</p>
                 </li>
               </ul>
               <div class="stock__options-button">
-                <img src="imgs/icon_threedots.svg">
+                <img src="assets/imgs/icon_threedots.svg">
               </div>
             </div>
             <div class="col-lg-2 col-xl-2 stock__PGR ">
-              <img class="align-absolute" src="imgs/arc_veryBearish.svg">
+              <img class="align-absolute" src="assets/imgs/arc_veryBearish.svg">
             </div>
             <div class="col-lg-3 col-xl-2 stock__ticker">
               <p class="">NOC</p>
@@ -518,31 +478,31 @@
               <p class="data down-change">-2.12%</p>
             </div>
             <div class="stock__options-button">
-              <img src="imgs/icon_threedots.svg">
+              <img src="assets/imgs/icon_threedots.svg">
             </div>
           </li>
           <li class="row no-gutters list__entry">
             <div class="stock-options__popup">
               <ul class="nav nav-justified">
                 <li class="nav-item stock-option--hold">
-                  <img src="imgs/icon-plus.svg">
+                  <img src="assets/imgs/icon-plus.svg">
                   <p>Hold</p>
                 </li>
                 <li class="nav-item stock-option--watch">
-                  <img src="imgs/icon-watch.svg">
+                  <img src="assets/imgs/icon-watch.svg">
                   <p>Watch</p>
                 </li>
                 <li class="nav-item stock-option--view">
-                  <img src="imgs/icon-stockview.svg">
+                  <img src="assets/imgs/icon-stockview.svg">
                   <p>View</p>
                 </li>
               </ul>
               <div class="stock__options-button">
-                <img src="imgs/icon_threedots.svg">
+                <img src="assets/imgs/icon_threedots.svg">
               </div>
             </div>
             <div class="col-lg-2 col-xl-2 stock__PGR ">
-              <img class="align-absolute" src="imgs/arc_bullish.svg">
+              <img class="align-absolute" src="assets/imgs/arc_bullish.svg">
             </div>
             <div class="col-lg-3 col-xl-2 stock__ticker">
               <p class="">MSFT</p>
@@ -557,31 +517,31 @@
               <p class="up-change">+0.76%</p>
             </div>
             <div class="stock__options-button">
-              <img src="imgs/icon_threedots.svg">
+              <img src="assets/imgs/icon_threedots.svg">
             </div>
           </li>
           <li class="row no-gutters list__entry">
             <div class="stock-options__popup">
               <ul class="nav nav-justified">
                 <li class="nav-item stock-option--hold">
-                  <img src="imgs/icon-plus.svg">
+                  <img src="assets/imgs/icon-plus.svg">
                   <p>Hold</p>
                 </li>
                 <li class="nav-item stock-option--watch">
-                  <img src="imgs/icon-watch.svg">
+                  <img src="assets/imgs/icon-watch.svg">
                   <p>Watch</p>
                 </li>
                 <li class="nav-item stock-option--view">
-                  <img src="imgs/icon-stockview.svg">
+                  <img src="assets/imgs/icon-stockview.svg">
                   <p>View</p>
                 </li>
               </ul>
               <div class="stock__options-button">
-                <img src="imgs/icon_threedots.svg">
+                <img src="assets/imgs/icon_threedots.svg">
               </div>
             </div>
             <div class="col-lg-2 col-xl-2 stock__PGR">
-              <img class="align-absolute" src="imgs/arc_VeryBullish.svg">
+              <img class="align-absolute" src="assets/imgs/arc_VeryBullish.svg">
             </div>
             <div class="col-lg-3 col-xl-2 stock__ticker">
               <p class="">GOOGL</p>
@@ -596,31 +556,31 @@
               <p class="data up-change">+1.03%</p>
             </div>
             <div class="stock__options-button">
-              <img src="imgs/icon_threedots.svg">
+              <img src="assets/imgs/icon_threedots.svg">
             </div>
           </li>
           <li class="row no-gutters list__entry">
             <div class="stock-options__popup">
               <ul class="nav nav-justified">
                 <li class="nav-item stock-option--hold">
-                  <img src="imgs/icon-plus.svg">
+                  <img src="assets/imgs/icon-plus.svg">
                   <p>Hold</p>
                 </li>
                 <li class="nav-item stock-option--watch">
-                  <img src="imgs/icon-watch.svg">
+                  <img src="assets/imgs/icon-watch.svg">
                   <p>Watch</p>
                 </li>
                 <li class="nav-item stock-option--view">
-                  <img src="imgs/icon-stockview.svg">
+                  <img src="assets/imgs/icon-stockview.svg">
                   <p>View</p>
                 </li>
               </ul>
               <div class="stock__options-button">
-                <img src="imgs/icon_threedots.svg">
+                <img src="assets/imgs/icon_threedots.svg">
               </div>
             </div>
             <div class="col-lg-2 col-xl-2 stock__PGR ">
-              <img class="align-absolute" src="imgs/arc_bullish.svg">
+              <img class="align-absolute" src="assets/imgs/arc_bullish.svg">
             </div>
             <div class="col-lg-3 col-xl-2 stock__ticker">
               <p class="">NOC</p>
@@ -635,31 +595,31 @@
               <p class="data down-change">-2.12%</p>
             </div>
             <div class="stock__options-button">
-              <img src="imgs/icon_threedots.svg">
+              <img src="assets/imgs/icon_threedots.svg">
             </div>
           </li>
           <li class="row no-gutters list__entry">
             <div class="stock-options__popup">
               <ul class="nav nav-justified">
                 <li class="nav-item stock-option--hold">
-                  <img src="imgs/icon-plus.svg">
+                  <img src="assets/imgs/icon-plus.svg">
                   <p>Hold</p>
                 </li>
                 <li class="nav-item stock-option--watch">
-                  <img src="imgs/icon-watch.svg">
+                  <img src="assets/imgs/icon-watch.svg">
                   <p>Watch</p>
                 </li>
                 <li class="nav-item stock-option--view">
-                  <img src="imgs/icon-stockview.svg">
+                  <img src="assets/imgs/icon-stockview.svg">
                   <p>View</p>
                 </li>
               </ul>
               <div class="stock__options-button">
-                <img src="imgs/icon_threedots.svg">
+                <img src="assets/imgs/icon_threedots.svg">
               </div>
             </div>
             <div class="col-lg-2 col-xl-2 stock__PGR ">
-              <img class="align-absolute" src="imgs/arc_bullish.svg">
+              <img class="align-absolute" src="assets/imgs/arc_bullish.svg">
             </div>
             <div class="col-lg-3 col-xl-2 stock__ticker">
               <p class="">MSFT</p>
@@ -674,7 +634,7 @@
               <p class="up-change">+0.76%</p>
             </div>
             <div class="stock__options-button">
-              <img src="imgs/icon_threedots.svg">
+              <img src="assets/imgs/icon_threedots.svg">
             </div>
           </li>
 
@@ -690,13 +650,13 @@
           <div class="col-lg-8">
             <div class="clearfix">
               <div class="stock-panel__PGR">
-                <img src="imgs/arc_VeryBullish.svg">
+                <img src="assets/imgs/arc_VeryBullish.svg">
               </div>
               <div class="stock-panel__ticker">
                 <p>MSFT</p>
               </div>
               <div class="button__view-summary">
-                <img src="imgs/icon-stockview--blue.svg">
+                <img src="assets/imgs/icon-stockview--blue.svg">
               </div>
             </div>
             <div class="stock-panel__company-name row">
@@ -802,7 +762,7 @@
 
         <div class="quick-view__similar row">
           <div class="col-lg-3">
-            <p class="discover-label"><img src="imgs/icon-discover.svg">Similar:</p>
+            <p class="discover-label"><img src="assets/imgs/icon-discover.svg">Similar:</p>
           </div>
           <div class="col-lg-9">
             <div class="row">

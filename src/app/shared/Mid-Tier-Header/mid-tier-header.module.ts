@@ -4,26 +4,23 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedService } from '../shared.service';
-import { MidTierHeaderComponent, SymbolLookupComponent } from './mid-tier-header.component';
-import { SearchPanelModule } from '../search-panel/search-panel.module';
-import { SearchPanelComponent } from '../search-panel/search-panel.component';
+import { MidTierHeaderComponent } from './mid-tier-header.component';
+
 @NgModule({
   imports: [
     CommonModule,
     BrowserModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule,
-    SearchPanelModule
+    ReactiveFormsModule
   ],
   exports: [
     MidTierHeaderComponent,
-    
+
   ],
   declarations: [
-    MidTierHeaderComponent, SymbolLookupComponent
+    MidTierHeaderComponent
   ],
-  bootstrap: [SymbolLookupComponent],
   providers: [SharedService]
 })
 export class MidTierHeaderModule {

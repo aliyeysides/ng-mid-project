@@ -14,7 +14,7 @@ $(document).ready(function(){
     $("li.list__option").mouseout(function(){
         $(this).removeClass("hover");
     });
-    
+
 
 
     $("li.list__option").click(function(){
@@ -258,8 +258,14 @@ $(document).ready(function(){
 
 
     $(".stock__options-button").click(function(e){
-        $(".list__entry.hover .stock-options__popup").toggle();
-           e.stopPropagation();
+        if ($(".slideOpen")) {
+          $(".slideOpen").toggle("slide", {direction: "right"}, 250);
+          $(".slideOpen").removeClass("slideOpen");
+        }
+
+        $(".list__entry.hover .stock-options__popup").toggle("slide", {direction: "right"}, 250);
+        $(".list__entry.hover .stock-options__popup").addClass("slideOpen");
+        e.stopPropagation();
     });
 
 

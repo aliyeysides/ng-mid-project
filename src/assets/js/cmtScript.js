@@ -238,6 +238,12 @@ $(document).ready(function () {
     $(this).addClass("selected");
   });
 
+  $(".list__container").sortable({
+    axis: "y",
+    scroll: true,
+    cursor: "move"
+  });
+
 // List Sort Menu
 
   $(".list-sort__button").click(function (e) {

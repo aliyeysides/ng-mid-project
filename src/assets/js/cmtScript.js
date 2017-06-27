@@ -6,6 +6,23 @@ $(document).ready(function () {
 
 // List Carousel
 
+  $( "li.list__option--watching" ).droppable({
+    accept: '.list__entry',
+    hoverClass: 'hover',
+    tolerance: 'pointer',
+    drop: function() {
+      alert( "dropped" );
+    }
+  });
+
+  $( "li.list__option--holding" ).droppable({
+    accept: '.list__entry',
+    hoverClass: 'hover',
+    tolerance: 'pointer',
+    drop: function() {
+      alert( "dropped" );
+    }
+  });
 
   $("li.list__option").mouseover(function () {
     $(this).addClass("hover");
@@ -239,7 +256,6 @@ $(document).ready(function () {
   });
 
   $(".list__container").sortable({
-    axis: "y",
     scroll: true,
     cursor: "move"
   });

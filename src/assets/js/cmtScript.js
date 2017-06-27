@@ -238,6 +238,12 @@ $(document).ready(function () {
     $(this).addClass("selected");
   });
 
+// List Sort Menu
+
+  $(".list-sort__button").click(function (e) {
+    $(".top-sort-menu.dropdown-menu").toggle("blind", 250);
+  });
+
 
 // List View Stock Options Pop Over
 

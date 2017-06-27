@@ -280,6 +280,11 @@ $(document).ready(function () {
 
 // Side Bar
 
+  $(".sidebar").sortable({
+    axis: "y",
+    scroll: true,
+    cursor: "move"
+  });
 
   $(".sidebar__panel--sectors .icon-expand").click(function () {
     $(".panel__expand--sectors").toggle();

@@ -6,20 +6,19 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class SharedService {
 
+  private symbolListValues: Subject<Array<object>> = new Subject<Array<object>>();
+  symbolListValues$ = this.symbolListValues.asObservable();
+
   private symbolLookupParams: URLSearchParams;
   environmentName = environment.envName;
   apiHostName = environment.envProtocol + '://' + environment.envHostName;
-  private subject = new Subject<Array<object>>();
+
   constructor(private http: Http) {
     this.symbolLookupParams = new URLSearchParams;
   }
-  
-  updateActiveIdeaList(list: Array<object>) {
-    this.subject.next(list);
-  }
 
-  getUpdateActiveIdeaList(): Observable<any> {
-    return this.subject.asObservable();
+  setSymbolListValues(data) {
+    this.symbolListValues.next(data);
   }
 
   public symbolLookup(query: string): Observable<Array<object>> {

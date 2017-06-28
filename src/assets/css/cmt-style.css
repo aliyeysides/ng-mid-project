@@ -1644,7 +1644,7 @@ body {
 
 
 
-.list__entry.hover .stock__options-button {
+.list__entry:hover .stock__options-button {
 	display: block;
 }
 

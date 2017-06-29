@@ -1,73 +1,72 @@
+@import 'variables';
+
+
 
 
 /*------------------------------------*\
   #PRIMARY-NAV
 \*------------------------------------*/
 
+
+
+
 .nav__container {
 	margin-bottom: 0px;
 	padding-left:20px;
 	background-image: linear-gradient(0deg, #313540 0%, #313540 97%);
-}
+	
+	.nav__main {
+	
+		.nav {
+			.nav-item {
+				padding:0 15px;
 
-.nav__main {
-}
+				a {
+					color: rgba(255,255,255, 0.5);
+					font-size: 15px;
+					font-weight: 300;
+					line-height: 2;
+					letter-spacing: 0.1em;
+					
+					&:hover {
+						color: rgba(255,255,255, 1);
+						box-shadow: inset 0px 5px 0px #ffffff;
+						font-weight: 400;
+					}
 
-.nav__main .nav .nav-item a {
-	color: rgba(255,255,255, 0.5);
-	font-size: 15px;
-	font-weight: 300;
-	line-height: 2;
-	letter-spacing: 0.1em;
-}
+					&:active {
+						color: rgba(255,255,255, 1);
+						box-shadow: inset 0px 5px 0px #ffffff;
+						font-weight: 400;
+					}
+				}
+				
+				a.active {
+					color: rgba(255,255,255, 1);
+					box-shadow: inset 0px 5px 0px #ffffff;
+					font-weight: 400;
+				}
+			}
+		}
+	}
 
-.nav__main .nav li.nav-item {
-	padding:0 15px;
-}
-
-.nav__main .nav .nav-item  a:hover {
-	color: rgba(255,255,255, 1);
-	box-shadow: inset 0px 5px 0px #ffffff;
-	font-weight: 400;
-}
-
-.nav__main .nav .nav-item  a:active {
-	color: rgba(255,255,255, 1);
-	box-shadow: inset 0px 5px 0px #ffffff;
-	font-weight: 400;
-}
-
-.nav__main .nav .nav-item a.active {
-	color: rgba(255,255,255, 1);
-	box-shadow: inset 0px 5px 0px #ffffff;
-	font-weight: 400;
-}
-
-.nav__settings {
-}
-
-.nav__settings a i {
-	float: right;
-	font-size: 25px;
-	color: rgba(255,255,255, 0.5);
-	margin: 10px;
-}
-
-.nav__settings a i:hover {
-	float: right;
-	font-size: 25px;
-	color: rgba(255,255,255, 1);
-	margin: 10px;
-
-  animation-name: rotate;
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-}
-
-@keyframes rotate {
-  from {transform: rotate(0deg);}
-  to {transform: rotate(360deg);}
+	.nav__settings {
+		a {
+			i {
+				float: right;
+				font-size: 25px;
+				color: rgba(255,255,255, 0.5);
+				margin: 10px;
+				
+				&:hover {
+					float: right;
+					font-size: 25px;
+					color: rgba(255,255,255, 1);
+					margin: 10px;
+				}
+			}
+		}
+	}
 }
 
 

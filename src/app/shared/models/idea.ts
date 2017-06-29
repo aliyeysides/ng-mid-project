@@ -5,7 +5,7 @@ export interface Idea {
   Change: string,
   filter: number,
   Last: number,
-  singals: string,
+  signals: string,
   market_cap: number,
   div_yield: number,
   name: string,

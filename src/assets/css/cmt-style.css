@@ -1648,10 +1648,6 @@ body {
 	display: block;
 }
 
-.list__entry.selected .stock__options-button {
-	display: none;
-}
-
 .stock__options-button {
 	display: none;
 	position: absolute;

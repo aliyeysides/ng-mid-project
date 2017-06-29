@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { SharedService } from '../../shared/shared.service';
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {SharedService} from '../../shared/shared.service';
 
 declare var $: any;
 
@@ -14,16 +12,16 @@ declare var $: any;
 export class ListViewComponent implements OnInit {
 
   public ideaList: Array<object>;
+
   selectedActiveList: Array<object>;
   subscription: Subscription;
   constructor(private sharedService: SharedService) {
-    this.subscription = this.sharedService.getUpdateActiveIdeaList()
-                          .subscribe(res => {
-                              this.selectedActiveList = res;
-                              console.log(res);
-                          });
+    // this.subscription = this.sharedService.getUpdateActiveIdeaList()
+    //                       .subscribe(res => {
+    //                           this.selectedActiveList = res;
+    //                           console.log(res);
+    //                       });
   }
-  @ViewChild("stockOptions") div;
 
   ngOnInit() {
     this.sharedService.symbolListValues$.subscribe(
@@ -38,10 +36,8 @@ export class ListViewComponent implements OnInit {
   }
 
   toggleOptions(e: Event) {
-      const popup = this.div.nativeElement;
-      const targetOpen = $(popup).hasClass("slideOpen");
 
-      console.log('targetOpen', targetOpen);
+      const targetOpen = $(".list__entry.hover .stock-options__popup").hasClass("slideOpen");
 
       // if any slide is open and the target is open, then close them all and return;
       if ($(".slideOpen") && targetOpen) {
@@ -56,8 +52,8 @@ export class ListViewComponent implements OnInit {
       }
 
       // toggle slide
-      $(popup).toggle("slide", {direction: "right"}, 250);
-      $(popup).toggleClass("slideOpen");
+      $(".list__entry.hover .stock-options__popup").toggle("slide", {direction: "right"}, 250);
+      $(".list__entry.hover .stock-options__popup").toggleClass("slideOpen");
 
       e.stopPropagation();
 

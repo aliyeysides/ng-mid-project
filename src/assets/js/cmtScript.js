@@ -280,10 +280,10 @@ $(document).ready(function(){
         $(".sidebar__panel--alerts").toggleClass("open");
     });
 
-    $(".panel__market-data--SPY .icon-expand").click(function(){
+  /*  $(".panel__market-data--SPY .icon-expand").click(function(){
         $(".panel__chart--SPY").toggle();
         $(".panel__market-data--SPY").toggleClass("open");
-    });
+    });*/
 
     $(".panel__market-data--DIA .icon-expand").click(function(){
         $(".panel__chart--DIA").toggle();

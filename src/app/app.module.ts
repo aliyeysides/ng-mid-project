@@ -13,7 +13,7 @@ import {IdeasModule} from './ideas/ideas.module';
 import {DiscoveryModule} from './discovery/discovery.module';
 import {InsightsModule} from './insights/insights.module';
 import {StockReportModule} from './stock-report/stock.module';
-import {ProfileModule} from './profile/profile.module';
+
 
 @NgModule({
   declarations: [
@@ -29,8 +29,8 @@ import {ProfileModule} from './profile/profile.module';
     IdeasModule,
     DiscoveryModule,
     InsightsModule,
-    StockReportModule,
-    ProfileModule
+    StockReportModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

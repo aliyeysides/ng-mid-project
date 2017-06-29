@@ -42,7 +42,15 @@ body {
 /*                                      */
 
 
+.ellipsis {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
 
+.panel__expand--sectors .sector{
+	width : 111px;
+}
 
 .veryBullish, .strong, .up-change {
 	color:#24A300;

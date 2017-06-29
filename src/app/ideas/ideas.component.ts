@@ -131,10 +131,9 @@ export class IdeasComponent implements OnInit {
   }
 
   public castIdeaObjects(symbols: Array<object>): Array<Idea> {
-    let result = symbols.map(res => {
+    return symbols.map(res => {
       return res as Idea;
     });
-    return result;
   }
 
   public getSignal(res) {

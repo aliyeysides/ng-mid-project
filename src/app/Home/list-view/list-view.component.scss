@@ -59,7 +59,6 @@
 
 .list-view__actionbar {
 	border: 2px solid #FFFFFF;
-	width: 100%;
 	height: 55px;
 	
 	.list__header {
@@ -325,6 +324,7 @@
 
 	.quick-view__panel {
 		padding: 20px 30px;
+		
 		.quick-view__data {
 			position: relative;
 
@@ -350,11 +350,13 @@
 
 			.button__view-summary {
 				float: right;
-				width: 40px;
+				width: 35px;
+				margin-top: 5px;
+				cursor: pointer;
 			
 				img {
 					float: left;
-					width: 35px;
+					width: 30px;
 				}
 			}
 			
@@ -377,7 +379,12 @@
 							color: $link-blue;
 						}
 					}
+
+					a.button__watch {
+						font-size: 21px;
+					}
 				}
+
 				p {
 					font-size: 24px;
 					line-height: 24px;
@@ -489,7 +496,7 @@
 		}
 
 		.quick-view__chart-container {
-			height: 100px;
+			height: 130px;
 		}
 
 		.quick-view__similar {

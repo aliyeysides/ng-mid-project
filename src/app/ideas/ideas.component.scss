@@ -11,8 +11,8 @@
 
 
 .list-carousel {
-	height: 280px;
-	margin-left:40px;
+	height: 270px;
+	margin-left: 40px;
 	border-left: 1px dashed #999999;
 	overflow-x: scroll;
 	position: relative;
@@ -21,7 +21,7 @@
 	.list-category {
 		position: absolute;
 		font-size: 20px;
-		height: 280px;
+		height: 270px;
 		font-weight: 300;
 		line-height: 1;
 		top: -2px;
@@ -50,7 +50,7 @@
 	    list-style-type: none;
 	    margin: auto;
 	    white-space: nowrap;
-	    margin-top: 23px;
+	    margin-top: 0px;
 
 		.list__option {
 			display: inline-block;
@@ -71,13 +71,18 @@
 			.list__label {
 				font-size: 20px;
 				color: #FFFFFF;
-				line-height: 26px;
+				line-height: 25px;
 				text-align: center;
 				font-weight: 300;
 				width: 200px;
 				height: 70px;
 				padding: 0 20px;
 				white-space: normal;
+
+				i {
+					font-size: 18px;
+					padding-right: 5px;
+				}
 			}
 		}
 
@@ -374,14 +379,14 @@
 	position: absolute;
 	bottom: 0;
 	background-color: #393d47;
-	height: 50px;
+	height: 45px;
 	width: 100%;
 }
 
 .list-description__container .list-description {
 	font-size: 18px;
 	color: #FFFFFF !important;
-	line-height: 50px;
+	line-height: 45px;
 	font-weight: 300;
 	letter-spacing: 0.05em;
 	white-space: nowrap;
@@ -390,14 +395,14 @@
 
 .list-description__container .toggle-arrow {
 	position: absolute;
-	font-size: 50px;
+	font-size: 45px;
 	color: #999999;
-	margin-top:-2px;
-	line-height: 50px;
-}
-
-.list-description__container .toggle-arrow:hover {
-	color: #ffffff;
+	margin-top:-3px;
+	line-height: 45px;
+	
+	&:hover {
+		color: #ffffff;
+	}
 }
 
 .list-description__container .toggle-arrow--left {

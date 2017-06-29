@@ -1,6 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {SharedService} from '../../shared/shared.service';
+import {Router} from '@angular/router';
+import {Idea} from '../../shared/models/idea';
 import { Subscription } from 'rxjs/Subscription';
-import { SharedService } from '../../shared/shared.service';
 
 declare var $: any;
 
@@ -13,14 +15,8 @@ export class ListViewComponent implements OnInit {
 
   public ideaList: Array<object>;
 
-  selectedActiveList: Array<object>;
-  subscription: Subscription;
-  constructor(private sharedService: SharedService) {
-    // this.subscription = this.sharedService.getUpdateActiveIdeaList()
-    //                       .subscribe(res => {
-    //                           this.selectedActiveList = res;
-    //                           console.log(res);
-    //                       });
+  constructor(private sharedService: SharedService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -60,6 +56,10 @@ export class ListViewComponent implements OnInit {
   }
   onNotify(message: string): void {
     alert(message);
+  }
+
+  goToStockView(stock: Idea) {
+    this.router.navigate(['/report', stock.symbol]);
   }
 
 }

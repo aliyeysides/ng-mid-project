@@ -92,6 +92,84 @@
       <div class="current-list  current-list--holding ">
         <ul *ngIf="!ideaList?.length" class="list__container">
           <span>There are currently no stocks in this list.</span>
+          <li class="row no-gutters list__entry selected">
+            <div class="stock-options__popup">
+              <ul class="nav nav-justified">
+                <li class="nav-item stock-option--hold">
+                  <img src="assets/imgs/icon-plus.svg">
+                  <p>Hold</p>
+                </li>
+                <li class="nav-item stock-option--watch">
+                  <img src="assets/imgs/icon-watch.svg">
+                  <p>Watch</p>
+                </li>
+                <li (click)="goToStockView({symbol: 'GOOGL'})" class="nav-item stock-option--view">
+                  <img src="assets/imgs/icon-stockview.svg">
+                  <p>View</p>
+                </li>
+              </ul>
+              <div (click)="toggleOptions($event)" class="stock__options-button">
+                <img src="assets/imgs/icon_threedots.svg">
+              </div>
+            </div>
+            <div class="col-lg-2 col-xl-2 stock__PGR">
+              <img class="align-absolute" src="assets/imgs/arc_VeryBullish.svg">
+            </div>
+            <div class="col-lg-3 col-xl-2 stock__ticker">
+              <p class="">GOOGL</p>
+            </div>
+            <div class="col-lg-3 col-xl-4 stock__company-name">
+              <p class="">Alphabet, Inc.</p>
+            </div>
+            <div class="col-lg-2 col-xl-2 stock__price">
+              <p class="data up-change">$34.24</p>
+            </div>
+            <div class="col-lg-2 col-xl-2 stock__price">
+              <p class="data up-change">+1.03%</p>
+            </div>
+            <div (click)="toggleOptions($event)" class="stock__options-button">
+              <img src="assets/imgs/icon_threedots.svg">
+            </div>
+          </li>
+          <li class="row no-gutters list__entry">
+            <div class="stock-options__popup">
+              <ul class="nav nav-justified">
+                <li class="nav-item">
+                  <img src="assets/imgs/icon-plus.svg">
+                  <p>Hold</p>
+                </li>
+                <li class="nav-item">
+                  <img src="assets/imgs/icon-watch.svg">
+                  <p>Watch</p>
+                </li>
+                <li (click)="goToStockView({symbol: 'NOC'})" class="nav-item">
+                  <img src="assets/imgs/icon-stockview.svg">
+                  <p>View</p>
+                </li>
+              </ul>
+              <div (click)="toggleOptions($event)" class="stock__options-button">
+                <img src="assets/imgs/icon_threedots.svg">
+              </div>
+            </div>
+            <div class="col-lg-2 col-xl-2 stock__PGR ">
+              <img class="align-absolute" src="assets/imgs/arc_VeryBullish.svg">
+            </div>
+            <div class="col-lg-3 col-xl-2 stock__ticker">
+              <p class="">NOC</p>
+            </div>
+            <div class="col-lg-3 col-xl-4 stock__company-name">
+              <p class="">Northrop Grummn</p>
+            </div>
+            <div class="col-lg-2 col-xl-2 stock__price">
+              <p class="data down-change">$59.14</p>
+            </div>
+            <div class="col-lg-2 col-xl-2 stock__price">
+              <p class="data down-change">-2.12%</p>
+            </div>
+            <div (click)="toggleOptions($event)" class="stock__options-button">
+              <img src="assets/imgs/icon_threedots.svg">
+            </div>
+          </li>
         </ul>
         <ul *ngIf="ideaList?.length" class="list__container">
           <li class="row no-gutters list__entry" *ngFor="let idea of ideaList">
@@ -105,7 +183,7 @@
                   <img src="assets/imgs/icon-watch.svg">
                   <p>Watch</p>
                 </li>
-                <li class="nav-item stock-option--view">
+                <li (click)="goToStockView(idea)" class="nav-item stock-option--view">
                   <img src="assets/imgs/icon-stockview.svg">
                   <p>View</p>
                 </li>

@@ -6,6 +6,9 @@ import { IdeaListProvider } from 'app/providers/idea-list.provider'
 
 
 
+import {Idea} from '../shared/models/idea';
+import {forEach} from '@angular/router/src/utils/collection';
+
 @Component({
   selector: 'mid-tier-ideas',
   templateUrl: './ideas.component.html',
@@ -71,13 +74,13 @@ export class IdeasComponent implements OnInit {
       this.updateActiveIdeaList(this.ideasList);
     },
     err => console.log('err', err));
-    
+
   }
   public updateActiveIdeaList(list){
     this.activeIdeasList = list.filter(function(key, val, array) {
       return key.is_active;
     });
-  } 
+  }
 
   public appendListImg(i) {
     let imgName = `${this.activeIdeasList[i]['name']}`
@@ -92,7 +95,7 @@ export class IdeasComponent implements OnInit {
   }
   public getActiveClasses(listName){
     let slectedClass = (this.selected == listName) ? ' selected' : ''
-    return this.mappingClassArray[listName].style + `${slectedClass}`; 
+    return this.mappingClassArray[listName].style + `${slectedClass}`;
   }
 
   public selectedIdeasList(event,list) {
@@ -116,14 +119,22 @@ export class IdeasComponent implements OnInit {
       this.sharedService.symbolList({userId: this.userId, listId: this.activeUserList['list_id']})
         .subscribe(res => {
             this.symbolList = res['symbols'];
-            this.sharedService.setSymbolListValues(this.symbolList);
+            let ideas = this.castIdeaObjects(this.symbolList);
+            this.sharedService.setSymbolListValues(ideas);
             for (let i = 0, len = res['symbols'].length; i < len; i++) {
-              this.symbolList[i]['parsedSignals'] = this.signalService.parseSignal(this.symbolList[i]['signals']);
+              ideas[i]['parsedSignals'] = this.signalService.parseSignal(ideas[i]['signals']);
             }
           },
           err => console.log('err', err));
     }
 
+  }
+
+  public castIdeaObjects(symbols: Array<object>): Array<Idea> {
+    let result = symbols.map(res => {
+      return res as Idea;
+    });
+    return result;
   }
 
   public getSignal(res) {

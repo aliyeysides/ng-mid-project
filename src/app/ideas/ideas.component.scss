@@ -1,3 +1,7 @@
+@import 'variables';
+
+
+
 
 /*------------------------------------*\
   #LIST-CAROUSEL
@@ -7,97 +11,112 @@
 
 
 .list-carousel {
-	height: 295px;
-	margin-left:40px;
+	height: 270px;
+	margin-left: 40px;
 	border-left: 1px dashed #999999;
 	overflow-x: scroll;
 	position: relative;
 	overflow-y: hidden;
+	
+	.list-category {
+		position: absolute;
+		font-size: 20px;
+		height: 270px;
+		font-weight: 300;
+		line-height: 1;
+		top: -2px;
+		opacity: 0.75;
+
+		p {
+			color: #FFFFFF;
+		}
+	}
+
+	.list-category--mylists {
+		left: 20px;
+	}
+
+	.list-category--ideas {
+		left: 408px;
+		border-left: 1px dashed #999999;
+
+		p {
+			margin-left: 20px;
+		}
+	}
+
+	ul {
+	    width: 100%;
+	    list-style-type: none;
+	    margin: auto;
+	    white-space: nowrap;
+	    margin-top: 0px;
+
+		.list__option {
+			display: inline-block;
+			position: relative;
+			height: 245px;
+			vertical-align: top;
+
+			.list__image {
+				width: 160px;
+				height: 160px;
+				border: 3px solid #FFFFFF;
+				box-shadow: 0 0 18px 0 rgba(0,0,0,0.33);
+				position: relative;
+				margin: 20px 20px 10px;
+				border-radius: 80px;
+			}
+
+			.list__label {
+				font-size: 20px;
+				color: #FFFFFF;
+				line-height: 25px;
+				text-align: center;
+				font-weight: 300;
+				width: 200px;
+				height: 70px;
+				padding: 0 20px;
+				white-space: normal;
+
+				i {
+					font-size: 18px;
+					padding-right: 5px;
+				}
+			}
+		}
+
+		.list__option.selected {
+			background-image: linear-gradient(0deg, rgba(0,0,0,0.00) 35%, rgba(0,0,0,0.40) 90%);
+		    background-repeat: no-repeat;
+		    background-position: 8px 95px;
+		    background-size: 185px;
+
+		    .list__image {
+				width: 184px;
+				height: 184px;
+				border: 3px solid #FFFFFF;
+				box-shadow: 0 0 18px 0 rgba(0,0,0,0.33);
+				position: relative;
+				margin: 0 8px 10px 8px;
+				border-radius: 92px;
+			}
+			.list__label {
+				font-weight: 600;
+			}
+		}
+	}
 }
 
 
 
 
-
-.list-category {
-	position: absolute;
-	font-size: 30px;
-	height: 295px;
-	font-weight: 300;
-	line-height: 1;
-	top: 0px;
-	opacity: 0.5;
-}
-
-.list-category--mylists {
-	left: 20px;
-}
-
-.list-category--ideas {
-	left: 408px;
-	border-left: 1px dashed #999999;
-}
-
-.list-category--ideas p {
-	margin-left: 20px;
-}
-
-.list-category p {
-	color: #FFFFFF;
-}
-
-
-
-
-
-
-.list-carousel ul {
-    width: 100%;
-    list-style-type: none;
-    margin: auto;
-    white-space: nowrap;
-    margin-top: 40px;
-}
-
-.list-carousel .list__option {
-	display: inline-block;
-	position: relative;
-	height: 255px;
-	vertical-align: top;
-}
-
-.list-carousel .list__image {
-	width: 160px;
-	height: 160px;
-	border: 3px solid #FFFFFF;
-	box-shadow: 0 0 18px 0 rgba(0,0,0,0.33);
-	position: relative;
-	margin: 20px 20px 10px;
-	border-radius: 80px;
-}
-
-.list-carousel .list__option.selected {
-	background-image: linear-gradient(0deg, rgba(0,0,0,0.00) 35%, rgba(0,0,0,0.40) 90%);
-    background-repeat: no-repeat;
-    background-position: 8px 95px;
-    background-size: 182px;
-}
-
-.list-carousel .list__option.selected .list__image {
-	width: 184px;
-	height: 184px;
-	border: 3px solid #FFFFFF;
-	box-shadow: 0 0 18px 0 rgba(0,0,0,0.33);
-	position: relative;
-	margin: 0 8px 10px 8px;
-	border-radius: 92px;
-}
 
 .list-carousel .list__option.hover, .list-carousel li.list__option:hover {
 	background-image: linear-gradient(0deg, rgba(0,0,0,0.00) 35%, rgba(0,0,0,0.40) 90%);
     background-repeat: no-repeat;
     background-position: 8px 95px;
-    background-size: 182px;
+    background-size: 185px;
 }
 
 .list-carousel .list__option.hover .list__image,.list-carousel li.list__option:hover .list__image {
@@ -109,9 +128,6 @@
 	margin: 0 8px 10px 8px;
 	border-radius: 92px;
 }
-
-
-
 
 .list-carousel .list__option--add.selected .list__image {
 	border: 3px dashed #FFFFFF;
@@ -236,13 +252,13 @@
 }
 
 .list__option--classicbulls.selected .list__image img {
-	width: 133px;
+	width: 136px;
 	height: auto;
 	margin-top: 2px;
 }
 
 .list__option--classicbulls.hover .list__image img {
-	width: 133px;
+	width: 136px;
 	height: auto;
 	margin-top: 2px;
 }
@@ -348,30 +364,6 @@
 
 
 
-/*------------------------------------*\
-  #LIST-OPTION Label
-\*------------------------------------*/
-
-
-
-.list__option p.list__label {
-	font-size: 20px;
-	color: #FFFFFF;
-	line-height: 26px;
-	text-align: center;
-	font-weight: 300;
-	width: 200px;
-	height: 70px;
-	padding: 0 20px;
-	white-space: normal;
-}
-
-
-.list-carousel .list__option.selected p.list__label {
-	font-weight: 600;
-}
-
-
 
 
 
@@ -387,14 +379,14 @@
 	position: absolute;
 	bottom: 0;
 	background-color: #393d47;
-	height: 50px;
+	height: 45px;
 	width: 100%;
 }
 
 .list-description__container .list-description {
 	font-size: 18px;
 	color: #FFFFFF !important;
-	line-height: 50px;
+	line-height: 45px;
 	font-weight: 300;
 	letter-spacing: 0.05em;
 	white-space: nowrap;
@@ -403,22 +395,22 @@
 
 .list-description__container .toggle-arrow {
 	position: absolute;
-	font-size: 50px;
+	font-size: 44px;
 	color: #999999;
-	margin-top:-2px;
-	line-height: 50px;
-}
-
-.list-description__container .toggle-arrow:hover {
-	color: #ffffff;
+	margin-top: -3px;
+	line-height: 45px;
+	
+	&:hover {
+		color: #ffffff;
+	}
 }
 
 .list-description__container .toggle-arrow--left {
-	left:20px;
+	left:10px;
 }
 
 .list-description__container .toggle-arrow--right {
-	right:20px;
+	right:10px;
 }
 
 

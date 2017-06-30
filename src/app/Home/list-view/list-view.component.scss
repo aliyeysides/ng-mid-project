@@ -423,6 +423,8 @@
 					color: $font-color--MD;
 					text-transform: uppercase;
 					margin: 5px 0;
+					white-space: nowrap;
+						text-overflow: ellipsis;
 					
 					span {
 						font-size: 18px;

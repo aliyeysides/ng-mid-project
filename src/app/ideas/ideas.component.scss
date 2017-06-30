@@ -17,7 +17,7 @@
 	overflow-x: scroll;
 	position: relative;
 	overflow-y: hidden;
-	
+
 	.list-category {
 		position: absolute;
 		font-size: 20px;
@@ -119,7 +119,7 @@
     background-size: 185px;
 }
 
-.list-carousel .list__option.hover .list__image, .list-carousel li.list__option:hover .list__image {
+.list-carousel .list__option.hover .list__image,.list-carousel li.list__option:hover .list__image {
 	width: 184px;
 	height: 184px;
 	border: 3px solid #FFFFFF;
@@ -129,16 +129,50 @@
 	border-radius: 92px;
 }
 
-.list-carousel .list__option--add .list__image {
-	border: 3px dashed #FFFFFF !important;
-}
-
 .list-carousel .list__option--add.selected .list__image {
 	border: 3px dashed #FFFFFF;
 }
 
 .list-carousel .list__option--add.hover .list__image {
 	border: 3px dashed #FFFFFF !important;
+}
+
+
+
+
+
+
+
+/*------------------------------------*\
+  #LIST-OPTION Gradients
+\*------------------------------------*/
+
+
+
+.list__option--userlist .list__image {
+	background-image: linear-gradient(145deg, #00CD00 0%, #00A3FF 100%);
+}
+
+.list__option--idealist .list__image {
+	background-image: linear-gradient(148deg, #FDDC04 15%, #E10281 100%);
+}
+
+.list__option--IPlist .list__image {
+	background-image: linear-gradient(-32deg, #7000A8 0%, #FF8500 94%);
+}
+
+.list__option--chartlist .list__image {
+	background-image: linear-gradient(-36deg, #6D0A95 0%, #0096D4 100%);
+}
+
+
+.list__option--companylist .list__image {
+	background-image: linear-gradient(-29deg, #FFE500 0%, #3FCC0B 47%, #179731 100%);
+}
+
+.list__option--addlist .list__image {
+	background-image: linear-gradient(0deg, #6F7689 0%, #313540 100%);
+	border: 3px dashed #FFFFFF;
 }
 
 
@@ -188,6 +222,7 @@
 	width: 147px;
 	height: auto;
 }
+
 
 
 .list__option--ideasforyou .list__image img {
@@ -250,19 +285,19 @@
 
 
 
-.list__option--buydips .list__image img {
+.list__option--selldips .list__image img {
 	width: 107px;
 	height: auto;
 	margin-top: -3px;
 }
 
-.list__option--buydips.selected .list__image img {
+.list__option--selldips.selected .list__image img {
 	width: 120px;
 	height: auto;
 	margin-top: -3px;
 }
 
-.list__option--buydips.hover .list__image img {
+.list__option--selldips.hover .list__image img {
 	width: 120px;
 	height: auto;
 	margin-top: -3px;
@@ -270,25 +305,23 @@
 
 
 
-.list__option--sellrallies .list__image img {
+.list__option--buyrallies .list__image img {
 	width: 107px;
 	height: auto;
 	margin-top: 5px;
 }
 
-.list__option--sellrallies.selected .list__image img {
+.list__option--buyrallies.selected .list__image img {
 	width: 120px;
 	height: auto;
 	margin-top: 5px;
 }
 
-.list__option--sellrallies.hover .list__image img {
+.list__option--buyrallies.hover .list__image img {
 	width: 120px;
 	height: auto;
 	margin-top: 5px;
 }
-
-
 
 .list__option--largecap .list__image img {
 	width: 106px;
@@ -309,274 +342,22 @@
 }
 
 
-
-.list__option--buyingstrength .list__image img {
-	width: 106px;
-	height: auto;
-	margin-top: 0px;
-}
-
-.list__option--buyingstrength.selected .list__image img {
-	width: 120px;
-	height: auto;
-	margin-top: 0px;
-}
-
-.list__option--buyingstrength.hover .list__image img {
-	width: 120px;
-	height: auto;
-	margin-top: 0px;
-}
-
-
-
-.list__option--relativestrength .list__image img {
-	width: 106px;
-	height: auto;
-	margin-top: -2px;
-}
-
-.list__option--relativestrength.selected .list__image img {
-	width: 120px;
-	height: auto;
-	margin-top: -2px;
-}
-
-.list__option--relativestrength.hover .list__image img {
-	width: 120px;
-	height: auto;
-	margin-top: -2px;
-}
-
-
-
-.list__option--earningschamps .list__image img {
-	width: 116px;
-	height: auto;
-	margin-top: 0px;
-}
-
-.list__option--earningschamps.selected .list__image img {
-	width: 132px;
-	height: auto;
-	margin-top: 0px;
-}
-
-.list__option--earningschamps.hover .list__image img {
-	width: 132px;
-	height: auto;
-	margin-top: 0px;
-}
-
-
-
-.list__option--earningsbulls .list__image img {
-	width: 108px;
-	height: auto;
-	margin-top: 0px;
-}
-
-.list__option--earningsbulls.selected .list__image img {
-	width: 128px;
-	height: auto;
-	margin-top: 0px;
-}
-
-.list__option--earningsbulls.hover .list__image img {
-	width: 128px;
-	height: auto;
-	margin-top: 0px;
-}
-
-
-
-.list__option--earningsbears .list__image img {
-	width: 108px;
-	height: auto;
-	margin-top: 0px;
-}
-
-.list__option--earningsbears.selected .list__image img {
-	width: 128px;
-	height: auto;
-	margin-top: 0px;
-}
-
-.list__option--earningsbears.hover .list__image img {
-	width: 128px;
-	height: auto;
-	margin-top: 0px;
-}
-
-
-
-.list__option--underten .list__image img {
-	width: 115px;
-	height: auto;
-	margin-top: 0px;
-}
-
-.list__option--underten.selected .list__image img {
-	width: 128px;
-	height: auto;
-	margin-top: 0px;
-}
-
-.list__option--underten.hover .list__image img {
-	width: 128px;
-	height: auto;
-	margin-top: 0px;
-}
-
-
-
-.list__option--growthstock .list__image img {
-	width: 85px;
-	height: auto;
-	margin-top: -5px;
-}
-
-.list__option--growthstock.selected .list__image img {
-	width: 100px;
-	height: auto;
-	margin-top: 0px;
-}
-
-.list__option--growthstock.hover .list__image img {
-	width: 100px;
-	height: auto;
-	margin-top: 0px;
-}
-
-
-
-.list__option--smallcap .list__image img {
-	width: 80px;
-	height: auto;
-	margin-top: 22px;
-}
-
-.list__option--smallcap.selected .list__image img {
-	width: 80px;
-	height: auto;
-	margin-top: 20px;
-}
-
-.list__option--smallcap.hover .list__image img {
-	width: 80px;
-	height: auto;
-	margin-top: 20px;
-}
-
-
-
-.list__option--bestvalue .list__image img {
-	width: 85px;
-	height: auto;
-	margin-top: -5px;
-}
-
-.list__option--bestvalue.selected .list__image img {
-	width: 100px;
-	height: auto;
-	margin-top: 0px;
-}
-
-.list__option--bestvalue.hover .list__image img {
-	width: 100px;
-	height: auto;
-	margin-top: 0px;
-}
-
-
-
-.list__option--dogsofthedow .list__image img {
-	width: 110px;
-	height: auto;
-	margin-top: 0px;
-}
-
-.list__option--dogsofthedow.selected .list__image img {
-	width: 130px;
-	height: auto;
-	margin-top: 0px;
-}
-
-.list__option--dogsofthedow.hover .list__image img {
-	width: 130px;
-	height: auto;
-	margin-top: 0px;
-}
-
-.list__option--dogsofthedow .list__image img {
-	width: 110px;
-	height: auto;
-	margin-top: 0px;
-}
-
-.list__option--dogsofthedow.selected .list__image img {
-	width: 130px;
-	height: auto;
-	margin-top: 0px;
-}
-
-.list__option--dogsofthedow.hover .list__image img {
-	width: 130px;
-	height: auto;
-	margin-top: 0px;
-}
-
-.list__option--bestofthedow .list__image img {
-	width: 90px;
-	height: auto;
-	margin-top: 0px;
-}
-
-.list__option--bestofthedow.selected .list__image img {
-	width: 110px;
-	height: auto;
-	margin-top: 0px;
-}
-
-.list__option--bestofthedow.hover .list__image img {
-	width: 110px;
-	height: auto;
-	margin-top: 0px;
-}
-
-.list__option--bestofthenasdaq .list__image img {
-	width: 90px;
-	height: auto;
-	margin-top: 0px;
-}
-
-.list__option--bestofthenasdaq.selected .list__image img {
-	width: 110px;
-	height: auto;
-	margin-top: 0px;
-}
-
-.list__option--bestofthenasdaq.hover .list__image img {
-	width: 110px;
-	height: auto;
-	margin-top: 0px;
-}
-
-
-
 .list__option--add .list__image i {
 	font-size: 48px;
 	color: #FFFFFF;
+	text-shadow: 1px 1px 3px rgba(0,0,0,0.50);
 }
 
 .list__option--add.selected .list__image i {
 	font-size: 54px;
 	color: #FFFFFF;
+	text-shadow: 1px 1px 3px rgba(0,0,0,0.50);
 }
 
 .list__option--add.hover .list__image i {
 	font-size: 54px;
 	color: #FFFFFF;
+	text-shadow: 1px 1px 3px rgba(0,0,0,0.50);
 }
 
 
@@ -618,7 +399,7 @@
 	color: #999999;
 	margin-top: -3px;
 	line-height: 45px;
-	
+
 	&:hover {
 		color: #ffffff;
 	}
@@ -665,11 +446,7 @@
 	display: block;
 }
 
-.list-description--buydips.hover, .list-description--buydips.selected {
-	display: block;
-}
-
-.list-description--sellrallies.hover, .list-description--sellrallies.selected {
+.list-description--selldips.hover, .list-description--selldips.selected {
 	display: block;
 }
 
@@ -677,83 +454,11 @@
 	display: block;
 }
 
-.list-description--smallcap.hover, .list-description--smallcap.selected {
-	display: block;
-}
-
-.list-description--buyingstrength.hover, .list-description--buyingstrength.selected {
-	display: block;
-}
-
-.list-description--relativestrength.hover, .list-description--relativestrength.selected {
-	display: block;
-}
-
-.list-description--earningschamps.hover, .list-description--earningschamps.selected {
-	display: block;
-}
-
-.list-description--earningsbulls.hover, .list-description--earningsbulls.selected {
-	display: block;
-}
-
-.list-description--earningsbears.hover, .list-description--earningsbears.selected {
-	display: block;
-}
-
-
-.list-description--dontfighttheshorts.hover, .list-description--dontfighttheshorts.selected {
-	display: block;
-}
-
-.list-description--analystdarlings.hover, .list-description--analystdarlings.selected {
-	display: block;
-}
-
-.list-description--moneymakers.hover, .list-description--moneymakers.selected {
-	display: block;
-}
-
-.list-description--insiderconfidence.hover, .list-description--insiderconfidence.selected {
-	display: block;
-}
-
-.list-description--underten.hover, .list-description--underten.selected {
-	display: block;
-}
-
-.list-description--bestgrowth.hover, .list-description--bestgrowth.selected {
-	display: block;
-}
-
-.list-description--bestvalue.hover, .list-description--bestvalue.selected {
-	display: block;
-}
-
-.list-description--dogsofthedow.hover, .list-description--dogsofthedow.selected {
-	display: block;
-}
-
-.list-description--bestofthedow.hover, .list-description--bestofthedow.selected {
-	display: block;
-}
-
-.list-description--bestofthenasdaq.hover, .list-description--bestofthenasdaq.selected {
-	display: block;
-}
-
-.list-description--PGRupgrade.hover, .list-description--PGRupgrade.selected {
-	display: block;
-}
-
-.list-description--PGRdowngrade.hover, .list-description--PGRdowngrade.selected {
-	display: block;
-}
-
-
-
 .list-description--addlist.hover, .list-description--addlist.selected {
 	display: block;
 }
 
+.list-description--buyrallies.hover, .list-description--buyrallies.selected {
+	display: block;
+}
 

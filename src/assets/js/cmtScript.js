@@ -277,12 +277,16 @@ $(document).ready(function () {
     if ($(".slideOpen") && targetOpen) {
       $(".slideOpen").toggle("slide", {direction: "right"}, 250);
       $(".slideOpen").removeClass("slideOpen");
+
+      e.stopPropagation();
       return;
     }
     // if any slide is open and the target is not open, then close them all
     if ($(".slideOpen") && !targetOpen) {
       $(".slideOpen").toggle("slide", {direction: "right"}, 250);
       $(".slideOpen").removeClass("slideOpen");
+
+      e.stopPropagation();
     }
 
     // toggle slide
@@ -422,6 +426,12 @@ $(document).ready(function () {
         filter: "progid:DXImageTransform.Microsoft.gradient( startColorstr='#e00000', endColorstr='#24a300',GradientType=1 )"
       })
     }
+  });
+
+
+  $(".collapse-sidebar").click(function () {
+    $(".sidebar__container").toggleClass("collapsed");
+    $(".body").toggleClass("collapsed");
   });
 
 

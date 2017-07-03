@@ -2,6 +2,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {SharedService} from '../shared/shared.service';
 import {SignalService} from '../shared/signal.service';
+import { IdeaListProvider } from 'app/providers/idea-list.provider'
 @Component({
   selector: 'mid-tier-ideas',
   templateUrl: './ideas.component.html',
@@ -11,6 +12,7 @@ import {SignalService} from '../shared/signal.service';
 })
 export class IdeasComponent implements OnInit {
   private userId = '1024494';
+  public ideasList : Array<object>;
   public userList: Array<object> = [];
   public symbolList: Array<object>;
   public activeUserList = {name: ''};
@@ -18,11 +20,26 @@ export class IdeasComponent implements OnInit {
   public activeClassStyle = ['strong', 'hold', 'weak'];
   public ratingMap = ['WEAK', 'NEUTRAL', 'STRONG'];
 
-  constructor(private sharedService: SharedService, private signalService: SignalService) {
+  constructor(private sharedService: SharedService, private signalService: SignalService, private ideaListProvider: IdeaListProvider) {
   }
 
   ngOnInit() {
+
+    this.getIdeasList();
     this.updateUserList();
+
+  }
+
+  public getIdeasList() {
+    /*this.ideaListProvider.aa();*/
+   /* this.ideaListProvider.getIdeasList({ uid: this.userId })
+    .subscribe(res => {
+      
+      console.log(res);
+    },
+    err => console.log('err', err));
+  */
+     
   }
 
   public updateUserList() {

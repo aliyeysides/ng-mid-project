@@ -3,7 +3,7 @@ import { SharedModule } from '../shared/shared.module';
 import { SharedService } from '../shared/shared.service';
 import { SignalService } from '../shared/signal.service';
 import { IdeasComponent } from './ideas.component';
-
+import { IdeaListProvider } from 'app/providers/idea-list.provider'
 @NgModule({
 	imports: [
 		SharedModule
@@ -13,7 +13,7 @@ import { IdeasComponent } from './ideas.component';
 	],
 	declarations: [IdeasComponent],
 	bootstrap: [IdeasComponent],
-	providers: [SharedService, SignalService]
+	providers: [SharedService, SignalService, IdeaListProvider]
 })
 export class IdeasModule {
 }

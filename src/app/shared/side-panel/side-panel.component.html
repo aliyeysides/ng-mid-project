@@ -13,7 +13,6 @@
 					<div class="panel__header clearfix">
 						<p class="panel__title">Markets</p>
 					</div>
-
 					<div class="panel__market-data panel__market-data--SPY  clearfix" 
 					*ngFor = "let market of marketsData ; let i = index" >
 						<p class="market"> {{market.name}} </p>
@@ -26,98 +25,9 @@
 							<span [ngClass]="{'up-change': market.percent_change > 0 , 'down-change': market.percent_change < 0, 'neutrals': market.percent_change == 0 }">({{market.percent_change < 0 ? (market.percent_change | number : '1.2-2') : '+'+(market.percent_change | number : '1.2-2') }}%)</span>
 						</p>
 
-
 				<!-- INTRADAY CHART STARTS HERE -->						
 						<div class="panel__chart panel__chart--SPY">
-							<div class="chart-container">
-							<!-- Previous Close Dotted line -->
-								<hr class="dotted-line previous-close-line">
-							<!-- Graph -->
-								<div class="graph">
-									<!-- Graph Line 2px Solid #0655F4 -->
-								</div>
-								<hr class="midline">
-							</div>
-							<div class="y-axis">
-								<div class="y-axis-top">
-									<p>240</p>
-								</div>
-								<div class="y-axis-middle">
-									<p>245</p>
-								</div>
-								<div class="y-axis-bottom">
-									<p>250</p>
-								</div>
-							</div>
-
-							<div class="x-axis clearfix">
-								<p><span>10</span><span>12</span><span>2</span><span>4</span>
-							</div>
-						</div>
-				<!-- INTRADAY CHART END -->
-					</div>
-					<div class="panel__market-data panel__market-data--DIA clearfix">
-						<p class="market">Dow 30</p>
-						<p class="icon-expand"><a><i class="fa fa-angle-down" aria-hidden="true"></i></a></p>
-						<p class="market-price"><span class="down-change">218.33 </span>&nbsp;<span class="down-change"> (-1.02%)</span></p>
-						<!-- INTRADAY CHART STARTS HERE -->						
-						<div class="panel__chart panel__chart--DIA">
-							<div class="chart-container">
-							<!-- Previous Close Dotted line -->
-								<hr class="dotted-line previous-close-line">
-							<!-- Graph -->
-								<div class="graph">
-									<!-- Graph Line 2px Solid #0655F4 -->
-								</div>
-								<hr class="midline">
-							</div>
-							<div class="y-axis">
-								<div class="y-axis-top">
-									<p>240</p>
-								</div>
-								<div class="y-axis-middle">
-									<p>245</p>
-								</div>
-								<div class="y-axis-bottom">
-									<p>250</p>
-								</div>
-							</div>
-
-							<div class="x-axis clearfix">
-								<p><span>10</span><span>12</span><span>2</span><span>4</span>
-							</div>
-						</div>
-				<!-- INTRADAY CHART END -->
-					</div>
-					<div class="panel__market-data panel__market-data--QQQ clearfix">
-						<p class="market">Nasdaq</p>
-						<p class="icon-expand"><a><i class="fa fa-angle-down" aria-hidden="true"></i></a></p>
-						<p class="market-price"><span class="up-change">157.98 </span>&nbsp;<span class="up-change"> (+0.06%)</span></p>
-						<!-- INTRADAY CHART STARTS HERE -->						
-						<div class="panel__chart panel__chart--QQQ">
-							<div class="chart-container">
-							<!-- Previous Close Dotted line -->
-								<hr class="dotted-line previous-close-line">
-							<!-- Graph -->
-								<div class="graph">
-									<!-- Graph Line 2px Solid #0655F4 -->
-								</div>
-								<hr class="midline">
-							</div>
-							<div class="y-axis">
-								<div class="y-axis-top">
-									<p>240</p>
-								</div>
-								<div class="y-axis-middle">
-									<p>245</p>
-								</div>
-								<div class="y-axis-bottom">
-									<p>250</p>
-								</div>
-							</div>
-
-							<div class="x-axis clearfix">
-								<p><span>10</span><span>12</span><span>2</span><span>4</span>
+							<div class="chart-container" [id]="marketSymbols[i]+'-chart-container'">
 							</div>
 						</div>
 				<!-- INTRADAY CHART END -->
@@ -129,11 +39,10 @@
 					<div class="panel__header clearfix">
 						<p class="panel__title">Sectors</p>
 						<p class="icon-expand"><a><i class="fa fa-angle-down" aria-hidden="true"></i></a></p>
-						<p class="panel-breakdown"><img src="assets/imgs/icon_green-arrow.svg"> <span> 7 </span> &nbsp;|&nbsp;<img src="assets/imgs/icon_red-arrow.svg"> <span> 3 </span> </p>
+						<p class="panel-breakdown"><img src="assets/imgs/icon_green-arrow.svg"> <span> {{sectorCount.upCount}} </span> &nbsp;|&nbsp;<img src="assets/imgs/icon_red-arrow.svg"> <span> {{sectorCount.downCount}} </span> </p>
 					</div>
 					<div class="panel__expand panel__expand--sectors clearfix">
 						<ul>
-
 							<li *ngFor = "let sector of sectorsData">
 								<span [ngSwitch]="sector.percent_change">
 								<img width="13" height="13" class="sector-arrow" *ngSwitchDefault [src]="sector.percent_change>0 ? 'assets/imgs/icon_green-arrow.svg' : 'assets/imgs/icon_red-arrow.svg'" >
@@ -141,7 +50,6 @@
 								</span>
 								<p class="sector ellipsis">{{sector.name}}</p>
 								<p class="sector-change"><span [ngClass]="{'up-change': sector.percent_change > 0 , 'down-change': sector.percent_change < 0, 'neutrals': sector.percent_change == 0 }">{{sector.percent_change < 0 ? (sector.percent_change | number : '1.2-2') : '+'+(sector.percent_change | number : '1.2-2') }}%</span></p>
-
 							</li>
 						</ul>
 					</div>
@@ -194,18 +102,9 @@
 						</div>
 					</div>
 				</div>
-		<!-- SECTION: Collapse Button  -->
 				<div class="collapse-sidebar">
 					<a><i class="fa fa-bars" aria-hidden="true"></i></a>
 				</div>
-			</div>
-		</div>
-		<div class="sidebar__container--collapsed">
-			<div class="sidebar__logo">
-				<img src="assets/imgs/logo-chaikin-arch.svg" alt="logo">
-			</div>
-			<div class="collapse-sidebar">
-				<a><i class="fa fa-bars" aria-hidden="true"></i></a>
 			</div>
 		</div>
 <!-- END: SIDEBAR  -->

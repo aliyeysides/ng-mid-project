@@ -9,7 +9,7 @@ p, span, label, li, a, button {
 }
 
 p {
-	color: $font-color;
+	color: #4A4A4A;
   cursor: default;
 }
 
@@ -40,13 +40,6 @@ body {
 
 
 
-.align-absolute {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
 
 
 .row.no-gutters {
@@ -60,16 +53,23 @@ body {
   }
 }
 
+
+.align-absolute {
+  	position: absolute;
+  	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+}
+
+
 .container {
 	width: 100% !important;
 }
 
+
 .container-fluid {
 	padding:0;
 }
-
-
-
 
 
 
@@ -93,6 +93,8 @@ body {
 .veryBearish, .weak, .down-change {
 	color: 	$veryBearish-red !important;
 }
+
+
 
 
 
@@ -133,39 +135,7 @@ body {
 
 
 
-.list-view__actionbar .form-control {
-  background-color: transparent;
-  color: #FFFFFF;
-}
- 
-.search-box {
-  height: 50px;
-  text-align: left;
-  padding: 0;
-  border:0;
-  font-size: 24px;
-  border-radius: 0;
-  outline: none;
-  color: #FFFFFF;
-}
 
-.search-submit {
-  width: 60px;
-  height: 50px;
-  margin:0 0px 0 5px;
-  position: relative;
-    font-size: 28px;
-}
-
-.fa-search {
-  font-size: 28px;
-  color: #ffffff;
-}
-
-.list-view__actionbar .form-inline .form-control {
-    width: 500px;
-    font-weight: 300;
-}
 
 
 
@@ -179,10 +149,10 @@ body {
 
 
 .list__option--userlist .list__image {
-  background-image: linear-gradient(-145deg, #00CD00 0%, #00A3FF 100%);
+  background-image: linear-gradient(145deg, #00CD00 0%, #00A3FF 100%);
 }
 
-.list__option--yourideaslist .list__image {
+.list__option--idealist .list__image {
   background-image: linear-gradient(148deg, #FDDC04 15%, #E10281 100%);
 }
 
@@ -206,6 +176,7 @@ body {
   background-image: linear-gradient(0deg, #6F7689 0%, #313540 100%);
   border: 3px dashed #FFFFFF;
 }
+
 
 
 
@@ -247,7 +218,7 @@ body {
     color: #fff;
     text-align: center;
 }
-    
+
 .slider-veryBearish {
     background-color: #e00000;
     left: 0%;
@@ -351,7 +322,6 @@ body {
     border: 2px solid #ffffff;
     border-radius: 0;
     box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-    opacity:0.97;
 }
 
 .dropdown-submenu li {

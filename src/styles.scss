@@ -98,6 +98,18 @@ body {
 
 
 
+
+
+
+
+/*------------------------------------*\
+  #SEARCH BOX
+\*------------------------------------*/
+
+
+
+
+
 ::-webkit-input-placeholder { /* Chrome */
   color: rgba(255,255,255,0.75) !important;
   font-weight: 300 !important;
@@ -120,6 +132,65 @@ body {
   font-weight: 300 !important;
   font-family: 'Open Sans', sans-serif !important;
 }
+
+
+
+
+
+
+
+
+
+
+/*------------------------------------*\
+  #LIST-OPTION Gradients
+\*------------------------------------*/
+
+
+
+.list__option--userlist .list__image {
+  background-image: linear-gradient(145deg, #00CD00 0%, #00A3FF 100%);
+}
+
+.list__option--idealist .list__image {
+  background-image: linear-gradient(148deg, #FDDC04 15%, #E10281 100%);
+}
+
+.list__option--IPlist .list__image {
+  background-image: linear-gradient(-32deg, #7000A8 0%, #FF8500 94%);
+}
+
+.list__option--chartlist .list__image {
+  background-image: linear-gradient(-36deg, #6D0A95 0%, #0096D4 100%);
+}
+
+.list__option--companylist .list__image {
+  background-image: linear-gradient(-29deg, #FFE500 0%, #3FCC0B 47%, #179731 100%);
+}
+
+.list__option--championlist .list__image {
+  background-image: linear-gradient(-36deg, #EC2E2E 0%, #2517DC 100%);
+}
+
+.list__option--addlist .list__image {
+  background-image: linear-gradient(0deg, #6F7689 0%, #313540 100%);
+  border: 3px dashed #FFFFFF;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*------------------------------------*\
+  #PGR SLIDERS
+\*------------------------------------*/
 
 
 
@@ -212,6 +283,21 @@ body {
     border-radius: 25px;
     border: 4px solid #ffffff;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/*------------------------------------*\
+  #DROP DOWNS
+\*------------------------------------*/
 
 
 

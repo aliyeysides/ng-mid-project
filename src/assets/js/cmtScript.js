@@ -424,4 +424,33 @@ $(document).ready(function () {
   });
 
 
+  $(".collapse-sidebar").click(function () {
+    $(".sidebar__container").toggleClass("collapsed");
+    $(".body").toggleClass("collapsed");
+  });
+
+
+  $(".list__option--add").click(function () {
+    $(".body__bottom--addlist").toggleClass("selected");
+    $(".body__bottom--listview").toggleClass("selected");
+  });
+
+
+
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

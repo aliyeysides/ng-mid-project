@@ -3,6 +3,37 @@
 
 
 
+.body__bottom {
+	position: relative;
+	width: 100%;
+}
+
+.body__bottom--listview {
+	position: absolute;
+	width: 100%;
+	display: block;
+}
+
+.body__bottom--listview.selected {
+	display: none;
+}
+
+.body__bottom--addlist {
+	position: absolute;
+	width: 100%;
+	display: none;
+}
+
+.body__bottom--addlist.selected {
+	display: block;
+}
+
+
+
+
+
+
+
 /*------------------------------------*\
   #ACTION-BAR
 \*------------------------------------*/
@@ -56,6 +87,28 @@
 		}
 	}
 }
+
+.list-view__actionbar--addlist {
+	background-image: linear-gradient(146deg, #EEEEEE 0%, #8F8F8F 100%);
+
+	.list__header {
+		border-right: 0px solid #ffffff !important;
+
+		.list__title {
+			color: $font-color !important;
+
+			
+			span {
+				display: block !important;
+				margin-left: 20px;
+			}
+		}
+	}
+}
+
+
+
+
 
 .list-view__actionbar {
 	border: 2px solid #FFFFFF;
@@ -580,6 +633,191 @@
 
 
 
+
+
+
+
+
+
+
+
+/*------------------------------------*\
+  #ADD-A-LIST
+\*------------------------------------*/
+
+
+
+
+.addlist__container {
+	height: 100vh;
+	overflow-y: scroll;
+
+	ul {
+	    margin-top: 0px;
+	    margin-left: 20px;
+	    margin-bottom:460px;
+
+		.list__option {
+			margin: 20px 0;
+
+			.list__image {
+				width: 160px;
+				height: 160px;
+				border: 3px solid #FFFFFF;
+				position: relative;
+				margin: 0px;
+				border-radius: 80px;
+			}
+
+			.list__option--description {
+				padding-top:15px;
+
+				.list__title {
+					font-size: 26px;
+					line-height: 1.75;
+					font-weight: 400;
+				}
+
+				.list__description {
+					font-size: 16px;
+					line-height: 1.5;
+				}
+			}
+		}
+
+		.list__option--relativestrength.selected .list__image img {
+			width: 110px;
+			height: auto;
+			margin-top: -2px;
+		}
+
+		.list__option--relativestrength.hover .list__image img {
+			width: 110px;
+			height: auto;
+			margin-top: -2px;
+		}
+
+		.list__option--buyingstrength.selected .list__image img {
+			width: 110px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--buyingstrength.hover .list__image img {
+			width: 110px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--earningschamps.selected .list__image img {
+			width: 123px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--earningschamps.hover .list__image img {
+			width: 123px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--earningsbears.selected .list__image img {
+			width: 115px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--earningsbears.hover .list__image img {
+			width: 115px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--earningsbulls.selected .list__image img {
+			width: 115px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--earningsbulls.hover .list__image img {
+			width: 115px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--growthstock.selected .list__image img {
+			width: 90px;
+			height: auto;
+			margin-top: -6px;
+		}
+
+		.list__option--growthstock.hover .list__image img {
+			width: 90px;
+			height: auto;
+			margin-top: -6px;
+		}
+
+		.list__option--bestvalue.selected .list__image img {
+			width: 90px;
+			height: auto;
+			margin-top: -3px;
+		}
+
+		.list__option--bestvalue.hover .list__image img {
+			width: 90px;
+			height: auto;
+			margin-top: -3px;
+		}
+
+		.list__option--smallcap.selected .list__image img {
+			width: 88px;
+			height: auto;
+			margin-top: 20px;
+		}
+
+		.list__option--smallcap.hover .list__image img {
+			width: 88px;
+			height: auto;
+			margin-top: 20px;
+		}
+
+		.list__option--dogsofthedow.selected .list__image img {
+			width: 115px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--dogsofthedow.hover .list__image img {
+			width: 115px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--bestofthenasdaq.selected .list__image img {
+			width: 95px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--bestofthenasdaq.hover .list__image img {
+			width: 95px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--bestofthedow.selected .list__image img {
+			width: 95px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--bestofthedow.hover .list__image img {
+			width: 95px;
+			height: auto;
+			margin-top: 0px;
+		}
+	}
+}
 
 
 

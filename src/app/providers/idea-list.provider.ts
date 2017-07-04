@@ -12,12 +12,11 @@ export class IdeaListProvider {
 	environmentName = environment.envName;
 	apiHostName = environment.envProtocol + '://' + environment.envHostName;
 	private apiPrependText: string = '/CPTRestSecure/app'
+
+	public ideasList: Array<object>;
+
 	constructor(private http: Http) {
 		this.symbolLookupParams = new URLSearchParams;
-	}
-
-	public aa(){
-		console.log("hii");
 	}
 
 	public getIdeasList(query): Observable<Array<object>> {
@@ -26,7 +25,15 @@ export class IdeaListProvider {
 		return this.getJson(symbolLookupUrl, this.symbolLookupParams);
 	}
 
-	
+	public setIdeaListData(data){
+		this.ideasList = data;
+	}
+
+	public getIdeaListData(){
+		return this.ideasList;
+	}
+
+
 	public getJson(url, params): Observable<Array<object>> {
 		return this.http.get(url, {
 			search: params,

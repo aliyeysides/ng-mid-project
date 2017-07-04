@@ -24,7 +24,6 @@ $(document).ready(function () {
     }
   });
 
-
   $("li.list__option").mouseover(function () {
     $(this).addClass("hover");
   });
@@ -49,8 +48,6 @@ $(document).ready(function () {
     $(".list-view__actionbar").removeClass("list-view__actionbar--IPlist");
     $(".list-view__actionbar").removeClass("list-view__actionbar--chartlist");
     $(".list-view__actionbar").addClass("list-view__actionbar--userlist");
-    $(".list-view__actionbar").removeClass("list-view__actionbar--companylist");
-    $(".list-view__actionbar").removeClass("list-view__actionbar--championlist");
   });
 
   $("li.list__option--holding").click(function () {
@@ -62,8 +59,6 @@ $(document).ready(function () {
     $(".list-view__actionbar").removeClass("list-view__actionbar--IPlist");
     $(".list-view__actionbar").removeClass("list-view__actionbar--chartlist");
     $(".list-view__actionbar").addClass("list-view__actionbar--userlist");
-    $(".list-view__actionbar").removeClass("list-view__actionbar--companylist");
-    $(".list-view__actionbar").removeClass("list-view__actionbar--championlist");
   });
 
   $("li.list__option--ideasforyou").click(function () {
@@ -75,8 +70,6 @@ $(document).ready(function () {
     $(".list-view__actionbar").removeClass("list-view__actionbar--IPlist");
     $(".list-view__actionbar").removeClass("list-view__actionbar--chartlist");
     $(".list-view__actionbar").addClass("list-view__actionbar--idealist");
-    $(".list-view__actionbar").removeClass("list-view__actionbar--companylist");
-    $(".list-view__actionbar").removeClass("list-view__actionbar--championlist");
   });
 
   $("li.list__option--classicbears").click(function () {
@@ -88,8 +81,6 @@ $(document).ready(function () {
     $(".list-view__actionbar").removeClass("list-view__actionbar--userlist");
     $(".list-view__actionbar").removeClass("list-view__actionbar--chartlist");
     $(".list-view__actionbar").addClass("list-view__actionbar--IPlist");
-    $(".list-view__actionbar").removeClass("list-view__actionbar--companylist");
-    $(".list-view__actionbar").removeClass("list-view__actionbar--championlist");
   });
 
   $("li.list__option--classicbulls").click(function () {
@@ -101,60 +92,34 @@ $(document).ready(function () {
     $(".list-view__actionbar").removeClass("list-view__actionbar--userlist");
     $(".list-view__actionbar").removeClass("list-view__actionbar--chartlist");
     $(".list-view__actionbar").addClass("list-view__actionbar--IPlist");
-    $(".list-view__actionbar").removeClass("list-view__actionbar--companylist");
-    $(".list-view__actionbar").removeClass("list-view__actionbar--championlist");
   });
 
-  $("li.list__option--buydips").click(function () {
+  $("li.list__option--selldips").click(function () {
     $(".list-description span").removeClass("selected");
-    $(".list-description--buydips").addClass("selected");
-    $(".list__title span").removeClass("selected");
-    $(".list__title--buydips").addClass("selected");
+    $(".list-description--selldips").addClass("selected");
     $(".list-view__actionbar").removeClass("list-view__actionbar--idealist");
     $(".list-view__actionbar").removeClass("list-view__actionbar--userlist");
     $(".list-view__actionbar").removeClass("list-view__actionbar--IPlist");
     $(".list-view__actionbar").addClass("list-view__actionbar--chartlist");
-    $(".list-view__actionbar").removeClass("list-view__actionbar--companylist");
-    $(".list-view__actionbar").removeClass("list-view__actionbar--championlist");
   });
 
-  $("li.list__option--sellrallies").click(function () {
+  $("li.list__option--buyrallies").click(function () {
     $(".list-description span").removeClass("selected");
-    $(".list-description--sellrallies").addClass("selected");
-    $(".list__title span").removeClass("selected");
-    $(".list__title--sellrallies").addClass("selected");
+    $(".list-description--buyrallies").addClass("selected");
     $(".list-view__actionbar").removeClass("list-view__actionbar--idealist");
     $(".list-view__actionbar").removeClass("list-view__actionbar--userlist");
     $(".list-view__actionbar").removeClass("list-view__actionbar--IPlist");
     $(".list-view__actionbar").addClass("list-view__actionbar--chartlist");
-    $(".list-view__actionbar").removeClass("list-view__actionbar--companylist");
-    $(".list-view__actionbar").removeClass("list-view__actionbar--championlist");
   });
 
   $("li.list__option--largecap").click(function () {
     $(".list-description span").removeClass("selected");
     $(".list-description--largecap").addClass("selected");
-    $(".list__title span").removeClass("selected");
-    $(".list__title--largecap").addClass("selected");
-    $(".list-view__actionbar").removeClass("list-view__actionbar--idealist");
-    $(".list-view__actionbar").removeClass("list-view__actionbar--userlist");
-    $(".list-view__actionbar").removeClass("list-view__actionbar--IPlist");
-    $(".list-view__actionbar").removeClass("list-view__actionbar--chartlist");
-    $(".list-view__actionbar").addClass("list-view__actionbar--companylist");
-    $(".list-view__actionbar").removeClass("list-view__actionbar--championlist");
   });
 
-  $("li.list__option--smallcap").click(function () {
+  $("li.list__option--add").click(function () {
     $(".list-description span").removeClass("selected");
-    $(".list-description--smallcap").addClass("selected");
-    $(".list__title span").removeClass("selected");
-    $(".list__title--smallcap").addClass("selected");
-    $(".list-view__actionbar").removeClass("list-view__actionbar--idealist");
-    $(".list-view__actionbar").removeClass("list-view__actionbar--userlist");
-    $(".list-view__actionbar").removeClass("list-view__actionbar--IPlist");
-    $(".list-view__actionbar").removeClass("list-view__actionbar--chartlist");
-    $(".list-view__actionbar").addClass("list-view__actionbar--companylist");
-    $(".list-view__actionbar").removeClass("list-view__actionbar--championlist");
+    $(".list-description--addlist").addClass("selected");
   });
 
 
@@ -216,24 +181,24 @@ $(document).ready(function () {
   });
 
 
-  $("li.list__option--buydips").mouseover(function () {
+  $("li.list__option--selldips").mouseover(function () {
     $(".list-description span.selected").addClass("selected-hidden");
-    $(".list-description--buydips").addClass("hover");
+    $(".list-description--selldips").addClass("hover");
   });
 
-  $("li.list__option--buydips").mouseout(function () {
-    $(".list-description--buydips").removeClass("hover");
+  $("li.list__option--selldips").mouseout(function () {
+    $(".list-description--selldips").removeClass("hover");
     $(".list-description span.selected").removeClass("selected-hidden");
   });
 
 
-  $("li.list__option--sellrallies").mouseover(function () {
+  $("li.list__option--buyrallies").mouseover(function () {
     $(".list-description span.selected").addClass("selected-hidden");
-    $(".list-description--sellrallies").addClass("hover");
+    $(".list-description--buyrallies").addClass("hover");
   });
 
-  $("li.list__option--sellrallies").mouseout(function () {
-    $(".list-description--sellrallies").removeClass("hover");
+  $("li.list__option--buyrallies").mouseout(function () {
+    $(".list-description--buyrallies").removeClass("hover");
     $(".list-description span.selected").removeClass("selected-hidden");
   });
 
@@ -248,19 +213,6 @@ $(document).ready(function () {
     $(".list-description span.selected").removeClass("selected-hidden");
   });
 
-
-  $("li.list__option--smallcap").mouseover(function () {
-    $(".list-description span.selected").addClass("selected-hidden");
-    $(".list-description--smallcap").addClass("hover");
-  });
-
-  $("li.list__option--smallcap").mouseout(function () {
-    $(".list-description--smallcap").removeClass("hover");
-    $(".list-description span.selected").removeClass("selected-hidden");
-  });
-
-
-
   $("li.list__option--add").mouseover(function () {
     $(".list-description span.selected").addClass("selected-hidden");
     $(".list-description--addlist").addClass("hover");
@@ -270,9 +222,6 @@ $(document).ready(function () {
     $(".list-description--addlist").removeClass("hover");
     $(".list-description span.selected").removeClass("selected-hidden");
   });
-
-
-
 
 
 // Action Bar
@@ -287,9 +236,6 @@ $(document).ready(function () {
     $(this).addClass("active");
     $(".view-toggle--panel-view").removeClass("active");
   });
-
-
-
 
 
 // List View
@@ -318,6 +264,37 @@ $(document).ready(function () {
 
   $(".list-sort__button").click(function (e) {
     $(".top-sort-menu.dropdown-menu").toggle("blind", 250);
+  });
+
+
+// List View Stock Options Pop Over
+
+
+  $(".stock__options-button").click(function (e) {
+    var targetOpen = $(this.offsetParent).hasClass("slideOpen");
+
+    // if any slide is open and the target is open, then close them all and return;
+    if ($(".slideOpen") && targetOpen) {
+      $(".slideOpen").toggle("slide", {direction: "right"}, 250);
+      $(".slideOpen").removeClass("slideOpen");
+
+      e.stopPropagation();
+      return;
+    }
+    // if any slide is open and the target is not open, then close them all
+    if ($(".slideOpen") && !targetOpen) {
+      $(".slideOpen").toggle("slide", {direction: "right"}, 250);
+      $(".slideOpen").removeClass("slideOpen");
+
+      e.stopPropagation();
+    }
+
+    // toggle slide
+    $(".list__entry.hover .stock-options__popup").toggle("slide", {direction: "right"}, 250);
+    $(".list__entry.hover .stock-options__popup").toggleClass("slideOpen");
+
+    e.stopPropagation();
+
   });
 
 
@@ -458,6 +435,10 @@ $(document).ready(function () {
   });
 
 
+  $(".list__option--add").click(function () {
+    $(".body__bottom--addlist").toggleClass("selected");
+    $(".body__bottom--listview").toggleClass("selected");
+  });
 
 
 

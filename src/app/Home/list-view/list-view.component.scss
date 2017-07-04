@@ -3,46 +3,14 @@
 
 
 
-.body__bottom {
-	position: relative;
-	width: 100%;
-}
-
-.body__bottom--listview {
-	position: absolute;
-	width: 100%;
-	display: none;
-}
-
-.body__bottom--listview.selected {
-	display: block;
-}
-
-.body__bottom--addlist {
-	position: absolute;
-	width: 100%;
-	display: none;
-}
-
-.body__bottom--addlist.selected {
-	display: block;
-}
-
-
-
-
-
-
-
 /*------------------------------------*\
   #ACTION-BAR
 \*------------------------------------*/
 
 
 
-
 .list-view__actionbar--userlist {
-	background-image: linear-gradient(-148deg, #00CD00 0%, #00A3FF 100%);
+	background-image: linear-gradient(148deg, #00CD00 0%, #00A3FF 100%);
 
 	.list__header {
 		.view-toggle.active {
@@ -89,51 +57,6 @@
 	}
 }
 
-.list-view__actionbar--companylist {
-	background-image: linear-gradient(62deg, #00A70C 0%, #B6FF00 100%);
-
-	.list__header {
-		.view-toggle.active {
-			i {
-				color: #00C40E;
-			}
-		}
-	}
-}
-
-.list-view__actionbar--championlist {
-	background-image: linear-gradient(50deg, #EC2E2E 0%, #2517DC 100%);
-
-	.list__header {
-		.view-toggle.active {
-			i {
-				color: #992476;
-			}
-		}
-	}
-}
-
-.list-view__actionbar--addlist {
-	background-image: linear-gradient(146deg, #EEEEEE 0%, #8F8F8F 100%);
-
-	.list__header {
-		border-right: 0px solid #ffffff !important;
-
-		.list__title {
-			color: $font-color !important;
-
-			span {
-				display: block !important;
-				margin-left: 20px;
-			}
-		}
-	}
-}
-
-
-
-
-
 .list-view__actionbar {
 	border: 2px solid #FFFFFF;
 	height: 55px;
@@ -176,10 +99,6 @@
 
 			span {
 				display: none;
-
-				i {
-					cursor: help;
-				}
 			}
 
 			span.list__title--holding.selected {
@@ -210,78 +129,7 @@
 				display: block;
 			}
 
-			span.list__title--largecap.selected {
-				display: block;
-			}
-
-			span.list__title--smallcap.selected {
-				display: block;
-			}
-
-			span.list__title--buyingstrength.selected {
-				display: block;
-			}
-
-			span.list__title--relativestrength.selected {
-				display: block;
-			}
-
-			span.list__title--earningschamps.selected {
-				display: block;
-			}
-
-			span.list__title--earningsbears.selected {
-				display: block;
-			}
-
-			span.list__title--earningsbulls.selected {
-				display: block;
-			}
-
-			span.list__title--dontfighttheshorts.selected {
-				display: block;
-			}
-
-			span.list__title--analystdarlings.selected {
-				display: block;
-			}
-
-			span.list__title--moneymakers.selected {
-				display: block;
-			}
-			span.list__title--insiderconfidence.selected {
-				display: block;
-			}
-
-			span.list__title--underten.selected {
-				display: block;
-			}
-
-			span.list__title--bestgrowth.selected {
-				display: block;
-			}
-
-			span.list__title--bestvalue.selected {
-				display: block;
-			}
-
-			span.list__title--dogsofthedow.selected {
-				display: block;
-			}
-
-			span.list__title--bestofthedow.selected {
-				display: block;
-			}
-
-			span.list__title--bestofthenasdaq.selected {
-				display: block;
-			}
-
-			span.list__title--PGRupgrade.selected {
-				display: block;
-			}
-
-			span.list__title--PGRdowngrade.selected {
+			span.list__title--largecaps.selected {
 				display: block;
 			}
 		}
@@ -386,7 +234,7 @@
 				}
 
 				.stock__options-button {
-					display: block;
+					display: none;
 					position: absolute;
 					right:0px;
 					top:0px;
@@ -397,7 +245,7 @@
 				}
 
 				.stock-options__popup {
-					display: block;
+					display: none;
 					position: absolute;
 					right: 0;
 					top: 0;
@@ -467,7 +315,7 @@
 			  	position: relative;
 
 				.stock__options-button {
-					display: block;
+					display: none;
 				}
 			}
 		}
@@ -497,7 +345,7 @@
 				float: left;
 
 				img {
-					width: 60px;
+					width: 70px;
 					height: auto;
 					margin-right: 15px;
 				}
@@ -507,7 +355,7 @@
 				float: left;
 
 				p {
-					font-size: 36px;
+					font-size: 40px;
 					line-height: 1;
 					font-weight: 800;
 				}
@@ -515,38 +363,33 @@
 
 			.button__view-summary {
 				float: right;
-				width: 28px;
-				margin-top: 3px;
+				width: 35px;
+				margin-top: 5px;
 				cursor: pointer;
-				opacity: 0.33;
 
 				img {
 					float: left;
-					width: 27px;
+					width: 30px;
 				}
-
-				&:hover {
-					opacity: 1;
-				};
 			}
 
 			.stock-panel__company-name {
-				margin: 7px 0 10px;
+				margin: 10px 0 15px;
 
 				.button__add-to-list {
 					float: left;
-					margin-top: -1px;
+					margin-right: 0px;
 
 					a {
-						opacity: 0.33;
-						font-size: 25px;
-						color: $link-blue;
-						margin-right: 15px;
+						opacity: 0.5;
+						font-size: 24px;
+						color: $font-color--MD;
+						margin-right: 20px;
 						cursor: pointer;
-						line-height: 1;
 
 						&:hover {
 							opacity: 1;
+							color: $link-blue;
 						}
 					}
 
@@ -556,7 +399,8 @@
 				}
 
 				p {
-					font-size: 22px;
+					font-size: 24px;
+					line-height: 24px;
 					float: left;
 				}
 			}
@@ -568,7 +412,7 @@
 
 				p {
 					font-weight: 600;
-					font-size: 18px;
+					font-size: 20px;
 				}
 
 				p.current-price {
@@ -577,29 +421,26 @@
 			}
 
 			.stock-panel__industry {
+				padding-bottom: 6px;
 				border-bottom: $border-line--LT2;
-				margin-top: 10px;
 				margin-bottom: 10px;
 				padding-left: 15px;
 
 				p {
 					font-weight: 400;
-					font-size: 12px;
+					font-size: 13px;
 					color: $font-color--MD;
 					text-transform: uppercase;
-					margin: 0px 15px 0px 0;
-					text-overflow: ellipsis;
+					margin: 5px 0;
 					white-space: nowrap;
-					overflow: hidden;
-					width: 350px;
-					height: 28px;
+						text-overflow: ellipsis;
 
 					span {
-						font-size: 16px;
+						font-size: 18px;
 						color: $font-color;
 						text-transform: none;
-						margin-left: 10px;
-						font-weight: 400;
+						margin-left: 15px;
+						font-weight: 600;
 					}
 
 					span.industry-strength {
@@ -610,21 +451,21 @@
 			}
 
 			.stock-panel__details {
-				padding-bottom: 5px;
+				padding-bottom: 10px;
 				margin-bottom: 5px;
 
 				p {
 					font-weight: 400;
-					font-size: 12px;
+					font-size: 13px;
 					color: $font-color--MD;
 					text-transform: uppercase;
-					margin: 0px;
+					margin: 2px 0;
 
 					span {
-						font-size: 16px;
+						font-size: 18px;
 						color: $font-color;
 						text-transform: none;
-						margin-left: 10px;
+						margin-left: 15px;
 						font-weight: 600;
 					}
 				}
@@ -635,32 +476,24 @@
 
 				.pgr__title {
 					font-weight: 400;
-					font-size: 11px;
+					font-size: 13px;
 					color: $font-color--MD;
 					text-transform: uppercase;
 					line-height: 1;
-					margin-bottom: 4px;
-					letter-spacing: 0.05em;
-					white-space: nowrap;
+					margin-bottom: 5px;
 				}
 
 				.pgr__text {
-					font-weight: 700;
-					font-size: 20px;
+					font-weight: 800;
+					font-size: 28px;
 					text-transform: uppercase;
-					white-space: nowrap;
-
-					@media screen and ( min-width: 1480px ){
-				        font-size: 26px;
-				    }
-
 				}
 
 				.pgr__sliders {
-					margin-top: 8px;
+					margin-top: 10px;
 
 					li {
-						margin: 3px 0 3px;
+						margin: 5px 0 3px;
 
 						.sliderBar-container {
 
@@ -669,7 +502,7 @@
 								font-size: 13px;
 								color: $font-color--MD;
 								text-transform: uppercase;
-								margin: -2px 0 2px;
+								margin: -1px 0 2px;
 							}
 						}
 					}
@@ -683,366 +516,66 @@
 
 		.quick-view__similar {
 			background-color: $background--LT-blue;
-			z-index: 10;
-			bottom: 478px;
+			padding: 5px 0 5px;
+			z-index: 2;
+			bottom: 485px;
 			width: 95%;
-			height: 50px;
 			position: absolute;
 
-			.icon__discover {
-				cursor: pointer;
-
-				img {
-					width: 35px;
-					cursor: help;
-				}
+			.discover-label {
+				font-size: 15px;
+				color: $link-blue;
+				font-weight: 600;
+				text-transform: uppercase;
+				margin-top: 12px;
+			}
+			img {
+				float: left;
+				padding-right: 8px;
 			}
 
 			.similar-stock {
 				font-size: 18px;
-				line-height: 50px;
 				font-weight: 700;
-				text-align: left;
-
-				p {
-					cursor: pointer;
-
-					&:hover {
-						color: $link-blue;
-					}
-				}
+				text-align: center;
+				margin-top: 10px;
 			}
-
-			@media screen and ( max-height: 730px ){
-		        display:none;
-		    }
 		}
 
 		.quick-view__news {
 			width: 95%;
 			position: absolute;
-			bottom: 438px;
-			height: 40px;
-			padding: 13px 15px 8px;
-			font-size: 18px;
+			bottom: 435px;
+			height: 50px;
+			padding: 13px 0 5px;
+			font-size: 20px;
 			background-color: #ffffff;
 			border-top: $border-line--LT2;
-			z-index: 20;
+			z-index: 1;
 
-			.news-panel__header {
-				width: 100%;
-				margin-bottom: 10px;
+			span {
+				font-weight: 700;
+			}
 
-				span {
-					font-weight: 700;
-				}
+			.headlines-expand {
+				font-size: 14px;
+				color: $font-color;
+				font-weight: 600;
+				text-transform: uppercase;
+				cursor: pointer;
+				text-align: right;
 
-				.headlines-expand {
-					display: block;
-					font-size: 12px;
-					color: $font-color;
-					font-weight: 600;
-					text-transform: uppercase;
-					cursor: pointer;
-					text-align: right;
-
-					i {
-						font-size: 20px;
-						color: $link-blue;
-						margin-top: -3px;
-					}
-				}
-
-				.headlines-collapse {
-					display: none;
-					font-size: 12px;
+				i {
+					font-size: 24px;
 					color: $link-blue;
-					font-weight: 600;
-					text-transform: uppercase;
-					cursor: pointer;
-					text-align: right;
-
-					i {
-						font-size: 20px;
-						color: $link-blue;
-						margin-top: -3px;
-						transform: rotate(180deg);
-					}
-				}
-			}
-
-			.headlines-container {
-				overflow-y: scroll;
-				height: 220px;
-
-				.headline {
-					position: relative;
-					margin: 10px 0;
-
-					h2 {
-					    font-size: 14px;
-					    font-weight: 600;
-					    line-height: 1.5;
-					    margin: 0;
-					    padding: 0;
-						color: #383838;
-
-						a {
-							text-decoration: none;
-							color: #383838;
-						}
-					}
-
-					.news-source {
-						font-size: 12px;
-						display: block;
-						float:left;
-						width: 200px;
-					    font-weight: 700;
-					    line-height: 1.6;
-					    margin: 0;
-					    padding: 0;
-
-						a {
-							text-decoration: none;
-							color: #003366;
-						}
-					}
-
-					.update-time {
-						font-size: 10px;
-						display: block;
-						float:left;
-					    line-height: 1.6;
-					    margin: 0;
-					    font-style: italic;
-					    padding: 0;
-						color: #383838;
-					}
-				}
-			}
-
-			@media screen and ( max-height: 680px ){
-		        display:none;
-		    }
-		}
-	}
-}
-
-
-
-
-
-.quick-view__news.expanded {
-	height: 260px !important;
-	box-shadow: 0px -2px 8px 0 rgba(0,0,0,0.05);
-
-	.news-panel__header {
-
-		p {
-			color: $link-blue ;
-		}
-
-		.headlines-expand {
-			display: none !important;
-		}
-
-		.headlines-collapse {
-			display: block !important;
-		}
-	}
-}
-
-
-
-
-
-/*------------------------------------*\
-  #ADD-A-LIST
-\*------------------------------------*/
-
-
-
-
-.addlist__container {
-	height: 100vh;
-	overflow-y: scroll;
-
-	ul {
-	    margin-top: 0px;
-	    margin-left: 20px;
-	    margin-bottom:460px;
-
-		.list__option {
-			margin: 20px 0;
-
-			.list__image {
-				width: 160px;
-				height: 160px;
-				border: 3px solid #FFFFFF;
-				position: relative;
-				margin: 0px;
-				border-radius: 80px;
-			}
-
-			.list__option--description {
-
-				.list__title {
-					font-size: 26px;
-					line-height: 1.75;
-					font-weight: 400;
-				}
-
-				.list__description {
-					font-size: 16px;
-					line-height: 1.5;
-				}
-
-				.list__add {
-					color: $link-blue;
-					cursor: pointer;
-					font-size: 16px;
+					display: inline-block;
+					margin-top: -6px;
 					line-height: 1;
-					padding: 10px 0 0;
 				}
 			}
 		}
-
-		.list__option--relativestrength.selected .list__image img {
-			width: 110px;
-			height: auto;
-			margin-top: -2px;
-		}
-
-		.list__option--relativestrength.hover .list__image img {
-			width: 110px;
-			height: auto;
-			margin-top: -2px;
-		}
-
-		.list__option--buyingstrength.selected .list__image img {
-			width: 110px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--buyingstrength.hover .list__image img {
-			width: 110px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--earningschamps.selected .list__image img {
-			width: 123px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--earningschamps.hover .list__image img {
-			width: 123px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--earningsbears.selected .list__image img {
-			width: 115px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--earningsbears.hover .list__image img {
-			width: 115px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--earningsbulls.selected .list__image img {
-			width: 115px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--earningsbulls.hover .list__image img {
-			width: 115px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--growthstock.selected .list__image img {
-			width: 90px;
-			height: auto;
-			margin-top: -6px;
-		}
-
-		.list__option--growthstock.hover .list__image img {
-			width: 90px;
-			height: auto;
-			margin-top: -6px;
-		}
-
-		.list__option--bestvalue.selected .list__image img {
-			width: 90px;
-			height: auto;
-			margin-top: -3px;
-		}
-
-		.list__option--bestvalue.hover .list__image img {
-			width: 90px;
-			height: auto;
-			margin-top: -3px;
-		}
-
-		.list__option--smallcap.selected .list__image img {
-			width: 88px;
-			height: auto;
-			margin-top: 20px;
-		}
-
-		.list__option--smallcap.hover .list__image img {
-			width: 88px;
-			height: auto;
-			margin-top: 20px;
-		}
-
-		.list__option--dogsofthedow.selected .list__image img {
-			width: 115px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--dogsofthedow.hover .list__image img {
-			width: 115px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--bestofthenasdaq.selected .list__image img {
-			width: 95px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--bestofthenasdaq.hover .list__image img {
-			width: 95px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--bestofthedow.selected .list__image img {
-			width: 95px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--bestofthedow.hover .list__image img {
-			width: 95px;
-			height: auto;
-			margin-top: 0px;
-		}
 	}
 }
-
-
 
 
 

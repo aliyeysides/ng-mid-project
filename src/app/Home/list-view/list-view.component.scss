@@ -121,7 +121,15 @@
 				display: block;
 			}
 
-			span.list__title--selldips.selected {
+			span.list__title--buydips.selected {
+				display: block;
+			}
+
+			span.list__title--sellrallies.selected {
+				display: block;
+			}
+
+			span.list__title--largecaps.selected {
 				display: block;
 			}
 		}
@@ -328,7 +336,8 @@
 
 	.quick-view__panel {
 		padding: 20px 30px;
-		
+		height: 100vh;
+
 		.quick-view__data {
 			position: relative;
 
@@ -507,20 +516,22 @@
 
 		.quick-view__similar {
 			background-color: $background--LT-blue;
-			padding: 5px 0 8px;
-			margin-bottom: 10px;
+			padding: 5px 0 5px;
+			z-index: 2;
+			bottom: 485px;
+			width: 95%;
+			position: absolute;
 		
 			.discover-label {
 				font-size: 15px;
 				color: $link-blue;
 				font-weight: 600;
 				text-transform: uppercase;
-				line-height: 35px;
-				 
-				img {
-					padding-right: 4px;
-					display: inline-block;
-				}
+				margin-top: 12px;
+			}
+			img {
+				float: left;
+				padding-right: 8px;
 			}
 			
 			.similar-stock {
@@ -532,11 +543,15 @@
 		}
 		
 		.quick-view__news {
+			width: 95%;
+			position: absolute;
+			bottom: 435px;
 			height: 50px;
 			padding: 13px 0 5px;
 			font-size: 20px;
 			background-color: #ffffff;
 			border-top: $border-line--LT2;
+			z-index: 1;
 			
 			span {
 				font-weight: 700;

@@ -11,17 +11,17 @@
 
 
 .list-carousel {
-	height: 270px;
-	margin-left: 40px;
+	height: 265px;
+	margin-left: 47px;
 	border-left: 1px dashed #999999;
 	overflow-x: scroll;
 	position: relative;
 	overflow-y: hidden;
-
+	
 	.list-category {
 		position: absolute;
 		font-size: 20px;
-		height: 270px;
+		height: 265px;
 		font-weight: 300;
 		line-height: 1;
 		top: -2px;
@@ -55,7 +55,7 @@
 		.list__option {
 			display: inline-block;
 			position: relative;
-			height: 245px;
+			height: 240px;
 			vertical-align: top;
 
 			.list__image {
@@ -599,29 +599,29 @@
 	position: absolute;
 	bottom: 0;
 	background-color: #393d47;
-	height: 45px;
+	height: 40px;
 	width: 100%;
-}
-
-.list-description__container .list-description {
-	font-size: 18px;
-	color: #FFFFFF !important;
-	line-height: 45px;
-	font-weight: 300;
-	letter-spacing: 0.05em;
-	white-space: nowrap;
-	position: absolute;
-}
-
-.list-description__container .toggle-arrow {
-	position: absolute;
-	font-size: 44px;
-	color: #999999;
-	margin-top: -3px;
-	line-height: 45px;
-
-	&:hover {
-		color: #ffffff;
+	
+	.list-description {
+		font-size: 16px;
+		color: #FFFFFF !important;
+		line-height: 45px;
+		font-weight: 300;
+		letter-spacing: 0.05em;
+		white-space: nowrap;
+		position: absolute;
+	}
+	
+	.toggle-arrow {
+		position: absolute;
+		font-size: 40px;
+		color: #999999;
+		margin-top: -2px;
+		line-height: 40px;
+		
+		&:hover {
+			color: #ffffff;
+		}
 	}
 }
 

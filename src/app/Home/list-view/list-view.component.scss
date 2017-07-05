@@ -41,7 +41,7 @@
 
 
 .list-view__actionbar--userlist {
-	background-image: linear-gradient(148deg, #00CD00 0%, #00A3FF 100%);
+	background-image: linear-gradient(-148deg, #00CD00 0%, #00A3FF 100%);
 
 	.list__header {
 		.view-toggle.active {
@@ -89,7 +89,7 @@
 }
 
 .list-view__actionbar--companylist {
-	background-image: linear-gradient(225deg, #FFE500 0%, #00C40E 100%);
+	background-image: linear-gradient(62deg, #00A70C 0%, #B6FF00 100%);
 
 	.list__header {
 		.view-toggle.active {
@@ -121,7 +121,7 @@
 		.list__title {
 			color: $font-color !important;
 
-
+			
 			span {
 				display: block !important;
 				margin-left: 20px;
@@ -137,7 +137,7 @@
 .list-view__actionbar {
 	border: 2px solid #FFFFFF;
 	height: 55px;
-
+	
 	.list__header {
 		border-right:2px solid #ffffff;
 
@@ -173,11 +173,11 @@
 			white-space: nowrap;
 			font-weight: 300;
 			margin-left: 20px;
-
+			
 			span {
 				display: none;
 			}
-
+			
 			span.list__title--holding.selected {
 				display: block;
 			}
@@ -281,7 +281,7 @@
 				display: block;
 			}
 		}
-
+	
 		.view-toggle {
 			float: right;
 			width: 60px;
@@ -290,7 +290,7 @@
 			color: #ffffff;
 			position: relative;
 			border-left:2px solid #ffffff;
-
+			
 			i {
 				color: #ffffff;
 				margin-top: -2px;
@@ -325,17 +325,17 @@
 		line-height: 28px;
 		font-weight: 300;
 		border-bottom: $border-line--LT;
-
+	
 		p {
 			color: $font-color--MD;
 			text-align: center;
 		}
-
+		
 		p.active {
 			font-weight: 600;
 		}
 	}
-
+	
 	.current-list {
 		height: 100vh;
 		overflow-y: scroll;
@@ -491,9 +491,9 @@
 
 			.stock-panel__PGR {
 				float: left;
-
+				
 				img {
-					width: 70px;
+					width: 60px;
 					height: auto;
 					margin-right: 15px;
 				}
@@ -501,9 +501,9 @@
 
 			.stock-panel__ticker {
 				float: left;
-
+			
 				p {
-					font-size: 40px;
+					font-size: 36px;
 					line-height: 1;
 					font-weight: 800;
 				}
@@ -511,33 +511,38 @@
 
 			.button__view-summary {
 				float: right;
-				width: 35px;
-				margin-top: 5px;
+				width: 28px;
+				margin-top: 3px;
 				cursor: pointer;
-
+				opacity: 0.33;
+			
 				img {
 					float: left;
-					width: 30px;
+					width: 27px;
 				}
+
+				&:hover {
+					opacity: 1;
+				};
 			}
-
+			
 			.stock-panel__company-name {
-				margin: 10px 0 15px;
-
+				margin: 7px 0 10px;
+				
 				.button__add-to-list {
 					float: left;
-					margin-right: 0px;
-
+					margin-top: -1px;
+				
 					a {
-						opacity: 0.5;
-						font-size: 24px;
-						color: $font-color--MD;
-						margin-right: 20px;
+						opacity: 0.33;
+						font-size: 25px;
+						color: $link-blue;
+						margin-right: 15px;
 						cursor: pointer;
-
+						line-height: 1;
+					
 						&:hover {
 							opacity: 1;
-							color: $link-blue;
 						}
 					}
 
@@ -547,36 +552,35 @@
 				}
 
 				p {
-					font-size: 24px;
-					line-height: 24px;
+					font-size: 22px;
 					float: left;
 				}
 			}
-
+		
 			.stock-panel__price {
 				padding-bottom: 10px;
 				border-bottom: $border-line--LT2;
 				margin-bottom: 6px;
-
+			
 				p {
 					font-weight: 600;
-					font-size: 20px;
+					font-size: 18px;
 				}
 
 				p.current-price {
 					font-weight: 700;
 				}
 			}
-
+			
 			.stock-panel__industry {
 				border-bottom: $border-line--LT2;
 				margin-top: 10px;
 				margin-bottom: 10px;
 				padding-left: 15px;
-
+				
 				p {
 					font-weight: 400;
-					font-size: 13px;
+					font-size: 12px;
 					color: $font-color--MD;
 					text-transform: uppercase;
 					margin: 0px 15px 0px 0;
@@ -584,16 +588,16 @@
 					white-space: nowrap;
 					overflow: hidden;
 					width: 350px;
-					height: 30px;
-
+					height: 28px;
+					
 					span {
-						font-size: 18px;
+						font-size: 16px;
 						color: $font-color;
 						text-transform: none;
-						margin-left: 15px;
-						font-weight: 600;
+						margin-left: 10px;
+						font-weight: 400;
 					}
-
+					
 					span.industry-strength {
 						font-weight: 700;
 						text-transform: uppercase;
@@ -602,50 +606,53 @@
 			}
 
 			.stock-panel__details {
-				padding-bottom: 10px;
+				padding-bottom: 5px;
 				margin-bottom: 5px;
-
+				
 				p {
 					font-weight: 400;
-					font-size: 13px;
+					font-size: 12px;
 					color: $font-color--MD;
 					text-transform: uppercase;
-					margin: 2px 0;
-
+					margin: 0px;
+					
 					span {
-						font-size: 18px;
+						font-size: 16px;
 						color: $font-color;
 						text-transform: none;
-						margin-left: 15px;
+						margin-left: 10px;
 						font-weight: 600;
 					}
 				}
 			}
-
+			
 			.quick-view__pgr {
 				border-left: $border-line--LT2;
-
+				
 				.pgr__title {
 					font-weight: 400;
-					font-size: 13px;
+					font-size: 11px;
 					color: $font-color--MD;
 					text-transform: uppercase;
 					line-height: 1;
-					margin-bottom: 5px;
+					margin-bottom: 6px;
+					letter-spacing: 0.05em;
+					white-space: nowrap;
 				}
-
+				
 				.pgr__text {
-					font-weight: 800;
-					font-size: 28px;
+					font-weight: 700;
+					font-size: 20px;
 					text-transform: uppercase;
+					white-space: nowrap;
 				}
-
+		
 				.pgr__sliders {
-					margin-top: 10px;
-
+					margin-top: 8px;
+				
 					li {
-						margin: 5px 0 3px;
-
+						margin: 3px 0 2px;
+						
 						.sliderBar-container {
 
 							.pgr__label {
@@ -653,7 +660,7 @@
 								font-size: 13px;
 								color: $font-color--MD;
 								text-transform: uppercase;
-								margin: -1px 0 2px;
+								margin: -2px 0 2px;
 							}
 						}
 					}
@@ -667,61 +674,51 @@
 
 		.quick-view__similar {
 			background-color: $background--LT-blue;
-			padding: 5px 0 5px;
-			z-index: 2;
-			bottom: 485px;
+			z-index: 10;
+			bottom: 478px;
 			width: 95%;
+			height: 50px;
 			position: absolute;
-
-			.discover-label {
-				font-size: 15px;
-				color: $link-blue;
-				font-weight: 600;
-				text-transform: uppercase;
-				margin-top: 12px;
-			}
+		
 			img {
-				float: left;
-				padding-right: 8px;
+				width: 35px;
 			}
-
+			
 			.similar-stock {
 				font-size: 18px;
+				line-height: 50px;
 				font-weight: 700;
-				text-align: center;
-				margin-top: 10px;
+				text-align: left;
 			}
 		}
-
+		
 		.quick-view__news {
 			width: 95%;
 			position: absolute;
-			bottom: 435px;
-			height: 50px;
-			padding: 13px 0 5px;
-			font-size: 20px;
+			bottom: 438px;
+			height: 40px;
+			padding: 13px 0 8px;
+			font-size: 18px;
 			background-color: #ffffff;
 			border-top: $border-line--LT2;
-			z-index: 1;
-
+			z-index: 20;
+			
 			span {
 				font-weight: 700;
 			}
-
+			
 			.headlines-expand {
-				font-size: 14px;
+				font-size: 12px;
 				color: $font-color;
 				font-weight: 600;
 				text-transform: uppercase;
 				cursor: pointer;
 				text-align: right;
-
+				
 				i {
-					font-size: 24px;
+					font-size: 20px;
 					color: $link-blue;
-					display: inline-block;
-					margin-top: -6px;
-					line-height: 1;
+					margin-top: -3px;
 				}
 			}
 		}

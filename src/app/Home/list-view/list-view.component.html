@@ -2,7 +2,7 @@
 <div class="body__bottom">
 
   <!-- SECTION: VIEW LIST  -->
-  <div class="body__bottom--listview">
+  <div *ngIf="additionalLists == false" class="body__bottom--listview">
 
     <!-- ROW: ACTION BAR  -->
     <div class="list-view__actionbar list-view__actionbar--userlist row no-gutters">
@@ -402,7 +402,7 @@
     <!-- END: VIEW LIST  -->
 
     <!-- SECTION: ADD LIST BODY BOTTOM  -->
-    <div class="body__bottom--addlist">
+    <div *ngIf="additionalLists == true" class="body__bottom--addlist">
 
       <!-- ROW: ACTION BAR  -->
       <div class="list-view__actionbar list-view__actionbar--addlist row no-gutters">

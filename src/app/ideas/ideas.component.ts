@@ -3,6 +3,7 @@ import {SharedService} from '../shared/shared.service';
 import {SignalService} from '../shared/signal.service';
 import {IdeaListProvider} from 'app/providers/idea-list.provider'
 import {Idea} from '../shared/models/idea';
+import {Subject} from 'rxjs/Subject';
 
 @Component({
   selector: 'mid-tier-ideas',
@@ -19,7 +20,8 @@ export class IdeasComponent implements OnInit {
   public symbolList: Array<object>;
   public activeUserList = {name: ''};
   public selectedActiveList: Array<object>;
-  public selected: string = 'Holding'
+  public selected: string = 'Holding';
+  public additionalLists: boolean = false;
 
   public activeClassStyle = ['strong', 'hold', 'weak'];
   public ratingMap = ['WEAK', 'NEUTRAL', 'STRONG'];
@@ -199,6 +201,12 @@ export class IdeasComponent implements OnInit {
     } else {
       return imageUrl + 'arc_None.svg';
     }
+  }
+
+  public toggleAdditionalLists() {
+    this.additionalLists = !this.additionalLists;
+    console.log('this.additionalLists', this.additionalLists);
+    this.sharedService.setAdditionalListsMenu(this.additionalLists);
   }
 
 }

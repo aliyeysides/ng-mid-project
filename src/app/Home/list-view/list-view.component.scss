@@ -15,13 +15,13 @@
 }
 
 .body__bottom--listview.selected {
-	display: none;
+	//display: none;
 }
 
 .body__bottom--addlist {
 	position: absolute;
 	width: 100%;
-	display: none;
+	//display: none;
 }
 
 .body__bottom--addlist.selected {
@@ -121,7 +121,7 @@
 		.list__title {
 			color: $font-color !important;
 
-			
+
 			span {
 				display: block !important;
 				margin-left: 20px;
@@ -137,7 +137,7 @@
 .list-view__actionbar {
 	border: 2px solid #FFFFFF;
 	height: 55px;
-	
+
 	.list__header {
 		border-right:2px solid #ffffff;
 
@@ -173,11 +173,11 @@
 			white-space: nowrap;
 			font-weight: 300;
 			margin-left: 20px;
-			
+
 			span {
 				display: none;
 			}
-			
+
 			span.list__title--holding.selected {
 				display: block;
 			}
@@ -281,7 +281,7 @@
 				display: block;
 			}
 		}
-	
+
 		.view-toggle {
 			float: right;
 			width: 60px;
@@ -290,7 +290,7 @@
 			color: #ffffff;
 			position: relative;
 			border-left:2px solid #ffffff;
-			
+
 			i {
 				color: #ffffff;
 				margin-top: -2px;
@@ -325,17 +325,17 @@
 		line-height: 28px;
 		font-weight: 300;
 		border-bottom: $border-line--LT;
-	
+
 		p {
 			color: $font-color--MD;
 			text-align: center;
 		}
-		
+
 		p.active {
 			font-weight: 600;
 		}
 	}
-	
+
 	.current-list {
 		height: 100vh;
 		overflow-y: scroll;
@@ -491,7 +491,7 @@
 
 			.stock-panel__PGR {
 				float: left;
-				
+
 				img {
 					width: 70px;
 					height: auto;
@@ -501,7 +501,7 @@
 
 			.stock-panel__ticker {
 				float: left;
-			
+
 				p {
 					font-size: 40px;
 					line-height: 1;
@@ -514,27 +514,27 @@
 				width: 35px;
 				margin-top: 5px;
 				cursor: pointer;
-			
+
 				img {
 					float: left;
 					width: 30px;
 				}
 			}
-			
+
 			.stock-panel__company-name {
 				margin: 10px 0 15px;
-				
+
 				.button__add-to-list {
 					float: left;
 					margin-right: 0px;
-				
+
 					a {
 						opacity: 0.5;
 						font-size: 24px;
 						color: $font-color--MD;
 						margin-right: 20px;
 						cursor: pointer;
-					
+
 						&:hover {
 							opacity: 1;
 							color: $link-blue;
@@ -552,12 +552,12 @@
 					float: left;
 				}
 			}
-		
+
 			.stock-panel__price {
 				padding-bottom: 10px;
 				border-bottom: $border-line--LT2;
 				margin-bottom: 6px;
-			
+
 				p {
 					font-weight: 600;
 					font-size: 20px;
@@ -567,13 +567,13 @@
 					font-weight: 700;
 				}
 			}
-			
+
 			.stock-panel__industry {
 				border-bottom: $border-line--LT2;
 				margin-top: 10px;
 				margin-bottom: 10px;
 				padding-left: 15px;
-				
+
 				p {
 					font-weight: 400;
 					font-size: 13px;
@@ -585,7 +585,7 @@
 					overflow: hidden;
 					width: 350px;
 					height: 30px;
-					
+
 					span {
 						font-size: 18px;
 						color: $font-color;
@@ -593,7 +593,7 @@
 						margin-left: 15px;
 						font-weight: 600;
 					}
-					
+
 					span.industry-strength {
 						font-weight: 700;
 						text-transform: uppercase;
@@ -604,14 +604,14 @@
 			.stock-panel__details {
 				padding-bottom: 10px;
 				margin-bottom: 5px;
-				
+
 				p {
 					font-weight: 400;
 					font-size: 13px;
 					color: $font-color--MD;
 					text-transform: uppercase;
 					margin: 2px 0;
-					
+
 					span {
 						font-size: 18px;
 						color: $font-color;
@@ -621,10 +621,10 @@
 					}
 				}
 			}
-			
+
 			.quick-view__pgr {
 				border-left: $border-line--LT2;
-				
+
 				.pgr__title {
 					font-weight: 400;
 					font-size: 13px;
@@ -633,19 +633,19 @@
 					line-height: 1;
 					margin-bottom: 5px;
 				}
-				
+
 				.pgr__text {
 					font-weight: 800;
 					font-size: 28px;
 					text-transform: uppercase;
 				}
-		
+
 				.pgr__sliders {
 					margin-top: 10px;
-				
+
 					li {
 						margin: 5px 0 3px;
-						
+
 						.sliderBar-container {
 
 							.pgr__label {
@@ -672,7 +672,7 @@
 			bottom: 485px;
 			width: 95%;
 			position: absolute;
-		
+
 			.discover-label {
 				font-size: 15px;
 				color: $link-blue;
@@ -684,7 +684,7 @@
 				float: left;
 				padding-right: 8px;
 			}
-			
+
 			.similar-stock {
 				font-size: 18px;
 				font-weight: 700;
@@ -692,7 +692,7 @@
 				margin-top: 10px;
 			}
 		}
-		
+
 		.quick-view__news {
 			width: 95%;
 			position: absolute;
@@ -703,11 +703,11 @@
 			background-color: #ffffff;
 			border-top: $border-line--LT2;
 			z-index: 1;
-			
+
 			span {
 				font-weight: 700;
 			}
-			
+
 			.headlines-expand {
 				font-size: 14px;
 				color: $font-color;
@@ -715,7 +715,7 @@
 				text-transform: uppercase;
 				cursor: pointer;
 				text-align: right;
-				
+
 				i {
 					font-size: 24px;
 					color: $link-blue;

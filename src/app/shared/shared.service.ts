@@ -3,11 +3,15 @@ import {Http, URLSearchParams} from '@angular/http';
 import {Subject} from "rxjs/Subject";
 import {Observable} from 'rxjs/Rx';
 import { environment } from '../../environments/environment';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 @Injectable()
 export class SharedService {
 
   private symbolListValues: Subject<Array<object>> = new Subject<Array<object>>();
   symbolListValues$ = this.symbolListValues.asObservable();
+
+  private additionalLists: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  additionalLists$ = this.additionalLists.asObservable();
 
   private symbolLookupParams: URLSearchParams;
   private addStockIntoListParams: URLSearchParams;
@@ -84,5 +88,10 @@ export class SharedService {
       err.status ? `${err.status} - ${err.statusText}` : 'Server error';
       return Observable.throw(errMsg);
   }
+
+  public setAdditionalListsMenu(value: boolean) {
+    this.additionalLists.next(value);
+  }
+
 
 }

@@ -13,6 +13,7 @@ declare var $: any;
 export class ListViewComponent implements OnInit {
 
   public ideaList: Array<object>;
+  public additionalLists: boolean = false;
 
   constructor(private sharedService: SharedService,
               private router: Router) {
@@ -23,7 +24,11 @@ export class ListViewComponent implements OnInit {
       .switchMap(val => this.sharedService.symbolList({listId: val['list_id']}))
       .subscribe(res => {
         this.ideaList = res['symbols'];
-      })
+      });
+
+    this.sharedService.additionalLists$.subscribe(val => {
+      this.additionalLists = val;
+    });
   }
 
   toggleOptions(e: Event) {

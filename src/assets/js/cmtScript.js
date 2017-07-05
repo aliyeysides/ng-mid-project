@@ -158,20 +158,6 @@ $(document).ready(function () {
   });
 
 
-
-
-
-  $("li.list__option--add").click(function () {
-    $(".body__bottom--addlist").toggleClass("selected");
-    $(".body__bottom--listview").toggleClass("selected");
-    $(".list-description span").removeClass("selected");
-    $(".list-description--addlist").addClass("selected");
-  });
-
-
-
-
-
 // List Descriptions
 
 
@@ -333,32 +319,6 @@ $(document).ready(function () {
   $(".list-sort__button").click(function (e) {
     $(".top-sort-menu.dropdown-menu").toggle("blind", 250);
   });
-
-
-// List View Stock Options Pop Over
-
-  // $(".stock__options-button").click(function (e) {
-  //   var targetOpen = $(this.offsetParent).hasClass("slideOpen");
-  //
-  //   // if any slide is open and the target is open, then close them all and return;
-  //   if ($(".slideOpen") && targetOpen) {
-  //     $(".slideOpen").toggle("slide", {direction: "right"}, 250);
-  //     $(".slideOpen").removeClass("slideOpen");
-  //     return;
-  //   }
-  //   // if any slide is open and the target is not open, then close them all
-  //   if ($(".slideOpen") && !targetOpen) {
-  //     $(".slideOpen").toggle("slide", {direction: "right"}, 250);
-  //     $(".slideOpen").removeClass("slideOpen");
-  //   }
-  //
-  //   // toggle slide
-  //   $(".list__entry.hover .stock-options__popup").toggle("slide", {direction: "right"}, 250);
-  //   $(".list__entry.hover .stock-options__popup").toggleClass("slideOpen");
-  //
-  //   e.stopPropagation();
-  //
-  // });
 
 
 // Side Bar

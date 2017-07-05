@@ -5,7 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedService } from '../shared.service';
 import { SidePanelComponent } from './side-panel.component';
-
+import { SidePanelProvider } from 'app/providers/side-panel.provider'
 @NgModule({
 	imports: [
 		CommonModule,
@@ -21,7 +21,7 @@ import { SidePanelComponent } from './side-panel.component';
 		SidePanelComponent
 	],
 	bootstrap: [SidePanelComponent],
-	providers: [SharedService]
+	providers: [SharedService,SidePanelProvider]
 })
 export class SidePanelModule {
 }

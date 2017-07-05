@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+import { SharedService } from '../../shared/shared.service';
 
 @Component({
   selector: 'app-list-view',
@@ -8,8 +10,15 @@ import { Component, OnInit } from '@angular/core';
 export class ListViewComponent implements OnInit {
 
   public list: Array<object>;
-
-  constructor() { }
+  selectedActiveList: Array<object>;
+  subscription: Subscription;
+  constructor(private sharedService: SharedService) { 
+    this.subscription = this.sharedService.getUpdateActiveIdeaList()
+                          .subscribe(res => { 
+                              this.selectedActiveList = res;
+                              console.log(res);
+                          });
+  }
 
   ngOnInit() {
     this.list = [
@@ -19,6 +28,9 @@ export class ListViewComponent implements OnInit {
       {rating: 'very bearish', ticker: 'RRC', name: 'Robin Jobin Oil', price: '$9.50', change: '5%'},
       {rating: 'neutral', ticker: 'ULTA', name: 'Ulta', price: '$312.50', change: '5%'}
     ]
+  }
+  onNotify(message: string): void {
+    alert(message);
   }
 
 }

@@ -1644,12 +1644,8 @@ body {
 
 
 
-.list__entry.hover .stock__options-button {
+.list__entry:hover .stock__options-button {
 	display: block;
-}
-
-.list__entry.selected .stock__options-button {
-	display: none;
 }
 
 .stock__options-button {

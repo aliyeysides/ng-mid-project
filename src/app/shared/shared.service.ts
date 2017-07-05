@@ -6,20 +6,23 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class SharedService {
 
+  private symbolListValues: Subject<Array<object>> = new Subject<Array<object>>();
+  symbolListValues$ = this.symbolListValues.asObservable();
+
   private symbolLookupParams: URLSearchParams;
+  private addStockIntoListParams: URLSearchParams;
+  private deleteSymbolFromListParams: URLSearchParams;
   environmentName = environment.envName;
   apiHostName = environment.envProtocol + '://' + environment.envHostName;
-  private subject = new Subject<Array<object>>();
+
   constructor(private http: Http) {
     this.symbolLookupParams = new URLSearchParams;
-  }
-  
-  updateActiveIdeaList(list: Array<object>) {
-    this.subject.next(list);
+    this.addStockIntoListParams = new URLSearchParams;
+    this.deleteSymbolFromListParams = new URLSearchParams;
   }
 
-  getUpdateActiveIdeaList(): Observable<any> {
-    return this.subject.asObservable();
+  setSymbolListValues(data) {
+    this.symbolListValues.next(data);
   }
 
   public symbolLookup(query: string): Observable<Array<object>> {
@@ -41,6 +44,20 @@ export class SharedService {
     this.symbolLookupParams.set('listId', query.listId);
     this.symbolLookupParams.set('uid', query.userId);
     return this.getJson(symbolLookupUrl, this.symbolLookupParams);
+  }
+
+  public addStockIntoList(symbol: string, listId: string) {
+    const addStockToListUrl = '/CPTRestSecure/app/portfolio/addStockIntoList?';
+    this.addStockIntoListParams.set('symbol', symbol);
+    this.addStockIntoListParams.set('listId', listId);
+    return this.getJson(addStockToListUrl, this.addStockIntoListParams);
+  }
+
+  public deleteSymbolFromList(symbol: string, listId: string) {
+    const deleteSymbolFromListUrl = '/CPTRestSecure/app/portfolio/deleteSymbolFromList?';
+    this.deleteSymbolFromListParams.set('symbol', symbol);
+    this.deleteSymbolFromListParams.set('listId', listId);
+    return this.getJson(deleteSymbolFromListUrl, this.deleteSymbolFromListParams);
   }
 
   public getJson(url,params): Observable<Array<object>>{

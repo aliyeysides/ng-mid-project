@@ -1,6 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {SharedService} from '../../shared/shared.service';
+import {Router} from '@angular/router';
+import {Idea} from '../../shared/models/idea';
 import { Subscription } from 'rxjs/Subscription';
-import { SharedService } from '../../shared/shared.service';
+
+declare var $: any;
 
 @Component({
   selector: 'app-list-view',
@@ -9,28 +13,60 @@ import { SharedService } from '../../shared/shared.service';
 })
 export class ListViewComponent implements OnInit {
 
-  public list: Array<object>;
-  selectedActiveList: Array<object>;
-  subscription: Subscription;
-  constructor(private sharedService: SharedService) { 
-    this.subscription = this.sharedService.getUpdateActiveIdeaList()
-                          .subscribe(res => { 
-                              this.selectedActiveList = res;
-                              console.log(res);
-                          });
+  public ideaList: Array<object>;
+
+  constructor(private sharedService: SharedService,
+              private router: Router) {
   }
 
   ngOnInit() {
-    this.list = [
-      {rating: 'bullish', ticker: 'CSMA', name: 'Comcast', price: '$42.50', change: '5%'},
-      {rating: 'very bullish', ticker: 'AMGN', name: 'Amgen', price: '$112.50', change: '5%'},
-      {rating: 'bearish', ticker: 'AMD', name: 'Advanced Micro Something', price: '$12.50', change: '5%'},
-      {rating: 'very bearish', ticker: 'RRC', name: 'Robin Jobin Oil', price: '$9.50', change: '5%'},
-      {rating: 'neutral', ticker: 'ULTA', name: 'Ulta', price: '$312.50', change: '5%'}
-    ]
+    this.sharedService.symbolListValues$.subscribe(
+      res => {
+        console.log('res in list view', res);
+        this.ideaList = res;
+      },
+      err => {
+        console.error('error: ', err);
+      }
+    )
+  }
+
+  toggleOptions(e: Event) {
+
+      const targetOpen = $(".list__entry.hover .stock-options__popup").hasClass("slideOpen");
+      // if any slide is open and the target is open, then close them all and return;
+      if ($(".slideOpen") && targetOpen) {
+        $(".slideOpen").toggle("slide", {direction: "right"}, 250);
+        $(".slideOpen").removeClass("slideOpen");
+        return;
+      }
+      // if any slide is open and the target is not open, then close them all
+      if ($(".slideOpen") && !targetOpen) {
+        $(".slideOpen").toggle("slide", {direction: "right"}, 250);
+        $(".slideOpen").removeClass("slideOpen");
+      }
+
+      // toggle slide
+      $(".list__entry.hover .stock-options__popup").toggle("slide", {direction: "right"}, 250);
+      $(".list__entry.hover .stock-options__popup").toggleClass("slideOpen");
+
+      e.stopPropagation();
+
   }
   onNotify(message: string): void {
     alert(message);
+  }
+
+  goToStockView(stock: Idea) {
+    this.router.navigate(['/report', stock.symbol]);
+  }
+
+  addToList(stock: any, listId: string) {
+    this.sharedService.addStockIntoList(stock.symbol, listId);
+  }
+
+  removeFromList(stock: any, listId: string) {
+    this.sharedService.deleteSymbolFromList(stock.symbol, listId);
   }
 
 }

@@ -88,6 +88,30 @@
 	}
 }
 
+.list-view__actionbar--companylist {
+	background-image: linear-gradient(225deg, #FFE500 0%, #00C40E 100%);
+
+	.list__header {
+		.view-toggle.active {
+			i {
+				color: #00C40E;
+			}
+		}
+	}
+}
+
+.list-view__actionbar--championlist {
+	background-image: linear-gradient(50deg, #EC2E2E 0%, #2517DC 100%);
+
+	.list__header {
+		.view-toggle.active {
+			i {
+				color: #992476;
+			}
+		}
+	}
+}
+
 .list-view__actionbar--addlist {
 	background-image: linear-gradient(146deg, #EEEEEE 0%, #8F8F8F 100%);
 
@@ -97,7 +121,7 @@
 		.list__title {
 			color: $font-color !important;
 
-			
+
 			span {
 				display: block !important;
 				margin-left: 20px;
@@ -182,10 +206,78 @@
 				display: block;
 			}
 
-			span.list__title--largecaps.selected {
+			span.list__title--largecap.selected {
 				display: block;
 			}
-			span.list__title--smallcaps.selected {
+
+			span.list__title--smallcap.selected {
+				display: block;
+			}
+
+			span.list__title--buyingstrength.selected {
+				display: block;
+			}
+
+			span.list__title--relativestrength.selected {
+				display: block;
+			}
+
+			span.list__title--earningschamps.selected {
+				display: block;
+			}
+
+			span.list__title--earningsbears.selected {
+				display: block;
+			}
+
+			span.list__title--earningsbulls.selected {
+				display: block;
+			}
+
+			span.list__title--dontfighttheshorts.selected {
+				display: block;
+			}
+
+			span.list__title--analystdarlings.selected {
+				display: block;
+			}
+
+			span.list__title--moneymakers.selected {
+				display: block;
+			}
+			span.list__title--insiderconfidence.selected {
+				display: block;
+			}
+
+			span.list__title--underten.selected {
+				display: block;
+			}
+
+			span.list__title--bestgrowth.selected {
+				display: block;
+			}
+
+			span.list__title--bestvalue.selected {
+				display: block;
+			}
+
+			span.list__title--dogsofthedow.selected {
+				display: block;
+			}
+
+			span.list__title--bestofthedow.selected {
+				display: block;
+			}
+
+			span.list__title--bestofthenasdaq.selected {
+				display: block;
+			}
+
+			span.list__title--PGRupgrade.selected {
+				display: block;
+			}
+
+			span.list__title--PGRdowngrade.selected {
 				display: block;
 			}
 		}
@@ -477,8 +569,8 @@
 			}
 
 			.stock-panel__industry {
-				padding-bottom: 6px;
 				border-bottom: $border-line--LT2;
+				margin-top: 10px;
 				margin-bottom: 10px;
 				padding-left: 15px;
 
@@ -487,9 +579,12 @@
 					font-size: 13px;
 					color: $font-color--MD;
 					text-transform: uppercase;
-					margin: 5px 0;
+					margin: 0px 15px 0px 0;
+					text-overflow: ellipsis;
 					white-space: nowrap;
-						text-overflow: ellipsis;
+					overflow: hidden;
+					width: 350px;
+					height: 30px;
 
 					span {
 						font-size: 18px;

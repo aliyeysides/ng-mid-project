@@ -12,6 +12,7 @@ export class SharedService {
   private symbolLookupParams: URLSearchParams;
   private addStockIntoListParams: URLSearchParams;
   private deleteSymbolFromListParams: URLSearchParams;
+
   environmentName = environment.envName;
   apiHostName = environment.envProtocol + '://' + environment.envHostName;
 
@@ -23,6 +24,14 @@ export class SharedService {
 
   setSymbolListValues(data) {
     this.symbolListValues.next(data);
+  }
+
+  updateActiveIdeaList(list: Array<object>) {
+    this.symbolListValues.next(list);
+  }
+
+  getUpdateActiveIdeaList(): Observable<any> {
+    return this.symbolListValues.asObservable();
   }
 
   public symbolLookup(query: string): Observable<Array<object>> {

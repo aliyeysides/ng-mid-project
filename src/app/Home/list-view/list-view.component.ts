@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {SharedService} from '../../shared/shared.service';
 import {Router} from '@angular/router';
 import {Idea} from '../../shared/models/idea';
-import { Subscription } from 'rxjs/Subscription';
 
 declare var $: any;
 
@@ -20,15 +19,11 @@ export class ListViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.sharedService.symbolListValues$.subscribe(
-      res => {
-        console.log('res in list view', res);
-        this.ideaList = res;
-      },
-      err => {
-        console.error('error: ', err);
-      }
-    )
+    this.sharedService.symbolListValues$
+      .switchMap(val => this.sharedService.symbolList({listId: val['list_id']}))
+      .subscribe(res => {
+        this.ideaList = res['symbols'];
+      })
   }
 
   toggleOptions(e: Event) {

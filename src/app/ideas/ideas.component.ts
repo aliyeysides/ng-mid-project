@@ -1,13 +1,8 @@
-import { Component, OnInit, ViewEncapsulation, Input , Output, EventEmitter } from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {SharedService} from '../shared/shared.service';
 import {SignalService} from '../shared/signal.service';
-import { IdeaListProvider } from 'app/providers/idea-list.provider'
-
-
-
+import {IdeaListProvider} from 'app/providers/idea-list.provider'
 import {Idea} from '../shared/models/idea';
-import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'mid-tier-ideas',
@@ -18,90 +13,98 @@ import {forEach} from '@angular/router/src/utils/collection';
 })
 export class IdeasComponent implements OnInit {
   private userId = '1024494';
-  public ideasList : Array<object>;
+  public ideasList: Array<object>;
   public activeIdeasList: Array<object>;
   public userList: Array<object> = [];
   public symbolList: Array<object>;
   public activeUserList = {name: ''};
   public selectedActiveList: Array<object>;
-  public selected : string = 'Holding'
+  public selected: string = 'Holding'
 
   public activeClassStyle = ['strong', 'hold', 'weak'];
   public ratingMap = ['WEAK', 'NEUTRAL', 'STRONG'];
   public mappingClassArray: any = {
-    "Holding": { "style": "list__option--userlist list__option--holding", "imgName": "img_list-holding.svg" },
-    "Watching": { "style": "list__option--userlist list__option--watching", "imgName": "img_list-watching.svg" },
-    "Ideas for You": { "style": "list__option--idealist list__option--idealist", "imgName": "img_list-ideasforyou.svg" },
-    "Bulls of the Week": { "style": "list__option--IPlist list__option--classicbulls", "imgName": "img_list-classicbulls.svg" },
-    "Best Growth Stocks": { "style": "list__option--userlist list__option--holding", "imgName": "img_list-holding.svg" },
-    "Best of the Large Caps": { "style": "list__option--userlist list__option--largecap", "imgName": "img_list-largecap.svg" },
-    "Best of the NASDAQ": { "style": "list__option--userlist list__option--holding", "imgName": "img_list-holding.svg" },
-    "Best of the Small Caps": { "style": "list__option--companylist list__option--holding", "imgName": "img_list-holding.svg" },
-    "Best Under $10": { "style": "list__option--userlist list__option--holding", "imgName": "img_list-holding.svg" },
-    "Best Value Stocks": { "style": "list__option--userlist list__option--holding", "imgName": "img_list-holding.svg" },
-    "Buy the Dips": { "style": "list__option--chartlist list__option--selldips", "imgName": "img_list-selldips.svg" },
-    "Insider Confidence": { "style": "list__option--userlist list__option--holding", "imgName": "img_list-holding.svg" },
-    "Money Makers": { "style": "list__option--userlist list__option--holding", "imgName": "img_list-holding.svg" },
-    "Relative Strength Champs": { "style": "list__option--userlist list__option--holding", "imgName": "img_list-holding.svg" },
-    "Money Flow Champs": { "style": "list__option--userlist list__option--holding", "imgName": "img_list-holding.svg" },
-    "Analyst Darlings": { "style": "list__option--userlist list__option--holding", "imgName": "img_list-holding.svg" },
-    "Power Gauge Rating Upgrades": { "style": "list__option--userlist list__option--holding", "imgName": "img_list-holding.svg" },
-    "Best of the Dow": { "style": "list__option--userlist list__option--holding", "imgName": "img_list-holding.svg" },
-    "Earnings Champs": { "style": "list__option--userlist list__option--holding", "imgName": "img_list-holding.svg" },
-    "sell the Rallies": { "style": "list__option--chartlist list__option--buyrallies list__option--holding", "imgName": "img_list-buyrallies.svg" },
-    "Bears of the Week": { "style": "list__option--IPlist list__option--classicbears list__option--holding", "imgName": "img_list-classicbears.svg" },
-    "Power Gauge Rating Downgrades": { "style": "list__option--userlist list__option--holding", "imgName": "img_list-holding.svg" },
-    "Don't Fight the Shorts": { "style": "list__option--userlist list__option--holding", "imgName": "img_list-holding.svg" },
-    "Dogs of the Dow": { "style": "list__option--userlist list__option--holding", "imgName": "img_list-holding.svg" },
-    "Upcoming Earnings Bears": { "style": "list__option--userlist list__option--holding", "imgName": "img_list-holding.svg" },
-    "Upcoming Earnings Bulls": { "style": "list__option--userlist list__option--holding", "imgName": "img_list-holding.svg" }
+    'Holding': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
+    'Watching': {'style': 'list__option--userlist list__option--watching', 'imgName': 'img_list-watching.svg'},
+    'Ideas for You': {'style': 'list__option--idealist list__option--idealist', 'imgName': 'img_list-ideasforyou.svg'},
+    'Bulls of the Week': {'style': 'list__option--IPlist list__option--classicbulls', 'imgName': 'img_list-classicbulls.svg'},
+    'Best Growth Stocks': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
+    'Best of the Large Caps': {'style': 'list__option--userlist list__option--largecap', 'imgName': 'img_list-largecap.svg'},
+    'Best of the NASDAQ': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
+    'Best of the Small Caps': {'style': 'list__option--companylist list__option--holding', 'imgName': 'img_list-holding.svg'},
+    'Best Under $10': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
+    'Best Value Stocks': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
+    'Buy the Dips': {'style': 'list__option--chartlist list__option--selldips', 'imgName': 'img_list-selldips.svg'},
+    'Insider Confidence': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
+    'Money Makers': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
+    'Relative Strength Champs': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
+    'Money Flow Champs': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
+    'Analyst Darlings': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
+    'Power Gauge Rating Upgrades': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
+    'Best of the Dow': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
+    'Earnings Champs': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
+    'sell the Rallies': {
+      'style': 'list__option--chartlist list__option--buyrallies list__option--holding',
+      'imgName': 'img_list-buyrallies.svg'
+    },
+    'Bears of the Week': {
+      'style': 'list__option--IPlist list__option--classicbears list__option--holding',
+      'imgName': 'img_list-classicbears.svg'
+    },
+    'Power Gauge Rating Downgrades': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
+    'Don\'t Fight the Shorts': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
+    'Dogs of the Dow': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
+    'Upcoming Earnings Bears': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
+    'Upcoming Earnings Bulls': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'}
 
-  }
+  };
+
   constructor(private sharedService: SharedService, private signalService: SignalService, private ideaListProvider: IdeaListProvider) {
   }
 
   ngOnInit() {
-
     this.getIdeasList();
     this.updateUserList();
   }
 
   public getIdeasList() {
-    this.ideaListProvider.getIdeasList({ uid: this.userId })
-    .subscribe(res => {
-      this.ideaListProvider.setIdeaListData(res)
-      this.ideasList = this.ideaListProvider.getIdeaListData();
-      this.updateActiveIdeaList(this.ideasList);
-    },
-    err => console.log('err', err));
+    this.ideaListProvider.getIdeasList({uid: this.userId})
+      .subscribe(res => {
+          this.ideaListProvider.setIdeaListData(res)
+          this.ideasList = this.ideaListProvider.getIdeaListData();
+          this.updateActiveIdeaList(this.ideasList);
+        },
+        err => console.log('err', err));
 
   }
-  public updateActiveIdeaList(list){
-    this.activeIdeasList = list.filter(function(key, val, array) {
+
+  public updateActiveIdeaList(list) {
+    this.activeIdeasList = list.filter(function (key, val, array) {
       return key.is_active;
     });
   }
 
   public appendListImg(i) {
     let imgName = `${this.activeIdeasList[i]['name']}`
-    imgName = (imgName.replace(/[ ]/g, "")).toLowerCase();
+    imgName = (imgName.replace(/[ ]/g, '')).toLowerCase();
     return `assets/imgs/img_list-${imgName}.svg`;
   }
 
-  public appendListClass(i){
+  public appendListClass(i) {
     let imgName = `${this.activeIdeasList[i]['name']}`
-    imgName = (imgName.replace(/[ ]/g, "")).toLowerCase();
+    imgName = (imgName.replace(/[ ]/g, '')).toLowerCase();
     return imgName;
   }
-  public getActiveClasses(listName){
+
+  public getActiveClasses(listName) {
     let slectedClass = (this.selected == listName) ? ' selected' : ''
     return this.mappingClassArray[listName].style + `${slectedClass}`;
   }
 
-  public selectedIdeasList(event,list) {
+  public selectedIdeasList(event, list) {
     this.selectedActiveList = list;
-  this.selected = this.selectedActiveList['name'];
-    // this.sharedService.updateActiveIdeaList(this.selectedActiveList);
+    this.selected = this.selectedActiveList['name'];
+    this.sharedService.updateActiveIdeaList(this.selectedActiveList);
   }
 
   public updateUserList() {
@@ -198,14 +201,5 @@ export class IdeasComponent implements OnInit {
     }
   }
 
-  /*public sub(res){
-   this.symbolList = res.map(function(item, index) {
-   //item['parsedSignals'] = this.signalService.parseSignal(item.signals);
-   item['parsedSignals'] = {};
-   item['parsedSignals'] = this.signalService.parseSignal(item.signals);
-   console.log(item)
-   return item;
-   });
-   }*/
 }
 

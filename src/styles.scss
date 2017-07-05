@@ -99,9 +99,6 @@ body {
 
 
 
-
-
-
 /*------------------------------------*\
   #SEARCH BOX
 \*------------------------------------*/
@@ -135,7 +132,39 @@ body {
 
 
 
+.list-view__actionbar .form-control {
+  background-color: transparent;
+  color: #FFFFFF;
+}
+ 
+.search-box {
+  height: 50px;
+  text-align: left;
+  padding: 0;
+  border:0;
+  font-size: 24px;
+  border-radius: 0;
+  outline: none;
+  color: #FFFFFF;
+}
 
+.search-submit {
+  width: 60px;
+  height: 50px;
+  margin:0 0px 0 5px;
+  position: relative;
+    font-size: 28px;
+}
+
+.fa-search {
+  font-size: 28px;
+  color: #ffffff;
+}
+
+.list-view__actionbar .form-inline .form-control {
+    width: 500px;
+    font-weight: 300;
+}
 
 
 
@@ -149,7 +178,7 @@ body {
 
 
 .list__option--userlist .list__image {
-  background-image: linear-gradient(145deg, #00CD00 0%, #00A3FF 100%);
+  background-image: linear-gradient(-145deg, #00CD00 0%, #00A3FF 100%);
 }
 
 .list__option--idealist .list__image {

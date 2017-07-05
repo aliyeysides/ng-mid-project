@@ -95,15 +95,15 @@
           <li class="row no-gutters list__entry selected">
             <div class="stock-options__popup">
               <ul class="nav nav-justified">
-                <li class="nav-item stock-option--hold">
+                <li (click)="addToList({symbol: 'GOOGL'}, '123456')" class="nav-item stock-option--hold">
                   <img src="assets/imgs/icon-plus.svg">
                   <p>Hold</p>
                 </li>
-                <li class="nav-item stock-option--watch">
+                <li (click)="removeFromList({symbol: 'GOOGL'}, '123456')" class="nav-item stock-option--watch">
                   <img src="assets/imgs/icon-watch.svg">
                   <p>Watch</p>
                 </li>
-                <li (click)="goToStockView({symbol: 'GOOGL'})" class="nav-item stock-option--view">
+                <li (click)="goToStockView({symbol: 'GOOGL'}, '123456')" class="nav-item stock-option--view">
                   <img src="assets/imgs/icon-stockview.svg">
                   <p>View</p>
                 </li>
@@ -134,15 +134,15 @@
           <li class="row no-gutters list__entry">
             <div class="stock-options__popup">
               <ul class="nav nav-justified">
-                <li class="nav-item">
+                <li (click)="addToList({symbol: 'NOC'}, '123456')" class="nav-item">
                   <img src="assets/imgs/icon-plus.svg">
                   <p>Hold</p>
                 </li>
-                <li class="nav-item">
+                <li (click)="removeFromList({symbol: 'NOC'}, '123456')" class="nav-item">
                   <img src="assets/imgs/icon-watch.svg">
                   <p>Watch</p>
                 </li>
-                <li (click)="goToStockView({symbol: 'NOC'})" class="nav-item">
+                <li (click)="goToStockView({symbol: 'NOC'}, '123456')" class="nav-item">
                   <img src="assets/imgs/icon-stockview.svg">
                   <p>View</p>
                 </li>
@@ -175,11 +175,11 @@
           <li class="row no-gutters list__entry" *ngFor="let idea of ideaList">
             <div class="stock-options__popup">
               <ul class="nav nav-justified">
-                <li class="nav-item stock-option--hold">
+                <li (click)="addToList(idea.symbol, '123456')" class="nav-item stock-option--hold">
                   <img src="assets/imgs/icon-plus.svg">
                   <p>Hold</p>
                 </li>
-                <li class="nav-item stock-option--watch">
+                <li (click)="removeFromList(idea.symbol, '123456')" class="nav-item stock-option--watch">
                   <img src="assets/imgs/icon-watch.svg">
                   <p>Watch</p>
                 </li>

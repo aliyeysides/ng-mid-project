@@ -34,7 +34,6 @@ export class ListViewComponent implements OnInit {
   toggleOptions(e: Event) {
 
       const targetOpen = $(".list__entry.hover .stock-options__popup").hasClass("slideOpen");
-      console.log($(".list__entry.hover .stock-options__popup"));
       // if any slide is open and the target is open, then close them all and return;
       if ($(".slideOpen") && targetOpen) {
         $(".slideOpen").toggle("slide", {direction: "right"}, 250);
@@ -62,6 +61,12 @@ export class ListViewComponent implements OnInit {
     this.router.navigate(['/report', stock.symbol]);
   }
 
+  addToList(stock: any, listId: string) {
+    this.sharedService.addStockIntoList(stock.symbol, listId);
+  }
 
+  removeFromList(stock: any, listId: string) {
+    this.sharedService.deleteSymbolFromList(stock.symbol, listId);
+  }
 
 }

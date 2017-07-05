@@ -1,16 +1,16 @@
-
 <!-- SECTION: HOME BODY BOTTOM  -->
 <div class="body__bottom">
 
-<!-- SECTION: VIEW LIST  -->
+  <!-- SECTION: VIEW LIST  -->
   <div class="body__bottom--listview">
 
-  <!-- ROW: ACTION BAR  -->
+    <!-- ROW: ACTION BAR  -->
     <div class="list-view__actionbar list-view__actionbar--userlist row no-gutters">
       <div class="list__header col-md-6">
         <ul>
           <li class="list-sort__button dropdown">
-            <a class="sort-toggle dropdown-toggle" data-toggle="dropdown"><i class="fa fa-sort-amount-desc align-absolute" aria-hidden="true"></i></a>
+            <a class="sort-toggle dropdown-toggle" data-toggle="dropdown"><i
+              class="fa fa-sort-amount-desc align-absolute" aria-hidden="true"></i></a>
             <ul class="top-sort-menu dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
               <li class="dropdown-submenu">
                 <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="#">Company
@@ -36,7 +36,8 @@
                 </ul>
               </li>
               <li class="dropdown-submenu">
-                <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="#">Market Cap</a>
+                <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="#">Market
+                  Cap</a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
                   <li><a class="dropdown-subtoggle" tabindex="-1" href="#">High to Low</a></li>
                   <li><a class="dropdown-subtoggle" tabindex="-1" href="#">Low to High</a></li>
@@ -81,16 +82,17 @@
           <span class="list__title--PGRdowngrade">Power Gauge Downgrades</span>
         </p>
         <a class="view-toggle view-toggle--panel-view"><i class="fa fa-th-large align-absolute" aria-hidden="true"></i></a>
-        <a class="view-toggle view-toggle--list-view active"><i class="fa fa-list align-absolute" aria-hidden="true"></i></a>
+        <a class="view-toggle view-toggle--list-view active"><i class="fa fa-list align-absolute"
+                                                                aria-hidden="true"></i></a>
       </div>
 
       <div class="col-md-6 search__container">
         <symbol-search></symbol-search>
       </div>
     </div>
-  <!-- END: ACTION BAR  -->
+    <!-- END: ACTION BAR  -->
 
-  <!-- ROW: CURRENT LIST  -->
+    <!-- ROW: CURRENT LIST  -->
     <div class="row no-gutters">
       <div class="current-list__container col-md-6">
         <div class="sort-header row no-gutters">
@@ -110,135 +112,135 @@
             <p>% Chg</p>
           </div>
         </div>
-      <!-- LIST: HOLDING  -->
-      <div class="current-list  current-list--holding ">
-        <ul *ngIf="!ideaList?.length" class="list__container">
-          <span>There are currently no stocks in this list.</span>
-          <li class="row no-gutters list__entry selected">
-            <div class="stock-options__popup">
-              <ul class="nav nav-justified">
-                <li (click)="addToList({symbol: 'GOOGL'}, '123456')" class="nav-item stock-option--hold">
-                  <img src="assets/imgs/icon-plus.svg">
-                  <p>Hold</p>
-                </li>
-                <li (click)="removeFromList({symbol: 'GOOGL'}, '123456')" class="nav-item stock-option--watch">
-                  <img src="assets/imgs/icon-watch.svg">
-                  <p>Watch</p>
-                </li>
-                <li (click)="goToStockView({symbol: 'GOOGL'}, '123456')" class="nav-item stock-option--view">
-                  <img src="assets/imgs/icon-stockview.svg">
-                  <p>View</p>
-                </li>
-              </ul>
+        <!-- LIST: HOLDING  -->
+        <div class="current-list  current-list--holding ">
+          <ul *ngIf="!ideaList?.length" class="list__container">
+            <span>There are currently no stocks in this list.</span>
+            <li class="row no-gutters list__entry selected">
+              <div class="stock-options__popup">
+                <ul class="nav nav-justified">
+                  <li (click)="addToList({symbol: 'GOOGL'}, '123456')" class="nav-item stock-option--hold">
+                    <img src="assets/imgs/icon-plus.svg">
+                    <p>Hold</p>
+                  </li>
+                  <li (click)="removeFromList({symbol: 'GOOGL'}, '123456')" class="nav-item stock-option--watch">
+                    <img src="assets/imgs/icon-watch.svg">
+                    <p>Watch</p>
+                  </li>
+                  <li (click)="goToStockView({symbol: 'GOOGL'}, '123456')" class="nav-item stock-option--view">
+                    <img src="assets/imgs/icon-stockview.svg">
+                    <p>View</p>
+                  </li>
+                </ul>
+                <div (click)="toggleOptions($event)" class="stock__options-button">
+                  <img src="assets/imgs/icon_threedots.svg">
+                </div>
+              </div>
+              <div class="col-lg-2 col-xl-2 stock__PGR">
+                <img class="align-absolute" src="assets/imgs/arc_VeryBullish.svg">
+              </div>
+              <div class="col-lg-3 col-xl-2 stock__ticker">
+                <p class="">GOOGL</p>
+              </div>
+              <div class="col-lg-3 col-xl-4 stock__company-name">
+                <p class="">Alphabet, Inc.</p>
+              </div>
+              <div class="col-lg-2 col-xl-2 stock__price">
+                <p class="data up-change">$34.24</p>
+              </div>
+              <div class="col-lg-2 col-xl-2 stock__price">
+                <p class="data up-change">+1.03%</p>
+              </div>
               <div (click)="toggleOptions($event)" class="stock__options-button">
                 <img src="assets/imgs/icon_threedots.svg">
               </div>
-            </div>
-            <div class="col-lg-2 col-xl-2 stock__PGR">
-              <img class="align-absolute" src="assets/imgs/arc_VeryBullish.svg">
-            </div>
-            <div class="col-lg-3 col-xl-2 stock__ticker">
-              <p class="">GOOGL</p>
-            </div>
-            <div class="col-lg-3 col-xl-4 stock__company-name">
-              <p class="">Alphabet, Inc.</p>
-            </div>
-            <div class="col-lg-2 col-xl-2 stock__price">
-              <p class="data up-change">$34.24</p>
-            </div>
-            <div class="col-lg-2 col-xl-2 stock__price">
-              <p class="data up-change">+1.03%</p>
-            </div>
-            <div (click)="toggleOptions($event)" class="stock__options-button">
-              <img src="assets/imgs/icon_threedots.svg">
-            </div>
-          </li>
-          <li class="row no-gutters list__entry">
-            <div class="stock-options__popup">
-              <ul class="nav nav-justified">
-                <li (click)="addToList({symbol: 'NOC'}, '123456')" class="nav-item">
-                  <img src="assets/imgs/icon-plus.svg">
-                  <p>Hold</p>
-                </li>
-                <li (click)="removeFromList({symbol: 'NOC'}, '123456')" class="nav-item">
-                  <img src="assets/imgs/icon-watch.svg">
-                  <p>Watch</p>
-                </li>
-                <li (click)="goToStockView({symbol: 'NOC'}, '123456')" class="nav-item">
-                  <img src="assets/imgs/icon-stockview.svg">
-                  <p>View</p>
-                </li>
-              </ul>
+            </li>
+            <li class="row no-gutters list__entry">
+              <div class="stock-options__popup">
+                <ul class="nav nav-justified">
+                  <li (click)="addToList({symbol: 'NOC'}, '123456')" class="nav-item">
+                    <img src="assets/imgs/icon-plus.svg">
+                    <p>Hold</p>
+                  </li>
+                  <li (click)="removeFromList({symbol: 'NOC'}, '123456')" class="nav-item">
+                    <img src="assets/imgs/icon-watch.svg">
+                    <p>Watch</p>
+                  </li>
+                  <li (click)="goToStockView({symbol: 'NOC'}, '123456')" class="nav-item">
+                    <img src="assets/imgs/icon-stockview.svg">
+                    <p>View</p>
+                  </li>
+                </ul>
+                <div (click)="toggleOptions($event)" class="stock__options-button">
+                  <img src="assets/imgs/icon_threedots.svg">
+                </div>
+              </div>
+              <div class="col-lg-2 col-xl-2 stock__PGR ">
+                <img class="align-absolute" src="assets/imgs/arc_VeryBullish.svg">
+              </div>
+              <div class="col-lg-3 col-xl-2 stock__ticker">
+                <p class="">NOC</p>
+              </div>
+              <div class="col-lg-3 col-xl-4 stock__company-name">
+                <p class="">Northrop Grummn</p>
+              </div>
+              <div class="col-lg-2 col-xl-2 stock__price">
+                <p class="data down-change">$59.14</p>
+              </div>
+              <div class="col-lg-2 col-xl-2 stock__price">
+                <p class="data down-change">-2.12%</p>
+              </div>
               <div (click)="toggleOptions($event)" class="stock__options-button">
                 <img src="assets/imgs/icon_threedots.svg">
               </div>
-            </div>
-            <div class="col-lg-2 col-xl-2 stock__PGR ">
-              <img class="align-absolute" src="assets/imgs/arc_VeryBullish.svg">
-            </div>
-            <div class="col-lg-3 col-xl-2 stock__ticker">
-              <p class="">NOC</p>
-            </div>
-            <div class="col-lg-3 col-xl-4 stock__company-name">
-              <p class="">Northrop Grummn</p>
-            </div>
-            <div class="col-lg-2 col-xl-2 stock__price">
-              <p class="data down-change">$59.14</p>
-            </div>
-            <div class="col-lg-2 col-xl-2 stock__price">
-              <p class="data down-change">-2.12%</p>
-            </div>
-            <div (click)="toggleOptions($event)" class="stock__options-button">
-              <img src="assets/imgs/icon_threedots.svg">
-            </div>
-          </li>
-        </ul>
-        <ul *ngIf="ideaList?.length" class="list__container">
-          <li class="row no-gutters list__entry" *ngFor="let idea of ideaList">
-            <div class="stock-options__popup">
-              <ul class="nav nav-justified">
-                <li (click)="addToList(idea.symbol, '123456')" class="nav-item stock-option--hold">
-                  <img src="assets/imgs/icon-plus.svg">
-                  <p>Hold</p>
-                </li>
-                <li (click)="removeFromList(idea.symbol, '123456')" class="nav-item stock-option--watch">
-                  <img src="assets/imgs/icon-watch.svg">
-                  <p>Watch</p>
-                </li>
-                <li (click)="goToStockView(idea)" class="nav-item stock-option--view">
-                  <img src="assets/imgs/icon-stockview.svg">
-                  <p>View</p>
-                </li>
-              </ul>
+            </li>
+          </ul>
+          <ul *ngIf="ideaList?.length" class="list__container">
+            <li class="row no-gutters list__entry" *ngFor="let idea of ideaList">
+              <div class="stock-options__popup">
+                <ul class="nav nav-justified">
+                  <li (click)="addToList(idea.symbol, '123456')" class="nav-item stock-option--hold">
+                    <img src="assets/imgs/icon-plus.svg">
+                    <p>Hold</p>
+                  </li>
+                  <li (click)="removeFromList(idea.symbol, '123456')" class="nav-item stock-option--watch">
+                    <img src="assets/imgs/icon-watch.svg">
+                    <p>Watch</p>
+                  </li>
+                  <li (click)="goToStockView(idea)" class="nav-item stock-option--view">
+                    <img src="assets/imgs/icon-stockview.svg">
+                    <p>View</p>
+                  </li>
+                </ul>
+                <div (click)="toggleOptions($event)" class="stock__options-button">
+                  <img src="assets/imgs/icon_threedots.svg">
+                </div>
+              </div>
+              <div class="col-lg-2 col-xl-2 stock__PGR">
+                <img class="align-absolute" src="assets/imgs/arc_VeryBullish.svg">
+              </div>
+              <div class="col-lg-3 col-xl-2 stock__ticker">
+                <p class="">{{ idea.symbol }}</p>
+              </div>
+              <div class="col-lg-3 col-xl-4 stock__company-name">
+                <p class="">{{ idea.name }}</p>
+              </div>
+              <div class="col-lg-2 col-xl-2 stock__price">
+                <p class="data up-change">{{ idea.Last }}</p>
+              </div>
+              <div class="col-lg-2 col-xl-2 stock__price">
+                <p class="data up-change">{{ idea.Change }}%</p>
+              </div>
               <div (click)="toggleOptions($event)" class="stock__options-button">
                 <img src="assets/imgs/icon_threedots.svg">
               </div>
-            </div>
-            <div class="col-lg-2 col-xl-2 stock__PGR">
-              <img class="align-absolute" src="assets/imgs/arc_VeryBullish.svg">
-            </div>
-            <div class="col-lg-3 col-xl-2 stock__ticker">
-              <p class="">{{ idea.symbol }}</p>
-            </div>
-            <div class="col-lg-3 col-xl-4 stock__company-name">
-              <p class="">{{ idea.name }}</p>
-            </div>
-            <div class="col-lg-2 col-xl-2 stock__price">
-              <p class="data up-change">{{ idea.Last }}</p>
-            </div>
-            <div class="col-lg-2 col-xl-2 stock__price">
-              <p class="data up-change">{{ idea.Change }}%</p>
-            </div>
-            <div (click)="toggleOptions($event)" class="stock__options-button">
-              <img src="assets/imgs/icon_threedots.svg">
-            </div>
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
 
 
-  <!-- QUICKVIEW PANEL  -->
+      <!-- QUICKVIEW PANEL  -->
       <div class="quick-view__container col-md-6">
 
         <div class="quick-view__panel">
@@ -338,7 +340,8 @@
                   <div class="sliderBar-container">
                     <div class="sliderProgress">
                       <div class="slider-veryBullish"></div>
-                      <div class="sliderBar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                      <div class="sliderBar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
+                           aria-valuemax="100"
                            style="width:100%">
                         <span class="sr-only">Very Bearish</span>
                       </div>
@@ -359,7 +362,8 @@
 
           <div class="quick-view__similar row">
             <div class="col-lg-3">
-              <img src="assets/imgs/icon-discover.svg"><p class="discover-label"> Similar:</p>
+              <img src="assets/imgs/icon-discover.svg">
+              <p class="discover-label"> Similar:</p>
             </div>
             <div class="col-lg-9">
               <div class="row">
@@ -393,248 +397,260 @@
         </div>
       </div>
     </div>
-  <!-- END: QUICKVIEW PANEL  -->
+    <!-- END: QUICKVIEW PANEL  -->
 
-  </div>
-<!-- END: VIEW LIST  -->
+    <!-- END: VIEW LIST  -->
 
-<!-- SECTION: ADD LIST BODY BOTTOM  -->
-  <div class="body__bottom--addlist">
+    <!-- SECTION: ADD LIST BODY BOTTOM  -->
+    <div class="body__bottom--addlist">
 
-    <!-- ROW: ACTION BAR  -->
-    <div class="list-view__actionbar list-view__actionbar--addlist row no-gutters">
-      <div class="list__header col-12">
-        <p class="list__title">
-          <span>Select a new idea list</span>
-        </p>
-      </div>
-    </div>
-
-    <!-- ROW: ADD LIST  -->
-    <div class="addlist__container row">
-      <div class="col-6">
-        <ul class="">
-          <li class="list__option list__option--chartlist list__option--buyingstrength row">
-            <div class="col-md-4">
-              <div class="list__image">
-                <img class="align-absolute" src="assets/imgs/img_list-buyingstrength.svg">
-              </div>
-            </div>
-            <div class="list__option--description col-md-8">
-              <p class="list__title">Buying Strength</p>
-              <p class="list__description">This list contains companies who have exceeded earnings expectations on a quartly basis.</p>
-            </div>
-          </li>
-          <li class="list__option list__option--chartlist list__option--relativestrength row">
-            <div class="col-md-4">
-              <div class="list__image">
-                <img class="align-absolute" src="assets/imgs/img_list-relativestrength.svg">
-              </div>
-            </div>
-            <div class="list__option--description col-md-8">
-              <p class="list__title">Relative Strength</p>
-              <p class="list__description">This list contains companies who have exceeded earnings expectations on a quartly basis</p>
-            </div>
-          </li>
-          <li class="list__option list__option--IPlist list__option--earningschamps row">
-            <div class="col-md-4">
-              <div class="list__image">
-                <img class="align-absolute" src="assets/imgs/img_list-earningschamps.svg">
-              </div>
-            </div>
-            <div class="list__option--description col-md-8">
-              <p class="list__title">Earnings Champs</p>
-              <p class="list__description">This list contains companies who have exceeded earnings expectations on a quartly basis</p>
-            </div>
-          </li>
-          <li class="list__option list__option--IPlist list__option--earningsbulls row">
-            <div class="col-md-4">
-              <div class="list__image">
-                <img class="align-absolute" src="assets/imgs/img_list-earningsbulls.svg">
-              </div>
-            </div>
-            <div class="col-md-8">
-              <div class="list__option--description">
-                <p class="list__title">Upcoming Earnings Bulls</p>
-                <p class="list__description">This list contains companies who have exceeded earnings expectations on a quartly basis</p>
-              </div>
-            </div>
-          </li>
-          <li class="list__option list__option--IPlist list__option--earningsbears row">
-            <div class="col-md-4">
-              <div class="list__image">
-                <img class="align-absolute" src="assets/imgs/img_list-dontfighttheshorts.svg">
-              </div>
-            </div>
-            <div class="col-md-8">
-              <div class="list__option--description">
-                <p class="list__title">Don't Fight The Shorts</p>
-                <p class="list__description">This list contains companies who have exceeded earnings expectations on a quartly basis</p>
-              </div>
-            </div>
-          </li>
-          <li class="list__option list__option--IPlist list__option--earningsbears row">
-            <div class="col-md-4">
-              <div class="list__image">
-                <img class="align-absolute" src="assets/imgs/img_list-analystdarlings.svg">
-              </div>
-            </div>
-            <div class="col-md-8">
-              <div class="list__option--description">
-                <p class="list__title">Analyst Darlings</p>
-                <p class="list__description">This list contains companies who have exceeded earnings expectations on a quartly basis</p>
-              </div>
-            </div>
-          </li>
-          <li class="list__option list__option--IPlist list__option--earningsbears row">
-            <div class="col-md-4">
-              <div class="list__image">
-                <img class="align-absolute" src="assets/imgs/img_list-moneymakers.svg">
-              </div>
-            </div>
-            <div class="col-md-8">
-              <div class="list__option--description">
-                <p class="list__title">Money Makers</p>
-                <p class="list__description">This list contains companies who have exceeded earnings expectations on a quartly basis</p>
-              </div>
-            </div>
-          </li>
-          <li class="list__option list__option--IPlist list__option--bestvalue row">
-            <div class="col-md-4">
-              <div class="list__image">
-                <img class="align-absolute" src="assets/imgs/img_list-insiderconfidence.svg">
-              </div>
-            </div>
-            <div class="col-md-8">
-              <div class="list__option--description">
-                <p class="list__title">Insider Confidence</p>
-                <p class="list__description">This list contains companies who have exceeded earnings expectations on a quartly basis</p>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="col-6">
-        <ul>
-          <li class="list__option list__option--companylist list__option--underten row">
-            <div class="col-md-4">
-              <div class="list__image">
-                <img class="align-absolute" src="assets/imgs/img_list-underten.svg">
-              </div>
-            </div>
-            <div class="list__option--description col-md-8">
-              <p class="list__title">Stocks Under $10</p>
-              <p class="list__description">This list contains companies who have exceeded earnings expectations on a quartly basis.</p>
-            </div>
-          </li>
-          <li class="list__option list__option--companylist list__option--growthstock row">
-            <div class="col-md-4">
-              <div class="list__image">
-                <img class="align-absolute" src="assets/imgs/img_list-growthstock.svg">
-              </div>
-            </div>
-            <div class="list__option--description col-md-8">
-              <p class="list__title">Best Growth Stock</p>
-              <p class="list__description">This list contains companies who have exceeded earnings expectations on a quartly basis</p>
-            </div>
-          </li>
-          <li class="list__option list__option--companylist list__option--bestvalue row">
-            <div class="col-md-4">
-              <div class="list__image">
-                <img class="align-absolute" src="assets/imgs/img_list-bestvalue.svg">
-              </div>
-            </div>
-            <div class="list__option--description col-md-8">
-              <p class="list__title">Best Value Stocks</p>
-              <p class="list__description">This list contains companies who have exceeded earnings expectations on a quartly basis</p>
-            </div>
-          </li>
-          <li class="list__option list__option--companylist list__option--smallcap row">
-            <div class="col-md-4">
-              <div class="list__image">
-                <img class="align-absolute" src="assets/imgs/img_list-smallcap.svg">
-              </div>
-            </div>
-            <div class="col-md-8">
-              <div class="list__option--description">
-                <p class="list__title">Best Of The Small Caps</p>
-                <p class="list__description">This list contains companies who have exceeded earnings expectations on a quartly basis</p>
-              </div>
-            </div>
-          </li>
-          <li class="list__option list__option--championlist list__option--dogsofthedow row">
-            <div class="col-md-4">
-              <div class="list__image">
-                <img class="align-absolute" src="assets/imgs/img_list-dogsofthedow.svg">
-              </div>
-            </div>
-            <div class="col-md-8">
-              <div class="list__option--description">
-                <p class="list__title">Dogs Of The Dow</p>
-                <p class="list__description">This list contains companies who have exceeded earnings expectations on a quartly basis</p>
-              </div>
-            </div>
-          </li>
-          <li class="list__option list__option--championlist list__option--bestofthedow row">
-            <div class="col-md-4">
-              <div class="list__image">
-                <img class="align-absolute" src="assets/imgs/img_list-bestofthedow.svg">
-              </div>
-            </div>
-            <div class="col-md-8">
-              <div class="list__option--description">
-                <p class="list__title">Best Of The Dow</p>
-                <p class="list__description">This list contains companies who have exceeded earnings expectations on a quartly basis</p>
-              </div>
-            </div>
-          </li>
-          <li class="list__option list__option--championlist list__option--bestofthenasdaq row">
-            <div class="col-md-4">
-              <div class="list__image">
-                <img class="align-absolute" src="assets/imgs/img_list-bestofthenasdaq.svg">
-              </div>
-            </div>
-            <div class="col-md-8">
-              <div class="list__option--description">
-                <p class="list__title">Best Of The Nasdaq</p>
-                <p class="list__description">This list contains companies who have exceeded earnings expectations on a quartly basis</p>
-              </div>
-            </div>
-          </li>
-          <li class="list__option list__option--championlist list__option--bestofthenasdaq row">
-            <div class="col-md-4">
-              <div class="list__image">
-                <img class="align-absolute" src="assets/imgs/img_list-bestofthenasdaq.svg">
-              </div>
-            </div>
-            <div class="col-md-8">
-              <div class="list__option--description">
-                <p class="list__title">Best Of The Nasdaq</p>
-                <p class="list__description">This list contains companies who have exceeded earnings expectations on a quartly basis</p>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <!-- END: ADD LIST  -->
-
-  </div>
-<!-- END: ADD LIST BODY BOTTOM  -->
-
-        <div class="quick-view__news row">
-          <div class="col-lg-8">
-            <p><i class="fa fa-newspaper-o" aria-hidden="true"></i> Headlines for: <span>MSFT</span></p>
-          </div>
-          <div class="col-lg-4">
-            <p class="headlines-expand">See all headlines &nbsp;<i class="fa fa-angle-up" aria-hidden="true"></i></p>
-          </div>
+      <!-- ROW: ACTION BAR  -->
+      <div class="list-view__actionbar list-view__actionbar--addlist row no-gutters">
+        <div class="list__header col-12">
+          <p class="list__title">
+            <span>Select a new idea list</span>
+          </p>
         </div>
       </div>
-    </div>
 
-    <!-- END: HOME BODY BOTTOM  -->
+      <!-- ROW: ADD LIST  -->
+      <div class="addlist__container row">
+        <div class="col-6">
+          <ul class="">
+            <li class="list__option list__option--chartlist list__option--buyingstrength row">
+              <div class="col-md-4">
+                <div class="list__image">
+                  <img class="align-absolute" src="assets/imgs/img_list-buyingstrength.svg">
+                </div>
+              </div>
+              <div class="list__option--description col-md-8">
+                <p class="list__title">Buying Strength</p>
+                <p class="list__description">This list contains companies who have exceeded earnings expectations on a
+                  quartly basis.</p>
+              </div>
+            </li>
+            <li class="list__option list__option--chartlist list__option--relativestrength row">
+              <div class="col-md-4">
+                <div class="list__image">
+                  <img class="align-absolute" src="assets/imgs/img_list-relativestrength.svg">
+                </div>
+              </div>
+              <div class="list__option--description col-md-8">
+                <p class="list__title">Relative Strength</p>
+                <p class="list__description">This list contains companies who have exceeded earnings expectations on a
+                  quartly basis</p>
+              </div>
+            </li>
+            <li class="list__option list__option--IPlist list__option--earningschamps row">
+              <div class="col-md-4">
+                <div class="list__image">
+                  <img class="align-absolute" src="assets/imgs/img_list-earningschamps.svg">
+                </div>
+              </div>
+              <div class="list__option--description col-md-8">
+                <p class="list__title">Earnings Champs</p>
+                <p class="list__description">This list contains companies who have exceeded earnings expectations on a
+                  quartly basis</p>
+              </div>
+            </li>
+            <li class="list__option list__option--IPlist list__option--earningsbulls row">
+              <div class="col-md-4">
+                <div class="list__image">
+                  <img class="align-absolute" src="assets/imgs/img_list-earningsbulls.svg">
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="list__option--description">
+                  <p class="list__title">Upcoming Earnings Bulls</p>
+                  <p class="list__description">This list contains companies who have exceeded earnings expectations on a
+                    quartly basis</p>
+                </div>
+              </div>
+            </li>
+            <li class="list__option list__option--IPlist list__option--earningsbears row">
+              <div class="col-md-4">
+                <div class="list__image">
+                  <img class="align-absolute" src="assets/imgs/img_list-dontfighttheshorts.svg">
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="list__option--description">
+                  <p class="list__title">Don't Fight The Shorts</p>
+                  <p class="list__description">This list contains companies who have exceeded earnings expectations on a
+                    quartly basis</p>
+                </div>
+              </div>
+            </li>
+            <li class="list__option list__option--IPlist list__option--earningsbears row">
+              <div class="col-md-4">
+                <div class="list__image">
+                  <img class="align-absolute" src="assets/imgs/img_list-analystdarlings.svg">
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="list__option--description">
+                  <p class="list__title">Analyst Darlings</p>
+                  <p class="list__description">This list contains companies who have exceeded earnings expectations on a
+                    quartly basis</p>
+                </div>
+              </div>
+            </li>
+            <li class="list__option list__option--IPlist list__option--earningsbears row">
+              <div class="col-md-4">
+                <div class="list__image">
+                  <img class="align-absolute" src="assets/imgs/img_list-moneymakers.svg">
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="list__option--description">
+                  <p class="list__title">Money Makers</p>
+                  <p class="list__description">This list contains companies who have exceeded earnings expectations on a
+                    quartly basis</p>
+                </div>
+              </div>
+            </li>
+            <li class="list__option list__option--IPlist list__option--bestvalue row">
+              <div class="col-md-4">
+                <div class="list__image">
+                  <img class="align-absolute" src="assets/imgs/img_list-insiderconfidence.svg">
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="list__option--description">
+                  <p class="list__title">Insider Confidence</p>
+                  <p class="list__description">This list contains companies who have exceeded earnings expectations on a
+                    quartly basis</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="col-6">
+          <ul>
+            <li class="list__option list__option--companylist list__option--underten row">
+              <div class="col-md-4">
+                <div class="list__image">
+                  <img class="align-absolute" src="assets/imgs/img_list-underten.svg">
+                </div>
+              </div>
+              <div class="list__option--description col-md-8">
+                <p class="list__title">Stocks Under $10</p>
+                <p class="list__description">This list contains companies who have exceeded earnings expectations on a
+                  quartly basis.</p>
+              </div>
+            </li>
+            <li class="list__option list__option--companylist list__option--growthstock row">
+              <div class="col-md-4">
+                <div class="list__image">
+                  <img class="align-absolute" src="assets/imgs/img_list-growthstock.svg">
+                </div>
+              </div>
+              <div class="list__option--description col-md-8">
+                <p class="list__title">Best Growth Stock</p>
+                <p class="list__description">This list contains companies who have exceeded earnings expectations on a
+                  quartly basis</p>
+              </div>
+            </li>
+            <li class="list__option list__option--companylist list__option--bestvalue row">
+              <div class="col-md-4">
+                <div class="list__image">
+                  <img class="align-absolute" src="assets/imgs/img_list-bestvalue.svg">
+                </div>
+              </div>
+              <div class="list__option--description col-md-8">
+                <p class="list__title">Best Value Stocks</p>
+                <p class="list__description">This list contains companies who have exceeded earnings expectations on a
+                  quartly basis</p>
+              </div>
+            </li>
+            <li class="list__option list__option--companylist list__option--smallcap row">
+              <div class="col-md-4">
+                <div class="list__image">
+                  <img class="align-absolute" src="assets/imgs/img_list-smallcap.svg">
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="list__option--description">
+                  <p class="list__title">Best Of The Small Caps</p>
+                  <p class="list__description">This list contains companies who have exceeded earnings expectations on a
+                    quartly basis</p>
+                </div>
+              </div>
+            </li>
+            <li class="list__option list__option--championlist list__option--dogsofthedow row">
+              <div class="col-md-4">
+                <div class="list__image">
+                  <img class="align-absolute" src="assets/imgs/img_list-dogsofthedow.svg">
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="list__option--description">
+                  <p class="list__title">Dogs Of The Dow</p>
+                  <p class="list__description">This list contains companies who have exceeded earnings expectations on a
+                    quartly basis</p>
+                </div>
+              </div>
+            </li>
+            <li class="list__option list__option--championlist list__option--bestofthedow row">
+              <div class="col-md-4">
+                <div class="list__image">
+                  <img class="align-absolute" src="assets/imgs/img_list-bestofthedow.svg">
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="list__option--description">
+                  <p class="list__title">Best Of The Dow</p>
+                  <p class="list__description">This list contains companies who have exceeded earnings expectations on a
+                    quartly basis</p>
+                </div>
+              </div>
+            </li>
+            <li class="list__option list__option--championlist list__option--bestofthenasdaq row">
+              <div class="col-md-4">
+                <div class="list__image">
+                  <img class="align-absolute" src="assets/imgs/img_list-bestofthenasdaq.svg">
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="list__option--description">
+                  <p class="list__title">Best Of The Nasdaq</p>
+                  <p class="list__description">This list contains companies who have exceeded earnings expectations on a
+                    quartly basis</p>
+                </div>
+              </div>
+            </li>
+            <li class="list__option list__option--championlist list__option--bestofthenasdaq row">
+              <div class="col-md-4">
+                <div class="list__image">
+                  <img class="align-absolute" src="assets/imgs/img_list-bestofthenasdaq.svg">
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="list__option--description">
+                  <p class="list__title">Best Of The Nasdaq</p>
+                  <p class="list__description">This list contains companies who have exceeded earnings expectations on a
+                    quartly basis</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- END: ADD LIST  -->
+
+    </div>
+    <!-- END: ADD LIST BODY BOTTOM  -->
+
+    <div class="quick-view__news row">
+      <div class="col-lg-8">
+        <p><i class="fa fa-newspaper-o" aria-hidden="true"></i> Headlines for: <span>MSFT</span></p>
+      </div>
+      <div class="col-lg-4">
+        <p class="headlines-expand">See all headlines &nbsp;<i class="fa fa-angle-up" aria-hidden="true"></i></p>
+      </div>
+    </div>
   </div>
 </div>
+
 <!-- END: HOME BODY BOTTOM  -->
 

@@ -250,19 +250,19 @@
 
 
 
-.list__option--selldips .list__image img {
+.list__option--buydips .list__image img {
 	width: 107px;
 	height: auto;
 	margin-top: -3px;
 }
 
-.list__option--selldips.selected .list__image img {
+.list__option--buydips.selected .list__image img {
 	width: 120px;
 	height: auto;
 	margin-top: -3px;
 }
 
-.list__option--selldips.hover .list__image img {
+.list__option--buydips.hover .list__image img {
 	width: 120px;
 	height: auto;
 	margin-top: -3px;
@@ -270,23 +270,25 @@
 
 
 
-.list__option--buyrallies .list__image img {
+.list__option--sellrallies .list__image img {
 	width: 107px;
 	height: auto;
 	margin-top: 5px;
 }
 
-.list__option--buyrallies.selected .list__image img {
+.list__option--sellrallies.selected .list__image img {
 	width: 120px;
 	height: auto;
 	margin-top: 5px;
 }
 
-.list__option--buyrallies.hover .list__image img {
+.list__option--sellrallies.hover .list__image img {
 	width: 120px;
 	height: auto;
 	margin-top: 5px;
 }
+
+
 
 .list__option--largecap .list__image img {
 	width: 106px;
@@ -306,6 +308,8 @@
 	margin-top: -8px;
 }
 
+
+
 .list__option--buyingstrength .list__image img {
 	width: 106px;
 	height: auto;
@@ -323,6 +327,8 @@
 	height: auto;
 	margin-top: 0px;
 }
+
+
 
 .list__option--relativestrength .list__image img {
 	width: 106px;
@@ -342,6 +348,8 @@
 	margin-top: -2px;
 }
 
+
+
 .list__option--earningschamps .list__image img {
 	width: 116px;
 	height: auto;
@@ -359,6 +367,8 @@
 	height: auto;
 	margin-top: 0px;
 }
+
+
 
 .list__option--earningsbulls .list__image img {
 	width: 108px;
@@ -378,6 +388,8 @@
 	margin-top: 0px;
 }
 
+
+
 .list__option--earningsbears .list__image img {
 	width: 108px;
 	height: auto;
@@ -395,6 +407,8 @@
 	height: auto;
 	margin-top: 0px;
 }
+
+
 
 .list__option--underten .list__image img {
 	width: 115px;
@@ -414,6 +428,8 @@
 	margin-top: 0px;
 }
 
+
+
 .list__option--growthstock .list__image img {
 	width: 85px;
 	height: auto;
@@ -431,6 +447,8 @@
 	height: auto;
 	margin-top: 0px;
 }
+
+
 
 .list__option--smallcap .list__image img {
 	width: 80px;
@@ -450,6 +468,8 @@
 	margin-top: 20px;
 }
 
+
+
 .list__option--bestvalue .list__image img {
 	width: 85px;
 	height: auto;
@@ -467,6 +487,8 @@
 	height: auto;
 	margin-top: 0px;
 }
+
+
 
 .list__option--dogsofthedow .list__image img {
 	width: 110px;
@@ -643,7 +665,11 @@
 	display: block;
 }
 
-.list-description--selldips.hover, .list-description--selldips.selected {
+.list-description--buydips.hover, .list-description--buydips.selected {
+	display: block;
+}
+
+.list-description--sellrallies.hover, .list-description--sellrallies.selected {
 	display: block;
 }
 
@@ -651,11 +677,83 @@
 	display: block;
 }
 
+.list-description--smallcap.hover, .list-description--smallcap.selected {
+	display: block;
+}
+
+.list-description--buyingstrength.hover, .list-description--buyingstrength.selected {
+	display: block;
+}
+
+.list-description--relativestrength.hover, .list-description--relativestrength.selected {
+	display: block;
+}
+
+.list-description--earningschamps.hover, .list-description--earningschamps.selected {
+	display: block;
+}
+
+.list-description--earningsbulls.hover, .list-description--earningsbulls.selected {
+	display: block;
+}
+
+.list-description--earningsbears.hover, .list-description--earningsbears.selected {
+	display: block;
+}
+
+
+.list-description--dontfighttheshorts.hover, .list-description--dontfighttheshorts.selected {
+	display: block;
+}
+
+.list-description--analystdarlings.hover, .list-description--analystdarlings.selected {
+	display: block;
+}
+
+.list-description--moneymakers.hover, .list-description--moneymakers.selected {
+	display: block;
+}
+
+.list-description--insiderconfidence.hover, .list-description--insiderconfidence.selected {
+	display: block;
+}
+
+.list-description--underten.hover, .list-description--underten.selected {
+	display: block;
+}
+
+.list-description--bestgrowth.hover, .list-description--bestgrowth.selected {
+	display: block;
+}
+
+.list-description--bestvalue.hover, .list-description--bestvalue.selected {
+	display: block;
+}
+
+.list-description--dogsofthedow.hover, .list-description--dogsofthedow.selected {
+	display: block;
+}
+
+.list-description--bestofthedow.hover, .list-description--bestofthedow.selected {
+	display: block;
+}
+
+.list-description--bestofthenasdaq.hover, .list-description--bestofthenasdaq.selected {
+	display: block;
+}
+
+.list-description--PGRupgrade.hover, .list-description--PGRupgrade.selected {
+	display: block;
+}
+
+.list-description--PGRdowngrade.hover, .list-description--PGRdowngrade.selected {
+	display: block;
+}
+
+
+
 .list-description--addlist.hover, .list-description--addlist.selected {
 	display: block;
 }
 
-.list-description--buyrallies.hover, .list-description--buyrallies.selected {
-	display: block;
-}
 

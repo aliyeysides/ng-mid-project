@@ -101,7 +101,7 @@ export class IdeasComponent implements OnInit {
   public selectedIdeasList(event,list) {
     this.selectedActiveList = list;
   this.selected = this.selectedActiveList['name'];
-    this.sharedService.updateActiveIdeaList(this.selectedActiveList);
+    // this.sharedService.updateActiveIdeaList(this.selectedActiveList);
   }
 
   public updateUserList() {

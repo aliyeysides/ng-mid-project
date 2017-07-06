@@ -1,3 +1,5 @@
+@import 'variables';
+
 
 
 /*------------------------------------*\
@@ -264,7 +266,7 @@
 			}
 
 			.panel__expand--sectors {
-				padding: 0px 28px 10px 10px;
+				padding: 0px 20px 10px 5px;
 				display: none;
 
 				li {
@@ -281,8 +283,13 @@
 				}
 
 				.sector {
+					width: 120px;
+					height: 17px;
 					float: left;
 					font-weight: 400;
+					white-space: nowrap;
+				    overflow: hidden;
+				    text-overflow: ellipsis;
 				}
 
 				.sector-change {

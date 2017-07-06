@@ -680,8 +680,13 @@
 			height: 50px;
 			position: absolute;
 
-			img {
-				width: 35px;
+			.icon__discover {
+				cursor: pointer;
+
+				img {
+					width: 35px;
+					cursor: help;
+				}
 			}
 
 			.similar-stock {
@@ -689,6 +694,10 @@
 				line-height: 50px;
 				font-weight: 700;
 				text-align: left;
+
+				p {
+					cursor: pointer;
+				}
 			}
 		}
 

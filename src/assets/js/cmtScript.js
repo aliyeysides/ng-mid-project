@@ -35,6 +35,8 @@ $(document).ready(function () {
 
 
   $("li.list__option").click(function () {
+    $(".body__bottom--addlist").removeClass("selected");
+    $(".body__bottom--listview").addClass("selected");
     $("li.list__option").removeClass("selected");
     $(this).addClass("selected");
   });

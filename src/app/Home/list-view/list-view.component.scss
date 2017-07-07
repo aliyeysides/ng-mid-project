@@ -33,6 +33,29 @@
 
 
 
+.view-option--list {
+	display: none;
+}
+
+.view-option--list.selected {
+	display: block;
+}
+
+.view-option--panel {
+	display: none;
+	height: 100vh;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.view-option--panel.selected {
+	display: block;
+}
+
+
+
+
+
 
 /*------------------------------------*\
   #ACTION-BAR
@@ -129,6 +152,17 @@
 		}
 	}
 }
+
+
+
+
+
+
+
+
+/*------------------------------------*\
+  #ACTION BAR
+\*------------------------------------*/
 
 
 
@@ -527,7 +561,7 @@
 
 				&:hover {
 					opacity: 1;
-				};
+				}
 			}
 
 			.stock-panel__company-name {
@@ -681,12 +715,12 @@
 			height: 100%;
 
 			.quick-view__chart {
-			  width: 99.6%;
-			  min-height: 130px;
-			  border-top: $border-line--LT2;
-			  margin-bottom: 696px;
+			  	width: 99.6%;
+			  	min-height: 130px;
+			  	border-top: $border-line--LT2;
+			  	margin-bottom: 696px;
 
-			  #mainChart {
+			  	#mainChart {
 
 				}
 			}
@@ -865,6 +899,372 @@
 		overflow-y: scroll;
 	}
 }
+
+
+
+
+
+
+
+
+
+
+/*------------------------------------*\
+  #VIEW OPTION-PANEL
+\*------------------------------------*/
+
+
+
+.panel-view__container {
+
+	.quick-view__panel {
+		padding: 20px 30px;
+		height: 490px;
+		margin-bottom: 40px;
+		position: relative;
+
+		.quick-view__data {
+			position: relative;
+
+			.stock-panel__PGR {
+				float: left;
+				
+				img {
+					width: 60px;
+					height: auto;
+					margin-right: 15px;
+				}
+			}
+
+			.stock-panel__ticker {
+				float: left;
+			
+				p {
+					font-size: 36px;
+					line-height: 1;
+					font-weight: 800;
+				}
+			}
+
+			.button__view-summary {
+				float: right;
+				width: 28px;
+				margin-top: 3px;
+				cursor: pointer;
+				opacity: 0.33;
+			
+				img {
+					float: left;
+					width: 27px;
+				}
+
+				&:hover {
+					opacity: 1;
+				}
+			}
+			
+			.stock-panel__company-name {
+				margin: 7px 0 10px;
+				
+				.button__add-to-list {
+					float: left;
+					margin-top: -1px;
+				
+					a {
+						opacity: 0.33;
+						font-size: 25px;
+						color: $link-blue;
+						margin-right: 15px;
+						cursor: pointer;
+						line-height: 1;
+					
+						&:hover {
+							opacity: 1;
+						}
+					}
+
+					a.button__watch {
+						font-size: 21px;
+					}
+				}
+
+				p {
+					font-size: 22px;
+					float: left;
+				}
+			}
+		
+			.stock-panel__price {
+				padding-bottom: 10px;
+				border-bottom: $border-line--LT2;
+				margin-bottom: 6px;
+			
+				p {
+					font-weight: 600;
+					font-size: 18px;
+				}
+
+				p.current-price {
+					font-weight: 700;
+				}
+			}
+			
+			.stock-panel__industry {
+				border-bottom: $border-line--LT2;
+				margin-top: 10px;
+				margin-bottom: 10px;
+				padding-left: 15px;
+				
+				p {
+					font-weight: 400;
+					font-size: 12px;
+					color: $font-color--MD;
+					text-transform: uppercase;
+					margin: 0px 15px 0px 0;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					overflow: hidden;
+					width: 350px;
+					height: 28px;
+					
+					span {
+						font-size: 16px;
+						color: $font-color;
+						text-transform: none;
+						margin-left: 10px;
+						font-weight: 400;
+					}
+					
+					span.industry-strength {
+						font-weight: 700;
+						text-transform: uppercase;
+					}
+				}
+			}
+
+			.stock-panel__details {
+				padding-bottom: 5px;
+				margin-bottom: 5px;
+				
+				p {
+					font-weight: 400;
+					font-size: 12px;
+					color: $font-color--MD;
+					text-transform: uppercase;
+					margin: 0px;
+					
+					span {
+						font-size: 16px;
+						color: $font-color;
+						text-transform: none;
+						margin-left: 10px;
+						font-weight: 600;
+					}
+				}
+			}
+			
+			.quick-view__pgr {
+				border-left: $border-line--LT2;
+				
+				.pgr__title {
+					font-weight: 400;
+					font-size: 11px;
+					color: $font-color--MD;
+					text-transform: uppercase;
+					line-height: 1;
+					margin-bottom: 4px;
+					letter-spacing: 0.05em;
+					white-space: nowrap;
+				}
+				
+				.pgr__text {
+					font-weight: 700;
+					font-size: 20px;
+					text-transform: uppercase;
+					white-space: nowrap;
+					
+					@media screen and ( min-width: 1480px ){
+				        font-size: 26px;
+				    }
+
+				}
+		
+				.pgr__sliders {
+					margin-top: 8px;
+				
+					li {
+						margin: 3px 0 3px;
+						
+						.sliderBar-container {
+
+							.pgr__label {
+								font-weight: 600;
+								font-size: 13px;
+								color: $font-color--MD;
+								text-transform: uppercase;
+								margin: -2px 0 2px;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.quick-view__chart-container {
+			height: 160px;
+
+			.quick-view__chart {
+			  	width: 100%;
+			  	border-top: $border-line--LT2;
+
+			  	#mainChart {
+
+				}
+			}
+		}
+
+		.quick-view__similar {
+			background-color: $background--LT-blue;
+			width: 100%;
+			height: 50px;
+
+			.icon__discover {
+				cursor: pointer;
+
+				img {
+					width: 35px;
+					cursor: help;
+				}
+			}
+			
+			.similar-stock {
+				font-size: 18px;
+				line-height: 50px;
+				font-weight: 700;
+				text-align: left;
+
+				p {
+					cursor: pointer;
+
+					&:hover {
+						color: $link-blue;
+					}
+				}
+			}
+		}
+		
+		.quick-view__news {
+			width: 95%;
+			position: absolute;
+			bottom: 0px;
+			height: 40px;
+			padding: 13px 15px 8px;
+			font-size: 18px;
+			background-color: #ffffff;
+			z-index: 20;
+			overflow: hidden;
+			border-bottom: $border-line--LT2;
+
+			.news-panel__header {
+				width: 100%;
+				margin-bottom: 10px;
+			
+				span {
+					font-weight: 700;
+				}
+				
+				.headlines-expand {
+					display: block;
+					font-size: 12px;
+					color: $font-color;
+					font-weight: 600;
+					text-transform: uppercase;
+					cursor: pointer;
+					text-align: right;
+					
+					i {
+						font-size: 20px;
+						color: $link-blue;
+						margin-top: -3px;
+					}
+				}
+
+				.headlines-collapse {
+					display: none;
+					font-size: 12px;
+					color: $link-blue;
+					font-weight: 600;
+					text-transform: uppercase;
+					cursor: pointer;
+					text-align: right;
+
+					i {
+						font-size: 20px;
+						color: $link-blue;
+						margin-top: -3px;
+						transform: rotate(180deg);
+					}
+				}
+			}
+
+			.headlines-container {
+				height: 220px;
+
+				.headline {
+					position: relative;
+					margin: 10px 0;
+				
+					h2 {
+					    font-size: 14px;
+					    font-weight: 600;
+					    line-height: 1.5;
+					    margin: 0;
+					    padding: 0;
+						color: #383838;
+						
+						a {
+							text-decoration: none;
+							color: #383838;
+						}
+					}
+					
+					.news-source {
+						font-size: 12px;
+						display: block;
+						float:left;
+						width: 200px;
+					    font-weight: 700;
+					    line-height: 1.6;
+					    margin: 0;
+					    padding: 0;
+						
+						a {
+							text-decoration: none;
+							color: #003366;
+						}
+					}
+
+					.update-time {
+						font-size: 10px;
+						display: block;
+						float:left;
+					    line-height: 1.6;
+					    margin: 0;
+					    font-style: italic;
+					    padding: 0;
+						color: #383838;
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
 
 
 

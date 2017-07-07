@@ -28,7 +28,7 @@ export class IdeasComponent implements OnInit {
   public mappingClassArray: any = {
     'Holding': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
     'Watching': {'style': 'list__option--userlist list__option--watching', 'imgName': 'img_list-watching.svg'},
-    'Ideas for You': {'style': 'list__option--idealist list__option--idealist', 'imgName': 'img_list-ideasforyou.svg'},
+    'Ideas for You': {'style': 'list__option--yourideaslist list__option--ideasforyou', 'imgName': 'img_list-ideasforyou.svg'},
     'Bulls of the Week': {'style': 'list__option--IPlist list__option--classicbulls', 'imgName': 'img_list-classicbulls.svg'},
     'Best Growth Stocks': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
     'Best of the Large Caps': {'style': 'list__option--userlist list__option--largecap', 'imgName': 'img_list-largecap.svg'},
@@ -46,11 +46,11 @@ export class IdeasComponent implements OnInit {
     'Best of the Dow': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
     'Earnings Champs': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
     'sell the Rallies': {
-      'style': 'list__option--chartlist list__option--buyrallies list__option--holding',
+      'style': 'list__option--chartlist list__option--sellrallies',
       'imgName': 'img_list-buyrallies.svg'
     },
     'Bears of the Week': {
-      'style': 'list__option--IPlist list__option--classicbears list__option--holding',
+      'style': 'list__option--IPlist list__option--classicbears',
       'imgName': 'img_list-classicbears.svg'
     },
     'Power Gauge Rating Downgrades': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},

@@ -503,7 +503,13 @@ $(document).ready(function () {
   });
 
 
+  $(".headlines-expand").click(function () {
+    $(".quick-view__news").toggleClass("expanded");
+  });
 
+  $(".headlines-collapse").click(function () {
+    $(".quick-view__news").toggleClass("expanded");
+  });
 
 
 });

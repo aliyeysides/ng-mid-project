@@ -8,55 +8,13 @@
 					<!-- <p>IDEAS</p> -->
 				</div>
 				<ul class="">
-					<li class="list__option list__option--userlist list__option--holding selected">
-						<div class="list__image">
-							<img class="align-absolute" src="assets/imgs/img_list-holding.svg">
+					<li *ngFor = "let list of activeIdeasList ; let i = index " (click)="selectedIdeasList($event,list)" class="list__option" [ngClass]="getActiveClasses(list.name)">
+						<div class="list__image" >
+							<img class="align-absolute" [src]="'assets/imgs/'+mappingClassArray[list.name].imgName">
 						</div>
-						<p class="list__label"><i class="fa fa-user-circle" aria-hidden="true"></i> Holding</p>
+						<p class="list__label"> {{list.name}}</p>
 					</li>
-					<li class="list__option list__option--userlist list__option--watching">
-						<div class="list__image">
-							<img class="align-absolute" src="assets/imgs/img_list-watching.svg">
-						</div>
-						<p class="list__label"><i class="fa fa-user-circle" aria-hidden="true"></i> Watching</p>
-					</li>
-					<li class="list__option list__option--idealist list__option--ideasforyou">
-						<div class="list__image">
-							<img class="align-absolute" src="assets/imgs/img_list-ideasforyou.svg">
-						</div>
-						<p class="list__label">Ideas For You</p>
-					</li>
-					<li class="list__option list__option--IPlist list__option--classicbulls">
-						<div class="list__image">
-							<img class="align-absolute" src="assets/imgs/img_list-classicbulls.svg">
-						</div>
-						<p class="list__label">Classic Bulls</p>
-					</li>
-					<li class="list__option list__option--IPlist list__option--classicbears">
-						<div class="list__image">
-							<img class="align-absolute" src="assets/imgs/img_list-classicbears.svg">
-						</div>
-						<p class="list__label">Classic Bears</p>
-					</li>
-					<li class="list__option list__option--chartlist list__option--buydips">
-						<div class="list__image">
-							<img class="align-absolute" src="assets/imgs/img_list-selldips.svg">
-						</div>
-						<p class="list__label">Buy the Dips</p>
-					</li>
-					<li class="list__option list__option--chartlist list__option--sellrallies">
-						<div class="list__image">
-							<img class="align-absolute" src="assets/imgs/img_list-buyrallies.svg">
-						</div>
-						<p class="list__label">Sell the Rallies</p>
-					</li>
-					<li class="list__option list__option--companylist list__option--largecap">
-						<div class="list__image">
-							<img class="align-absolute" src="assets/imgs/img_list-largecap.svg">
-						</div>
-						<p class="list__label">Best of the<br>Large Caps</p>
-					</li>
-					<li class="list__option list__option--addlist list__option--add">
+					<li class="list__option list__option--addlist list__option--add" *ngIf="activeIdeasList?.length > 0">
 						<div class="list__image">
 							<i class="align-absolute fa fa-plus-circle" aria-hidden="true"></i>
 						</div>

@@ -9,9 +9,10 @@
 
 
 .sidebar__container {
+	display:block;
 	width: 240px;
-	background: #E2E2E2;
-	border-right: 1px solid #cccccc;
+	background: $background--sidebar;
+	border-right: $border-line--LT;
 	height: 100vh;
 	overflow: hidden;
 	position: absolute;
@@ -39,9 +40,9 @@
 			padding: 13px 0 15px;
 		
 			p {
-			  	font-family: 'Open Sans', sans-serif !important;
+			  	font-family: $font-stack !important;
 				font-size: 14px;
-				color: #4A4A4A;
+				color: $font-color;
 				font-weight: 400;
 				text-align: center;
 			}
@@ -54,30 +55,34 @@
 		    -ms-transform: rotate(90deg); /* IE 9 */
 		    -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
 		    transform: rotate(90deg);
-		    color: #999999;
+		    color: $font-color--MD;
 			
 			a {
 				cursor: pointer;
 				
 				i {
 					&:hover {
-						color: #1199ff;
+						color: $link-blue;
 					}
 				}
 			}
+
+			@media screen and ( max-height: 750px ){
+		        display:none;
+		    }
 		}
 
 		.sidebar__panel {
 			margin-bottom: 20px;
-			border-bottom: 1px solid #CCCCCC;
+			border-bottom: $border-line--LT;
 
 			.panel__header {
-				color: #4A4A4A;
+				color: $font-color;
 				padding: 10px 0 7px;
-				border-top:1px solid #CCCCCC;
-				border-bottom:1px solid #CCCCCC;
+				border-top: $border-line--LT;
+				border-bottom: $border-line--LT;
 				text-transform: uppercase;
-				background-color: #FAFAFA;
+				background-color: $background--LT;
 			
 				.panel__title {
 					margin-left: 10px;
@@ -95,11 +100,11 @@
 					font-size: 24px;
 				
 					a {
-						color: #CCCCCC;
+						color: $font-color--LT;
 						cursor: pointer;
 						
 						&:hover {
-							color: #1199ff;
+							color: $link-blue;
 						}
 					}
 				}
@@ -107,13 +112,13 @@
 					float: right;
 					line-height: 1;
 					margin-right: 3px;
-					color: #cccccc;
+					color: $font-color--LT;
 					font-size: 20px;
 					font-weight: 300;
 				
 					span {
 						font-weight: 700;
-						color: #4A4A4A;
+						color: $font-color;
 						font-size: 18px;
 					}
 
@@ -125,10 +130,10 @@
 			}
 
 			.panel__market-data {
-				color: #4A4A4A;
+				color: $font-color;
 				padding: 10px 0 7px;
-				border-bottom:1px solid #CCCCCC;
-				background-color: #EFEFEF;
+				border-bottom: $border-line--LT;
+				background-color: $background--LT3;
 				
 				p {
 					font-size: 15px;
@@ -136,15 +141,16 @@
 				}
 
 				.market {
-					color: #4A4A4A;
+					color: $font-color;
 					font-weight: 700;
 					margin-left: 10px;
 					line-height: 1;
 					float: left;
+					text-transform: uppercase;
 				}
 
 				.market-price {
-					color: #4A4A4A;
+					color: $font-color;
 					font-weight: 600;
 					margin-left: 10px;
 					float: right;
@@ -158,11 +164,11 @@
 					font-size: 24px;
 				
 					a {
-						color: #CCCCCC;
+						color: $font-color--LT;
 						cursor: pointer;
 						
 						&:hover {
-							color: #1199ff;
+							color: $link-blue;
 						}
 					}
 				}
@@ -174,8 +180,8 @@
 					    width: 237px;
 					    float:left;
 					    height: 120px;
-					    border-top: 1px solid #dddddd;
-					    border-bottom: 1px solid #dddddd;
+					    border-top: $chart-border--LT;
+					    border-bottom: $chart-border--LT;
 					    background-color: #ffffff;
 					    margin-top:7px;
 					    position: relative;
@@ -187,7 +193,7 @@
 
 					hr.midline {
 						position: absolute;
-						border:1px solid #dddddd;
+						border: $chart-border--LT;
 						width: 210px;
 						top:50px;
 						padding:0;
@@ -224,7 +230,7 @@
 						    font-size: 10px;
 						    margin: 0;
 						    padding: 0;
-						    color: #999999;
+						    color: $font-color--MD;
 						    text-align: right;
 						}
 					}
@@ -250,7 +256,7 @@
 						    font-weight: 400;
 						    margin: 5px 0 0 0;
 						    padding: 0 24px;
-						    color: #999999;
+						    color: $font-color--MD;
 						    float: left;
 						}
 					}
@@ -258,9 +264,9 @@
 			}
 
 			.panel__expand {
-				color: #4A4A4A;
-				border-bottom: 1px solid #CCCCCC;
-				background-color: #F4F4F4;
+				color: $font-color;
+				border-bottom: $border-line--LT;
+				background-color: $background--LT2;
 				font-size: 15px;
 				line-height: 1;
 			}
@@ -342,6 +348,7 @@
 					margin-top: 10px;
 
 					a  {
+
 						i {
 						    color: #000000;
 						    font-size: 18px;
@@ -354,9 +361,10 @@
 							float: right;
 						}
 					}
+
 					i {
 					    font-size: 11px;
-					    color: #cccccc;
+					    color: $font-color--LT;
 					}
 
 					.dots {
@@ -366,7 +374,7 @@
 					
 						.selected {
 						    font-size: 11px;
-						    color: #1199ff;
+						    color: $link-blue;
 						}
 					}
 				}
@@ -382,7 +390,7 @@
 			transform: rotate(180deg);
 			
 			a {
-				color: #1199ff;
+				color: $link-blue;
 			}
 		}
 	}
@@ -395,7 +403,7 @@
 		z-index: 1000;
 		
 		a {
-			color: #1199ff;
+			color: $link-blue;
 		}
 	}
 }
@@ -420,6 +428,55 @@
 
 
 
+.sidebar__container.collapsed {
+	display: none;
+}
+
+
+
+.sidebar__container--collapsed {
+	width: 40px;
+	display: block;
+	background: $background--sidebar;
+	border-right: $border-line--LT;
+	height: 100vh;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: linear-gradient(0deg, rgba(255,255,255,0.00) 85%, #FFFFFF 100%);
+	z-index: 9;
+
+	.collapse-sidebar {
+		position: absolute;
+		bottom:10px;
+		right:10px;
+	    -ms-transform: rotate(90deg);
+	    -webkit-transform: rotate(90deg);
+	    transform: rotate(90deg);
+	    color: $font-color--MD;
+
+		a {
+			cursor: pointer;
+
+			i {
+				&:hover {
+					color: $link-blue;
+				}
+			}
+		}
+	}
+	.sidebar__logo {
+		padding: 15px 3px 0px;
+		width: 40px;
+		margin: 0 auto;
+
+		img {
+			width: 34px;
+			height: auto;
+		}
+	}
+}
 
 
 

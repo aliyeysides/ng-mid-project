@@ -38,6 +38,8 @@ export class ListViewComponent implements OnInit {
       if ($(".slideOpen") && targetOpen) {
         $(".slideOpen").toggle("slide", {direction: "right"}, 250);
         $(".slideOpen").removeClass("slideOpen");
+
+        e.stopPropagation();
         return;
       }
       // if any slide is open and the target is not open, then close them all

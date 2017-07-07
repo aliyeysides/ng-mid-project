@@ -3,6 +3,37 @@
 
 
 
+.body__bottom {
+	position: relative;
+	width: 100%;
+}
+
+.body__bottom--listview {
+	position: absolute;
+	width: 100%;
+	display: block;
+}
+
+.body__bottom--listview.selected {
+	//display: none;
+}
+
+.body__bottom--addlist {
+	position: absolute;
+	width: 100%;
+	//display: none;
+}
+
+.body__bottom--addlist.selected {
+	display: block;
+}
+
+
+
+
+
+
+
 /*------------------------------------*\
   #ACTION-BAR
 \*------------------------------------*/
@@ -57,10 +88,56 @@
 	}
 }
 
+.list-view__actionbar--companylist {
+	background-image: linear-gradient(225deg, #FFE500 0%, #00C40E 100%);
+
+	.list__header {
+		.view-toggle.active {
+			i {
+				color: #00C40E;
+			}
+		}
+	}
+}
+
+.list-view__actionbar--championlist {
+	background-image: linear-gradient(50deg, #EC2E2E 0%, #2517DC 100%);
+
+	.list__header {
+		.view-toggle.active {
+			i {
+				color: #992476;
+			}
+		}
+	}
+}
+
+.list-view__actionbar--addlist {
+	background-image: linear-gradient(146deg, #EEEEEE 0%, #8F8F8F 100%);
+
+	.list__header {
+		border-right: 0px solid #ffffff !important;
+
+		.list__title {
+			color: $font-color !important;
+
+
+			span {
+				display: block !important;
+				margin-left: 20px;
+			}
+		}
+	}
+}
+
+
+
+
+
 .list-view__actionbar {
 	border: 2px solid #FFFFFF;
 	height: 55px;
-	
+
 	.list__header {
 		border-right:2px solid #ffffff;
 
@@ -96,11 +173,11 @@
 			white-space: nowrap;
 			font-weight: 300;
 			margin-left: 20px;
-			
+
 			span {
 				display: none;
 			}
-			
+
 			span.list__title--holding.selected {
 				display: block;
 			}
@@ -121,11 +198,90 @@
 				display: block;
 			}
 
-			span.list__title--selldips.selected {
+			span.list__title--buydips.selected {
+				display: block;
+			}
+
+			span.list__title--sellrallies.selected {
+				display: block;
+			}
+
+			span.list__title--largecap.selected {
+				display: block;
+			}
+
+			span.list__title--smallcap.selected {
+				display: block;
+			}
+
+			span.list__title--buyingstrength.selected {
+				display: block;
+			}
+
+			span.list__title--relativestrength.selected {
+				display: block;
+			}
+
+			span.list__title--earningschamps.selected {
+				display: block;
+			}
+
+			span.list__title--earningsbears.selected {
+				display: block;
+			}
+
+			span.list__title--earningsbulls.selected {
+				display: block;
+			}
+
+			span.list__title--dontfighttheshorts.selected {
+				display: block;
+			}
+
+			span.list__title--analystdarlings.selected {
+				display: block;
+			}
+
+			span.list__title--moneymakers.selected {
+				display: block;
+			}
+			span.list__title--insiderconfidence.selected {
+				display: block;
+			}
+
+			span.list__title--underten.selected {
+				display: block;
+			}
+
+			span.list__title--bestgrowth.selected {
+				display: block;
+			}
+
+			span.list__title--bestvalue.selected {
+				display: block;
+			}
+
+			span.list__title--dogsofthedow.selected {
+				display: block;
+			}
+
+			span.list__title--bestofthedow.selected {
+				display: block;
+			}
+
+			span.list__title--bestofthenasdaq.selected {
+				display: block;
+			}
+
+			span.list__title--PGRupgrade.selected {
+				display: block;
+			}
+
+			span.list__title--PGRdowngrade.selected {
 				display: block;
 			}
 		}
-	
+
 		.view-toggle {
 			float: right;
 			width: 60px;
@@ -134,7 +290,7 @@
 			color: #ffffff;
 			position: relative;
 			border-left:2px solid #ffffff;
-			
+
 			i {
 				color: #ffffff;
 				margin-top: -2px;
@@ -169,17 +325,17 @@
 		line-height: 28px;
 		font-weight: 300;
 		border-bottom: $border-line--LT;
-	
+
 		p {
 			color: $font-color--MD;
 			text-align: center;
 		}
-		
+
 		p.active {
 			font-weight: 600;
 		}
 	}
-	
+
 	.current-list {
 		height: 100vh;
 		overflow-y: scroll;
@@ -328,13 +484,14 @@
 
 	.quick-view__panel {
 		padding: 20px 30px;
-		
+		height: 100vh;
+
 		.quick-view__data {
 			position: relative;
 
 			.stock-panel__PGR {
 				float: left;
-				
+
 				img {
 					width: 70px;
 					height: auto;
@@ -344,7 +501,7 @@
 
 			.stock-panel__ticker {
 				float: left;
-			
+
 				p {
 					font-size: 40px;
 					line-height: 1;
@@ -357,27 +514,27 @@
 				width: 35px;
 				margin-top: 5px;
 				cursor: pointer;
-			
+
 				img {
 					float: left;
 					width: 30px;
 				}
 			}
-			
+
 			.stock-panel__company-name {
 				margin: 10px 0 15px;
-				
+
 				.button__add-to-list {
 					float: left;
 					margin-right: 0px;
-				
+
 					a {
 						opacity: 0.5;
 						font-size: 24px;
 						color: $font-color--MD;
 						margin-right: 20px;
 						cursor: pointer;
-					
+
 						&:hover {
 							opacity: 1;
 							color: $link-blue;
@@ -395,12 +552,12 @@
 					float: left;
 				}
 			}
-		
+
 			.stock-panel__price {
 				padding-bottom: 10px;
 				border-bottom: $border-line--LT2;
 				margin-bottom: 6px;
-			
+
 				p {
 					font-weight: 600;
 					font-size: 20px;
@@ -410,22 +567,25 @@
 					font-weight: 700;
 				}
 			}
-			
+
 			.stock-panel__industry {
-				padding-bottom: 6px;
 				border-bottom: $border-line--LT2;
+				margin-top: 10px;
 				margin-bottom: 10px;
 				padding-left: 15px;
-				
+
 				p {
 					font-weight: 400;
 					font-size: 13px;
 					color: $font-color--MD;
 					text-transform: uppercase;
-					margin: 5px 0;
+					margin: 0px 15px 0px 0;
+					text-overflow: ellipsis;
 					white-space: nowrap;
-						text-overflow: ellipsis;
-					
+					overflow: hidden;
+					width: 350px;
+					height: 30px;
+
 					span {
 						font-size: 18px;
 						color: $font-color;
@@ -433,7 +593,7 @@
 						margin-left: 15px;
 						font-weight: 600;
 					}
-					
+
 					span.industry-strength {
 						font-weight: 700;
 						text-transform: uppercase;
@@ -444,14 +604,14 @@
 			.stock-panel__details {
 				padding-bottom: 10px;
 				margin-bottom: 5px;
-				
+
 				p {
 					font-weight: 400;
 					font-size: 13px;
 					color: $font-color--MD;
 					text-transform: uppercase;
 					margin: 2px 0;
-					
+
 					span {
 						font-size: 18px;
 						color: $font-color;
@@ -461,10 +621,10 @@
 					}
 				}
 			}
-			
+
 			.quick-view__pgr {
 				border-left: $border-line--LT2;
-				
+
 				.pgr__title {
 					font-weight: 400;
 					font-size: 13px;
@@ -473,19 +633,19 @@
 					line-height: 1;
 					margin-bottom: 5px;
 				}
-				
+
 				.pgr__text {
 					font-weight: 800;
 					font-size: 28px;
 					text-transform: uppercase;
 				}
-		
+
 				.pgr__sliders {
 					margin-top: 10px;
-				
+
 					li {
 						margin: 5px 0 3px;
-						
+
 						.sliderBar-container {
 
 							.pgr__label {
@@ -507,22 +667,24 @@
 
 		.quick-view__similar {
 			background-color: $background--LT-blue;
-			padding: 5px 0 8px;
-			margin-bottom: 10px;
-		
+			padding: 5px 0 5px;
+			z-index: 2;
+			bottom: 485px;
+			width: 95%;
+			position: absolute;
+
 			.discover-label {
 				font-size: 15px;
 				color: $link-blue;
 				font-weight: 600;
 				text-transform: uppercase;
-				line-height: 35px;
-				 
-				img {
-					padding-right: 4px;
-					display: inline-block;
-				}
+				margin-top: 12px;
 			}
-			
+			img {
+				float: left;
+				padding-right: 8px;
+			}
+
 			.similar-stock {
 				font-size: 18px;
 				font-weight: 700;
@@ -530,18 +692,22 @@
 				margin-top: 10px;
 			}
 		}
-		
+
 		.quick-view__news {
+			width: 95%;
+			position: absolute;
+			bottom: 435px;
 			height: 50px;
 			padding: 13px 0 5px;
 			font-size: 20px;
 			background-color: #ffffff;
 			border-top: $border-line--LT2;
-			
+			z-index: 1;
+
 			span {
 				font-weight: 700;
 			}
-			
+
 			.headlines-expand {
 				font-size: 14px;
 				color: $font-color;
@@ -549,7 +715,7 @@
 				text-transform: uppercase;
 				cursor: pointer;
 				text-align: right;
-				
+
 				i {
 					font-size: 24px;
 					color: $link-blue;
@@ -565,6 +731,191 @@
 
 
 
+
+
+
+
+
+
+
+
+/*------------------------------------*\
+  #ADD-A-LIST
+\*------------------------------------*/
+
+
+
+
+.addlist__container {
+	height: 100vh;
+	overflow-y: scroll;
+
+	ul {
+	    margin-top: 0px;
+	    margin-left: 20px;
+	    margin-bottom:460px;
+
+		.list__option {
+			margin: 20px 0;
+
+			.list__image {
+				width: 160px;
+				height: 160px;
+				border: 3px solid #FFFFFF;
+				position: relative;
+				margin: 0px;
+				border-radius: 80px;
+			}
+
+			.list__option--description {
+				padding-top:15px;
+
+				.list__title {
+					font-size: 26px;
+					line-height: 1.75;
+					font-weight: 400;
+				}
+
+				.list__description {
+					font-size: 16px;
+					line-height: 1.5;
+				}
+			}
+		}
+
+		.list__option--relativestrength.selected .list__image img {
+			width: 110px;
+			height: auto;
+			margin-top: -2px;
+		}
+
+		.list__option--relativestrength.hover .list__image img {
+			width: 110px;
+			height: auto;
+			margin-top: -2px;
+		}
+
+		.list__option--buyingstrength.selected .list__image img {
+			width: 110px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--buyingstrength.hover .list__image img {
+			width: 110px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--earningschamps.selected .list__image img {
+			width: 123px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--earningschamps.hover .list__image img {
+			width: 123px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--earningsbears.selected .list__image img {
+			width: 115px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--earningsbears.hover .list__image img {
+			width: 115px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--earningsbulls.selected .list__image img {
+			width: 115px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--earningsbulls.hover .list__image img {
+			width: 115px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--growthstock.selected .list__image img {
+			width: 90px;
+			height: auto;
+			margin-top: -6px;
+		}
+
+		.list__option--growthstock.hover .list__image img {
+			width: 90px;
+			height: auto;
+			margin-top: -6px;
+		}
+
+		.list__option--bestvalue.selected .list__image img {
+			width: 90px;
+			height: auto;
+			margin-top: -3px;
+		}
+
+		.list__option--bestvalue.hover .list__image img {
+			width: 90px;
+			height: auto;
+			margin-top: -3px;
+		}
+
+		.list__option--smallcap.selected .list__image img {
+			width: 88px;
+			height: auto;
+			margin-top: 20px;
+		}
+
+		.list__option--smallcap.hover .list__image img {
+			width: 88px;
+			height: auto;
+			margin-top: 20px;
+		}
+
+		.list__option--dogsofthedow.selected .list__image img {
+			width: 115px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--dogsofthedow.hover .list__image img {
+			width: 115px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--bestofthenasdaq.selected .list__image img {
+			width: 95px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--bestofthenasdaq.hover .list__image img {
+			width: 95px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--bestofthedow.selected .list__image img {
+			width: 95px;
+			height: auto;
+			margin-top: 0px;
+		}
+
+		.list__option--bestofthedow.hover .list__image img {
+			width: 95px;
+			height: auto;
+			margin-top: 0px;
+		}
+	}
+}
 
 
 

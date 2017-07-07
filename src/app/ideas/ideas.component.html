@@ -14,7 +14,7 @@
 						</div>
 						<p class="list__label"><i class="fa fa-user-circle" aria-hidden="true"></i> {{list.name}}</p>
 					</li>
-					<li class="list__option list__option--addlist list__option--add" *ngIf="activeIdeasList?.length > 0">
+					<li (click)="toggleAdditionalLists()" class="list__option list__option--addlist list__option--add" *ngIf="activeIdeasList?.length > 0">
 						<div class="list__image">
 							<i class="align-absolute fa fa-plus-circle" aria-hidden="true"></i>
 						</div>
@@ -33,9 +33,31 @@
 				<span class="list-description--ideasforyou">These ideas have been highlihted as some you might be interested in.</span>
 				<span class="list-description--classicbears">Bears, bears, and bears, Oh My!</span>
 				<span class="list-description--classicbulls">Run with the bulls here.</span>
-				<span class="list-description--selldips">Sell these stocks after they dip.</span>
-				<span class="list-description--buyrallies">Buy these stocks after they rally.</span>
+				<span class="list-description--buydips">Buy these stocks after they dip.</span>
+				<span class="list-description--sellrallies">Sell these stocks after they rally.</span>
 				<span class="list-description--largecap">These are companies that make a lot of money.</span>
+
+				<span class="list-description--smallcap">Small cap stocks here.</span>
+				<span class="list-description--buyingstrength">Strong money flow.</span>
+				<span class="list-description--relativestrength">Good relative strength.</span>
+				<span class="list-description--earningschamps">Earn that money.</span>
+				<span class="list-description--earningsbulls">The earning fo the bulls.</span>
+				<span class="list-description--earningsbears">The earning of the bears.</span>
+				<span class="list-description--dontfighttheshorts">Don't fight against short positions.</span>
+				<span class="list-description--analystdarlings">Analysts love these.</span>
+
+				<span class="list-description--moneymakers">Shake your money maker.</span>
+				<span class="list-description--insiderconfidence">The people who work there seem to like it.</span>
+				<span class="list-description--underten">Ten stocks under ten bucks.</span>
+				<span class="list-description--bestgrowth">Growers not showers.</span>
+				<span class="list-description--bestvalue">Good value on these.</span>
+				<span class="list-description--dogsofthedow">Down, Boy. </span>
+				<span class="list-description--bestofthedow">Best of the DIA.</span>
+				<span class="list-description--bestofthenasdaq">Best of the QQQ.</span>
+
+				<span class="list-description--PGRupgrades">These stocks changes their rating to bullish.</span>
+				<span class="list-description--PGRdowngrade">These stocks changes their rating to bearish.</span>
+
 				<span class="list-description--addlist">Add a new list here...</span>
 			</p>
 			<div class="toggle-arrow toggle-arrow--left">

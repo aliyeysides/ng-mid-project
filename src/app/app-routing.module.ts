@@ -16,15 +16,9 @@ const routes: Routes = [
 	{ path: 'home', component: HomeComponent },
 	{ path: 'discovery', component: DiscoveryComponent },
 	{ path: 'insights', component: InsightsComponent },
-	{ path: 'report', component: StockComponent }
+	{ path: 'report', component: StockComponent },
+  { path: 'report/:symbol', component: StockComponent }
 ];
-
-/*{ path: 'home', component: HomeComponent },
-{ path: 'ideas', component: IdeasComponent },
-{ path: 'discovery', component: DiscoveryComponent },
-{ path: 'insights', component: InsightsComponent },
-{ path: 'report', component: StockComponent },
-{ path: 'profile', component: ProfileComponent }*/
 
 @NgModule({
 	imports: [

@@ -1,15 +1,16 @@
+
 import { Component, OnInit, ViewEncapsulation,ElementRef} from '@angular/core';
 import { SharedService } from '../shared.service';
 import { SidePanelProvider } from 'app/providers/side-panel.provider';
 import * as d3 from 'd3';
 import * as moment from 'moment/moment';
+
 @Component({
-	selector: 'side-panel',
-	templateUrl: './side-panel.component.html',
-	styleUrls: ['./side-panel.component.scss']
+  selector: 'side-panel',
+  templateUrl: './side-panel.component.html',
+  styleUrls: ['./side-panel.component.scss']
 })
 export class SidePanelComponent implements OnInit {
-
 	
 	public intraDayChartData : Array<object>;
 	public initialData : Array<object>;
@@ -140,7 +141,5 @@ export class SidePanelComponent implements OnInit {
  			},
  			err => console.log('err', err));
 	}
-
-	
 	
 }

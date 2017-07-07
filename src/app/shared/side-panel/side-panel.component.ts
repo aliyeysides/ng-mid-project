@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation,ElementRef} from '@angular/core';
 import { SharedService } from '../shared.service';
 import { SidePanelProvider } from 'app/providers/side-panel.provider';
 import * as d3 from 'd3';
+import * as moment from 'moment/moment';
 @Component({
 	selector: 'side-panel',
 	templateUrl: './side-panel.component.html',
@@ -26,9 +27,13 @@ export class SidePanelComponent implements OnInit {
 
 	public symbol: string = 'SPY'; 
 	constructor(private sidePanelProvider: SidePanelProvider) {
-		
+		console.log(this.getPresentDate('ddd MMM DD  h:mma'));
 	}
 	
+	getPresentDate(dateFormat){
+		return moment().format(dateFormat);
+	}
+
 	ngOnInit() { 
 		this.initialMarketSectorData();
 	}
@@ -61,9 +66,43 @@ export class SidePanelComponent implements OnInit {
 				this.sectorsData = this.initialData['sectors_data']['symbolsList'];
 				this.sectorCount.upCount = this.initialData['sectors_data']['upCount'];
 				this.sectorCount.downCount = this.initialData['sectors_data']['downCount'];
+				setInterval(() => { this.updateInitialSectorData(this.initialData['sectors_data']['list_id']); }, 72000); 
  			},
  			err => console.log('err', err));
 		
+	}
+
+	public updateInitialSectorData(listId) {
+		this.sidePanelProvider.updateInitialSectorData({ 'listId': listId })
+			.subscribe(res => {
+				this.mapSectorData(res);
+			},
+			err => console.log('err', err));
+	}
+
+	public mapSectorData(res){
+		let storedMappingResult: any = {};
+		let upCount: number = 0, downCount: number = 0;
+		res.forEach(function(key, index, array) {
+			storedMappingResult[key.Symbol] = key;
+		});
+		
+		this.sectorsData.forEach(function(key, index, array) {
+			let fetchKeyForUpdateData = storedMappingResult[key['symbol']];
+
+			if (typeof fetchKeyForUpdateData !== "undefined") {
+				key['last'] = fetchKeyForUpdateData['Last'];
+				key['change'] = fetchKeyForUpdateData['Change'];
+				key['percent_change'] = fetchKeyForUpdateData['Percentage '];
+				if (key['percent_change'] > 0) {
+					upCount++;
+				} else {
+					downCount++;
+				}
+			}
+		});
+		this.sectorCount.upCount = upCount;
+		this.sectorCount.downCount = downCount;
 	}
 
 	public appendArrowClass(event,i){
@@ -101,5 +140,7 @@ export class SidePanelComponent implements OnInit {
  			},
  			err => console.log('err', err));
 	}
+
+	
 	
 }

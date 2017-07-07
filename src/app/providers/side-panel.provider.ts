@@ -33,6 +33,13 @@ export class SidePanelProvider {
 		return this.getJson(symbolLookupUrl, this.symbolLookupParams);
 	}
 
+	public updateInitialSectorData(query): Observable<Array<object>> {
+		let symbolLookupUrl = `${this.apiHostName}${this.apiPrependText}/price/getListSymbolsPriceChgWRTOpen?`;
+		this.symbolLookupParams.set('listId', query.listId);
+		return this.getJson(symbolLookupUrl, this.symbolLookupParams);
+	}
+
+
 	public getJson(url, params): Observable<Array<object>> {
 		return this.http.get(url, {
 			search: params,

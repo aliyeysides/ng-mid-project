@@ -113,143 +113,26 @@
         <!-- LIST: HOLDING  -->
         <div class="current-list  current-list--holding ">
           <ul *ngIf="!ideaList?.length" class="list__container">
-            <!-- <span>There are currently no stocks in this list.</span> -->
-            <li class="row no-gutters list__entry selected">
-              <div class="stock-options__popup">
-                <ul class="nav nav-justified">
-                  <li (click)="addToList({symbol: 'GOOGL'}, '123456')" class="nav-item stock-option--hold">
-                    <img src="assets/imgs/icon-plus.svg">
-                    <p>Hold</p>
-                  </li>
-                  <li (click)="removeFromList({symbol: 'GOOGL'}, '123456')" class="nav-item stock-option--watch">
-                    <img src="assets/imgs/icon-watch.svg">
-                    <p>Watch</p>
-                  </li>
-                  <li (click)="goToStockView({symbol: 'GOOGL'}, '123456')" class="nav-item stock-option--view">
-                    <img src="assets/imgs/icon-stockview.svg">
-                    <p>View</p>
-                  </li>
-                </ul>
-                <div (click)="toggleOptions($event)" class="stock__options-button">
-                  <img src="assets/imgs/icon_threedots.svg">
-                </div>
-              </div>
-              <div class="col-lg-2 col-xl-2 stock__PGR">
-                <img class="align-absolute" src="assets/imgs/arc_VeryBullish.svg">
-              </div>
-              <div class="col-lg-3 col-xl-2 stock__ticker">
-                <p class="">GOOGL</p>
-              </div>
-              <div class="col-lg-3 col-xl-4 stock__company-name">
-                <p class="">Alphabet, Inc.</p>
-              </div>
-              <div class="col-lg-2 col-xl-2 stock__price">
-                <p class="data up-change">$34.24</p>
-              </div>
-              <div class="col-lg-2 col-xl-2 stock__price">
-                <p class="data up-change">+1.03%</p>
-              </div>
-              <div (click)="toggleOptions($event)" class="stock__options-button">
-                <img src="assets/imgs/icon_threedots.svg">
-              </div>
-            </li>
-            <li class="row no-gutters list__entry">
-              <div class="stock-options__popup">
-                <ul class="nav nav-justified">
-                  <li (click)="addToList({symbol: 'NOC'}, '123456')" class="nav-item">
-                    <img src="assets/imgs/icon-plus.svg">
-                    <p>Hold</p>
-                  </li>
-                  <li (click)="removeFromList({symbol: 'NOC'}, '123456')" class="nav-item">
-                    <img src="assets/imgs/icon-watch.svg">
-                    <p>Watch</p>
-                  </li>
-                  <li (click)="goToStockView({symbol: 'NOC'}, '123456')" class="nav-item">
-                    <img src="assets/imgs/icon-stockview.svg">
-                    <p>View</p>
-                  </li>
-                </ul>
-                <div (click)="toggleOptions($event)" class="stock__options-button">
-                  <img src="assets/imgs/icon_threedots.svg">
-                </div>
-              </div>
-              <div class="col-lg-2 col-xl-2 stock__PGR ">
-                <img class="align-absolute" src="assets/imgs/arc_VeryBullish.svg">
-              </div>
-              <div class="col-lg-3 col-xl-2 stock__ticker">
-                <p class="">NOC</p>
-              </div>
-              <div class="col-lg-3 col-xl-4 stock__company-name">
-                <p class="">Northrop Grummn</p>
-              </div>
-              <div class="col-lg-2 col-xl-2 stock__price">
-                <p class="data down-change">$59.14</p>
-              </div>
-              <div class="col-lg-2 col-xl-2 stock__price">
-                <p class="data down-change">-2.12%</p>
-              </div>
-              <div (click)="toggleOptions($event)" class="stock__options-button">
-                <img src="assets/imgs/icon_threedots.svg">
-              </div>
-            </li>
-            <li class="row no-gutters list__entry">
-              <div class="stock-options__popup">
-                <ul class="nav nav-justified">
-                  <li (click)="addToList({symbol: 'URBN'}, '123456')" class="nav-item">
-                    <img src="assets/imgs/icon-plus.svg">
-                    <p>Hold</p>
-                  </li>
-                  <li (click)="removeFromList({symbol: 'URBN'}, '123456')" class="nav-item">
-                    <img src="assets/imgs/icon-watch.svg">
-                    <p>Watch</p>
-                  </li>
-                  <li (click)="goToStockView({symbol: 'URBN'}, '123456')" class="nav-item">
-                    <img src="assets/imgs/icon-stockview.svg">
-                    <p>View</p>
-                  </li>
-                </ul>
-                <div (click)="toggleOptions($event)" class="stock__options-button">
-                  <img src="assets/imgs/icon_threedots.svg">
-                </div>
-              </div>
-              <div class="col-lg-2 col-xl-2 stock__PGR ">
-                <img class="align-absolute" src="assets/imgs/arc_Bullish.svg">
-              </div>
-              <div class="col-lg-3 col-xl-2 stock__ticker">
-                <p class="">URBN</p>
-              </div>
-              <div class="col-lg-3 col-xl-4 stock__company-name">
-                <p class="">Urban Outfitters</p>
-              </div>
-              <div class="col-lg-2 col-xl-2 stock__price">
-                <p class="data down-change">$19.12</p>
-              </div>
-              <div class="col-lg-2 col-xl-2 stock__price">
-                <p class="data down-change">+0.15%</p>
-              </div>
-              <div (click)="toggleOptions($event)" class="stock__options-button">
-                <img src="assets/imgs/icon_threedots.svg">
-              </div>
-            </li>
+             <span>There are currently no stocks in this list.</span>
           </ul>
           <ul *ngIf="ideaList?.length" class="list__container">
-            <li class="row no-gutters list__entry" *ngFor="let idea of ideaList">
-              <div class="stock-options__popup">
+            <li (click)="toggleOptions(idea, $event)" (mouseenter)="toggleHoverOptions(idea)" (mouseleave)="toggleHoverOptions(idea)" class="row no-gutters list__entry" *ngFor="let idea of ideaList">
+              <div *ngIf="popupOptionsMap[idea.symbol] == true" class="stock-options__popup">
                 <ul class="nav nav-justified">
-                  <li (click)="addToList(idea.symbol, '123456')" class="nav-item stock-option--hold">
+                  <li (click)="addToList(idea.symbol, '123456', $event)" class="nav-item stock-option--hold">
                     <img src="assets/imgs/icon-plus.svg">
                     <p>Hold</p>
                   </li>
-                  <li (click)="removeFromList(idea.symbol, '123456')" class="nav-item stock-option--watch">
+                  <li (click)="removeFromList(idea.symbol, '123456', $event)" class="nav-item stock-option--watch">
                     <img src="assets/imgs/icon-watch.svg">
                     <p>Watch</p>
                   </li>
-                  <li (click)="goToStockView(idea)" class="nav-item stock-option--view">
+                  <li (click)="goToStockView(idea, $event)" class="nav-item stock-option--view">
                     <img src="assets/imgs/icon-stockview.svg">
                     <p>View</p>
                   </li>
                 </ul>
-                <div (click)="toggleOptions($event)" class="stock__options-button">
+                <div (click)="toggleOptions(idea, $event)" class="stock__options-button">
                   <img src="assets/imgs/icon_threedots.svg">
                 </div>
               </div>
@@ -268,7 +151,7 @@
               <div class="col-lg-2 col-xl-2 stock__price">
                 <p class="data up-change">{{ idea.Change }}%</p>
               </div>
-              <div (click)="toggleOptions($event)" class="stock__options-button">
+              <div (click)="toggleOptions(idea, $event)" *ngIf="mouseHoverOptionsMap[idea.symbol] == true" class="stock__options-button">
                 <img src="assets/imgs/icon_threedots.svg">
               </div>
             </li>
@@ -427,7 +310,7 @@
                 <p class="headlines-expand">See all headlines &nbsp;<i class="fa fa-angle-up" aria-hidden="true"></i></p>
                 <p class="headlines-collapse">Close &nbsp;<i class="fa fa-angle-up" aria-hidden="true"></i></p>
               </div>
-            </div> 
+            </div>
             <ul class="headlines-container row">
               <li class="headline col-lg-6">
                 <h2>Electronic Arts Inc. (NASDAQ:EA) EVP Sells $158,970.00 in Stock</h2>

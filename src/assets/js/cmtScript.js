@@ -307,29 +307,6 @@ $(document).ready(function () {
 
 
 
-
-// List View
-
-
-  $(".list__entry").mouseover(function () {
-    $(this).addClass("hover");
-  });
-
-  $(".list__entry").mouseout(function () {
-    $(this).removeClass("hover");
-  });
-
-
-  $(".list__entry").click(function () {
-    $(".list__entry").removeClass("selected");
-    $(this).addClass("selected");
-  });
-
-  $(".list__container").sortable({
-    scroll: true,
-    cursor: "move"
-  });
-
 // List Sort Menu
 
   $(".list-sort__button").click(function (e) {

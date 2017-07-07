@@ -14,6 +14,8 @@ export class ListViewComponent implements OnInit {
 
   public ideaList: Array<object>;
   public additionalLists: boolean = false;
+  public mouseHoverOptionsMap: object = {};
+  public popupOptionsMap: object = {};
 
   constructor(private sharedService: SharedService,
               private router: Router) {
@@ -31,43 +33,41 @@ export class ListViewComponent implements OnInit {
     });
   }
 
-  toggleOptions(e: Event) {
-
-      const targetOpen = $(".list__entry.hover .stock-options__popup").hasClass("slideOpen");
-      // if any slide is open and the target is open, then close them all and return;
-      if ($(".slideOpen") && targetOpen) {
-        $(".slideOpen").toggle("slide", {direction: "right"}, 250);
-        $(".slideOpen").removeClass("slideOpen");
-
-        e.stopPropagation();
-        return;
-      }
-      // if any slide is open and the target is not open, then close them all
-      if ($(".slideOpen") && !targetOpen) {
-        $(".slideOpen").toggle("slide", {direction: "right"}, 250);
-        $(".slideOpen").removeClass("slideOpen");
-      }
-
-      // toggle slide
-      $(".list__entry.hover .stock-options__popup").toggle("slide", {direction: "right"}, 250);
-      $(".list__entry.hover .stock-options__popup").toggleClass("slideOpen");
-
-      e.stopPropagation();
-
+  toggleHoverOptions(idea) {
+    if (!this.mouseHoverOptionsMap[idea.symbol] || this.mouseHoverOptionsMap[idea.symbol] == false) {
+      this.mouseHoverOptionsMap[idea.symbol] = true;
+      return;
+    }
+    this.mouseHoverOptionsMap[idea.symbol] = !this.mouseHoverOptionsMap[idea.symbol];
   }
+
+  toggleOptions(idea, e) {
+    e.stopPropagation();
+    if (!this.popupOptionsMap[idea.symbol] || this.popupOptionsMap[idea.symbol] == false) {
+      this.popupOptionsMap = {};
+      this.popupOptionsMap[idea.symbol] = true;
+      return;
+    }
+    this.popupOptionsMap[idea.symbol] = !this.popupOptionsMap[idea.symbol];
+    this.mouseHoverOptionsMap = {};
+  }
+
   onNotify(message: string): void {
     alert(message);
   }
 
-  goToStockView(stock: Idea) {
+  goToStockView(stock: Idea, e) {
+    e.stopPropagation();
     this.router.navigate(['/report', stock.symbol]);
   }
 
-  addToList(stock: any, listId: string) {
+  addToList(stock: any, listId: string, e) {
+    e.stopPropagation();
     this.sharedService.addStockIntoList(stock.symbol, listId);
   }
 
-  removeFromList(stock: any, listId: string) {
+  removeFromList(stock: any, listId: string, e) {
+    e.stopPropagation();
     this.sharedService.deleteSymbolFromList(stock.symbol, listId);
   }
 

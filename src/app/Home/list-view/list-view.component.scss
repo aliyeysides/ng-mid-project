@@ -678,7 +678,18 @@
 		}
 
 		.quick-view__chart-container {
-			height: 130px;
+			height: 100%;
+
+			.quick-view__chart {
+			  width: 99.6%;
+			  min-height: 130px;
+			  border-top: $border-line--LT2;
+			  margin-bottom: 696px;
+
+			  #mainChart {
+
+				}
+			}
 		}
 
 		.quick-view__similar {
@@ -726,7 +737,6 @@
 			padding: 13px 15px 8px;
 			font-size: 18px;
 			background-color: #ffffff;
-			border-top: $border-line--LT2;
 			z-index: 20;
 
 			.news-panel__header {
@@ -772,7 +782,6 @@
 			}
 
 			.headlines-container {
-				overflow-y: scroll;
 				height: 220px;
 
 				.headline {
@@ -850,6 +859,10 @@
 		.headlines-collapse {
 			display: block !important;
 		}
+	}
+
+	.headlines-container {
+		overflow-y: scroll;
 	}
 }
 

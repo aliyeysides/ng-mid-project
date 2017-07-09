@@ -17,6 +17,7 @@
 	overflow-x: scroll;
 	position: relative;
 	overflow-y: hidden;
+	padding-right:200px;
 
 	.list-category {
 		position: absolute;
@@ -580,7 +581,9 @@
 	color: #FFFFFF;
 }
 
-
+.list__option--add {
+	margin-right: 300px;
+}
 
 
 
@@ -750,8 +753,6 @@
 .list-description--PGRdowngrade.hover, .list-description--PGRdowngrade.selected {
 	display: block;
 }
-
-
 
 .list-description--addlist.hover, .list-description--addlist.selected {
 	display: block;

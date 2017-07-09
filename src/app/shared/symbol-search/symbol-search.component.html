@@ -10,29 +10,24 @@
   </div>
 </form>
 <div class="search__dropdown">
-  <!--<ul *ngFor="let result of searchResults">-->
-  <ul>
+  <ul *ngFor="let result of searchResults">
     <li class="row search__entry">
-      <div class="col-lg-1 col-xl-1">
-      </div>
-      <div class="col-lg-3 col-xl-3 search__company">
-        <p class="company-ticker">
-        	AMZN
-        	<!--{{ result.Symbol }}-->
-        </p>
-      </div>
-      <div class="col-lg-4 col-xl-5">
-      	<p class="company-name">
-        	Amazon Inc.
-        	<!--{{ result.CompanyName }}-->
-        </p>
-      </div>
-      <div class="col-lg-2 col-xl-1 pull-right search__action">
+      <div class="col-lg-1 col-xl-1 pull-right search__action">
         <i class="fa fa-plus-circle" aria-hidden="true"></i>
       </div>
-      <div (click)="gotoReport(result.Symbol)" class="col-lg-2 col-xl-2 pull-right
+      <div (click)="gotoReport(result.Symbol)" class="col-lg-1 col-xl-1 pull-right
        search__action">
         <img class="align-absolute" src="assets/imgs/icon-stockview.svg">
+      </div>
+      <div class="col-lg-4 col-xl-2 search__company">
+        <p class="company-ticker">
+        	{{ result.Symbol }}
+        </p>
+      </div>
+      <div class="col-lg-6 col-xl-8">
+      	<p class="company-name">
+        	{{ result.CompanyName }}
+        </p>
       </div>
     </li>
   </ul>

@@ -5,7 +5,7 @@
 
 
 .search__dropdown {
-	display:none;
+	//display:none;
 	position: absolute;
 	top: 53px;
 	width: 100%;
@@ -21,6 +21,7 @@
 		height: 70px;
 		border-bottom: 2px solid #ffffff;
 		color:#ffffff;
+		padding: 0px 15px;
 
 		.company-name {
 			font-weight: 400;
@@ -38,6 +39,7 @@
 				color:#ffffff;
 			}
 		}
+
 		.search__action {
 			text-align: center;
 			opacity: 0.6;

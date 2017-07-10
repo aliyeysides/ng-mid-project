@@ -60,14 +60,14 @@ export class SharedService {
   }
 
   public addStockIntoList(symbol: string, listId: string) {
-    const addStockToListUrl = '/CPTRestSecure/app/portfolio/addStockIntoList?';
+    const addStockToListUrl = `${this.apiHostName}/CPTRestSecure/app/portfolio/addStockIntoList?`;
     this.addStockIntoListParams.set('symbol', symbol);
     this.addStockIntoListParams.set('listId', listId);
     return this.getJson(addStockToListUrl, this.addStockIntoListParams);
   }
 
   public deleteSymbolFromList(symbol: string, listId: string) {
-    const deleteSymbolFromListUrl = '/CPTRestSecure/app/portfolio/deleteSymbolFromList?';
+    const deleteSymbolFromListUrl = `${this.apiHostName}/CPTRestSecure/app/portfolio/deleteSymbolFromList?`;
     this.deleteSymbolFromListParams.set('symbol', symbol);
     this.deleteSymbolFromListParams.set('listId', listId);
     return this.getJson(deleteSymbolFromListUrl, this.deleteSymbolFromListParams);

@@ -2,6 +2,7 @@
 import { Component, OnInit, ViewEncapsulation,ElementRef} from '@angular/core';
 import { SharedService } from '../shared.service';
 import { SidePanelProvider } from 'app/providers/side-panel.provider';
+import { PagerProvider } from 'app/providers/paging.provider';
 import { IdeaListProvider } from 'app/providers/idea-list.provider';
 import * as d3 from 'd3';
 import * as moment from 'moment/moment';
@@ -9,6 +10,12 @@ import * as moment from 'moment/moment';
 @Component({
   selector: 'side-panel',
   templateUrl: './side-panel.component.html',
+  styles: [`a {
+    cursor: pointer;
+	}
+	.contol-bullet { width:9px; height:9px; background:#d8d8d8; border-radius:50%; margin:2px;}
+	   .contol-bullet.active { background:#9b9b9b; }
+ `],
   styleUrls: ['./side-panel.component.scss']
 })
 export class SidePanelComponent implements OnInit {
@@ -22,14 +29,34 @@ export class SidePanelComponent implements OnInit {
 		downCount : null,
 		upCount : null
 	} 
+	public alertCount: any = {
+		downCount: null,
+		upCount: null
+	} 
 	public marketSymbols = {
 		'0' : 'SPY',
 		'1' : 'DIA',
 		'2' : 'QQQ' 
 	}
+	public description = {
+	0: "None",
+	1: "Very Bearish",
+	2: "Bearish",
+	3: "Neutral",
+	4: "Bullish",
+	5: "Very Bullish"
+};
+	// array of all items to be paged
+	private allItems: any[];
+
+	// pager object
+	pager: any = {};
+
+	// paged items
+	pagedItems: any[];
 
 	public symbol: string = 'SPY'; 
-	constructor(private sidePanelProvider: SidePanelProvider, private ideaListProvider: IdeaListProvider) {
+	constructor(private sidePanelProvider: SidePanelProvider, private ideaListProvider: IdeaListProvider, private pagerProvider: PagerProvider) {
 		console.log(this.getPresentDate('ddd MMM DD  h:mma'));
 	}
 	
@@ -56,6 +83,7 @@ export class SidePanelComponent implements OnInit {
 			});
 	}
 
+
 	public getIntraDayChartData(symbol:string,index) {
          
  		this.sidePanelProvider.getIntraDayChartData({symbol:symbol})
@@ -79,12 +107,68 @@ export class SidePanelComponent implements OnInit {
 	public getAlertSidePanelData(query){
 		this.sidePanelProvider.getAlertsData(query)
 			.subscribe(res => { 
+
+				this.alertCount.upCount = 0;
+				this.alertCount.downCount = 0
 				this.alertList = res['alerts'];
-				let dymmy = { "pgr_change_alerts": { "2017-06-17": { "SymbolsTurnedBearish": { "WAFD": -6.52, "MDP": -6.18 }, "SymbolsTurnedBullish": { "XRX": 30.73 } }, "2017-06-10": { "SymbolsTurnedBearish": {}, "SymbolsTurnedBullish": { "CMA": 39.69 } }, "DataAvailable": true, "2017-07-01": { "SymbolsTurnedBearish": { "USPH": -20.82, "SHAK": -45.15 }, "SymbolsTurnedBullish": {} } }, "earnings_surprise_alerts": { "NegativeEarningSurprises": {}, "PositiveEarningSurprises": { "COO": { "data": [2.5, 2.25, 11.11, 78.47], "quarter": "2" } } }, "estimate_revision_alerts": { "NegativeAnalystRevisions": { "JMBA": { "data": [-0.09, -0.04, -125, 33.73], "quarter": "1" }, "BAC": { "data": [0.46, 0.48, -4.166667, 68.93], "quarter": "4" }, "AGN": { "data": [3.98, 4, -0.5, 34.92], "quarter": "1" } }, "PositiveAnalystRevisions": { "COO": { "data": [2.56, 2.53, 1.185771, 78.47], "quarter": "1" }, "CMA": { "data": [1.09, 1.07, 1.869159, 88.89], "quarter": "2" }, "XRX": { "data": [0.84, 0.82, 2.439024, 93.71], "quarter": "2" } } } }
-				console.log(JSON.stringify(this.alertList));
+			//	let dummy = { "pgr_change_alerts": { "2017-06-17": { "SymbolsTurnedBearish": { "WAFD": -6.52, "MDP": -6.18 }, "SymbolsTurnedBullish": { "XRX": 30.73 } }, "2017-06-10": { "SymbolsTurnedBearish": {}, "SymbolsTurnedBullish": { "CMA": 39.69 } }, "DataAvailable": true, "2017-07-01": { "SymbolsTurnedBearish": { "USPH": -20.82, "SHAK": -45.15 }, "SymbolsTurnedBullish": {} } }, "earnings_surprise_alerts": { "NegativeEarningSurprises": {}, "PositiveEarningSurprises": { "COO": { "data": [2.5, 2.25, 11.11, 78.47], "quarter": "2" } } }, "estimate_revision_alerts": { "NegativeAnalystRevisions": { "JMBA": { "data": [-0.09, -0.04, -125, 33.73], "quarter": "1" }, "BAC": { "data": [0.46, 0.48, -4.166667, 68.93], "quarter": "4" }, "AGN": { "data": [3.98, 4, -0.5, 34.92], "quarter": "1" } }, "PositiveAnalystRevisions": { "COO": { "data": [2.56, 2.53, 1.185771, 78.47], "quarter": "1" }, "CMA": { "data": [1.09, 1.07, 1.869159, 88.89], "quarter": "2" }, "XRX": { "data": [0.84, 0.82, 2.439024, 93.71], "quarter": "2" } } } }
+		
+				// set items to json response
+				this.allItems = []
+				
+				for (var key in this.alertList['earnings_surprise_alerts']) {
+					for (var obj in this.alertList['earnings_surprise_alerts'][key]){
+						let jsonObj = {};
+						jsonObj['symbol'] = obj;
+						jsonObj['alert_type'] = 'earnings_surprise_alerts';
+						jsonObj['quarter'] = this.alertList['earnings_surprise_alerts'][key][obj]['quarter'];
+						jsonObj['pgr'] = this.calculatePGR(this.alertList['earnings_surprise_alerts'][key][obj]['data'][3]);
+						jsonObj['new_value'] = this.alertList['earnings_surprise_alerts'][key][obj]['data'][0];
+						jsonObj['old_value'] = this.alertList['earnings_surprise_alerts'][key][obj]['data'][1];
+						jsonObj['per_change'] = this.alertList['earnings_surprise_alerts'][key][obj]['data'][2];
+						this.allItems.push(jsonObj);
+						if (jsonObj['per_change']>0) {
+							this.alertCount.upCount++;
+						}else{
+							this.alertCount.downCount++;
+						}
+					}
+				}
+				for (var key in this.alertList['estimate_revision_alerts']) {
+					for (var obj in this.alertList['estimate_revision_alerts'][key]) {
+						let jsonObj = {};
+						jsonObj['symbol'] = obj;
+						jsonObj['alert_type'] = 'estimate_revision_alerts';
+						jsonObj['quarter'] = this.alertList['estimate_revision_alerts'][key][obj]['quarter'];
+						jsonObj['pgr'] = this.calculatePGR(this.alertList['estimate_revision_alerts'][key][obj]['data'][3]);
+						jsonObj['new_value'] = this.alertList['estimate_revision_alerts'][key][obj]['data'][0];
+						jsonObj['old_value'] = this.alertList['estimate_revision_alerts'][key][obj]['data'][1];
+						jsonObj['per_change'] = this.alertList['estimate_revision_alerts'][key][obj]['data'][2];
+						this.allItems.push(jsonObj);
+						if (jsonObj['per_change'] > 0) {
+							this.alertCount.upCount++;
+						} else {
+							this.alertCount.downCount++;
+						}
+					}
+				}
+				
+				this.setPage(1);
 			},
 			err => console.log('err', err));
 			
+	}
+
+	setPage(page: number) {
+		if (page < 1 || page > this.pager.totalPages) {
+			return;
+		}
+
+		// get pager object from service
+		this.pager = this.pagerProvider.getPager(this.allItems.length, page);
+
+		// get current page of items
+		this.pagedItems = this.allItems.slice(this.pager.startIndex, this.pager.endIndex + 1);
 	}
 
 	public initialMarketSectorData(){
@@ -168,6 +252,41 @@ export class SidePanelComponent implements OnInit {
  				
  			},
  			err => console.log('err', err));
+	}
+
+	public calculatePGR(pgr){
+		if(pgr>=0 && pgr<15){
+			pgr = 1;
+		} else if (pgr >= 15 && pgr < 29) {
+			pgr = 2;
+		} else if (pgr >= 29 && pgr < 59) {
+			pgr = 3;
+		} else if (pgr >= 59 && pgr < 85) {
+			pgr = 4;
+		} else if (pgr >=85) {
+			pgr = 5;
+		}else{
+			pgr = 0;
+		}
+		return pgr;
+	}
+
+	public appendPGRImage(pgr) {
+		let imageUrl = "assets/imgs/";
+		if (pgr == 1) {
+			return imageUrl + "arc_VeryBearish.svg"
+		}
+		else if (pgr == 2) {
+			return imageUrl + "arc_Bearish.svg"
+		} else if (pgr == 3) {
+			return imageUrl + "arc_Neutral.svg"
+		} else if (pgr == 4) {
+			return imageUrl + "arc_Bullish.svg"
+		} else if (pgr == 5) {
+			return imageUrl + "arc_VeryBullish.svg"
+		} else {
+			return imageUrl + "arc_None.svg"
+		}
 	}
 
 }

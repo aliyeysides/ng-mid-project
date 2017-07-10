@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, URLSearchParams } from '@angular/http';
 import { Subject } from "rxjs/Subject";
 import { Observable } from 'rxjs/Rx';
-
+import * as _ from 'underscore';
 import { environment } from 'environments/environment';
 
 @Injectable()

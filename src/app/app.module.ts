@@ -2,9 +2,12 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 /* Bootstrap component */
 import {AppComponent} from './app.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 /* Modules */
 import {SharedModule} from './shared/shared.module';
@@ -29,10 +32,10 @@ import {StockReportModule} from './stock-report/stock.module';
     IdeasModule,
     DiscoveryModule,
     InsightsModule,
-    StockReportModule
-    
+    StockReportModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

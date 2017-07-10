@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http, URLSearchParams} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
-
+import {Subject} from "rxjs/Subject";
 import {environment} from 'environments/environment';
 
 @Injectable()
@@ -11,8 +11,8 @@ export class IdeaListProvider {
   apiHostName = environment.envProtocol + '://' + environment.envHostName;
   private apiPrependText: string = '/CPTRestSecure/app';
 
-  public ideasList: Array<object>;
-
+  private wholeIdeasList: Subject<Array<object>> = new Subject<Array<object>>();
+  wholeIdeasList$ = this.wholeIdeasList.asObservable();
   constructor(private http: Http) {
     this.symbolLookupParams = new URLSearchParams;
   }
@@ -24,13 +24,8 @@ export class IdeaListProvider {
   }
 
   public setIdeaListData(data) {
-    this.ideasList = data;
+    this.wholeIdeasList.next(data);
   }
-
-  public getIdeaListData() {
-    return this.ideasList;
-  }
-
 
   public getJson(url, params): Observable<Array<object>> {
     return this.http.get(url, {

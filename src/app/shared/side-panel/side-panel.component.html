@@ -60,46 +60,41 @@
 					<div class="panel__header clearfix">
 						<p class="panel__title">ALERTS</p>
 						<p class="icon-expand"><a><i class="fa fa-angle-down" aria-hidden="true"></i></a></p>
-						<p class="panel-breakdown"><img src="assets/imgs/icon_green-circle.svg"> <span> 3 </span> &nbsp;|&nbsp;<img src="assets/imgs/icon_red-circle.svg"> <span> 2 </span> </p>
+						<p class="panel-breakdown"><img src="assets/imgs/icon_green-circle.svg"> <span> {{alertCount.upCount}} </span> &nbsp;|&nbsp;<img src="assets/imgs/icon_red-circle.svg"> <span> {{alertCount.downCount}} </span> </p>
 					</div>
 					<div class="panel__expand panel__expand--alerts clearfix">
-						<ul class="clearfix">
-							<li>
-								<img class="alert__pgr" src="assets/imgs/arc_Neutral.svg" width="26" height="13">
-								<p class="alert__ticker">FB</p>
-								<p class="alert__description">Power Gauge Turned Very Bullish</p>
-								<img class="alert__arrow" src="assets/imgs/icon_green-arrow.svg" width="13" height="13">
-							</li>
-							<li>
-								<img class="alert__pgr" src="assets/imgs/arc_Bullish.svg" width="26" height="13">
-								<p class="alert__ticker">AAPL</p>
-								<p class="alert__description">Bullish earnings surprise<br>Q2: Est. $0.30  <i class="fa fa-long-arrow-right" aria-hidden="true"></i>  $0.41</p>
-								<img class="alert__arrow" src="assets/imgs/icon_red-arrow.svg" width="13" height="13">
-							</li>
-							<li>
-								<img class="alert__pgr" src="assets/imgs/arc_Bullish.svg" width="26" height="13">
-								<p class="alert__ticker">GOOGL</p>
-								<p class="alert__description">Power Gauge Turned Very Bullish</p>
-								<img class="alert__arrow" src="assets/imgs/icon_green-arrow.svg" width="13" height="13">
-							</li>
-							<li>
-								<img class="alert__pgr" src="assets/imgs/arc_Bearish.svg" width="26" height="13">
-								<p class="alert__ticker">NOC</p>
-								<p class="alert__description">Power Gauge Turned Very Bullish</p>
-								<img class="alert__arrow" src="assets/imgs/icon_red-arrow.svg" width="13" height="13">
-							</li>
-							<li>
-								<img class="alert__pgr" src="assets/imgs/arc_VeryBullish.svg" width="26" height="13">
-								<p class="alert__ticker">DD</p>
-								<p class="alert__description">Estimate revision<br>Q2: $0.27  <i class="fa fa-long-arrow-right" aria-hidden="true"></i>  $0.25</p>
-								<img class="alert__arrow" src="assets/imgs/icon_green-arrow.svg" width="13" height="13">
+
+					<!--<div class="clearfix" *ngFor="let item of pagedItems">{{item.name}}</div> --> 
+					<ul class="clearfix" >
+							<li *ngFor="let item of pagedItems">
+								<img class="alert__pgr" [src]="appendPGRImage(item['pgr'])" width="26" height="13">
+								<p class="alert__ticker">{{item.symbol}}</p>
+
+								<p class="alert__description" *ngIf="item.alert_type=='pgr_change_alerts'">Power Gauge Turned Very Bullish</p>
+
+								<p class="alert__description" *ngIf="item.alert_type=='estimate_revision_alerts'">Estimate revision<br>Q{{item.quarter}}: ${{item.old_value | number : '1.2-2'}}  <i class="fa fa-long-arrow-right" aria-hidden="true"></i>  ${{item.new_value | number : '1.2-2'}}</p>
+
+								<p class="alert__description" *ngIf="item.alert_type=='earnings_surprise_alerts'">{{description[item.pgr]}} earnings surprise<br>Q{{item.quarter}}: Est. ${{item.old_value | number : '1.2-2'}}  <i class="fa fa-long-arrow-right" aria-hidden="true"></i>  ${{item.new_value | number : '1.2-2'}}</p>
+
+								<span [ngSwitch]="item.per_change">
+								<img width="13" height="13" class="sector-arrow" *ngSwitchDefault [src]="item.per_change>0 ? 'assets/imgs/icon_green-arrow.svg' : 'assets/imgs/icon_red-arrow.svg'" >
+								<img width="13" height="13" class="sector-arrow" *ngSwitchCase="0" [src]="'assets/imgs/icon_none-arrow.svg'" >
+								</span>
 							</li>
 						</ul>
-						<div class="alerts-toggle clearfix">
-							<a href=""><i class="fa fa-caret-left" aria-hidden="true"></i></a>
-							<div class="dots"> &nbsp; <i class="fa fa-circle selected" aria-hidden="true"></i> &nbsp; <i class="fa fa-circle" aria-hidden="true"></i> &nbsp; <i class="fa fa-circle" aria-hidden="true"></i> &nbsp; <i class="fa fa-circle" aria-hidden="true"></i> &nbsp; <i class="fa fa-circle" aria-hidden="true"></i> &nbsp; <i class="fa fa-circle" aria-hidden="true"></i> &nbsp; <i class="fa fa-circle" aria-hidden="true"></i> &nbsp; <i class="fa fa-circle" aria-hidden="true"></i> &nbsp; </div>
-							<a href=""><i class="fa fa-caret-right" aria-hidden="true"></i></a>
-						</div>
+						
+						<ul *ngIf="pager.pages && pager.pages.length" class="pagination clearfix alerts-toggle">
+						    <li [ngClass]="{disabled:pager.currentPage === 1}">
+						        <a (click)="setPage(pager.currentPage - 1)"><i class="fa fa-caret-left" aria-hidden="true"></i></a>
+						    </li>
+						    <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="dots">
+							<i  (click)="setPage(page)" class="fa fa-circle" [ngClass]="{selected:pager.currentPage === page}" aria-hidden="true"></i>
+						    </li>
+						    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+						        <a (click)="setPage(pager.currentPage + 1)"><i class="fa fa-caret-right" aria-hidden="true"></i></a>
+						    </li> 
+						</ul>
+
 					</div>
 				</div>
 				

@@ -62,10 +62,7 @@ export class ListViewComponent implements OnInit {
     this.mouseHoverOptionsMap = {};
   }
 
-  onNotify(message: string): void {
-    alert(message);
-  }
-
+ 
   goToStockView(stock: Idea, e) {
     e.stopPropagation();
     this.router.navigate(['/report', stock.symbol]);

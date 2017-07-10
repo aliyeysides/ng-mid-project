@@ -34,10 +34,6 @@ export class SharedService {
     this.symbolListValues.next(list);
   }
 
-  getUpdateActiveIdeaList(): Observable<any> {
-    return this.symbolListValues.asObservable();
-  }
-
   public symbolLookup(query: string): Observable<Array<object>> {
     let symbolLookupUrl = `${this.apiHostName}/CPTRestSecure/app/stocks/symbol-lookupV1?`;
   //  let symbolLookupUrl = `http://localhost:8080/CPTRestSecure/app/stocks/symbol-lookupV1?`;

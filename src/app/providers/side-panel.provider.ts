@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, URLSearchParams } from '@angular/http';
 import { Subject } from "rxjs/Subject";
 import { Observable } from 'rxjs/Rx';
-
+import * as _ from 'underscore';
 import { environment } from 'environments/environment';
 
 @Injectable()
@@ -31,6 +31,24 @@ export class SidePanelProvider {
 		let symbolLookupUrl = `${this.apiHostName}${this.apiPrependText}/midTier/getInitialData?`;
 		this.symbolLookupParams.set('components', query.components);
 		return this.getJson(symbolLookupUrl, this.symbolLookupParams);
+	}
+
+	public updateInitialSectorData(query): Observable<Array<object>> {
+		let symbolLookupUrl = `${this.apiHostName}${this.apiPrependText}/price/getListSymbolsPriceChgWRTOpen?`;
+		this.symbolLookupParams.set('listId', query.listId);
+		return this.getJson(symbolLookupUrl, this.symbolLookupParams);
+	}
+
+	public getAlertsData(query): Observable<Array<object>> {
+		let symbolLookupUrl = `${this.apiHostName}${this.apiPrependText}/midTier/getInitialData?`;
+		this.setKeysForAPICall(query);
+		return this.getJson(symbolLookupUrl, this.symbolLookupParams);
+	}
+
+	public setKeysForAPICall(query) {
+		Object.keys(query).forEach((key) => {
+			this.symbolLookupParams.set(key, query[key]);
+		})
 	}
 
 	public getJson(url, params): Observable<Array<object>> {

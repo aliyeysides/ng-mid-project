@@ -35,6 +35,8 @@ $(document).ready(function () {
 
 
   $("li.list__option").click(function () {
+    $(".body__bottom--addlist").removeClass("selected");
+    $(".body__bottom--listview").addClass("selected");
     $("li.list__option").removeClass("selected");
     $(this).addClass("selected");
   });
@@ -156,6 +158,20 @@ $(document).ready(function () {
     $(".list-view__actionbar").addClass("list-view__actionbar--companylist");
     $(".list-view__actionbar").removeClass("list-view__actionbar--championlist");
   });
+
+
+
+
+
+  $("li.list__option--add").click(function () {
+    $(".body__bottom--addlist").toggleClass("selected");
+    $(".body__bottom--listview").toggleClass("selected");
+    $(".list-description span").removeClass("selected");
+    $(".list-description--addlist").addClass("selected");
+  });
+
+
+
 
 
 // List Descriptions
@@ -291,33 +307,41 @@ $(document).ready(function () {
 
 
 
-
-// List View
-
-
-  $(".list__entry").mouseover(function () {
-    $(this).addClass("hover");
-  });
-
-  $(".list__entry").mouseout(function () {
-    $(this).removeClass("hover");
-  });
-
-
-  $(".list__entry").click(function () {
-    $(".list__entry").removeClass("selected");
-    $(this).addClass("selected");
-  });
-
-  $(".list__container").sortable({
-    scroll: true,
-    cursor: "move"
-  });
-
 // List Sort Menu
 
   $(".list-sort__button").click(function (e) {
     $(".top-sort-menu.dropdown-menu").toggle("blind", 250);
+  });
+
+
+// List View Stock Options Pop Over
+
+
+  $(".stock__options-button").click(function (e) {
+    var targetOpen = $(this.offsetParent).hasClass("slideOpen");
+
+    // if any slide is open and the target is open, then close them all and return;
+    if ($(".slideOpen") && targetOpen) {
+      $(".slideOpen").toggle("slide", {direction: "right"}, 250);
+      $(".slideOpen").removeClass("slideOpen");
+
+      e.stopPropagation();
+      return;
+    }
+    // if any slide is open and the target is not open, then close them all
+    if ($(".slideOpen") && !targetOpen) {
+      $(".slideOpen").toggle("slide", {direction: "right"}, 250);
+      $(".slideOpen").removeClass("slideOpen");
+
+      e.stopPropagation();
+    }
+
+    // toggle slide
+    $(".list__entry.hover .stock-options__popup").toggle("slide", {direction: "right"}, 250);
+    $(".list__entry.hover .stock-options__popup").toggleClass("slideOpen");
+
+    e.stopPropagation();
+
   });
 
 
@@ -458,7 +482,13 @@ $(document).ready(function () {
   });
 
 
+  $(".headlines-expand").click(function () {
+    $(".quick-view__news").toggleClass("expanded");
+  });
 
+  $(".headlines-collapse").click(function () {
+    $(".quick-view__news").toggleClass("expanded");
+  });
 
 
 });

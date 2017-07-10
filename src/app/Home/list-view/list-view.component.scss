@@ -11,7 +11,7 @@
 .body__bottom--listview {
 	position: absolute;
 	width: 100%;
-	display: none;
+	//display: none;
 }
 
 .body__bottom--listview.selected {
@@ -21,7 +21,7 @@
 .body__bottom--addlist {
 	position: absolute;
 	width: 100%;
-	display: none;
+	//display: none;
 }
 
 .body__bottom--addlist.selected {
@@ -34,7 +34,7 @@
 
 
 .view-option--list {
-	display: none;
+	//display: none;
 }
 
 .view-option--list.selected {
@@ -42,7 +42,7 @@
 }
 
 .view-option--panel {
-	display: none;
+	//display: none;
 	height: 100vh;
 	overflow-y: scroll;
 	overflow-x: hidden;

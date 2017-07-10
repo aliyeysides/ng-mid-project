@@ -199,7 +199,6 @@ export class IdeasComponent implements OnInit {
 
   public toggleAdditionalLists() {
     this.additionalLists = !this.additionalLists;
-    console.log('this.additionalLists', this.additionalLists);
     this.sharedService.setAdditionalListsMenu(this.additionalLists);
   }
 

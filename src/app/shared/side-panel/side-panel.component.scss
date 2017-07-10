@@ -29,7 +29,7 @@
 			padding: 15px 0 10px;
 			width: 183px;
 			margin: 0 auto;
-			
+
 			img {
 				width: 183px;
 				height: 26px;
@@ -38,7 +38,7 @@
 
 		.sidebar__date {
 			padding: 13px 0 15px;
-		
+
 			p {
 			  	font-family: $font-stack !important;
 				font-size: 14px;
@@ -56,10 +56,10 @@
 		    -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
 		    transform: rotate(90deg);
 		    color: $font-color--MD;
-			
+
 			a {
 				cursor: pointer;
-				
+
 				i {
 					&:hover {
 						color: $link-blue;
@@ -83,7 +83,7 @@
 				border-bottom: $border-line--LT;
 				text-transform: uppercase;
 				background-color: $background--LT;
-			
+
 				.panel__title {
 					margin-left: 10px;
 					line-height: 1;
@@ -91,18 +91,18 @@
 					float: left;
 					font-weight: 300;
 				}
-				
+
 				.icon-expand {
 					margin-right: 5px;
 					margin-left: 5px;
 					margin-top: -2px;
 					float: right;
 					font-size: 24px;
-				
+
 					a {
 						color: $font-color--LT;
 						cursor: pointer;
-						
+
 						&:hover {
 							color: $link-blue;
 						}
@@ -115,7 +115,7 @@
 					color: $font-color--LT;
 					font-size: 20px;
 					font-weight: 300;
-				
+
 					span {
 						font-weight: 700;
 						color: $font-color;
@@ -134,7 +134,7 @@
 				padding: 10px 0 7px;
 				border-bottom: $border-line--LT;
 				background-color: $background--LT3;
-				
+
 				p {
 					font-size: 15px;
 					line-height: 1;
@@ -162,11 +162,11 @@
 					margin-top: -5px;
 					float: right;
 					font-size: 24px;
-				
+
 					a {
 						color: $font-color--LT;
 						cursor: pointer;
-						
+
 						&:hover {
 							color: $link-blue;
 						}
@@ -204,11 +204,11 @@
 					hr.dotted-line {
 						position: absolute;
 						border: 1px dotted #383838;
-					    border-style: none none dotted; 
+					    border-style: none none dotted;
 						width: 210px;
 						padding:0;
 						margin:0;
-						z-index: 100;	
+						z-index: 100;
 					}
 
 					.graph {
@@ -371,7 +371,7 @@
 					    float: left;
 					    line-height: 1.4;
 					    text-align: center;
-					
+
 						.selected {
 						    font-size: 11px;
 						    color: $link-blue;
@@ -388,7 +388,7 @@
 	.panel__header {
 		.icon-expand {
 			transform: rotate(180deg);
-			
+
 			a {
 				color: $link-blue;
 			}
@@ -401,7 +401,7 @@
 	.icon-expand {
 		transform: rotate(180deg);
 		z-index: 1000;
-		
+
 		a {
 			color: $link-blue;
 		}

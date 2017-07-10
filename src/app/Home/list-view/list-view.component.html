@@ -90,7 +90,7 @@
   <!-- END: ACTION BAR  -->
 
   <!-- SECTION: VIEW LIST  -->
-  <div *ngIf="this.currentView == 'list-view' && this.additionalLists == false" class="body__bottom--listview selected">
+  <div *ngIf="this.currentView == 'list-view' && this.additionalLists != true" class="body__bottom--listview selected">
 
     <!-- ROW: CURRENT LIST  -->
     <div class="row no-gutters">
@@ -366,11 +366,12 @@
     <!-- END: QUICKVIEW PANEL  -->
 
   </div>
-  <div *ngIf="this.currentView == 'panel-view' && this.additionalLists == false" class="view-option--panel">
-    <div class="row no-gutters">
+  <div *ngIf="this.currentView == 'panel-view' && this.additionalLists != true" class="view-option--panel">
+    <div *ngIf="!ideaList?.length">There are currently no stocks in this list.</div>
+    <div *ngIf="ideaList?.length" class="row no-gutters">
 
       <!--  PANEL  -->
-      <div class="panel-view__container col-md-6">
+      <div *ngFor="let idea of ideaList" class="panel-view__container col-md-6">
         <div class="quick-view__panel">
           <div class="quick-view__data row">
 
@@ -380,7 +381,7 @@
                   <img src="assets/imgs/arc_Bullish.svg">
                 </div>
                 <div class="stock-panel__ticker">
-                  <p>AMZN</p>
+                  <p>{{idea.symbol}}</p>
                 </div>
                 <div class="button__view-summary">
                   <img src="assets/imgs/icon-stockview--blue.svg">
@@ -391,17 +392,17 @@
                   <a class="button__watch"><i class="fa fa-binoculars" aria-hidden="true"></i></a>
                   <a class="button__hold"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                 </div>
-                <p>Amazon Inc.</p>
+                <p>{{idea.name}}</p>
               </div>
               <div class="stock-panel__price row">
                 <div class="col-4">
-                  <p class="current-price up-change">$206.34</p>
+                  <p class="current-price up-change">{{idea.Last}}</p>
                 </div>
                 <div class="col-4">
-                  <p class="price-change up-change">+2.11</p>
+                  <p class="price-change up-change"></p>
                 </div>
                 <div class="col-4">
-                  <p class="percent-change up-change">(+0.22%)</p>
+                  <p class="percent-change up-change">({{idea.Change}}%)</p>
                 </div>
               </div>
               <div class="stock-panel__industry row">
@@ -1187,8 +1188,10 @@
       <p class="list__title">
         <span>Select a new idea list</span>
       </p>
-
     </div>
+    <button (click)="setAdditionalLists(false)" type="button" class="close" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
 
   <!-- ROW: ADD LIST  -->

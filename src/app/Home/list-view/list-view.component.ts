@@ -93,4 +93,8 @@ export class ListViewComponent implements OnInit {
     this.currentView = 'list-view';
   }
 
+  setAdditionalLists(val: boolean) {
+    this.sharedService.setAdditionalListsMenu(val);
+  }
+
 }

@@ -85,6 +85,10 @@ export class SharedService {
       return Observable.throw(errMsg);
   }
 
+  public getAdditionalListsMenu() {
+    return this.additionalLists;
+  }
+
   public setAdditionalListsMenu(value: boolean) {
     this.additionalLists.next(value);
   }

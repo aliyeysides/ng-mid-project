@@ -1,7 +1,8 @@
-
+"use strict";
 import { Component, OnInit, ViewEncapsulation,ElementRef} from '@angular/core';
 import { SharedService } from '../shared.service';
 import { SidePanelProvider } from 'app/providers/side-panel.provider';
+import { IdeaListProvider } from 'app/providers/idea-list.provider';
 import * as d3 from 'd3';
 import * as moment from 'moment/moment';
 
@@ -16,6 +17,7 @@ export class SidePanelComponent implements OnInit {
 	public initialData : Array<object>;
 	public sectorsData : Array<object>;
 	public marketsData : Array<object>;
+	public alertList : Array<object>;
 	public sectorCount : any =  {
 		downCount : null,
 		upCount : null
@@ -27,7 +29,7 @@ export class SidePanelComponent implements OnInit {
 	}
 
 	public symbol: string = 'SPY'; 
-	constructor(private sidePanelProvider: SidePanelProvider) {
+	constructor(private sidePanelProvider: SidePanelProvider, private ideaListProvider: IdeaListProvider) {
 		console.log(this.getPresentDate('ddd MMM DD  h:mma'));
 	}
 	
@@ -37,6 +39,21 @@ export class SidePanelComponent implements OnInit {
 
 	ngOnInit() { 
 		this.initialMarketSectorData();
+		this.ideaListProvider.wholeIdeasList$
+			.subscribe(res => {
+				let ideasListForApiCall;
+				ideasListForApiCall = res.filter((key, index, array) => {
+					return key['name'] == 'Holding' || key['name'] == 'Watching';
+				});
+				this.getAlertSidePanelData({
+				 	components: 'alerts',
+				  	date: '2017-06-30',
+				  	startDate: '2017-06-01',
+				  	endDate: '2017-07-03',
+					listId1: 1017347,//ideasListForApiCall[0]['list_id'],
+					listId2: 1219662//ideasListForApiCall[1]['list_id'] 
+				});
+			});
 	}
 
 	public getIntraDayChartData(symbol:string,index) {
@@ -58,6 +75,17 @@ export class SidePanelComponent implements OnInit {
 		
 
 	}	
+
+	public getAlertSidePanelData(query){
+		this.sidePanelProvider.getAlertsData(query)
+			.subscribe(res => { 
+				this.alertList = res['alerts'];
+				let dymmy = { "pgr_change_alerts": { "2017-06-17": { "SymbolsTurnedBearish": { "WAFD": -6.52, "MDP": -6.18 }, "SymbolsTurnedBullish": { "XRX": 30.73 } }, "2017-06-10": { "SymbolsTurnedBearish": {}, "SymbolsTurnedBullish": { "CMA": 39.69 } }, "DataAvailable": true, "2017-07-01": { "SymbolsTurnedBearish": { "USPH": -20.82, "SHAK": -45.15 }, "SymbolsTurnedBullish": {} } }, "earnings_surprise_alerts": { "NegativeEarningSurprises": {}, "PositiveEarningSurprises": { "COO": { "data": [2.5, 2.25, 11.11, 78.47], "quarter": "2" } } }, "estimate_revision_alerts": { "NegativeAnalystRevisions": { "JMBA": { "data": [-0.09, -0.04, -125, 33.73], "quarter": "1" }, "BAC": { "data": [0.46, 0.48, -4.166667, 68.93], "quarter": "4" }, "AGN": { "data": [3.98, 4, -0.5, 34.92], "quarter": "1" } }, "PositiveAnalystRevisions": { "COO": { "data": [2.56, 2.53, 1.185771, 78.47], "quarter": "1" }, "CMA": { "data": [1.09, 1.07, 1.869159, 88.89], "quarter": "2" }, "XRX": { "data": [0.84, 0.82, 2.439024, 93.71], "quarter": "2" } } } }
+				console.log(JSON.stringify(this.alertList));
+			},
+			err => console.log('err', err));
+			
+	}
 
 	public initialMarketSectorData(){
 		this.sidePanelProvider.initialMarketSectorData({components : 'majorMarketIndices,sectors'})
@@ -141,5 +169,5 @@ export class SidePanelComponent implements OnInit {
  			},
  			err => console.log('err', err));
 	}
-	
+
 }

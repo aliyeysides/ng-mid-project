@@ -39,6 +39,17 @@ export class SidePanelProvider {
 		return this.getJson(symbolLookupUrl, this.symbolLookupParams);
 	}
 
+	public getAlertsData(query): Observable<Array<object>> {
+		let symbolLookupUrl = `${this.apiHostName}${this.apiPrependText}/midTier/getInitialData?`;
+		this.setKeysForAPICall(query);
+		return this.getJson(symbolLookupUrl, this.symbolLookupParams);
+	}
+
+	public setKeysForAPICall(query) {
+		Object.keys(query).forEach((key) => {
+			this.symbolLookupParams.set(key, query[key]);
+		})
+	}
 
 	public getJson(url, params): Observable<Array<object>> {
 		return this.http.get(url, {

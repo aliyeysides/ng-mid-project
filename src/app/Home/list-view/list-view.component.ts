@@ -53,10 +53,7 @@ export class ListViewComponent implements OnInit {
       e.stopPropagation();
 
   }
-  onNotify(message: string): void {
-    alert(message);
-  }
-
+ 
   goToStockView(stock: Idea) {
     this.router.navigate(['/report', stock.symbol]);
   }

@@ -73,7 +73,7 @@ export class IdeasComponent implements OnInit {
     this.ideaListProvider.getIdeasList({uid: this.userId})
       .subscribe(res => {
           this.ideaListProvider.setIdeaListData(res)
-          this.ideasList = this.ideaListProvider.getIdeaListData();
+          this.ideasList = res;
           this.updateActiveIdeaList(this.ideasList);
         },
         err => console.log('err', err));

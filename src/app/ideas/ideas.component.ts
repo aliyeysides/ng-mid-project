@@ -45,14 +45,8 @@ export class IdeasComponent implements OnInit {
     'Power Gauge Rating Upgrades': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
     'Best of the Dow': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
     'Earnings Champs': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
-    'sell the Rallies': {
-      'style': 'list__option--chartlist list__option--sellrallies',
-      'imgName': 'img_list-buyrallies.svg'
-    },
-    'Bears of the Week': {
-      'style': 'list__option--IPlist list__option--classicbears',
-      'imgName': 'img_list-classicbears.svg'
-    },
+    'sell the Rallies': { 'style': 'list__option--chartlist list__option--sellrallies', 'imgName': 'img_list-buyrallies.svg' },
+    'Bears of the Week': { 'style': 'list__option--IPlist list__option--classicbears', 'imgName': 'img_list-classicbears.svg' },
     'Power Gauge Rating Downgrades': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
     'Don\'t Fight the Shorts': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
     'Dogs of the Dow': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
@@ -205,7 +199,6 @@ export class IdeasComponent implements OnInit {
 
   public toggleAdditionalLists() {
     this.additionalLists = !this.additionalLists;
-    console.log('this.additionalLists', this.additionalLists);
     this.sharedService.setAdditionalListsMenu(this.additionalLists);
   }
 

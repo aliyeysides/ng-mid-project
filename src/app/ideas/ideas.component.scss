@@ -17,7 +17,8 @@
 	overflow-x: scroll;
 	position: relative;
 	overflow-y: hidden;
-	
+	padding-right:200px;
+
 	.list-category {
 		position: absolute;
 		font-size: 20px;
@@ -580,7 +581,9 @@
 	color: #FFFFFF;
 }
 
-
+.list__option--add {
+	margin-right: 300px;
+}
 
 
 
@@ -601,7 +604,7 @@
 	background-color: #393d47;
 	height: 40px;
 	width: 100%;
-	
+
 	.list-description {
 		font-size: 16px;
 		color: #FFFFFF !important;
@@ -611,14 +614,14 @@
 		white-space: nowrap;
 		position: absolute;
 	}
-	
+
 	.toggle-arrow {
 		position: absolute;
 		font-size: 40px;
 		color: #999999;
 		margin-top: -2px;
 		line-height: 40px;
-		
+
 		&:hover {
 			color: #ffffff;
 		}
@@ -750,8 +753,6 @@
 .list-description--PGRdowngrade.hover, .list-description--PGRdowngrade.selected {
 	display: block;
 }
-
-
 
 .list-description--addlist.hover, .list-description--addlist.selected {
 	display: block;

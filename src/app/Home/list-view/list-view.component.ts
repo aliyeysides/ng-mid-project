@@ -26,6 +26,7 @@ export class ListViewComponent implements OnInit {
   public additionalLists: boolean = false;
   public mouseHoverOptionsMap: object = {};
   public popupOptionsMap: object = {};
+  public currentView: string = 'list-view';
 
   constructor(private sharedService: SharedService,
               private router: Router) {
@@ -62,7 +63,7 @@ export class ListViewComponent implements OnInit {
     this.mouseHoverOptionsMap = {};
   }
 
- 
+
   goToStockView(stock: Idea, e) {
     e.stopPropagation();
     this.router.navigate(['/report', stock.symbol]);
@@ -82,6 +83,14 @@ export class ListViewComponent implements OnInit {
       .subscribe(res => {
         console.log('res from removeFromList', res);
       });
+  }
+
+  gotoPanelView() {
+    this.currentView = 'panel-view';
+  }
+
+  gotoListView() {
+    this.currentView = 'list-view';
   }
 
 }

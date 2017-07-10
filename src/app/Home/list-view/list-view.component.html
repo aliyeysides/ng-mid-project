@@ -117,7 +117,7 @@
           </ul>
           <ul *ngIf="ideaList?.length" class="list__container">
             <li (click)="toggleOptions(idea, $event)" (mouseenter)="toggleHoverOptions(idea)" (mouseleave)="toggleHoverOptions(idea)" class="row no-gutters list__entry" *ngFor="let idea of ideaList">
-              <div *ngIf="popupOptionsMap[idea.symbol] == true" class="stock-options__popup">
+              <div [@slideInOut]="popupOptionsMap[idea.symbol]" *ngIf="popupOptionsMap[idea.symbol] == true" class="stock-options__popup">
                 <ul class="nav nav-justified">
                   <li (click)="addToList(idea.symbol, '123456', $event)" class="nav-item stock-option--hold">
                     <img src="assets/imgs/icon-plus.svg">

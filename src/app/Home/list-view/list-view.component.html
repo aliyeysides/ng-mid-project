@@ -383,7 +383,7 @@
             <div class="col-lg-8">
               <div class="clearfix">
                 <div class="stock-panel__PGR">
-                  <img src="assets/imgs/arc_Bullish.svg">
+                  <img src="{{appendPGRImage(idea.PGR)}}">
                 </div>
                 <div class="stock-panel__ticker">
                   <p>{{idea.symbol}}</p>
@@ -426,7 +426,9 @@
 
             <div class="quick-view__pgr col-lg-4">
               <p class="pgr__title">Power Gauge Rating:</p>
-              <p class="pgr__text bullish">{{idea.PGR}}</p>
+              <p class="pgr__text" [ngClass]="appendPGRClass(idea.PGR)">
+                {{appendPGRText(idea.PGR)}}
+              </p>
               <ul class="pgr__sliders row">
                 <li class="col-12">
                   <div class="sliderBar-container">

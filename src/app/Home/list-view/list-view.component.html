@@ -166,7 +166,10 @@
 
 
       <!-- QUICKVIEW PANEL  -->
-      <div class="quick-view__container col-md-6">
+      <div *ngIf="!this.selectedStock" class="quick-view__container col-md-6">
+        Oops...Looks like you'll have to select a stock to get started!
+      </div>
+      <div *ngIf="this.selectedStock" class="quick-view__container col-md-6">
         <div class="quick-view__panel">
           <div class="quick-view__data row">
 

@@ -28,7 +28,7 @@ export class ListViewComponent implements OnInit {
   public popupOptionsMap: object = {};
   public currentView: string = 'list-view';
   public selectedStock: Idea;
-  public orderByObject: string;
+  public orderByObject: object = { field: '', ascending: true };
 
   constructor(private sharedService: SharedService,
               private router: Router) {
@@ -104,6 +104,11 @@ export class ListViewComponent implements OnInit {
 
   setAdditionalLists(val: boolean) {
     this.sharedService.setAdditionalListsMenu(val);
+  }
+
+  setOrderByObject(val: string, order: boolean) {
+    this.orderByObject['field'] = val;
+    this.orderByObject['ascending'] = order;
   }
 
   public appendPGRImage(pgr) {

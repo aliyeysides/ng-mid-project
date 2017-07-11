@@ -13,38 +13,38 @@
               <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="#">Company
                 Name</a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                <li><a class="dropdown-subtoggle" tabindex="-1" href="#">A-Z</a></li>
-                <li><a class="dropdown-subtoggle" tabindex="-1" href="#">Z-A</a></li>
+                <li (click)="setOrderByObject('name', true)"><a class="dropdown-subtoggle" tabindex="-1" href="#">A-Z</a></li>
+                <li (click)="setOrderByObject('name', false)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Z-A</a></li>
               </ul>
             </li>
             <li class="dropdown-submenu">
               <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="#">Stock
                 Price</a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                <li><a class="dropdown-subtoggle" tabindex="-1" href="#">High to Low</a></li>
-                <li><a class="dropdown-subtoggle" tabindex="-1" href="#">Low to High</a></li>
+                <li (click)="setOrderByObject('Last', false)"><a class="dropdown-subtoggle" tabindex="-1" href="#">High to Low</a></li>
+                <li (click)="setOrderByObject('Last', true)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Low to High</a></li>
               </ul>
             </li>
             <li class="dropdown-submenu">
               <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="#">% Change</a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                <li><a class="dropdown-subtoggle" tabindex="-1" href="#">High to Low</a></li>
-                <li><a class="dropdown-subtoggle" tabindex="-1" href="#">Low to High</a></li>
+                <li (click)="setOrderByObject('Percentage ', false)"><a class="dropdown-subtoggle" tabindex="-1" href="#">High to Low</a></li>
+                <li (click)="setOrderByObject('Percentage ', true)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Low to High</a></li>
               </ul>
             </li>
             <li class="dropdown-submenu">
               <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="#">Market
                 Cap</a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                <li><a class="dropdown-subtoggle" tabindex="-1" href="#">High to Low</a></li>
-                <li><a class="dropdown-subtoggle" tabindex="-1" href="#">Low to High</a></li>
+                <li (click)="setOrderByObject('market_cap', false)"><a class="dropdown-subtoggle" tabindex="-1" href="#">High to Low</a></li>
+                <li (click)="setOrderByObject('market_cap', true)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Low to High</a></li>
               </ul>
             </li>
             <li class="dropdown-submenu">
               <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="#">% Yield</a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                <li><a class="dropdown-subtoggle" tabindex="-1" href="#">High to Low</a></li>
-                <li><a class="dropdown-subtoggle" tabindex="-1" href="#">Low to High</a></li>
+                <li (click)="setOrderByObject('div_yield', false)"><a class="dropdown-subtoggle" tabindex="-1" href="#">High to Low</a></li>
+                <li (click)="setOrderByObject('div_yield', true)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Low to High</a></li>
               </ul>
             </li>
           </ul>
@@ -120,7 +120,7 @@
           <ul *ngIf="ideaList?.length" class="list__container">
             <li [ngClass]="{'active selected' : this.selectedStock == idea}" (click)="toggleOptions(idea, $event); selectStock(idea)" (mouseenter)="toggleHoverOptions(idea)"
                 (mouseleave)="toggleHoverOptions(idea)" class="row no-gutters list__entry"
-                *ngFor="let idea of ideaList | orderBy:'name'">
+                *ngFor="let idea of ideaList | orderBy:orderByObject.field:orderByObject.ascending ">
               <div *ngIf="popupOptionsMap[idea.symbol] == true" class="stock-options__popup">
                 <ul class="nav nav-justified">
                   <li (click)="addToList(idea.symbol, '123456', $event)" class="nav-item stock-option--hold">
@@ -376,7 +376,7 @@
     <div *ngIf="ideaList?.length" class="row no-gutters">
 
       <!--  PANEL  -->
-      <div *ngFor="let idea of ideaList" class="panel-view__container col-md-6">
+      <div *ngFor="let idea of ideaList | orderBy:orderByObject.field:orderByObject.ascending" class="panel-view__container col-md-6">
         <div class="quick-view__panel">
           <div class="quick-view__data row">
 

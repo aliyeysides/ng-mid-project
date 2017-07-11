@@ -27,6 +27,7 @@ export class ListViewComponent implements OnInit {
   public mouseHoverOptionsMap: object = {};
   public popupOptionsMap: object = {};
   public currentView: string = 'list-view';
+  public selectedStock: Idea;
 
   constructor(private sharedService: SharedService,
               private router: Router) {
@@ -37,11 +38,18 @@ export class ListViewComponent implements OnInit {
       .switchMap(val => this.sharedService.symbolList({listId: val['list_id']}))
       .subscribe(res => {
         this.ideaList = res['symbols'];
+        if (this.ideaList) {
+          this.selectedStock = this.ideaList[0] as Idea;
+        }
       });
 
     this.sharedService.additionalLists$.subscribe(val => {
       this.additionalLists = val;
     });
+  }
+
+  selectStock(stock: Idea) {
+    this.selectedStock = stock;
   }
 
   toggleHoverOptions(idea) {

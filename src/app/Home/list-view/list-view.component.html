@@ -78,8 +78,8 @@
         <span class="list__title--PGRupgrade">Power Gauge Upgrades</span>
         <span class="list__title--PGRdowngrade">Power Gauge Downgrades</span>
       </p>
-      <a (click)="gotoPanelView()" class="view-toggle view-toggle--panel-view"><i class="fa fa-th-large align-absolute" aria-hidden="true"></i></a>
-      <a (click)="gotoListView()" class="view-toggle view-toggle--list-view active"><i class="fa fa-list align-absolute"
+      <a (click)="gotoPanelView()" [ngClass]="{'active selected' : this.currentView == 'panel-view'}" class="view-toggle view-toggle--panel-view"><i class="fa fa-th-large align-absolute" aria-hidden="true"></i></a>
+      <a (click)="gotoListView()" [ngClass]="{'active selected' : this.currentView == 'list-view'}" class="view-toggle view-toggle--list-view active"><i class="fa fa-list align-absolute"
                                                                                        aria-hidden="true"></i></a>
     </div>
 
@@ -118,7 +118,7 @@
             <span>There are currently no stocks in this list.</span>
           </ul>
           <ul *ngIf="ideaList?.length" class="list__container">
-            <li (click)="toggleOptions(idea, $event)" (mouseenter)="toggleHoverOptions(idea)"
+            <li [ngClass]="{'active selected' : this.selectedStock == idea}" (click)="toggleOptions(idea, $event); selectStock(idea)" (mouseenter)="toggleHoverOptions(idea)"
                 (mouseleave)="toggleHoverOptions(idea)" class="row no-gutters list__entry"
                 *ngFor="let idea of ideaList">
               <div *ngIf="popupOptionsMap[idea.symbol] == true" class="stock-options__popup">
@@ -153,7 +153,7 @@
                 <p class="data up-change">{{ idea.Last }}</p>
               </div>
               <div class="col-lg-2 col-xl-2 stock__price">
-                <p class="data up-change">{{ idea.Change }}%</p>
+                <p class="data up-change">{{ idea["Percentage "] }}%</p>
               </div>
               <div (click)="toggleOptions(idea, $event)" *ngIf="mouseHoverOptionsMap[idea.symbol] == true"
                    class="stock__options-button">
@@ -176,47 +176,47 @@
                   <img src="assets/imgs/arc_VeryBullish.svg">
                 </div>
                 <div class="stock-panel__ticker">
-                  <p>MSFT</p>
+                  <p>{{this.selectedStock?.symbol}}</p>
                 </div>
-                <div class="button__view-summary">
+                <div (click)="goToStockView(this.selectedStock, $event)" class="button__view-summary">
                   <img src="assets/imgs/icon-stockview--blue.svg">
                 </div>
               </div>
               <div class="stock-panel__company-name row">
                 <div class="button__add-to-list">
-                  <a class="button__watch"><i class="fa fa-binoculars" aria-hidden="true"></i></a>
-                  <a class="button__hold"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                  <a (click)="addToList(this.selectedStock, '123456', $event)" class="button__watch"><i class="fa fa-binoculars" aria-hidden="true"></i></a>
+                  <a (click)="addToList(this.selectedStock, '123456', $event)" class="button__hold"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                 </div>
                 <p>Microsoft Corp</p>
               </div>
               <div class="stock-panel__price row">
                 <div class="col-4">
-                  <p class="current-price down-change">$151.50</p>
+                  <p class="current-price down-change">{{this.selectedStock?.Last}}</p>
                 </div>
                 <div class="col-4">
-                  <p class="price-change down-change">-0.64</p>
+                  <p class="price-change down-change">{{this.selectedStock?.Change}}</p>
                 </div>
                 <div class="col-4">
-                  <p class="percent-change down-change">(-0.42%)</p>
+                  <p class="percent-change down-change">{{ this.selectedStock ? this.selectedStock["Percentage "] : null }}%</p>
                 </div>
               </div>
               <div class="stock-panel__industry row">
-                <p>Industry: <span class="industry"> Consumer Discretionary</span></p>
+                <p>Industry: <span class="industry">{{this.selectedStock?.industry_name}}</span></p>
                 <p>Ind.&nbsp;Strength: <span class="industry-strength strong"> Strong</span></p>
               </div>
               <div class="stock-panel__details row">
                 <div class="col-lg-6">
-                  <p>Mkt&nbsp;Cap:<span>178.61b</span></p>
+                  <p>Mkt&nbsp;Cap:<span>{{this.selectedStock?.market_cap}}</span></p>
                 </div>
                 <div class="col-lg-6">
-                  <p>Yield:<span>2.35%</span></p>
+                  <p>Yield:<span>{{this.selectedStock?.div_yield}}%</span></p>
                 </div>
               </div>
             </div>
 
             <div class="quick-view__pgr col-lg-4">
               <p class="pgr__title">Power Gauge Rating:</p>
-              <p class="pgr__text veryBullish">Very Bullish</p>
+              <p class="pgr__text veryBullish">{{this.selectedStock?.PGR}}</p>
               <ul class="pgr__sliders row">
                 <li class="col-12">
                   <div class="sliderBar-container">
@@ -383,14 +383,14 @@
                 <div class="stock-panel__ticker">
                   <p>{{idea.symbol}}</p>
                 </div>
-                <div class="button__view-summary">
+                <div (click)="goToStockView(idea, $event)" class="button__view-summary">
                   <img src="assets/imgs/icon-stockview--blue.svg">
                 </div>
               </div>
               <div class="stock-panel__company-name row">
                 <div class="button__add-to-list">
-                  <a class="button__watch"><i class="fa fa-binoculars" aria-hidden="true"></i></a>
-                  <a class="button__hold"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                  <a (click)="addToList(idea, '123456', $event)" class="button__watch"><i class="fa fa-binoculars" aria-hidden="true"></i></a>
+                  <a (click)="addToList(idea, '123456', $event)" class="button__hold"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                 </div>
                 <p>{{idea.name}}</p>
               </div>
@@ -399,29 +399,29 @@
                   <p class="current-price up-change">{{idea.Last}}</p>
                 </div>
                 <div class="col-4">
-                  <p class="price-change up-change"></p>
+                  <p class="price-change up-change">{{idea.Change}}</p>
                 </div>
                 <div class="col-4">
-                  <p class="percent-change up-change">({{idea.Change}}%)</p>
+                  <p class="percent-change up-change">({{idea["Percentage "]}}%)</p>
                 </div>
               </div>
               <div class="stock-panel__industry row">
-                <p>Industry: <span class="industry"> Consumer Discretionary</span></p>
+                <p>Industry: <span class="industry">{{idea.industry_name}}</span></p>
                 <p>Ind.&nbsp;Strength: <span class="industry-strength strong"> Strong</span></p>
               </div>
               <div class="stock-panel__details row">
                 <div class="col-lg-6">
-                  <p>Mkt&nbsp;Cap:<span>513.78b</span></p>
+                  <p>Mkt&nbsp;Cap:<span>{{idea.market_cap}}</span></p>
                 </div>
                 <div class="col-lg-6">
-                  <p>Yield:<span>1.49%</span></p>
+                  <p>Yield:<span>{{idea.div_yield}}%</span></p>
                 </div>
               </div>
             </div>
 
             <div class="quick-view__pgr col-lg-4">
               <p class="pgr__title">Power Gauge Rating:</p>
-              <p class="pgr__text bullish">Bullish</p>
+              <p class="pgr__text bullish">{{idea.PGR}}</p>
               <ul class="pgr__sliders row">
                 <li class="col-12">
                   <div class="sliderBar-container">
@@ -514,7 +514,7 @@
           <div class="quick-view__news row">
             <div class="news-panel__header">
               <div class="pull-left" style="float: left;">
-                <p><i class="fa fa-newspaper-o" aria-hidden="true"></i> Headlines for: <span>AMZN</span></p>
+                <p><i class="fa fa-newspaper-o" aria-hidden="true"></i> Headlines for: <span>{{idea.symbol}}</span></p>
               </div>
               <div class="pull-right" style="float: right;">
                 <p class="headlines-expand">See all headlines &nbsp;<i class="fa fa-angle-up" aria-hidden="true"></i></p>
@@ -567,600 +567,6 @@
         </div>
       </div>
       <!--  END: PANEL  -->
-
-      <!-- PANEL  -->
-      <div class="panel-view__container col-md-6">
-        <div class="quick-view__panel">
-          <div class="quick-view__data row">
-
-            <div class="col-lg-8">
-              <div class="clearfix">
-                <div class="stock-panel__PGR">
-                  <img src="assets/imgs/arc_Bearish.svg">
-                </div>
-                <div class="stock-panel__ticker">
-                  <p>CSCO</p>
-                </div>
-                <div class="button__view-summary">
-                  <img src="assets/imgs/icon-stockview--blue.svg">
-                </div>
-              </div>
-              <div class="stock-panel__company-name row">
-                <div class="button__add-to-list">
-                  <a class="button__watch"><i class="fa fa-binoculars" aria-hidden="true"></i></a>
-                  <a class="button__hold"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-                </div>
-                <p>Cisco Systems</p>
-              </div>
-              <div class="stock-panel__price row">
-                <div class="col-4">
-                  <p class="current-price up-change">$30.90</p>
-                </div>
-                <div class="col-4">
-                  <p class="price-change up-change">+0.18</p>
-                </div>
-                <div class="col-4">
-                  <p class="percent-change up-change">(+0.59%)</p>
-                </div>
-              </div>
-              <div class="stock-panel__industry row">
-                <p>Industry: <span class="industry"> Computer Office Equipment</span></p>
-                <p>Ind.&nbsp;Strength: <span class="industry-strength weak"> Weak</span></p>
-              </div>
-              <div class="stock-panel__details row">
-                <div class="col-lg-6">
-                  <p>Mkt&nbsp;Cap:<span>178.61b</span></p>
-                </div>
-                <div class="col-lg-6">
-                  <p>Yield:<span>2.35%</span></p>
-                </div>
-              </div>
-            </div>
-
-            <div class="quick-view__pgr col-lg-4">
-              <p class="pgr__title">Power Gauge Rating:</p>
-              <p class="pgr__text bearish">Bearish</p>
-              <ul class="pgr__sliders row">
-                <li class="col-12">
-                  <div class="sliderBar-container">
-                    <div class="sliderProgress">
-                      <div class="slider-bearish"></div>
-                      <div class="sliderBar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"
-                           style="width:25%">
-                        <span class="sr-only">Bearish</span>
-                      </div>
-                    </div>
-                    <div class="pgr__label">
-                      <p>Financials</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="col-12">
-                  <div class="sliderBar-container">
-                    <div class="sliderProgress">
-                      <div class="slider-bearish"></div>
-                      <div class="sliderBar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"
-                           style="width:25%">
-                        <span class="sr-only">Bearish</span>
-                      </div>
-                    </div>
-                    <div class="pgr__label">
-                      <p>Earnings</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="col-12">
-                  <div class="sliderBar-container">
-                    <div class="sliderProgress">
-                      <div class="slider-veryBearish"></div>
-                      <div class="sliderBar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
-                           style="width:0%">
-                        <span class="sr-only">Very Bearish</span>
-                      </div>
-                    </div>
-                    <div class="pgr__label">
-                      <p>Technicals</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="col-12">
-                  <div class="sliderBar-container">
-                    <div class="sliderProgress">
-                      <div class="slider-neutral"></div>
-                      <div class="sliderBar" role="progressbar" aria-valuenow="50" aria-valuemin="0"
-                           aria-valuemax="100"
-                           style="width:50%">
-                        <span class="sr-only">Neutral</span>
-                      </div>
-                    </div>
-                    <div class="pgr__label">
-                      <p>Experts</p>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="quick-view__chart-container row">
-            <div class="quick-view__chart">
-              <div id="mainChart"></div>
-            </div>
-          </div>
-
-          <div class="quick-view__similar row no-gutters">
-            <div class="icon__discover col-md-3 col-lg-2">
-              <img class="align-absolute" src="assets/imgs/icon-discover.svg">
-            </div>
-            <div class="similar-stock similar-stock-1 col-md-3 col-lg-2">
-              <p>SR</p>
-            </div>
-            <div class="similar-stock similar-stock-2 col-md-3 col-lg-2">
-              <p>CPK</p>
-            </div>
-            <div class="similar-stock similar-stock-3 col-md-3 col-lg-2">
-              <p>HNP</p>
-            </div>
-            <div class="similar-stock similar-stock-4 col-md-3 col-lg-2">
-              <p>CPN</p>
-            </div>
-            <div class="similar-stock similar-stock-5 col-md-3 col-lg-2">
-              <p>EOCC</p>
-            </div>
-          </div>
-
-          <div class="quick-view__news row">
-            <div class="news-panel__header">
-              <div class="pull-left" style="float: left;">
-                <p><i class="fa fa-newspaper-o" aria-hidden="true"></i> Headlines for: <span>CSCO</span></p>
-              </div>
-              <div class="pull-right" style="float: right;">
-                <p class="headlines-expand">See all headlines &nbsp;<i class="fa fa-angle-up" aria-hidden="true"></i></p>
-                <p class="headlines-collapse">Close &nbsp;<i class="fa fa-angle-up" aria-hidden="true"></i></p>
-              </div>
-            </div>
-            <ul class="headlines-container row">
-              <li class="headline col-lg-6">
-                <h2>Electronic Arts Inc. (NASDAQ:EA) EVP Sells $158,970.00 in Stock</h2>
-                <p class="news-source"><a>Investor Place</a></p>
-                <p class="update-time"><span>27</span><span> minutes</span> ago</p><br>
-              </li>
-              <li class="headline col-lg-6">
-                <h2>Fitbit Inc Surges Thanks To Best Buy Co Inc (FIT, BBY)</h2>
-                <p class="news-source"><a>Investor Place</a></p>
-                <p class="update-time"><span>1</span><span> hour</span> ago</p><br>
-              </li>
-              <li class="headline col-lg-6">
-                <h2>Electronic Arts Inc. (NASDAQ:EA) EVP Sells $158,970.00 in Stock</h2>
-                <p class="news-source"><a>Investor Place</a></p>
-                <p class="update-time"><span>27</span><span> minutes</span> ago</p><br>
-              </li>
-              <li class="headline col-lg-6">
-                <h2>Fitbit Inc Surges Thanks To Best Buy Co Inc (FIT, BBY)</h2>
-                <p class="news-source"><a>Investor Place</a></p>
-                <p class="update-time"><span>1</span><span> hour</span> ago</p><br>
-              </li>
-              <li class="headline col-lg-6">
-                <h2>Electronic Arts Inc. (NASDAQ:EA) EVP Sells $158,970.00 in Stock</h2>
-                <p class="news-source"><a>Investor Place</a></p>
-                <p class="update-time"><span>27</span><span> minutes</span> ago</p><br>
-              </li>
-              <li class="headline col-lg-6">
-                <h2>Fitbit Inc Surges Thanks To Best Buy Co Inc (FIT, BBY)</h2>
-                <p class="news-source"><a>Investor Place</a></p>
-                <p class="update-time"><span>1</span><span> hour</span> ago</p><br>
-              </li>
-              <li class="headline col-lg-6">
-                <h2>Electronic Arts Inc. (NASDAQ:EA) EVP Sells $158,970.00 in Stock</h2>
-                <p class="news-source"><a>Investor Place</a></p>
-                <p class="update-time"><span>27</span><span> minutes</span> ago</p><br>
-              </li>
-              <li class="headline col-lg-6">
-                <h2>Fitbit Inc Surges Thanks To Best Buy Co Inc (FIT, BBY)</h2>
-                <p class="news-source"><a>Investor Place</a></p>
-                <p class="update-time"><span>1</span><span> hour</span> ago</p><br>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <!-- END: PANEL  -->
-
-      <!--  PANEL  -->
-      <div class="panel-view__container col-md-6">
-        <div class="quick-view__panel">
-          <div class="quick-view__data row">
-
-            <div class="col-lg-8">
-              <div class="clearfix">
-                <div class="stock-panel__PGR">
-                  <img src="assets/imgs/arc_VeryBullish.svg">
-                </div>
-                <div class="stock-panel__ticker">
-                  <p>MSFT</p>
-                </div>
-                <div class="button__view-summary">
-                  <img src="assets/imgs/icon-stockview--blue.svg">
-                </div>
-              </div>
-              <div class="stock-panel__company-name row">
-                <div class="button__add-to-list">
-                  <a class="button__watch"><i class="fa fa-binoculars" aria-hidden="true"></i></a>
-                  <a class="button__hold"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-                </div>
-                <p>Microsoft Corp</p>
-              </div>
-              <div class="stock-panel__price row">
-                <div class="col-4">
-                  <p class="current-price down-change">$151.50</p>
-                </div>
-                <div class="col-4">
-                  <p class="price-change down-change">-0.64</p>
-                </div>
-                <div class="col-4">
-                  <p class="percent-change down-change">(-0.42%)</p>
-                </div>
-              </div>
-              <div class="stock-panel__industry row">
-                <p>Industry: <span class="industry"> Consumer Discretionary</span></p>
-                <p>Ind.&nbsp;Strength: <span class="industry-strength strong"> Strong</span></p>
-              </div>
-              <div class="stock-panel__details row">
-                <div class="col-lg-6">
-                  <p>Mkt&nbsp;Cap:<span>178.61b</span></p>
-                </div>
-                <div class="col-lg-6">
-                  <p>Yield:<span>2.35%</span></p>
-                </div>
-              </div>
-            </div>
-
-            <div class="quick-view__pgr col-lg-4">
-              <p class="pgr__title">Power Gauge Rating:</p>
-              <p class="pgr__text veryBullish">Very Bullish</p>
-              <ul class="pgr__sliders row">
-                <li class="col-12">
-                  <div class="sliderBar-container">
-                    <div class="sliderProgress">
-                      <div class="slider-bullish"></div>
-                      <div class="sliderBar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
-                           style="width:75%">
-                        <span class="sr-only">Bullish</span>
-                      </div>
-                    </div>
-                    <div class="pgr__label">
-                      <p>Financials</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="col-12">
-                  <div class="sliderBar-container">
-                    <div class="sliderProgress">
-                      <div class="slider-bullish"></div>
-                      <div class="sliderBar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
-                           style="width:75%">
-                        <span class="sr-only">Bullish</span>
-                      </div>
-                    </div>
-                    <div class="pgr__label">
-                      <p>Earnings</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="col-12">
-                  <div class="sliderBar-container">
-                    <div class="sliderProgress">
-                      <div class="slider-bearish"></div>
-                      <div class="sliderBar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"
-                           style="width:25%">
-                        <span class="sr-only">Bearish</span>
-                      </div>
-                    </div>
-                    <div class="pgr__label">
-                      <p>Technicals</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="col-12">
-                  <div class="sliderBar-container">
-                    <div class="sliderProgress">
-                      <div class="slider-veryBullish"></div>
-                      <div class="sliderBar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
-                           aria-valuemax="100"
-                           style="width:100%">
-                        <span class="sr-only">Very Bearish</span>
-                      </div>
-                    </div>
-                    <div class="pgr__label">
-                      <p>Experts</p>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="quick-view__chart-container row">
-            <div class="quick-view__chart">
-              <div id="mainChart"></div>
-            </div>
-          </div>
-
-          <div class="quick-view__similar row no-gutters">
-            <div class="icon__discover col-md-3 col-lg-2">
-              <img class="align-absolute" src="assets/imgs/icon-discover.svg">
-            </div>
-            <div class="similar-stock similar-stock-1 col-md-3 col-lg-2">
-              <p>YUM</p>
-            </div>
-            <div class="similar-stock similar-stock-2 col-md-3 col-lg-2">
-              <p>DD</p>
-            </div>
-            <div class="similar-stock similar-stock-3 col-md-3 col-lg-2">
-              <p>TIVO</p>
-            </div>
-            <div class="similar-stock similar-stock-4 col-md-3 col-lg-2">
-              <p>URBN</p>
-            </div>
-            <div class="similar-stock similar-stock-5 col-md-3 col-lg-2">
-              <p>PLAY</p>
-            </div>
-          </div>
-
-          <div class="quick-view__news row">
-            <div class="news-panel__header">
-              <div class="pull-left" style="float: left;">
-                <p><i class="fa fa-newspaper-o" aria-hidden="true"></i> Headlines for: <span>MSFT</span></p>
-              </div>
-              <div class="pull-right" style="float: right;">
-                <p class="headlines-expand">See all headlines &nbsp;<i class="fa fa-angle-up" aria-hidden="true"></i></p>
-                <p class="headlines-collapse">Close &nbsp;<i class="fa fa-angle-up" aria-hidden="true"></i></p>
-              </div>
-            </div>
-            <ul class="headlines-container row">
-              <li class="headline col-lg-6">
-                <h2>Electronic Arts Inc. (NASDAQ:EA) EVP Sells $158,970.00 in Stock</h2>
-                <p class="news-source"><a>Investor Place</a></p>
-                <p class="update-time"><span>27</span><span> minutes</span> ago</p><br>
-              </li>
-              <li class="headline col-lg-6">
-                <h2>Fitbit Inc Surges Thanks To Best Buy Co Inc (FIT, BBY)</h2>
-                <p class="news-source"><a>Investor Place</a></p>
-                <p class="update-time"><span>1</span><span> hour</span> ago</p><br>
-              </li>
-              <li class="headline col-lg-6">
-                <h2>Electronic Arts Inc. (NASDAQ:EA) EVP Sells $158,970.00 in Stock</h2>
-                <p class="news-source"><a>Investor Place</a></p>
-                <p class="update-time"><span>27</span><span> minutes</span> ago</p><br>
-              </li>
-              <li class="headline col-lg-6">
-                <h2>Fitbit Inc Surges Thanks To Best Buy Co Inc (FIT, BBY)</h2>
-                <p class="news-source"><a>Investor Place</a></p>
-                <p class="update-time"><span>1</span><span> hour</span> ago</p><br>
-              </li>
-              <li class="headline col-lg-6">
-                <h2>Electronic Arts Inc. (NASDAQ:EA) EVP Sells $158,970.00 in Stock</h2>
-                <p class="news-source"><a>Investor Place</a></p>
-                <p class="update-time"><span>27</span><span> minutes</span> ago</p><br>
-              </li>
-              <li class="headline col-lg-6">
-                <h2>Fitbit Inc Surges Thanks To Best Buy Co Inc (FIT, BBY)</h2>
-                <p class="news-source"><a>Investor Place</a></p>
-                <p class="update-time"><span>1</span><span> hour</span> ago</p><br>
-              </li>
-              <li class="headline col-lg-6">
-                <h2>Electronic Arts Inc. (NASDAQ:EA) EVP Sells $158,970.00 in Stock</h2>
-                <p class="news-source"><a>Investor Place</a></p>
-                <p class="update-time"><span>27</span><span> minutes</span> ago</p><br>
-              </li>
-              <li class="headline col-lg-6">
-                <h2>Fitbit Inc Surges Thanks To Best Buy Co Inc (FIT, BBY)</h2>
-                <p class="news-source"><a>Investor Place</a></p>
-                <p class="update-time"><span>1</span><span> hour</span> ago</p><br>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <!--  END: PANEL  -->
-
-      <!-- PANEL  -->
-      <div class="panel-view__container col-md-6">
-        <div class="quick-view__panel">
-          <div class="quick-view__data row">
-
-            <div class="col-lg-8">
-              <div class="clearfix">
-                <div class="stock-panel__PGR">
-                  <img src="assets/imgs/arc_VeryBullish.svg">
-                </div>
-                <div class="stock-panel__ticker">
-                  <p>MSFT</p>
-                </div>
-                <div class="button__view-summary">
-                  <img src="assets/imgs/icon-stockview--blue.svg">
-                </div>
-              </div>
-              <div class="stock-panel__company-name row">
-                <div class="button__add-to-list">
-                  <a class="button__watch"><i class="fa fa-binoculars" aria-hidden="true"></i></a>
-                  <a class="button__hold"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-                </div>
-                <p>Microsoft Corp</p>
-              </div>
-              <div class="stock-panel__price row">
-                <div class="col-4">
-                  <p class="current-price down-change">$151.50</p>
-                </div>
-                <div class="col-4">
-                  <p class="price-change down-change">-0.64</p>
-                </div>
-                <div class="col-4">
-                  <p class="percent-change down-change">(-0.42%)</p>
-                </div>
-              </div>
-              <div class="stock-panel__industry row">
-                <p>Industry: <span class="industry"> Consumer Discretionary</span></p>
-                <p>Ind.&nbsp;Strength: <span class="industry-strength strong"> Strong</span></p>
-              </div>
-              <div class="stock-panel__details row">
-                <div class="col-lg-6">
-                  <p>Mkt&nbsp;Cap:<span>178.61b</span></p>
-                </div>
-                <div class="col-lg-6">
-                  <p>Yield:<span>2.35%</span></p>
-                </div>
-              </div>
-            </div>
-
-            <div class="quick-view__pgr col-lg-4">
-              <p class="pgr__title">Power Gauge Rating:</p>
-              <p class="pgr__text veryBullish">Very Bullish</p>
-              <ul class="pgr__sliders row">
-                <li class="col-12">
-                  <div class="sliderBar-container">
-                    <div class="sliderProgress">
-                      <div class="slider-bullish"></div>
-                      <div class="sliderBar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
-                           style="width:75%">
-                        <span class="sr-only">Bullish</span>
-                      </div>
-                    </div>
-                    <div class="pgr__label">
-                      <p>Financials</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="col-12">
-                  <div class="sliderBar-container">
-                    <div class="sliderProgress">
-                      <div class="slider-bullish"></div>
-                      <div class="sliderBar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
-                           style="width:75%">
-                        <span class="sr-only">Bullish</span>
-                      </div>
-                    </div>
-                    <div class="pgr__label">
-                      <p>Earnings</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="col-12">
-                  <div class="sliderBar-container">
-                    <div class="sliderProgress">
-                      <div class="slider-bearish"></div>
-                      <div class="sliderBar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"
-                           style="width:25%">
-                        <span class="sr-only">Bearish</span>
-                      </div>
-                    </div>
-                    <div class="pgr__label">
-                      <p>Technicals</p>
-                    </div>
-                  </div>
-                </li>
-                <li class="col-12">
-                  <div class="sliderBar-container">
-                    <div class="sliderProgress">
-                      <div class="slider-veryBullish"></div>
-                      <div class="sliderBar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
-                           aria-valuemax="100"
-                           style="width:100%">
-                        <span class="sr-only">Very Bearish</span>
-                      </div>
-                    </div>
-                    <div class="pgr__label">
-                      <p>Experts</p>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="quick-view__chart-container row">
-            <div class="quick-view__chart">
-              <div id="mainChart"></div>
-            </div>
-          </div>
-
-          <div class="quick-view__similar row no-gutters">
-            <div class="icon__discover col-md-3 col-lg-2">
-              <img class="align-absolute" src="assets/imgs/icon-discover.svg">
-            </div>
-            <div class="similar-stock similar-stock-1 col-md-3 col-lg-2">
-              <p>YUM</p>
-            </div>
-            <div class="similar-stock similar-stock-2 col-md-3 col-lg-2">
-              <p>DD</p>
-            </div>
-            <div class="similar-stock similar-stock-3 col-md-3 col-lg-2">
-              <p>TIVO</p>
-            </div>
-            <div class="similar-stock similar-stock-4 col-md-3 col-lg-2">
-              <p>URBN</p>
-            </div>
-            <div class="similar-stock similar-stock-5 col-md-3 col-lg-2">
-              <p>PLAY</p>
-            </div>
-          </div>
-
-          <div class="quick-view__news row">
-            <div class="news-panel__header">
-              <div class="pull-left" style="float: left;">
-                <p><i class="fa fa-newspaper-o" aria-hidden="true"></i> Headlines for: <span>MSFT</span></p>
-              </div>
-              <div class="pull-right" style="float: right;">
-                <p class="headlines-expand">See all headlines &nbsp;<i class="fa fa-angle-up" aria-hidden="true"></i></p>
-                <p class="headlines-collapse">Close &nbsp;<i class="fa fa-angle-up" aria-hidden="true"></i></p>
-              </div>
-            </div>
-            <ul class="headlines-container row">
-              <li class="headline col-lg-6">
-                <h2>Electronic Arts Inc. (NASDAQ:EA) EVP Sells $158,970.00 in Stock</h2>
-                <p class="news-source"><a>Investor Place</a></p>
-                <p class="update-time"><span>27</span><span> minutes</span> ago</p><br>
-              </li>
-              <li class="headline col-lg-6">
-                <h2>Fitbit Inc Surges Thanks To Best Buy Co Inc (FIT, BBY)</h2>
-                <p class="news-source"><a>Investor Place</a></p>
-                <p class="update-time"><span>1</span><span> hour</span> ago</p><br>
-              </li>
-              <li class="headline col-lg-6">
-                <h2>Electronic Arts Inc. (NASDAQ:EA) EVP Sells $158,970.00 in Stock</h2>
-                <p class="news-source"><a>Investor Place</a></p>
-                <p class="update-time"><span>27</span><span> minutes</span> ago</p><br>
-              </li>
-              <li class="headline col-lg-6">
-                <h2>Fitbit Inc Surges Thanks To Best Buy Co Inc (FIT, BBY)</h2>
-                <p class="news-source"><a>Investor Place</a></p>
-                <p class="update-time"><span>1</span><span> hour</span> ago</p><br>
-              </li>
-              <li class="headline col-lg-6">
-                <h2>Electronic Arts Inc. (NASDAQ:EA) EVP Sells $158,970.00 in Stock</h2>
-                <p class="news-source"><a>Investor Place</a></p>
-                <p class="update-time"><span>27</span><span> minutes</span> ago</p><br>
-              </li>
-              <li class="headline col-lg-6">
-                <h2>Fitbit Inc Surges Thanks To Best Buy Co Inc (FIT, BBY)</h2>
-                <p class="news-source"><a>Investor Place</a></p>
-                <p class="update-time"><span>1</span><span> hour</span> ago</p><br>
-              </li>
-              <li class="headline col-lg-6">
-                <h2>Electronic Arts Inc. (NASDAQ:EA) EVP Sells $158,970.00 in Stock</h2>
-                <p class="news-source"><a>Investor Place</a></p>
-                <p class="update-time"><span>27</span><span> minutes</span> ago</p><br>
-              </li>
-              <li class="headline col-lg-6">
-                <h2>Fitbit Inc Surges Thanks To Best Buy Co Inc (FIT, BBY)</h2>
-                <p class="news-source"><a>Investor Place</a></p>
-                <p class="update-time"><span>1</span><span> hour</span> ago</p><br>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <!-- END: PANEL  -->
 
     </div>
     <div class="row" style="height: 405px;">

@@ -1,6 +1,10 @@
 @import 'variables';
 
-
+.VeryBearish { color: $veryBearish-red };
+.Bearish { color: $bearish-red };
+.Neutral { color: $neutral-yellow };
+.Bullish { color: $bullish-green };
+.VeryBullish { color: $veryBullish-green };
 
 
 .body__bottom {

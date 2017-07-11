@@ -141,7 +141,7 @@
                 </div>
               </div>
               <div class="col-lg-2 col-xl-2 stock__PGR">
-                <img class="align-absolute" src="assets/imgs/arc_VeryBullish.svg">
+                <img class="align-absolute" src="{{appendPGRImage(idea.PGR)}}">
               </div>
               <div class="col-lg-3 col-xl-2 stock__ticker">
                 <p class="">{{ idea.symbol }}</p>
@@ -176,7 +176,7 @@
             <div class="col-lg-8">
               <div class="clearfix">
                 <div class="stock-panel__PGR">
-                  <img src="assets/imgs/arc_VeryBullish.svg">
+                  <img src="{{appendPGRImage(this.selectedStock.PGR)}}">
                 </div>
                 <div class="stock-panel__ticker">
                   <p>{{this.selectedStock?.symbol}}</p>
@@ -190,7 +190,7 @@
                   <a (click)="addToList(this.selectedStock, '123456', $event)" class="button__watch"><i class="fa fa-binoculars" aria-hidden="true"></i></a>
                   <a (click)="addToList(this.selectedStock, '123456', $event)" class="button__hold"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                 </div>
-                <p>Microsoft Corp</p>
+                <p>{{this.selectedStock.name}}</p>
               </div>
               <div class="stock-panel__price row">
                 <div class="col-4">
@@ -219,7 +219,9 @@
 
             <div class="quick-view__pgr col-lg-4">
               <p class="pgr__title">Power Gauge Rating:</p>
-              <p class="pgr__text veryBullish">{{this.selectedStock?.PGR}}</p>
+              <p class="pgr__text" [ngClass]="appendPGRClass(this.selectedStock.PGR)">
+                {{appendPGRText(this.selectedStock.PGR)}}
+              </p>
               <ul class="pgr__sliders row">
                 <li class="col-12">
                   <div class="sliderBar-container">

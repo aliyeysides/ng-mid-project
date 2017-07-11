@@ -28,6 +28,7 @@ export class ListViewComponent implements OnInit {
   public popupOptionsMap: object = {};
   public currentView: string = 'list-view';
   public selectedStock: Idea;
+  public orderByObject: string;
 
   constructor(private sharedService: SharedService,
               private router: Router) {

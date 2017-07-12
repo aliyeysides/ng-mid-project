@@ -8,7 +8,12 @@ import { SymbolSearchModule } from './symbol-search/symbol-search.module';
 import { SidePanelModule } from './side-panel/side-panel.module';
 import { SharedService } from './shared.service';
 import { SignalService } from './signal.service';
+
 import { EvenOddPipe } from './shared.filters'
+
+import { OrderByPipe } from './pipes/order-by.pipe';
+
+
 @NgModule({
 	imports: [
 		CommonModule,
@@ -24,9 +29,13 @@ import { EvenOddPipe } from './shared.filters'
 		AppRoutingModule,
 		MidTierHeaderModule,
 		SidePanelModule,
-		SymbolSearchModule
+		SymbolSearchModule,
+    	OrderByPipe
 	],
-	providers: [SharedService, SignalService, EvenOddPipe]
+
+	providers: [SharedService, SignalService, EvenOddPipe],
+	declarations: [OrderByPipe]
+
 })
 export class SharedModule {
 

@@ -34,6 +34,8 @@ export class ListViewComponent implements OnInit {
   public inActiveIdeasList: Array<object>;
   public activeIdeasList: Array<object>;
   private userId = '1024494';
+  public selectedStock: Idea;
+  public orderByObject: object = { field: '', ascending: true };
   constructor(private sharedService: SharedService,
     private router: Router, private ideaListProvider: IdeaListProvider) {
   }
@@ -57,11 +59,18 @@ export class ListViewComponent implements OnInit {
       .switchMap(val => this.sharedService.symbolList({listId: val['list_id']}))
       .subscribe(res => {
         this.ideaList = res['symbols'];
+        if (this.ideaList) {
+          this.selectedStock = this.ideaList[0] as Idea;
+        }
       });
 
     this.sharedService.additionalLists$.subscribe(val => {
       this.additionalLists = val;
     });
+  }
+
+  selectStock(stock: Idea) {
+    this.selectedStock = stock;
   }
 
   toggleHoverOptions(idea) {
@@ -117,6 +126,7 @@ export class ListViewComponent implements OnInit {
     this.sharedService.setAdditionalListsMenu(val);
   }
 
+
 /* hardeep: logic for idea inactive list */
   
   public updateInActiveIdeaList(list) {
@@ -154,4 +164,60 @@ export class ListViewComponent implements OnInit {
   }
 
   /* hardeep: end logic for idea inactive list */
+
+  setOrderByObject(val: string, order: boolean) {
+    this.orderByObject['field'] = val;
+    this.orderByObject['ascending'] = order;
+  }
+
+  public appendPGRImage(pgr) {
+    const imageUrl = 'assets/imgs/';
+    if (pgr === 1) {
+      return imageUrl + 'arc_VeryBearish.svg';
+    } else if (pgr === 2) {
+      return imageUrl + 'arc_Bearish.svg';
+    } else if (pgr === 3) {
+      return imageUrl + 'arc_Neutral.svg';
+    } else if (pgr === 4) {
+      return imageUrl + 'arc_Bullish.svg';
+    } else if (pgr === 5) {
+      return imageUrl + 'arc_VeryBullish.svg';
+    } else {
+      return imageUrl + 'arc_None.svg';
+    }
+  }
+
+  public appendPGRText(pgr) {
+    if (pgr === 1) {
+      return 'Very Bearish';
+    } else if (pgr === 2) {
+      return 'Bearish';
+    } else if (pgr === 3) {
+      return 'Neutral';
+    } else if (pgr === 4) {
+      return 'Bullish';
+    } else if (pgr === 5) {
+      return 'Very Bullish';
+    } else {
+      return 'N/A';
+    }
+  }
+
+  public appendPGRClass(pgr) {
+    if (pgr === 1) {
+      return 'VeryBearish';
+    } else if (pgr === 2) {
+      return 'Bearish';
+    } else if (pgr === 3) {
+      return 'Neutral';
+    } else if (pgr === 4) {
+      return 'Bullish';
+    } else if (pgr === 5) {
+      return 'VeryBullish';
+    } else {
+      return '';
+    }
+  }
+
+
 }

@@ -1,5 +1,6 @@
-import {Component, OnInit, trigger, state, style, transition, animate} from '@angular/core';
+import { Component, OnInit, trigger, state, style, transition, animate } from '@angular/core';
 import {SharedService} from '../../shared/shared.service';
+import { IdeaListProvider } from 'app/providers/idea-list.provider'
 import {Router} from '@angular/router';
 import {Idea} from '../../shared/models/idea';
 
@@ -20,21 +21,40 @@ import {Idea} from '../../shared/models/idea';
   //   ])
   // ]
 })
+
 export class ListViewComponent implements OnInit {
 
   public ideaList: Array<object>;
+  public wholeIdeasList: Array<object>;
   public additionalLists: boolean = false;
   public mouseHoverOptionsMap: object = {};
   public popupOptionsMap: object = {};
   public currentView: string = 'list-view';
+  public mappingClassArray: Array<object>;
+  public inActiveIdeasList: Array<object>;
+  public activeIdeasList: Array<object>;
+  private userId = '1024494';
   public selectedStock: Idea;
   public orderByObject: object = { field: '', ascending: true };
-
   constructor(private sharedService: SharedService,
-              private router: Router) {
+    private router: Router, private ideaListProvider: IdeaListProvider) {
   }
 
   ngOnInit() {
+
+    this.ideaListProvider.wholeIdeasList$
+      .subscribe(res => {
+        this.wholeIdeasList = res;
+        this.updateInActiveIdeaList(this.wholeIdeasList);
+        this.updateActiveIdeaList(this.wholeIdeasList);
+
+      });
+
+    this.ideaListProvider.mappingClassArray$
+      .subscribe(res => {
+        this.mappingClassArray = res;
+      });
+
     this.sharedService.symbolListValues$
       .switchMap(val => this.sharedService.symbolList({listId: val['list_id']}))
       .subscribe(res => {
@@ -106,6 +126,45 @@ export class ListViewComponent implements OnInit {
     this.sharedService.setAdditionalListsMenu(val);
   }
 
+
+/* hardeep: logic for idea inactive list */
+  
+  public updateInActiveIdeaList(list) {
+    this.inActiveIdeasList = list.filter(function(key, val, array) {
+      return !key.is_active;
+    });
+  }
+
+  public updateActiveIdeaList(list) {
+    this.activeIdeasList = list.filter(function(key, val, array) {
+      return key.is_active;
+    });
+  }
+
+  public manageActiveInactive(status, list_id) {
+    if (this.activeIdeasList.length < 10){
+      this.ideaListProvider.manageActiveInactive({ uid: this.userId, listId: list_id, mode: status })
+        .subscribe(res => {
+          this.getIdeasList();
+        },
+        err => console.log('err', err));
+    }else{
+      alert("First you have to delete Idea liss, then try again.")
+    }
+  }
+    
+
+  public getIdeasList() {
+    this.ideaListProvider.getIdeasList({ uid: this.userId })
+      .subscribe(res => {
+        this.ideaListProvider.setIdeaListData(res);
+      },
+      err => console.log('err', err));
+
+  }
+
+  /* hardeep: end logic for idea inactive list */
+
   setOrderByObject(val: string, order: boolean) {
     this.orderByObject['field'] = val;
     this.orderByObject['ascending'] = order;
@@ -159,5 +218,6 @@ export class ListViewComponent implements OnInit {
       return '';
     }
   }
+
 
 }

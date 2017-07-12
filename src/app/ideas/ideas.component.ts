@@ -21,54 +21,57 @@ export class IdeasComponent implements OnInit {
   public activeUserList = {name: ''};
   public selectedActiveList: Array<object>;
   public selected: string = 'Holding';
-  public additionalLists: boolean = false;
-
+  public additionalLists: boolean = false; 
   public activeClassStyle = ['strong', 'hold', 'weak'];
   public ratingMap = ['WEAK', 'NEUTRAL', 'STRONG'];
   public mappingClassArray: any = {
-    'Holding': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
-    'Watching': {'style': 'list__option--userlist list__option--watching', 'imgName': 'img_list-watching.svg'},
-    'Ideas for You': {'style': 'list__option--yourideaslist list__option--ideasforyou', 'imgName': 'img_list-ideasforyou.svg'},
-    'Bulls of the Week': {'style': 'list__option--IPlist list__option--classicbulls', 'imgName': 'img_list-classicbulls.svg'},
-    'Best Growth Stocks': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
-    'Best of the Large Caps': {'style': 'list__option--userlist list__option--largecap', 'imgName': 'img_list-largecap.svg'},
-    'Best of the NASDAQ': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
-    'Best of the Small Caps': {'style': 'list__option--companylist list__option--holding', 'imgName': 'img_list-holding.svg'},
-    'Best Under $10': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
-    'Best Value Stocks': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
-    'Buy the Dips': {'style': 'list__option--chartlist list__option--selldips', 'imgName': 'img_list-selldips.svg'},
-    'Insider Confidence': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
-    'Money Makers': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
-    'Relative Strength Champs': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
-    'Money Flow Champs': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
-    'Analyst Darlings': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
-    'Power Gauge Rating Upgrades': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
-    'Best of the Dow': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
-    'Earnings Champs': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
-    'sell the Rallies': { 'style': 'list__option--chartlist list__option--sellrallies', 'imgName': 'img_list-buyrallies.svg' },
-    'Bears of the Week': { 'style': 'list__option--IPlist list__option--classicbears', 'imgName': 'img_list-classicbears.svg' },
-    'Power Gauge Rating Downgrades': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
-    'Don\'t Fight the Shorts': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
-    'Dogs of the Dow': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
-    'Upcoming Earnings Bears': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'},
-    'Upcoming Earnings Bulls': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg'}
+    'Holding': {'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis'},
+    'Watching': { 'style': 'list__option--userlist list__option--watching', 'imgName': 'img_list-watching.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis'},
+    'Ideas for You': { 'style': 'list__option--yourideaslist list__option--ideasforyou', 'imgName': 'img_list-ideasforyou.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
+    'Bulls of the Week': { 'style': 'list__option--IPlist list__option--classicbulls', 'imgName': 'img_list-classicbulls.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
+    'Best Growth Stocks': { 'style': 'list__option--companylist list__option--growthstock', 'imgName': 'img_list-growthstock.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
+    'Best of the Large Caps': { 'style': 'list__option--userlist list__option--largecap', 'imgName': 'img_list-largecap.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
+    'Best of the NASDAQ': { 'style': 'list__option--championlist list__option--bestofthenasdaq', 'imgName': 'img_list-bestofthenasdaq.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
+    'Best of the Small Caps': { 'style': 'list__option--companylist list__option--smallcap', 'imgName': 'img_list-smallcap.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
+    'Best Under $10': { 'style': 'list__option--companylist list__option--underten', 'imgName': 'img_list-underten.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
+    'Best Value Stocks': { 'style': 'list__option--companylist list__option--bestvalue', 'imgName': 'img_list-bestvalue.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
+    'Buy the Dips': { 'style': 'list__option--chartlist list__option--selldips', 'imgName': 'img_list-selldips.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
+    'Insider Confidence': { 'style': 'list__option--IPlist list__option--bestvalue', 'imgName': 'img_list-insiderconfidence.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
+    'Money Makers': { 'style': 'list__option--IPlist list__option--earningsbears', 'imgName': 'img_list-moneymakers.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
+    'Relative Strength Champs': { 'style': 'list__option--chartlist list__option--relativestrength', 'imgName': 'img_list-relativestrength.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
+    'Money Flow Champs': { 'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
+    'Analyst Darlings': { 'style': 'list__option--IPlist list__option--earningsbears', 'imgName': 'img_list-analystdarlings.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
+    'Power Gauge Rating Upgrades': { 'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
+    'Best of the Dow': { 'style': 'list__option--championlist list__option--bestofthedow', 'imgName': 'img_list-bestofthedow.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
+    'Earnings Champs': { 'style': 'list__option--IPlist list__option--earningschamps', 'imgName': 'img_list-earningschamps.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
+    'sell the Rallies': { 'style': 'list__option--chartlist list__option--sellrallies', 'imgName': 'img_list-buyrallies.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
+    'Bears of the Week': { 'style': 'list__option--IPlist list__option--classicbears', 'imgName': 'img_list-classicbears.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
+    'Power Gauge Rating Downgrades': { 'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
+    'Don\'t Fight the Shorts': { 'style': 'list__option--IPlist list__option--earningsbears', 'imgName': 'img_list-dontfighttheshorts.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
+    'Dogs of the Dow': { 'style': 'list__option--championlist list__option--dogsofthedow', 'imgName': 'img_list-dogsofthedow.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
+    'Upcoming Earnings Bears': { 'style': 'list__option--userlist list__option--holding', 'imgName': 'img_list-holding.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
+    'Upcoming Earnings Bulls': { 'style': 'list__option--IPlist list__option--earningsbulls', 'imgName': 'img_list-earningsbulls.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' }
 
   };
 
   constructor(private sharedService: SharedService, private signalService: SignalService, private ideaListProvider: IdeaListProvider) {
+   // this.ideaListProvider.setMappingClassArray(this.mappingClassArray);
   }
-
+  
   ngOnInit() {
     this.getIdeasList();
     this.updateUserList();
+    this.ideaListProvider.wholeIdeasList$
+      .subscribe(res => {
+        this.ideasList = res;
+        this.updateActiveIdeaList(this.ideasList);
+      });
   }
 
   public getIdeasList() {
     this.ideaListProvider.getIdeasList({uid: this.userId})
       .subscribe(res => {
-          this.ideaListProvider.setIdeaListData(res)
-          this.ideasList = res;
-          this.updateActiveIdeaList(this.ideasList);
+           this.ideaListProvider.setIdeaListData(res); 
         },
         err => console.log('err', err));
 
@@ -98,9 +101,16 @@ export class IdeasComponent implements OnInit {
   }
 
   public selectedIdeasList(event, list) {
-    this.selectedActiveList = list;
-    this.selected = this.selectedActiveList['name'];
-    this.sharedService.updateActiveIdeaList(this.selectedActiveList);
+      console.log(list.list_id);
+      this.selectedActiveList = list;
+      this.hideAddingListPanel();
+      this.selected = this.selectedActiveList['name'];
+      this.sharedService.updateActiveIdeaList(this.selectedActiveList);
+      /* Login for hiding Inactive ideas List panel */
+      this.additionalLists = this.sharedService.getAdditionalListsMenu().value;
+      if (this.additionalLists) {
+        this.sharedService.setAdditionalListsMenu(!this.additionalLists);
+      }
   }
 
   public updateUserList() {
@@ -127,6 +137,15 @@ export class IdeasComponent implements OnInit {
           err => console.log('err', err));
     }
 
+  }
+
+  public manageActiveInactive(status,list_id){
+      this.ideaListProvider.manageActiveInactive({ uid: this.userId, listId : list_id , mode: status })
+      .subscribe(res => {
+        this.getIdeasList();
+        console.log(res);
+      },
+      err => console.log('err', err));
   }
 
   public castIdeaObjects(symbols: Array<object>): Array<Idea> {
@@ -198,8 +217,14 @@ export class IdeasComponent implements OnInit {
   }
 
   public toggleAdditionalLists() {
+    this.ideaListProvider.setMappingClassArray(this.mappingClassArray);
     this.additionalLists = this.sharedService.getAdditionalListsMenu().value;
     this.additionalLists = !this.additionalLists;
+    this.sharedService.setAdditionalListsMenu(this.additionalLists);
+  }
+
+  public hideAddingListPanel(){
+    this.additionalLists = false;
     this.sharedService.setAdditionalListsMenu(this.additionalLists);
   }
 

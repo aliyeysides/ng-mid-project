@@ -129,9 +129,9 @@ export class SidePanelComponent implements OnInit {
 						this.allItems.push(jsonObj);
 						if (jsonObj['per_change']>0) {
 							this.alertCount.upCount++;
-						}else{
+						} else if (jsonObj['per_change'] < 0) {
 							this.alertCount.downCount++;
-						}
+						}else {}
 					}
 				}
 				for (var key in this.alertList['estimate_revision_alerts']) {
@@ -209,9 +209,9 @@ export class SidePanelComponent implements OnInit {
 				key['percent_change'] = fetchKeyForUpdateData['Percentage '];
 				if (key['percent_change'] > 0) {
 					upCount++;
-				} else {
+				} else if (key['percent_change'] < 0) {
 					downCount++;
-				}
+				}else {}
 			}
 		});
 		this.sectorCount.upCount = upCount;

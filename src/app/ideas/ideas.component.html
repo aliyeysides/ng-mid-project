@@ -10,11 +10,14 @@
 				<ul class="">
 					<li *ngFor = "let list of activeIdeasList ; let i = index " (click)="selectedIdeasList($event,list)" class="list__option" [ngClass]="getActiveClasses(list.name)">
 						<div class="list__image" >
+							<button (click)="manageActiveInactive('deactivate',list.list_id);$event.stopPropagation()" type="button" class="close" aria-label="Close" *ngIf=" list.name!='Holding' && list.name!='Watching' && list.name!='Ideas for You'">
+						      <span aria-hidden="true">&times;</span>
+						    </button>
 							<img class="align-absolute" [src]="'assets/imgs/'+mappingClassArray[list.name].imgName">
 						</div>
 						<p class="list__label"> {{list.name}}</p>
 					</li>
-					<li (click)="toggleAdditionalLists()" class="list__option list__option--addlist list__option--add" *ngIf="activeIdeasList?.length > 0">
+					<li (click)="toggleAdditionalLists()" class="list__option list__option--addlist list__option--add" *ngIf="activeIdeasList?.length > 0 && activeIdeasList?.length < 10" >
 						<div class="list__image">
 							<i class="align-absolute fa fa-plus-circle" aria-hidden="true"></i>
 						</div>

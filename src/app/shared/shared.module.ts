@@ -8,7 +8,7 @@ import { SymbolSearchModule } from './symbol-search/symbol-search.module';
 import { SidePanelModule } from './side-panel/side-panel.module';
 import { SharedService } from './shared.service';
 import { SignalService } from './signal.service';
-
+import { EvenOddPipe } from './shared.filters'
 @NgModule({
 	imports: [
 		CommonModule,
@@ -26,7 +26,7 @@ import { SignalService } from './signal.service';
 		SidePanelModule,
 		SymbolSearchModule
 	],
-	providers: [SharedService, SignalService]
+	providers: [SharedService, SignalService, EvenOddPipe]
 })
 export class SharedModule {
 

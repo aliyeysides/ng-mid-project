@@ -7,6 +7,12 @@ import {environment} from 'environments/environment';
 @Injectable()
 export class IdeaListProvider {
 
+  private ideasList: Subject<Array<object>> = new Subject<Array<object>>();
+  ideasList$ = this.ideasList.asObservable();
+
+  private mappingClassArray: Subject<Array<object>> = new Subject<Array<object>>();
+  mappingClassArray$ = this.mappingClassArray.asObservable();
+
   private symbolLookupParams: URLSearchParams;
   apiHostName = environment.envProtocol + '://' + environment.envHostName;
   private apiPrependText: string = '/CPTRestSecure/app';
@@ -23,8 +29,18 @@ export class IdeaListProvider {
     return this.getJson(symbolLookupUrl, this.symbolLookupParams);
   }
 
-  public setIdeaListData(data) {
-    this.wholeIdeasList.next(data);
+  public manageActiveInactive(query): Observable<Array<object>> {
+    let symbolLookupUrl = `${this.apiHostName}${this.apiPrependText}/midTier/manageIdeaListActiveInactiveState?`;
+    this.setKeysForAPICall(query);
+    return this.getJson(symbolLookupUrl, this.symbolLookupParams);
+  }
+
+  public setIdeaListData(list: Array<object>) {
+     this.wholeIdeasList.next(list);
+  }
+
+  public setMappingClassArray(list: Array<object>) {
+    this.mappingClassArray.next(list);
   }
 
   public getJson(url, params): Observable<Array<object>> {
@@ -51,6 +67,12 @@ export class IdeaListProvider {
     let errMsg = (err.message) ? err.message :
       err.status ? `${err.status} - ${err.statusText}` : 'Server error';
     return Observable.throw(errMsg);
+  }
+
+  public setKeysForAPICall(query) {
+      Object.keys(query).forEach((key) => {
+      this.symbolLookupParams.set(key, query[key]);
+    })
   }
 
 }

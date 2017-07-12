@@ -73,7 +73,7 @@
 		}
 
 		.sidebar__panel {
-			margin-bottom: 20px;
+			margin-bottom: 15px;
 			border-bottom: $border-line--LT;
 
 			.panel__header {
@@ -131,12 +131,12 @@
 
 			.panel__market-data {
 				color: $font-color;
-				padding: 10px 0 7px;
+				padding: 10px 0 4px;
 				border-bottom: $border-line--LT;
 				background-color: $background--LT3;
 
 				p {
-					font-size: 15px;
+					font-size: 14px;
 					line-height: 1;
 				}
 
@@ -267,12 +267,12 @@
 				color: $font-color;
 				border-bottom: $border-line--LT;
 				background-color: $background--LT2;
-				font-size: 15px;
+				font-size: 14px;
 				line-height: 1;
 			}
 
 			.panel__expand--sectors {
-				padding: 0px 20px 10px 5px;
+				padding: 0px 15px 10px 5px;
 				display: none;
 
 				li {
@@ -283,14 +283,14 @@
 
 				.sector-arrow {
 					float: left;
-					margin-top: 2px;
+					margin-top: 0px;
 					margin-right: 10px;
 					margin-left: 5px;
 				}
 
 				.sector {
 					width: 120px;
-					height: 17px;
+					height: 15px;
 					float: left;
 					font-weight: 400;
 					white-space: nowrap;
@@ -305,7 +305,7 @@
 			}
 
 			.panel__expand--alerts {
-				padding: 0px 5px 10px 5px;
+				padding: 0px 5px 0px 5px;
 				display: block;
 
 				li {
@@ -316,7 +316,7 @@
 
 				.alert__pgr {
 					float: left;
-					margin-top: 2px;
+					margin-top: 0px;
 					margin-right: 5px;
 					margin-left: 0px;
 				}
@@ -324,8 +324,8 @@
 				.alert__ticker {
 					float: left;
 					font-weight: 700;
-					width: 60px;
-					font-size: 16px;
+					width: 57px;
+					font-size: 14px;
 				}
 
 				.alert__arrow {
@@ -338,22 +338,23 @@
 				.alert__description {
 					float: right;
 					font-size: 10px;
-					width: 115px;
-					line-height: 1.5;
-					margin-top: -2px;
+					width: 120px;
+					line-height: 1.4;
+					margin-top: -4px;
 				}
 
 				.alerts-toggle {
 					width: 100%;
-					margin-top: 10px;
+					margin-top: 5px;
+					border-top: $border-line--LT2;
 
 					a  {
 
 						i {
 						    color: #000000;
-						    font-size: 18px;
+						    font-size: 16px;
 						    float: left;
-						    margin:4px 5px 0;
+						    margin: 4px 5px 0;
 						    text-decoration: none;
 						}
 
@@ -363,19 +364,56 @@
 					}
 
 					i {
-					    font-size: 11px;
+					    font-size: 10px;
 					    color: $font-color--LT;
 					}
 
 					.dots {
 					    float: left;
-					    line-height: 1.4;
+					    line-height: 1.6;
 					    text-align: center;
 
 						.selected {
-						    font-size: 11px;
+						    font-size: 10px;
 						    color: $link-blue;
 						}
+					}
+				}
+			}
+
+			.panel__expand--insights {
+				padding: 0px 10px 5px 10px;
+				display: block;
+
+				li {
+					width: 100%;
+					clear: both;
+					padding: 10px 0;
+
+					.insights__title {
+						font-weight: 600;
+						font-size: 13px;
+						line-height: 1.3;
+						margin-bottom: 5px;
+					}
+
+					.insights__snippet {
+						font-weight: 400;
+						font-size: 11px;
+						line-height: 1.4;
+
+						a {
+							color: $link-blue;
+						}
+					}
+
+					.insights__date {
+						font-weight: 700;
+						font-size: 10px;
+						line-height: 1;
+						font-style: italic;
+						color: $font-color--Blue;
+						margin-bottom:6px;
 					}
 				}
 			}
@@ -420,7 +458,6 @@
 .panel__chart--QQQ {
 	display: none;
 }
-
 
 .panel__chart--smallcap {
 	display: none;

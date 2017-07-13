@@ -36,6 +36,15 @@ export class ListViewComponent implements OnInit {
   private userId = '1024494';
   public selectedStock: Idea;
   public orderByObject: object = { field: '', ascending: true };
+  public selectedStockPGR: object = {
+    'Experts': 0,
+    'Technicals': 0,
+    'Financials': 0,
+    'Earnings': 0
+  };
+  public selectedStockChartPoints: object;
+  public selectedStockSimilars: object;
+
   constructor(private sharedService: SharedService,
     private router: Router, private ideaListProvider: IdeaListProvider) {
   }
@@ -60,7 +69,7 @@ export class ListViewComponent implements OnInit {
       .subscribe(res => {
         this.ideaList = res['symbols'];
         if (this.ideaList) {
-          this.selectedStock = this.ideaList[0] as Idea;
+          this.selectStock(this.ideaList[0] as Idea);
         }
       });
 
@@ -71,6 +80,17 @@ export class ListViewComponent implements OnInit {
 
   selectStock(stock: Idea) {
     this.selectedStock = stock;
+    this.getSelectedStockData(stock);
+  }
+
+  getSelectedStockData(stock: Idea) {
+    this.sharedService.getStockCardData(stock.symbol)
+      .subscribe(res => {
+        this.selectedStockPGR = res['pgr'];
+        this.selectedStockChartPoints = res['chart-points'];
+        this.selectedStockSimilars = res['discovery-similars'].stocks;
+        console.log('this.selectedStockSimilars', this.selectedStockSimilars);
+      });
   }
 
   toggleHoverOptions(idea) {
@@ -128,7 +148,7 @@ export class ListViewComponent implements OnInit {
 
 
 /* hardeep: logic for idea inactive list */
-  
+
   public updateInActiveIdeaList(list) {
     this.inActiveIdeasList = list.filter(function(key, val, array) {
       return !key.is_active;
@@ -152,7 +172,7 @@ export class ListViewComponent implements OnInit {
       alert("First you have to delete Idea liss, then try again.")
     }
   }
-    
+
 
   public getIdeasList() {
     this.ideaListProvider.getIdeasList({ uid: this.userId })
@@ -187,7 +207,7 @@ export class ListViewComponent implements OnInit {
     }
   }
 
-  public appendPGRText(pgr) {
+  public appendPGRText(pgr): string {
     if (pgr === 1) {
       return 'Very Bearish';
     } else if (pgr === 2) {
@@ -203,7 +223,7 @@ export class ListViewComponent implements OnInit {
     }
   }
 
-  public appendPGRClass(pgr) {
+  public appendPGRClass(pgr): string {
     if (pgr === 1) {
       return 'VeryBearish';
     } else if (pgr === 2) {
@@ -216,6 +236,21 @@ export class ListViewComponent implements OnInit {
       return 'VeryBullish';
     } else {
       return '';
+    }
+  }
+
+  public appendSliderClass(pgr: number): string {
+    switch (pgr) {
+      case 5:
+        return 'slider-veryBullish';
+      case 4:
+        return 'slider-bullish';
+      case 3:
+        return 'slider-neutral';
+      case 2:
+        return 'slider-bearish';
+      case 1:
+        return 'slider-veryBearish';
     }
   }
 

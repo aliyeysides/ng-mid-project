@@ -14,7 +14,7 @@
 						<p class="panel__title">Markets</p>
 					</div>
 					<div class="panel__market-data panel__market-data--SPY  clearfix" 
-					*ngFor = "let market of marketsData ; let i = index" >
+					*ngFor="let market of marketsData;let i = index" >
 						<p class="market"> {{market.name}} </p>
 						<p class="icon-expand">
 							<a (click)="appendArrowClass($event,i)"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
@@ -35,13 +35,13 @@
 				</div>
 
 		<!-- SECTION: SECTOR PANEL  -->
-				<div class="sidebar__panel sidebar__panel--sectors">
+				<div class="sidebar__panel sidebar__panel--sectors" [ngClass]="{'open' : sectorClass }">
 					<div class="panel__header clearfix">
 						<p class="panel__title">Sectors</p>
-						<p class="icon-expand"><a><i class="fa fa-angle-down" aria-hidden="true"></i></a></p>
+						<p class="icon-expand" (click)="toggleClass('sector');"><a><i class="fa fa-angle-down" aria-hidden="true"></i></a></p>
 						<p class="panel-breakdown"><img src="assets/imgs/icon_green-arrow.svg"> <span> {{sectorCount.upCount}} </span> &nbsp;|&nbsp;<img src="assets/imgs/icon_red-arrow.svg"> <span> {{sectorCount.downCount}} </span> </p>
 					</div>
-					<div class="panel__expand panel__expand--sectors clearfix">
+					<div class="panel__expand  clearfix" [ngClass]="{'panel__expand--sectors' : sectorClass }">
 						<ul>
 							<li *ngFor = "let sector of sectorsData">
 								<span [ngSwitch]="sector.percent_change">
@@ -56,16 +56,15 @@
 				</div>
 
 		<!-- SECTION: ALERTS PANEL  -->
-				<div class="sidebar__panel sidebar__panel--alerts open">
+				<div class="sidebar__panel sidebar__panel--alerts" [ngClass]="{'open' : alertClass }">
 					<div class="panel__header clearfix">
 						<p class="panel__title">ALERTS</p>
-						<p class="icon-expand"><a><i class="fa fa-angle-down" aria-hidden="true"></i></a></p>
+						<p class="icon-expand" (click)="toggleClass('alert');"><a><i class="fa fa-angle-down" aria-hidden="true"></i></a></p>
 						<p class="panel-breakdown"><img src="assets/imgs/icon_green-circle.svg"> <span> {{alertCount.upCount}} </span> &nbsp;|&nbsp;<img src="assets/imgs/icon_red-circle.svg"> <span> {{alertCount.downCount}} </span> </p>
 					</div>
-					<div class="panel__expand panel__expand--alerts clearfix">
-
-					<!--<div class="clearfix" *ngFor="let item of pagedItems">{{item.name}}</div> --> 
-					<ul class="clearfix" >
+					<div class="panel__expand  clearfix" [ngClass]="{'panel__expand--alerts' : alertClass }">
+ 
+					<ul class="clearfix" *ngIf="alertClass">
 							<li *ngFor="let item of pagedItems">
 								<img class="alert__pgr" [src]="appendPGRImage(item['pgr'])" width="26" height="13">
 								<p class="alert__ticker">{{item.symbol}}</p>
@@ -83,7 +82,7 @@
 							</li>
 						</ul>
 						
-						<ul *ngIf="pager.pages && pager.pages.length" class="pagination clearfix alerts-toggle">
+						<ul *ngIf=" pager.pages && pager.pages.length && alertClass " class="pagination clearfix alerts-toggle">
 						    <li [ngClass]="{disabled:pager.currentPage === 1}">
 						        <a (click)="setPage(pager.currentPage - 1)"><i class="fa fa-caret-left" aria-hidden="true"></i></a>
 						    </li>

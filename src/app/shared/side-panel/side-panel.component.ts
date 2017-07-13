@@ -25,6 +25,8 @@ export class SidePanelComponent implements OnInit {
 	public sectorsData : Array<object>;
 	public marketsData : Array<object>;
 	public alertList : Array<object>;
+	public sectorClass: boolean = false;
+	public alertClass: boolean = true;
 	public sectorCount : any =  {
 		downCount : null,
 		upCount : null
@@ -59,6 +61,9 @@ export class SidePanelComponent implements OnInit {
 	constructor(private sidePanelProvider: SidePanelProvider, private ideaListProvider: IdeaListProvider, private pagerProvider: PagerProvider) {
 		console.log(this.getPresentDate('ddd MMM DD  h:mma'));
 	}
+
+
+
 
 	getPresentDate(dateFormat){
 		return moment().format(dateFormat);
@@ -246,6 +251,14 @@ export class SidePanelComponent implements OnInit {
 
 	}
 
+	public toggleClass(panel : string){
+		if(panel === 'sector'){
+			this.sectorClass = !this.sectorClass;
+		} else if (panel === 'alert'){
+			this.alertClass = !this.alertClass;
+		}
+	}
+ 
 	public getRecentIntraDayPriceForSymbol(symbol){
 		this.sidePanelProvider.getRecentIntraDayPriceForSymbol({symbol:symbol})
  			.subscribe(res => {

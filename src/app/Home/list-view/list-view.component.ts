@@ -30,6 +30,7 @@ export class ListViewComponent implements OnInit {
   public mouseHoverOptionsMap: object = {};
   public popupOptionsMap: object = {};
   public currentView: string = 'list-view';
+  public showHeadlines: boolean = false;
   public mappingClassArray: Array<object>;
   public inActiveIdeasList: Array<object>;
   public activeIdeasList: Array<object>;
@@ -112,6 +113,10 @@ export class ListViewComponent implements OnInit {
     this.mouseHoverOptionsMap = {};
   }
 
+  toggleHeadlines() {
+    this.showHeadlines = !this.showHeadlines;
+  }
+
 
   goToStockView(stock: Idea, e) {
     e.stopPropagation();
@@ -123,7 +128,7 @@ export class ListViewComponent implements OnInit {
     this.sharedService.addStockIntoList(stock.symbol, listId)
       .subscribe(res => {
         console.log('res from addToList', res);
-      })
+      });
   }
 
   removeFromList(stock: any, listId: string, e) {

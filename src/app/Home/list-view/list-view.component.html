@@ -179,7 +179,7 @@
                   <img src="{{appendPGRImage(this.selectedStock.PGR)}}">
                 </div>
                 <div class="stock-panel__ticker">
-                  <p>{{this.selectedStock?.symbol}}</p>
+                  <p>{{selectedStock?.symbol}}</p>
                 </div>
                 <div (click)="goToStockView(this.selectedStock, $event)" class="button__view-summary">
                   <img src="assets/imgs/icon-stockview--blue.svg">
@@ -296,15 +296,15 @@
             </div>
           </div>
 
-          <div class="quick-view__news row">
+          <div [ngClass]="{'expanded' : showHeadlines}" class="quick-view__news row">
             <div class="news-panel__header">
               <div class="pull-left" style="float: left;">
-                <p><i class="fa fa-newspaper-o" aria-hidden="true"></i> Headlines for: <span>MSFT</span></p>
+                <p><i class="fa fa-newspaper-o" aria-hidden="true"></i> Headlines for: <span>{{selectedStock.symbol}}</span></p>
               </div>
-              <div class="pull-right" style="float: right;">
-                <p class="headlines-expand">See all headlines &nbsp;<i class="fa fa-angle-up" aria-hidden="true"></i>
+              <div (click)="toggleHeadlines()" class="pull-right" style="float: right;">
+                <p *ngIf="showHeadlines == false" class="headlines-expand">See all headlines &nbsp;<i class="fa fa-angle-up" aria-hidden="true"></i>
                 </p>
-                <p class="headlines-collapse">Close &nbsp;<i class="fa fa-angle-up" aria-hidden="true"></i></p>
+                <p *ngIf="showHeadlines == true" class="headlines-collapse">Close &nbsp;<i class="fa fa-angle-up" aria-hidden="true"></i></p>
               </div>
             </div>
             <ul class="headlines-container row">

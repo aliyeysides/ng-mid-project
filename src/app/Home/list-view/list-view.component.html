@@ -292,7 +292,7 @@
               <img class="align-absolute" src="assets/imgs/icon-discover.svg">
             </div>
             <div *ngFor="let idea of selectedStockSimilars" class="similar-stock similar-stock-1 col-md-3 col-lg-2">
-              <p>{{idea}}</p>
+              <p (click)="goToStockView(idea)">{{idea}}</p>
             </div>
           </div>
 

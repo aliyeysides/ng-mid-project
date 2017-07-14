@@ -408,9 +408,9 @@ body {
 
 .sliderbar-neutral {
   background: #61C600;
-  background: -moz-linear-gradient(left, #e00000 0%, #ef5a00 33%, #ffbe00 66%);
-  background: -webkit-linear-gradient(left, #e00000 0%, #ef5a00 33%, #ffbe00 66%);
-  background: linear-gradient(to right, #e00000 0%, #ef5a00 33%, #ffbe00 66%);
+  background: -moz-linear-gradient(left, #e00000 0%, #ef5a00 50%, #ffbe00 100%);
+  background: -webkit-linear-gradient(left, #e00000 0%, #ef5a00 50%, #ffbe00 100%);
+  background: linear-gradient(to right, #e00000 0%, #ef5a00 50%, #ffbe00 100%);
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e00000', endColorstr='#61c600', GradientType=1);
   width: 50%;
 }

@@ -81,7 +81,7 @@ export class ListViewComponent implements OnInit {
 
   selectStock(stock: Idea) {
     this.selectedStock = stock;
-    this.getSelectedStockData(stock);
+    if (stock) {this.getSelectedStockData(stock)}
   }
 
   getSelectedStockData(stock: Idea) {

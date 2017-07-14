@@ -259,5 +259,20 @@ export class ListViewComponent implements OnInit {
     }
   }
 
+  public appendSliderBarClass(pgr: number): string {
+    switch (pgr) {
+      case 5:
+        return 'sliderbar-veryBullish';
+      case 4:
+        return 'sliderbar-bullish';
+      case 3:
+        return 'sliderbar-neutral';
+      case 2:
+        return 'sliderbar-bearish';
+      case 1:
+        return 'sliderbar-veryBearish';
+    }
+  }
+
 
 }

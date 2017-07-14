@@ -227,8 +227,7 @@
                   <div class="sliderBar-container">
                     <div class="sliderProgress">
                       <div [ngClass]="appendSliderClass(selectedStockPGR['Financials'])"></div>
-                      <div class="sliderBar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
-                           style="width:75%">
+                      <div class="sliderBar" [ngClass]="appendSliderBarClass(selectedStockPGR['Financials'])" role="progressbar" aria-valuemin="0" aria-valuemax="100">
                       </div>
                     </div>
                     <div class="pgr__label">
@@ -240,8 +239,7 @@
                   <div class="sliderBar-container">
                     <div class="sliderProgress">
                       <div [ngClass]="appendSliderClass(selectedStockPGR['Earnings'])"></div>
-                      <div class="sliderBar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
-                           style="width:75%">
+                      <div class="sliderBar" [ngClass]="appendSliderBarClass(selectedStockPGR['Earnings'])" role="progressbar" aria-valuemin="0" aria-valuemax="100">
                       </div>
                     </div>
                     <div class="pgr__label">
@@ -253,8 +251,7 @@
                   <div class="sliderBar-container">
                     <div class="sliderProgress">
                       <div [ngClass]="appendSliderClass(selectedStockPGR['Technicals'])"></div>
-                      <div class="sliderBar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"
-                           style="width:25%">
+                      <div class="sliderBar" [ngClass]="appendSliderBarClass(selectedStockPGR['Technicals'])" role="progressbar" aria-valuemin="0" aria-valuemax="100">
                         <span class="sr-only">Bearish</span>
                       </div>
                     </div>
@@ -267,9 +264,8 @@
                   <div class="sliderBar-container">
                     <div class="sliderProgress">
                       <div [ngClass]="appendSliderClass(selectedStockPGR['Experts'])"></div>
-                      <div class="sliderBar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
-                           aria-valuemax="100"
-                           style="width:100%">
+                      <div class="sliderBar" [ngClass]="appendSliderBarClass(selectedStockPGR['Experts'])" role="progressbar" aria-valuemin="0"
+                           aria-valuemax="100">
                       </div>
                     </div>
                     <div class="pgr__label">

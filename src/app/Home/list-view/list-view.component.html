@@ -179,7 +179,7 @@
                   <img src="{{appendPGRImage(this.selectedStock.PGR)}}">
                 </div>
                 <div class="stock-panel__ticker">
-                  <p>{{this.selectedStock?.symbol}}</p>
+                  <p>{{selectedStock?.symbol}}</p>
                 </div>
                 <div (click)="goToStockView(this.selectedStock, $event)" class="button__view-summary">
                   <img src="assets/imgs/icon-stockview--blue.svg">
@@ -187,49 +187,48 @@
               </div>
               <div class="stock-panel__company-name row">
                 <div class="button__add-to-list">
-                  <a (click)="addToList(this.selectedStock, '123456', $event)" class="button__watch"><i class="fa fa-binoculars" aria-hidden="true"></i></a>
-                  <a (click)="addToList(this.selectedStock, '123456', $event)" class="button__hold"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                  <a (click)="addToList(selectedStock, '123456', $event)" class="button__watch"><i class="fa fa-binoculars" aria-hidden="true"></i></a>
+                  <a (click)="addToList(selectedStock, '123456', $event)" class="button__hold"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                 </div>
-                <p>{{this.selectedStock.name}}</p>
+                <p>{{selectedStock.name}}</p>
               </div>
               <div class="stock-panel__price row">
                 <div class="col-4">
-                  <p class="current-price down-change">{{this.selectedStock?.Last}}</p>
+                  <p class="current-price down-change">{{selectedStock?.Last}}</p>
                 </div>
                 <div class="col-4">
-                  <p class="price-change down-change">{{this.selectedStock?.Change}}</p>
+                  <p class="price-change down-change">{{selectedStock?.Change}}</p>
                 </div>
                 <div class="col-4">
-                  <p class="percent-change down-change">{{ this.selectedStock ? this.selectedStock["Percentage "] : null }}%</p>
+                  <p class="percent-change down-change">{{ selectedStock ? selectedStock["Percentage "] : null }}%</p>
                 </div>
               </div>
               <div class="stock-panel__industry row">
-                <p>Industry: <span class="industry">{{this.selectedStock?.industry_name}}</span></p>
+                <p>Industry: <span class="industry">{{selectedStock?.industry_name}}</span></p>
                 <p>Ind.&nbsp;Strength: <span class="industry-strength strong"> Strong</span></p>
               </div>
               <div class="stock-panel__details row">
                 <div class="col-lg-6">
-                  <p>Mkt&nbsp;Cap:<span>{{this.selectedStock?.market_cap}}</span></p>
+                  <p>Mkt&nbsp;Cap:<span>{{selectedStock?.market_cap}}</span></p>
                 </div>
                 <div class="col-lg-6">
-                  <p>Yield:<span>{{this.selectedStock?.div_yield}}%</span></p>
+                  <p>Yield:<span>{{selectedStock?.div_yield}}%</span></p>
                 </div>
               </div>
             </div>
 
             <div class="quick-view__pgr col-lg-4">
               <p class="pgr__title">Power Gauge Rating:</p>
-              <p class="pgr__text" [ngClass]="appendPGRClass(this.selectedStock.PGR)">
-                {{appendPGRText(this.selectedStock.PGR)}}
+              <p class="pgr__text" [ngClass]="appendPGRClass(selectedStock.PGR)">
+                {{appendPGRText(selectedStock.PGR)}}
               </p>
               <ul class="pgr__sliders row">
                 <li class="col-12">
                   <div class="sliderBar-container">
                     <div class="sliderProgress">
-                      <div class="slider-bullish"></div>
+                      <div [ngClass]="appendSliderClass(selectedStockPGR['Financials'])"></div>
                       <div class="sliderBar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
                            style="width:75%">
-                        <span class="sr-only">Bullish</span>
                       </div>
                     </div>
                     <div class="pgr__label">
@@ -240,10 +239,9 @@
                 <li class="col-12">
                   <div class="sliderBar-container">
                     <div class="sliderProgress">
-                      <div class="slider-bullish"></div>
+                      <div [ngClass]="appendSliderClass(selectedStockPGR['Earnings'])"></div>
                       <div class="sliderBar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
                            style="width:75%">
-                        <span class="sr-only">Bullish</span>
                       </div>
                     </div>
                     <div class="pgr__label">
@@ -254,7 +252,7 @@
                 <li class="col-12">
                   <div class="sliderBar-container">
                     <div class="sliderProgress">
-                      <div class="slider-bearish"></div>
+                      <div [ngClass]="appendSliderClass(selectedStockPGR['Technicals'])"></div>
                       <div class="sliderBar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"
                            style="width:25%">
                         <span class="sr-only">Bearish</span>
@@ -268,11 +266,10 @@
                 <li class="col-12">
                   <div class="sliderBar-container">
                     <div class="sliderProgress">
-                      <div class="slider-veryBullish"></div>
+                      <div [ngClass]="appendSliderClass(selectedStockPGR['Experts'])"></div>
                       <div class="sliderBar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
                            aria-valuemax="100"
                            style="width:100%">
-                        <span class="sr-only">Very Bearish</span>
                       </div>
                     </div>
                     <div class="pgr__label">
@@ -294,32 +291,20 @@
             <div class="icon__discover col-md-3 col-lg-2">
               <img class="align-absolute" src="assets/imgs/icon-discover.svg">
             </div>
-            <div class="similar-stock similar-stock-1 col-md-3 col-lg-2">
-              <p>YUM</p>
-            </div>
-            <div class="similar-stock similar-stock-2 col-md-3 col-lg-2">
-              <p>DD</p>
-            </div>
-            <div class="similar-stock similar-stock-3 col-md-3 col-lg-2">
-              <p>TIVO</p>
-            </div>
-            <div class="similar-stock similar-stock-4 col-md-3 col-lg-2">
-              <p>URBN</p>
-            </div>
-            <div class="similar-stock similar-stock-5 col-md-3 col-lg-2">
-              <p>PLAY</p>
+            <div *ngFor="let idea of selectedStockSimilars" class="similar-stock similar-stock-1 col-md-3 col-lg-2">
+              <p (click)="goToStockView(idea)">{{idea}}</p>
             </div>
           </div>
 
-          <div class="quick-view__news row">
+          <div [ngClass]="{'expanded' : showHeadlines}" class="quick-view__news row">
             <div class="news-panel__header">
               <div class="pull-left" style="float: left;">
-                <p><i class="fa fa-newspaper-o" aria-hidden="true"></i> Headlines for: <span>MSFT</span></p>
+                <p><i class="fa fa-newspaper-o" aria-hidden="true"></i> Headlines for: <span>{{selectedStock.symbol}}</span></p>
               </div>
-              <div class="pull-right" style="float: right;">
-                <p class="headlines-expand">See all headlines &nbsp;<i class="fa fa-angle-up" aria-hidden="true"></i>
+              <div (click)="toggleHeadlines()" class="pull-right" style="float: right;">
+                <p *ngIf="showHeadlines == false" class="headlines-expand">See all headlines &nbsp;<i class="fa fa-angle-up" aria-hidden="true"></i>
                 </p>
-                <p class="headlines-collapse">Close &nbsp;<i class="fa fa-angle-up" aria-hidden="true"></i></p>
+                <p *ngIf="showHeadlines == true" class="headlines-collapse">Close &nbsp;<i class="fa fa-angle-up" aria-hidden="true"></i></p>
               </div>
             </div>
             <ul class="headlines-container row">
@@ -371,7 +356,7 @@
     <!-- END: QUICKVIEW PANEL  -->
 
   </div>
-  <div *ngIf="this.currentView == 'panel-view' && this.additionalLists != true" class="view-option--panel">
+  <div *ngIf="currentView == 'panel-view' && additionalLists != true" class="view-option--panel">
     <div *ngIf="!ideaList?.length">There are currently no stocks in this list.</div>
     <div *ngIf="ideaList?.length" class="row no-gutters">
 
@@ -593,7 +578,7 @@
 <!-- END: VIEW LIST  -->
 
 <!-- SECTION: ADD LIST BODY BOTTOM  -->
-<div *ngIf="this.additionalLists == true" class="body__bottom--addlist">
+<div *ngIf="additionalLists == true" class="body__bottom--addlist">
 
   <!-- ROW: ACTION BAR  -->
   <div class="list-view__actionbar list-view__actionbar--addlist row no-gutters">
@@ -612,7 +597,7 @@
   <div class="addlist__container row">
     <div class="col-6">
       <ul class="">
-   
+
       <li class="list__option row" *ngFor = " let list of ( inActiveIdeasList | evenodd: 'even')" [ngClass]="mappingClassArray[list.name]['style']" >
           <div class="col-md-4">
             <div class="list__image">
@@ -627,7 +612,7 @@
             <p class="list__description">{{mappingClassArray[list.name]['description']}}</p>
           </div>
         </li>
-        
+
       </ul>
     </div>
     <div class="col-6">
@@ -646,7 +631,7 @@
             <p class="list__description">{{mappingClassArray[list.name]['description']}}</p>
           </div>
         </li>
-        
+
       </ul>
     </div>
   </div>

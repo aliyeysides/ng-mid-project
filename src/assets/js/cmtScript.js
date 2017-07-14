@@ -1,4 +1,4 @@
-// $(document).ready(function () {
+$(document).ready(function () {
 //
 //
 //
@@ -476,10 +476,10 @@
 //   });
 //
 //
-//   $(".collapse-sidebar").click(function () {
-//     $(".sidebar__container").toggleClass("collapsed");
-//     $(".body").toggleClass("collapsed");
-//   });
+  $(".collapse-sidebar").click(function () {
+    $(".sidebar__container").toggleClass("collapsed");
+    $(".body").toggleClass("collapsed");
+  });
 //
 //
 //   $(".headlines-expand").click(function () {
@@ -491,21 +491,4 @@
 //   });
 //
 //
-// });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
+});

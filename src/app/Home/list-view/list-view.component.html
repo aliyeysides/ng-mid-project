@@ -150,10 +150,10 @@
                 <p class="">{{ idea.name }}</p>
               </div>
               <div class="col-lg-2 col-xl-2 stock__price">
-                <p class="data up-change">{{ idea.Last }}</p>
+                <p class="data" [ngClass]="{'up-change' : idea['Percentage '] > 0, 'down-change' : idea['Percentage '] < 0}">{{ idea.Last }}</p>
               </div>
               <div class="col-lg-2 col-xl-2 stock__price">
-                <p class="data up-change">{{ idea["Percentage "] }}%</p>
+                <p class="data" [ngClass]="{'up-change' : idea['Percentage '] > 0, 'down-change' : idea['Percentage '] < 0}">{{ idea["Percentage "] }}%</p>
               </div>
               <div (click)="toggleOptions(idea, $event)" *ngIf="mouseHoverOptionsMap[idea.symbol] == true"
                    class="stock__options-button">
@@ -194,13 +194,13 @@
               </div>
               <div class="stock-panel__price row">
                 <div class="col-4">
-                  <p class="current-price down-change">{{selectedStock?.Last}}</p>
+                  <p class="current-price" [ngClass]="{'up-change' : selectedStock['Percentage '] > 0, 'down-change' : selectedStock['Percentage '] < 0}">{{selectedStock?.Last}}</p>
                 </div>
                 <div class="col-4">
-                  <p class="price-change down-change">{{selectedStock?.Change}}</p>
+                  <p class="price-change" [ngClass]="{'up-change' : selectedStock['Percentage '] > 0, 'down-change' : selectedStock['Percentage '] < 0}">{{selectedStock?.Change}}</p>
                 </div>
                 <div class="col-4">
-                  <p class="percent-change down-change">{{ selectedStock ? selectedStock["Percentage "] : null }}%</p>
+                  <p class="percent-change" [ngClass]="{'up-change' : selectedStock['Percentage '] > 0, 'down-change' : selectedStock['Percentage '] < 0}">{{ selectedStock ? selectedStock["Percentage "] : null }}%</p>
                 </div>
               </div>
               <div class="stock-panel__industry row">
@@ -227,8 +227,7 @@
                   <div class="sliderBar-container">
                     <div class="sliderProgress">
                       <div [ngClass]="appendSliderClass(selectedStockPGR['Financials'])"></div>
-                      <div class="sliderBar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
-                           style="width:75%">
+                      <div class="sliderBar" [ngClass]="appendSliderBarClass(selectedStockPGR['Financials'])" role="progressbar" aria-valuemin="0" aria-valuemax="100">
                       </div>
                     </div>
                     <div class="pgr__label">
@@ -240,8 +239,7 @@
                   <div class="sliderBar-container">
                     <div class="sliderProgress">
                       <div [ngClass]="appendSliderClass(selectedStockPGR['Earnings'])"></div>
-                      <div class="sliderBar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
-                           style="width:75%">
+                      <div class="sliderBar" [ngClass]="appendSliderBarClass(selectedStockPGR['Earnings'])" role="progressbar" aria-valuemin="0" aria-valuemax="100">
                       </div>
                     </div>
                     <div class="pgr__label">
@@ -253,9 +251,7 @@
                   <div class="sliderBar-container">
                     <div class="sliderProgress">
                       <div [ngClass]="appendSliderClass(selectedStockPGR['Technicals'])"></div>
-                      <div class="sliderBar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"
-                           style="width:25%">
-                        <span class="sr-only">Bearish</span>
+                      <div class="sliderBar" [ngClass]="appendSliderBarClass(selectedStockPGR['Technicals'])" role="progressbar" aria-valuemin="0" aria-valuemax="100">
                       </div>
                     </div>
                     <div class="pgr__label">
@@ -267,9 +263,8 @@
                   <div class="sliderBar-container">
                     <div class="sliderProgress">
                       <div [ngClass]="appendSliderClass(selectedStockPGR['Experts'])"></div>
-                      <div class="sliderBar" role="progressbar" aria-valuenow="100" aria-valuemin="0"
-                           aria-valuemax="100"
-                           style="width:100%">
+                      <div class="sliderBar" [ngClass]="appendSliderBarClass(selectedStockPGR['Experts'])" role="progressbar" aria-valuemin="0"
+                           aria-valuemax="100">
                       </div>
                     </div>
                     <div class="pgr__label">

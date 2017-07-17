@@ -5,7 +5,7 @@
 
       <div class="modal__container container-fluid">
 
-        <div class="modal__content slide__1 selected align-absolute">
+        <div [ngClass]="{'selected' : this.selected == 'slide__1'}" class="modal__content slide__1 align-absolute">
           <div class="content__top">
             <div (click)="hideModal()" class="modal__close">
               <a><i class="fa fa-times-circle" aria-hidden="true"></i></a>
@@ -25,7 +25,7 @@
 
                 <p class="large-copy">Continue to our <span>Quick-Start </span>option below to get started!</p>
               </div>
-              <div class="">
+              <div (click)="switchSlide('slide__2')" class="">
                 <a class="modal__button">Quick-Start &nbsp;<i class="fa fa-long-arrow-right"
                                                               aria-hidden="true"></i></a>
                 <a (click)="hideModal()" class="modal__skip">Skip Set-Up</a>
@@ -34,7 +34,7 @@
           </div>
         </div>
 
-        <div class="modal__content slide__2 align-absolute">
+        <div [ngClass]="{'selected' : this.selected == 'slide__2'}" class="modal__content slide__2 align-absolute">
           <div class="content__top">
             <div (click)="hideModal()" class="modal__close">
               <a><i class="fa fa-times-circle" aria-hidden="true"></i></a>
@@ -87,24 +87,24 @@
           <div class="content__bottom">
             <div class="progress__container">
               <div class="progress__steps">
-                <div class="step step--addlist">
+                <div (click)="switchSlide('slide__2')" class="step step--addlist">
                   <img src="../assets/imgs/icon_addholdings--progress-bar_ON.svg">
                   <p><strong>ADD</strong> Holdings</p>
                 </div>
-                <div class="step step--idealist">
+                <div (click)="switchSlide('slide__3')" class="step step--idealist">
                   <img src="../assets/imgs/icon_idealists--progress-bar.svg">
                   <p><strong>SELECT</strong> Idea Lists</p>
                 </div>
-                <div class="step step--keyfeatures">
+                <div (click)="switchSlide('slide__4')" class="step step--keyfeatures">
                   <img src="../assets/imgs/icon_keyfeatures--progress-bar.svg">
                   <p><strong>VIEW</strong> Key Features</p>
                 </div>
                 <ul class="keyfeatures__steps nav">
-                  <li class="feature-1"></li>
-                  <li class="feature-2"></li>
-                  <li class="feature-3"></li>
-                  <li class="feature-4"></li>
-                  <li class="feature-5"></li>
+                  <li (click)="switchSlide('slide__4')" class="feature-1"></li>
+                  <li (click)="switchSlide('slide__5')" class="feature-2"></li>
+                  <li (click)="switchSlide('slide__6')" class="feature-3"></li>
+                  <li (click)="switchSlide('slide__7')" class="feature-4"></li>
+                  <li (click)="switchSlide('slide__8')" class="feature-5"></li>
                 </ul>
               </div>
               <div class="progress__line">
@@ -117,7 +117,7 @@
           </div>
         </div>
 
-        <div class="modal__content slide__3 align-absolute">
+        <div [ngClass]="{'selected' : this.selected == 'slide__3'}" class="modal__content slide__3 align-absolute">
           <div class="content__top container">
             <div (click)="hideModal()" class="modal__close">
               <a><i class="fa fa-times-circle" aria-hidden="true"></i></a>
@@ -186,24 +186,24 @@
           <div class="content__bottom">
             <div class="progress__container">
               <div class="progress__steps">
-                <div class="step step--addlist">
+                <div (click)="switchSlide('slide__2')" class="step step--addlist">
                   <img src="../assets/imgs/icon_addholdings--progress-bar.svg">
                   <p><strong>ADD</strong> Holdings</p>
                 </div>
-                <div class="step step--idealist">
+                <div (click)="switchSlide('slide__3')" class="step step--idealist">
                   <img src="../assets/imgs/icon_idealists--progress-bar_ON.svg">
                   <p><strong>SELECT</strong> Idea Lists</p>
                 </div>
-                <div class="step step--keyfeatures">
+                <div (click)="switchSlide('slide__4')" class="step step--keyfeatures">
                   <img src="../assets/imgs/icon_keyfeatures--progress-bar.svg">
                   <p><strong>VIEW</strong> Key Features</p>
                 </div>
                 <ul class="keyfeatures__steps nav">
-                  <li class="feature-1"></li>
-                  <li class="feature-2"></li>
-                  <li class="feature-3"></li>
-                  <li class="feature-4"></li>
-                  <li class="feature-5"></li>
+                  <li (click)="switchSlide('slide__4')" class="feature-1"></li>
+                  <li (click)="switchSlide('slide__5')" class="feature-2"></li>
+                  <li (click)="switchSlide('slide__6')" class="feature-3"></li>
+                  <li (click)="switchSlide('slide__7')" class="feature-4"></li>
+                  <li (click)="switchSlide('slide__8')" class="feature-5"></li>
                 </ul>
               </div>
               <div class="progress__line">
@@ -216,7 +216,7 @@
           </div>
         </div>
 
-        <div class="modal__content slide__4 align-absolute">
+        <div [ngClass]="{'selected' : this.selected == 'slide__4'}" class="modal__content slide__4 align-absolute">
           <div class="content__top">
             <div (click)="hideModal()" class="modal__close">
               <a><i class="fa fa-times-circle" aria-hidden="true"></i></a>
@@ -234,24 +234,24 @@
           <div class="content__bottom">
             <div class="progress__container">
               <div class="progress__steps">
-                <div class="step step--addlist">
+                <div (click)="switchSlide('slide__2')" class="step step--addlist">
                   <img src="../assets/imgs/icon_addholdings--progress-bar.svg">
                   <p><strong>ADD</strong> Holdings</p>
                 </div>
-                <div class="step step--idealist">
+                <div (click)="switchSlide('slide__3')" class="step step--idealist">
                   <img src="../assets/imgs/icon_idealists--progress-bar.svg">
                   <p><strong>SELECT</strong> Idea Lists</p>
                 </div>
-                <div class="step step--keyfeatures">
+                <div (click)="switchSlide('slide__4')" class="step step--keyfeatures">
                   <img src="../assets/imgs/icon_keyfeatures--progress-bar_ON.svg">
                   <p><strong>VIEW</strong> Key Features</p>
                 </div>
                 <ul class="keyfeatures__steps nav">
-                  <li class="feature-1 selected"></li>
-                  <li class="feature-2"></li>
-                  <li class="feature-3"></li>
-                  <li class="feature-4"></li>
-                  <li class="feature-5"></li>
+                  <li (click)="switchSlide('slide__4')" class="feature-1 selected"></li>
+                  <li (click)="switchSlide('slide__5')" class="feature-2"></li>
+                  <li (click)="switchSlide('slide__6')" class="feature-3"></li>
+                  <li (click)="switchSlide('slide__7')" class="feature-4"></li>
+                  <li (click)="switchSlide('slide__8')" class="feature-5"></li>
                 </ul>
               </div>
               <div class="progress__line">
@@ -264,7 +264,7 @@
           </div>
         </div>
 
-        <div class="modal__content slide__5 align-absolute">
+        <div [ngClass]="{'selected' : this.selected == 'slide__5'}" class="modal__content slide__5 align-absolute">
           <div (click)="hideModal()" class="content__top">
             <div class="modal__close">
               <a><i class="fa fa-times-circle" aria-hidden="true"></i></a>
@@ -282,24 +282,24 @@
           <div class="content__bottom">
             <div class="progress__container">
               <div class="progress__steps">
-                <div class="step step--addlist">
+                <div (click)="switchSlide('slide__2')" class="step step--addlist">
                   <img src="../assets/imgs/icon_addholdings--progress-bar.svg">
                   <p><strong>ADD</strong> Holdings</p>
                 </div>
-                <div class="step step--idealist">
+                <div (click)="switchSlide('slide__3')" class="step step--idealist">
                   <img src="../assets/imgs/icon_idealists--progress-bar.svg">
                   <p><strong>SELECT</strong> Idea Lists</p>
                 </div>
-                <div class="step step--keyfeatures">
+                <div (click)="switchSlide('slide__4')" class="step step--keyfeatures">
                   <img src="../assets/imgs/icon_keyfeatures--progress-bar_ON.svg">
                   <p><strong>VIEW</strong> Key Features</p>
                 </div>
                 <ul class="keyfeatures__steps nav">
-                  <li class="feature-1"></li>
-                  <li class="feature-2 selected"></li>
-                  <li class="feature-3"></li>
-                  <li class="feature-4"></li>
-                  <li class="feature-5"></li>
+                  <li (click)="switchSlide('slide__4')" class="feature-1"></li>
+                  <li (click)="switchSlide('slide__5')" class="feature-2 selected"></li>
+                  <li (click)="switchSlide('slide__6')" class="feature-3"></li>
+                  <li (click)="switchSlide('slide__7')" class="feature-4"></li>
+                  <li (click)="switchSlide('slide__8')" class="feature-5"></li>
                 </ul>
               </div>
               <div class="progress__line">
@@ -312,7 +312,7 @@
           </div>
         </div>
 
-        <div class="modal__content slide__6 align-absolute">
+        <div [ngClass]="{'selected' : this.selected == 'slide__6'}" class="modal__content slide__6 align-absolute">
           <div class="content__top">
             <div (click)="hideModal()" class="modal__close">
               <a><i class="fa fa-times-circle" aria-hidden="true"></i></a>
@@ -330,24 +330,24 @@
           <div class="content__bottom">
             <div class="progress__container">
               <div class="progress__steps">
-                <div class="step step--addlist">
+                <div (click)="switchSlide('slide__2')" class="step step--addlist">
                   <img src="../assets/imgs/icon_addholdings--progress-bar.svg">
                   <p><strong>ADD</strong> Holdings</p>
                 </div>
-                <div class="step step--idealist">
+                <div (click)="switchSlide('slide__3')" class="step step--idealist">
                   <img src="../assets/imgs/icon_idealists--progress-bar.svg">
                   <p><strong>SELECT</strong> Idea Lists</p>
                 </div>
-                <div class="step step--keyfeatures">
+                <div (click)="switchSlide('slide__4')" class="step step--keyfeatures">
                   <img src="../assets/imgs/icon_keyfeatures--progress-bar_ON.svg">
                   <p><strong>VIEW</strong> Key Features</p>
                 </div>
                 <ul class="keyfeatures__steps nav">
-                  <li class="feature-1"></li>
-                  <li class="feature-2"></li>
-                  <li class="feature-3 selected"></li>
-                  <li class="feature-4"></li>
-                  <li class="feature-5"></li>
+                  <li (click)="switchSlide('slide__4')" class="feature-1"></li>
+                  <li (click)="switchSlide('slide__5')" class="feature-2"></li>
+                  <li (click)="switchSlide('slide__6')" class="feature-3 selected"></li>
+                  <li (click)="switchSlide('slide__7')" class="feature-4"></li>
+                  <li (click)="switchSlide('slide__8')" class="feature-5"></li>
                 </ul>
               </div>
               <div class="progress__line">
@@ -360,7 +360,7 @@
           </div>
         </div>
 
-        <div class="modal__content slide__7 align-absolute">
+        <div [ngClass]="{'selected' : this.selected == 'slide__7'}" class="modal__content slide__7 align-absolute">
           <div class="content__top">
             <div (click)="hideModal()" class="modal__close">
               <a><i class="fa fa-times-circle" aria-hidden="true"></i></a>
@@ -378,24 +378,24 @@
           <div class="content__bottom">
             <div class="progress__container">
               <div class="progress__steps">
-                <div class="step step--addlist">
+                <div (click)="switchSlide('slide__2')" class="step step--addlist">
                   <img src="../assets/imgs/icon_addholdings--progress-bar.svg">
                   <p><strong>ADD</strong> Holdings</p>
                 </div>
-                <div class="step step--idealist">
+                <div (click)="switchSlide('slide__3')" class="step step--idealist">
                   <img src="../assets/imgs/icon_idealists--progress-bar.svg">
                   <p><strong>SELECT</strong> Idea Lists</p>
                 </div>
-                <div class="step step--keyfeatures">
+                <div (click)="switchSlide('slide__4')" class="step step--keyfeatures">
                   <img src="../assets/imgs/icon_keyfeatures--progress-bar_ON.svg">
                   <p><strong>VIEW</strong> Key Features</p>
                 </div>
                 <ul class="keyfeatures__steps nav">
-                  <li class="feature-1"></li>
-                  <li class="feature-2"></li>
-                  <li class="feature-3"></li>
-                  <li class="feature-4 selected"></li>
-                  <li class="feature-5"></li>
+                  <li (click)="switchSlide('slide__4')" class="feature-1"></li>
+                  <li (click)="switchSlide('slide__5')" class="feature-2"></li>
+                  <li (click)="switchSlide('slide__6')" class="feature-3"></li>
+                  <li (click)="switchSlide('slide__7')" class="feature-4 selected"></li>
+                  <li (click)="switchSlide('slide__8')" class="feature-5"></li>
                 </ul>
               </div>
               <div class="progress__line">
@@ -408,7 +408,7 @@
           </div>
         </div>
 
-        <div class="modal__content slide__8 align-absolute">
+        <div [ngClass]="{'selected' : this.selected == 'slide__8'}" class="modal__content slide__8 align-absolute">
           <div class="content__top">
             <div (click)="hideModal()" class="modal__close">
               <a><i class="fa fa-times-circle" aria-hidden="true"></i></a>
@@ -426,24 +426,24 @@
           <div class="content__bottom">
             <div class="progress__container">
               <div class="progress__steps">
-                <div class="step step--addlist">
+                <div (click)="switchSlide('slide__2')" class="step step--addlist">
                   <img src="../assets/imgs/icon_addholdings--progress-bar.svg">
                   <p><strong>ADD</strong> Holdings</p>
                 </div>
-                <div class="step step--idealist">
+                <div (click)="switchSlide('slide__3')" class="step step--idealist">
                   <img src="../assets/imgs/icon_idealists--progress-bar.svg">
                   <p><strong>SELECT</strong> Idea Lists</p>
                 </div>
-                <div class="step step--keyfeatures">
+                <div (click)="switchSlide('slide__4')" class="step step--keyfeatures">
                   <img src="../assets/imgs/icon_keyfeatures--progress-bar_ON.svg">
                   <p><strong>VIEW</strong> Key Features</p>
                 </div>
                 <ul class="keyfeatures__steps nav">
-                  <li class="feature-1"></li>
-                  <li class="feature-2"></li>
-                  <li class="feature-3"></li>
-                  <li class="feature-4"></li>
-                  <li class="feature-5 selected"></li>
+                  <li (click)="switchSlide('slide__4')" class="feature-1"></li>
+                  <li (click)="switchSlide('slide__5')" class="feature-2"></li>
+                  <li (click)="switchSlide('slide__6')" class="feature-3"></li>
+                  <li (click)="switchSlide('slide__7')" class="feature-4"></li>
+                  <li (click)="switchSlide('slide__8')" class="feature-5 selected"></li>
                 </ul>
               </div>
               <div class="progress__line">

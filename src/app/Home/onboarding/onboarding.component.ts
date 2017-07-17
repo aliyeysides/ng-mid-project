@@ -8,6 +8,8 @@ import {ModalDirective} from 'ngx-bootstrap/modal';
 })
 export class OnboardingComponent {
   @ViewChild('autoShownModal') public autoShownModal:ModalDirective;
+  public selected: string = 'slide__1';
+
   constructor() {
   }
 
@@ -23,6 +25,10 @@ export class OnboardingComponent {
 
   public onHidden():void {
     this.isModalShown = false;
+  }
+
+  public switchSlide(slide: string) {
+    this.selected = slide;
   }
 
 }

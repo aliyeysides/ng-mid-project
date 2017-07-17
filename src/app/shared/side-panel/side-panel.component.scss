@@ -269,11 +269,12 @@
 				background-color: $background--LT2;
 				font-size: 14px;
 				line-height: 1;
+				display: none;
 			}
 
 			.panel__expand--sectors {
 				padding: 0px 15px 10px 5px;
-				display: none;
+				display: block;
 
 				li {
 					width: 100%;
@@ -324,7 +325,7 @@
 				.alert__ticker {
 					float: left;
 					font-weight: 700;
-					width: 57px;
+					width: 55px;
 					font-size: 14px;
 				}
 
@@ -347,6 +348,10 @@
 					width: 100%;
 					margin-top: 5px;
 					border-top: $border-line--LT2;
+
+					li {
+						padding: 2px 0px 4px;
+					}
 
 					a  {
 

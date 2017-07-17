@@ -123,11 +123,11 @@
                 *ngFor="let idea of ideaList | orderBy:orderByObject.field:orderByObject.ascending ">
               <div *ngIf="popupOptionsMap[idea.symbol] == true" class="stock-options__popup">
                 <ul class="nav nav-justified">
-                  <li (click)="addToList(idea.symbol, '123456', $event)" class="nav-item stock-option--hold">
+                  <li (click)="addToHoldingList(idea.symbol, $event)" class="nav-item stock-option--hold">
                     <img src="assets/imgs/icon-plus.svg">
                     <p>Hold</p>
                   </li>
-                  <li (click)="removeFromList(idea.symbol, '123456', $event)" class="nav-item stock-option--watch">
+                  <li (click)="addToWatchingList(idea.symbol, $event)" class="nav-item stock-option--watch">
                     <img src="assets/imgs/icon-watch.svg">
                     <p>Watch</p>
                   </li>
@@ -187,8 +187,8 @@
               </div>
               <div class="stock-panel__company-name row">
                 <div class="button__add-to-list">
-                  <a (click)="addToList(selectedStock, '123456', $event)" class="button__watch"><i class="fa fa-binoculars" aria-hidden="true"></i></a>
-                  <a (click)="addToList(selectedStock, '123456', $event)" class="button__hold"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                  <a (click)="addToWatchingList(selectedStock, $event)" class="button__watch"><i class="fa fa-binoculars" aria-hidden="true"></i></a>
+                  <a (click)="addToHoldingList(selectedStock, $event)" class="button__hold"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                 </div>
                 <p>{{selectedStock.name}}</p>
               </div>
@@ -374,8 +374,8 @@
               </div>
               <div class="stock-panel__company-name row">
                 <div class="button__add-to-list">
-                  <a (click)="addToList(idea, '123456', $event)" class="button__watch"><i class="fa fa-binoculars" aria-hidden="true"></i></a>
-                  <a (click)="addToList(idea, '123456', $event)" class="button__hold"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                  <a (click)="addToWatchingList(idea, $event)" class="button__watch"><i class="fa fa-binoculars" aria-hidden="true"></i></a>
+                  <a (click)="addToHoldingList(idea, $event)" class="button__hold"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                 </div>
                 <p>{{idea.name}}</p>
               </div>

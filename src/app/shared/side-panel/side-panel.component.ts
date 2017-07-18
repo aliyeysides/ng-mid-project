@@ -25,7 +25,11 @@ export class SidePanelComponent implements OnInit {
 	public initialData : Array<object>;
 	public sectorsData : Array<object>;
 	public marketsData : Array<object>;
+	public marketDropdown: any = { '0' : true};
 	public alertList : Array<object>;
+	public presentDate : any;
+	public date : string;
+	public time: string;
 	public sectorClass: boolean = false;
 	public alertClass: boolean = true;
 	public sectorCount : any =  {
@@ -60,16 +64,11 @@ export class SidePanelComponent implements OnInit {
 
 	public symbol: string = 'SPY';
 	constructor(private sidePanelProvider: SidePanelProvider, private ideaListProvider: IdeaListProvider, private pagerProvider: PagerProvider) {
-		let date = this.getPresentDate('ddd MMM DD  h:mma');
-		console.log("First",date);
-		let newYork = moment.tz(date, "EST");
-		console.log("second", newYork.format('ddd MMM DD  h:mma'));
-		var losAngeles = moment.tz("2014-06-01 12:00", "America/New_York");
-		console.log(losAngeles.format());
-	}
-
-	getPresentDate(dateFormat){
-		return moment().format();
+		setInterval(() => {
+			this.presentDate = moment.tz(new Date, "America/New_York");
+			this.date = this.presentDate.format('ddd MMM DD');
+			this.time = this.presentDate.format('h:mma');
+		}, 1000);
 	}
 
 	ngOnInit() {
@@ -248,31 +247,17 @@ export class SidePanelComponent implements OnInit {
 	}
 
 	public appendArrowClass(event,i){
-		let element = document.getElementsByClassName("panel__market-data");
-		let chartElement = document.getElementsByClassName("panel__chart");
-		let active : boolean;
-
+		
 		/*Call intraDay chart and set symbol*/
 		this.symbol = this.marketSymbols[i.toString()];
 		this.getIntraDayChartData(this.symbol,i);
-
-		if(element[i].classList.contains('open')){
-			active = true;
-		}else{
-			active = false;
+		
+		if (this.marketDropdown[i]){
+			this.marketDropdown = {};
+			return;
 		}
-		for(let index=0,len=element.length; index<len; index++){
-			element[index].classList.remove('open');
-			chartElement[index].classList.add('panel__chart--SPY');
-			if(index==len-1) {
-				if(!active){
-					event.target.parentNode.parentNode.parentNode.classList.add('open')
-					event.target.parentNode.parentNode.parentNode.childNodes[8].classList.remove('panel__chart--SPY')
-				}
-
-			}
-		}
-
+		this.marketDropdown = {};
+		this.marketDropdown[i] = true;
 	}
 
 	public toggleClass(panel : string){

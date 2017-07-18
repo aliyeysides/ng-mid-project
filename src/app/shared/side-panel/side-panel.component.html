@@ -5,7 +5,7 @@
 					<img src="assets/imgs/logo-chaikin.svg" alt="" width="" height="">
 				</div>
 				<div class="sidebar__date">
-					<p>Thu &nbsp; Jun 07 &nbsp;&nbsp; &bull; &nbsp;&nbsp; 9:30am ET</p>
+					<p>{{date}}&nbsp;&nbsp; &bull; &nbsp;&nbsp; {{time}} ET</p>
 				</div>
 
 		<!-- SECTION: MARKET PANEL  -->
@@ -13,7 +13,7 @@
 					<div class="panel__header clearfix">
 						<p class="panel__title">Markets</p>
 					</div>
-					<div class="panel__market-data panel__market-data--SPY  clearfix" 
+					<div class="panel__market-data panel__market-data--SPY  clearfix" [ngClass] = "{'open' : marketDropdown[i]}" 
 					*ngFor="let market of marketsData;let i = index" >
 						<p class="market"> {{market.name}} </p>
 						<p class="icon-expand">
@@ -26,7 +26,7 @@
 						</p>
 
 				<!-- INTRADAY CHART STARTS HERE -->						
-						<div class="panel__chart panel__chart--SPY">
+						<div class="panel__chart" [ngClass] = "{'panel__chart--SPY' : !marketDropdown[i]}">
 							<div class="chart-container" [id]="marketSymbols[i]+'-chart-container'">
 							</div>
 						</div>

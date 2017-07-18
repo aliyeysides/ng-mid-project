@@ -398,13 +398,13 @@
               </div>
               <div class="stock-panel__price row">
                 <div class="col-4">
-                  <p class="current-price up-change">{{idea.Last}}</p>
+                  <p [ngClass]="{'up-change' : idea['Percentage '] > 0, 'down-change' : idea['Percentage '] < 0}" class="current-price">{{idea.Last}}</p>
                 </div>
                 <div class="col-4">
-                  <p class="price-change up-change">{{idea.Change}}</p>
+                  <p [ngClass]="{'up-change' : idea['Percentage '] > 0, 'down-change' : idea['Percentage '] < 0}" class="price-change">{{idea.Change}}</p>
                 </div>
                 <div class="col-4">
-                  <p class="percent-change up-change">({{idea["Percentage "]}}%)</p>
+                  <p [ngClass]="{'up-change' : idea['Percentage '] > 0, 'down-change' : idea['Percentage '] < 0}" class="percent-change">({{idea["Percentage "]}}%)</p>
                 </div>
               </div>
               <div class="stock-panel__industry row">

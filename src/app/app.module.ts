@@ -17,6 +17,10 @@ import {DiscoveryModule} from './discovery/discovery.module';
 import {InsightsModule} from './insights/insights.module';
 import {StockReportModule} from './stock-report/stock.module';
 
+import {
+  ModalModule,
+  AlertModule
+} from 'ngx-bootstrap';
 
 @NgModule({
   declarations: [
@@ -33,7 +37,9 @@ import {StockReportModule} from './stock-report/stock.module';
     DiscoveryModule,
     InsightsModule,
     StockReportModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ModalModule.forRoot(),
+    AlertModule.forRoot()
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]

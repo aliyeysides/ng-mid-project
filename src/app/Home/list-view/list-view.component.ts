@@ -36,7 +36,7 @@ export class ListViewComponent implements OnInit {
   public activeIdeasList: Array<object>;
   private userId = '1024494';
   public selectedStock: Idea;
-  public orderByObject: object = { field: '', ascending: true };
+  public orderByObject: object = { field: undefined, ascending: undefined };
   public selectedStockPGR: object = {
     'Experts': 0,
     'Technicals': 0,

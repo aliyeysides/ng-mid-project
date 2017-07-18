@@ -10,6 +10,13 @@
             class="fa fa-sort-amount-desc align-absolute" aria-hidden="true"></i></a>
           <ul class="top-sort-menu dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
             <li class="dropdown-submenu">
+              <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="#">Relevance</a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+                <li (click)="setOrderByObject('', true)"><a class="dropdown-subtoggle" tabindex="-1" href="#">A-Z</a></li>
+                <li (click)="setOrderByObject('', false)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Z-A</a></li>
+              </ul>
+            </li>
+            <li class="dropdown-submenu">
               <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="#">Company
                 Name</a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">

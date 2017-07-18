@@ -123,9 +123,17 @@ export class ListViewComponent implements OnInit {
     this.router.navigate(['/report', stock.symbol]);
   }
 
-  addToList(stock: any, listId: string, e) {
+  addToHoldingList(stock: any, e) {
     e.stopPropagation();
-    this.sharedService.addStockIntoList(stock.symbol, listId)
+    this.sharedService.addStockIntoHoldingList(stock)
+      .subscribe(res => {
+        console.log('res from addToList', res);
+      });
+  }
+
+  addToWatchingList(stock: any,e ) {
+    e.stopPropagation();
+    this.sharedService.addStockIntoWatchingList(stock)
       .subscribe(res => {
         console.log('res from addToList', res);
       });

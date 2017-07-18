@@ -8,18 +8,6 @@ import {Idea} from '../../shared/models/idea';
   selector: 'app-list-view',
   templateUrl: './list-view.component.html',
   styleUrls: ['./list-view.component.scss'],
-  // animations: [
-  //   trigger('slideInOut', [
-  //     state('in', style({
-  //       transform: 'translate3d(0, 0, 0)'
-  //     })),
-  //     state('out', style({
-  //       transform: 'translate3d(100%, 0, 0)'
-  //     })),
-  //     transition('in => out', animate('400ms ease-in-out')),
-  //     transition('out => in', animate('400ms ease-in-out'))
-  //   ])
-  // ]
 })
 
 export class ListViewComponent implements OnInit {
@@ -36,13 +24,8 @@ export class ListViewComponent implements OnInit {
   public activeIdeasList: Array<object>;
   private userId = '1024494';
   public selectedStock: Idea;
-  public orderByObject: object = { field: undefined, ascending: undefined };
-  public selectedStockPGR: object = {
-    'Experts': 0,
-    'Technicals': 0,
-    'Financials': 0,
-    'Earnings': 0
-  };
+  public orderByObject: object;
+  public selectedStockPGR: object;
   public selectedStockChartPoints: object;
   public selectedStockSimilars: object;
 

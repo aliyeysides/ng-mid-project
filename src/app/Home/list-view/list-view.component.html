@@ -127,7 +127,7 @@
           <ul *ngIf="ideaList?.length" class="list__container">
             <li [ngClass]="{'active selected' : this.selectedStock == idea}" (click)="toggleOptions(idea, $event); selectStock(idea)" (mouseenter)="toggleHoverOptions(idea)"
                 (mouseleave)="toggleHoverOptions(idea)" class="row no-gutters list__entry"
-                *ngFor="let idea of ideaList | orderBy:orderByObject.field:orderByObject.ascending ">
+                *ngFor="let idea of ideaList | orderBy:orderByObject?.field:orderByObject?.ascending ">
               <div *ngIf="popupOptionsMap[idea.symbol] == true" class="stock-options__popup">
                 <ul class="nav nav-justified">
                   <li *ngIf="!idea.is_holding_stock" (click)="addToHoldingList(idea.symbol, $event)" class="nav-item stock-option--hold">
@@ -243,8 +243,8 @@
                 <li class="col-12">
                   <div class="sliderBar-container">
                     <div class="sliderProgress">
-                      <div [ngClass]="appendSliderClass(selectedStockPGR['Financials'])"></div>
-                      <div class="sliderBar" [ngClass]="appendSliderBarClass(selectedStockPGR['Financials'])" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                      <div [ngClass]="appendSliderClass(selectedStockPGR?.Financials)"></div>
+                      <div class="sliderBar" [ngClass]="appendSliderBarClass(selectedStockPGR?.Financials)" role="progressbar" aria-valuemin="0" aria-valuemax="100">
                       </div>
                     </div>
                     <div class="pgr__label">
@@ -255,8 +255,8 @@
                 <li class="col-12">
                   <div class="sliderBar-container">
                     <div class="sliderProgress">
-                      <div [ngClass]="appendSliderClass(selectedStockPGR['Earnings'])"></div>
-                      <div class="sliderBar" [ngClass]="appendSliderBarClass(selectedStockPGR['Earnings'])" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                      <div [ngClass]="appendSliderClass(selectedStockPGR?.Earnings)"></div>
+                      <div class="sliderBar" [ngClass]="appendSliderBarClass(selectedStockPGR?.Earnings)" role="progressbar" aria-valuemin="0" aria-valuemax="100">
                       </div>
                     </div>
                     <div class="pgr__label">
@@ -267,8 +267,8 @@
                 <li class="col-12">
                   <div class="sliderBar-container">
                     <div class="sliderProgress">
-                      <div [ngClass]="appendSliderClass(selectedStockPGR['Technicals'])"></div>
-                      <div class="sliderBar" [ngClass]="appendSliderBarClass(selectedStockPGR['Technicals'])" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                      <div [ngClass]="appendSliderClass(selectedStockPGR?.Technicals)"></div>
+                      <div class="sliderBar" [ngClass]="appendSliderBarClass(selectedStockPGR?.Technicals)" role="progressbar" aria-valuemin="0" aria-valuemax="100">
                       </div>
                     </div>
                     <div class="pgr__label">
@@ -279,8 +279,8 @@
                 <li class="col-12">
                   <div class="sliderBar-container">
                     <div class="sliderProgress">
-                      <div [ngClass]="appendSliderClass(selectedStockPGR['Experts'])"></div>
-                      <div class="sliderBar" [ngClass]="appendSliderBarClass(selectedStockPGR['Experts'])" role="progressbar" aria-valuemin="0"
+                      <div [ngClass]="appendSliderClass(selectedStockPGR?.Experts)"></div>
+                      <div class="sliderBar" [ngClass]="appendSliderBarClass(selectedStockPGR?.Experts)" role="progressbar" aria-valuemin="0"
                            aria-valuemax="100">
                       </div>
                     </div>
@@ -373,7 +373,7 @@
     <div *ngIf="ideaList?.length" class="row no-gutters">
 
       <!--  PANEL  -->
-      <div *ngFor="let idea of ideaList | orderBy:orderByObject.field:orderByObject.ascending" class="panel-view__container col-md-6">
+      <div *ngFor="let idea of ideaList | orderBy:orderByObject?.field:orderByObject?.ascending" class="panel-view__container col-md-6">
         <div class="quick-view__panel">
           <div class="quick-view__data row">
 

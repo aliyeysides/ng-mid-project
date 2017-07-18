@@ -52,7 +52,7 @@ export class ListViewComponent implements OnInit {
       .switchMap(val => this.sharedService.symbolList({listId: val['list_id']}))
       .subscribe(res => {
         this.ideaList = res['symbols'];
-        console.log('ideaList', this.ideaList);
+        this.assignStockData();
         if (this.ideaList) {
           this.selectStock(this.ideaList[0] as Idea);
         }
@@ -65,18 +65,31 @@ export class ListViewComponent implements OnInit {
 
   selectStock(stock: Idea) {
     this.selectedStock = stock;
-    console.log('selectedStock', this.selectedStock);
-    if (stock) {this.getSelectedStockData(stock)}
+    if (stock) {this.getSelectedStockData(stock, this.assignSelectedStock.bind(this))}
   }
 
-  getSelectedStockData(stock: Idea) {
+  getSelectedStockData(stock: Idea, callback?) {
     this.sharedService.getStockCardData(stock.symbol)
       .subscribe(res => {
-        this.selectedStockPGR = res['pgr'];
-        this.selectedStockChartPoints = res['chart-points'];
-        this.selectedStockSimilars = res['discovery-similars'].stocks;
-        console.log('this.selectedStockSimilars', this.selectedStockSimilars);
+        return callback(res);
       });
+  }
+
+  assignSelectedStock(res) {
+    this.selectedStockPGR = res['pgr'];
+    this.selectedStockChartPoints = res['chart-points'];
+    this.selectedStockSimilars = res['discovery-similars'].stocks;
+    console.log('this.selectedStockSimilars', this.selectedStockSimilars);
+  }
+
+  assignStockData() {
+    if (this.ideaList) {
+      this.ideaList.forEach(stock => {
+        this.getSelectedStockData(stock as Idea, function(res) {
+          stock["panelViewIdeasList"] = res;
+        });
+      });
+    }
   }
 
   toggleHoverOptions(idea) {

@@ -430,10 +430,8 @@
                 <li class="col-12">
                   <div class="sliderBar-container">
                     <div class="sliderProgress">
-                      <div class="slider-veryBullish"></div>
-                      <div class="sliderBar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                           style="width:100%">
-                        <span class="sr-only">Very Bullish</span>
+                      <div [ngClass]="appendSliderClass(idea?.panelViewIdeasList?.pgr?.Financials)"></div>
+                      <div [ngClass]="appendSliderBarClass(idea?.panelViewIdeasList?.pgr?.Financials)" class="sliderBar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
                       </div>
                     </div>
                     <div class="pgr__label">
@@ -444,10 +442,8 @@
                 <li class="col-12">
                   <div class="sliderBar-container">
                     <div class="sliderProgress">
-                      <div class="slider-neutral"></div>
-                      <div class="sliderBar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
-                           style="width:50%">
-                        <span class="sr-only">Neutral</span>
+                      <div [ngClass]="appendSliderClass(idea?.panelViewIdeasList?.pgr?.Earnings)"></div>
+                      <div [ngClass]="appendSliderBarClass(idea?.panelViewIdeasList?.pgr?.Earnings)" class="sliderBar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
                       </div>
                     </div>
                     <div class="pgr__label">
@@ -458,10 +454,8 @@
                 <li class="col-12">
                   <div class="sliderBar-container">
                     <div class="sliderProgress">
-                      <div class="slider-bearish"></div>
-                      <div class="sliderBar" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"
-                           style="width:25%">
-                        <span class="sr-only">Bearish</span>
+                      <div [ngClass]="appendSliderClass(idea?.panelViewIdeasList?.pgr?.Technicals)"></div>
+                      <div [ngClass]="appendSliderBarClass(idea?.panelViewIdeasList?.pgr?.Technicals)" class="sliderBar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
                       </div>
                     </div>
                     <div class="pgr__label">
@@ -472,11 +466,9 @@
                 <li class="col-12">
                   <div class="sliderBar-container">
                     <div class="sliderProgress">
-                      <div class="slider-bullish"></div>
-                      <div class="sliderBar" role="progressbar" aria-valuenow="75" aria-valuemin="0"
-                           aria-valuemax="100"
-                           style="width:75%">
-                        <span class="sr-only">Bullish</span>
+                      <div [ngClass]="appendSliderClass(idea?.panelViewIdeasList?.pgr?.Experts)"></div>
+                      <div [ngClass]="appendSliderBarClass(idea?.panelViewIdeasList?.pgr?.Experts)" class="sliderBar" role="progressbar" aria-valuemin="0"
+                           aria-valuemax="100">
                       </div>
                     </div>
                     <div class="pgr__label">

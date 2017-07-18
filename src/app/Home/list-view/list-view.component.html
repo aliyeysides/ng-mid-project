@@ -115,7 +115,7 @@
         <!-- LIST: HOLDING  -->
         <div class="current-list  current-list--holding ">
           <ul *ngIf="!ideaList?.length" class="list__container">
-            <span>There are currently no stocks in this list.</span>
+            <p class="empty-list__text">There are currently no stocks in this list.</p>
           </ul>
           <ul *ngIf="ideaList?.length" class="list__container">
             <li [ngClass]="{'active selected' : this.selectedStock == idea}" (click)="toggleOptions(idea, $event); selectStock(idea)" (mouseenter)="toggleHoverOptions(idea)"
@@ -167,7 +167,7 @@
 
       <!-- QUICKVIEW PANEL  -->
       <div *ngIf="!this.selectedStock" class="quick-view__container col-md-6">
-        Oops...Looks like you'll have to select a stock to get started!
+        <p class="empty-list__text">Oops...Looks like you'll have to select a stock to get started!</p>
       </div>
       <div *ngIf="this.selectedStock" class="quick-view__container col-md-6">
         <div class="quick-view__panel">
@@ -581,30 +581,30 @@
       <p class="list__title">
         <span>Select a new idea list</span>
       </p>
+      <button (click)="setAdditionalLists(false)" type="button" class="close" aria-label="Close">
+        <span aria-hidden="true"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+      </button>
     </div>
-    <button (click)="setAdditionalLists(false)" type="button" class="close" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
   </div>
 
 <!--hardeep: Ideas inactive list section -->
   <!-- ROW: ADD LIST  -->
   <div class="addlist__container row">
     <div class="col-6">
-      <ul class="">
+      <ul>
 
       <li class="list__option row" *ngFor = " let list of ( inActiveIdeasList | evenodd: 'even')" [ngClass]="mappingClassArray[list.name]['style']" >
           <div class="col-md-4">
             <div class="list__image">
-              <button (click)="manageActiveInactive('activate',list.list_id);$event.stopPropagation()" type="button" class="close" aria-label="Close" >
-                  <span aria-hidden="true">&times;</span>
-                </button>
               <img class="align-absolute" [src]="'assets/imgs/'+mappingClassArray[list.name].imgName">
             </div>
           </div>
           <div class="list__option--description col-md-8">
             <p class="list__title">{{list.name}}</p>
             <p class="list__description">{{mappingClassArray[list.name]['description']}}</p>
+            <button (click)="manageActiveInactive('activate',list.list_id);$event.stopPropagation()" type="button" class="close" aria-label="Close" >
+              <span class="list__add" aria-hidden="true">ADD Idea List</span>
+            </button>
           </div>
         </li>
 
@@ -615,15 +615,15 @@
         <li class="list__option row" *ngFor = " let list of ( inActiveIdeasList | evenodd: 'odd')" [ngClass]="mappingClassArray[list.name]['style']"  >
           <div class="col-md-4">
             <div class="list__image">
-             <button (click)="manageActiveInactive('activate',list.list_id);$event.stopPropagation()" type="button" class="close" aria-label="Close" >
-                <span aria-hidden="true">&times;</span>
-              </button>
               <img class="align-absolute" [src]="'assets/imgs/'+mappingClassArray[list.name].imgName">
             </div>
           </div>
           <div class="list__option--description col-md-8">
             <p class="list__title">{{list.name}}</p>
             <p class="list__description">{{mappingClassArray[list.name]['description']}}</p>
+            <button (click)="manageActiveInactive('activate',list.list_id);$event.stopPropagation()" type="button" class="close" aria-label="Close" >
+              <span class="list__add" aria-hidden="true">ADD Idea List</span>
+            </button>
           </div>
         </li>
 

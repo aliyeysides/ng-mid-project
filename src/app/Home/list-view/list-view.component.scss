@@ -23,7 +23,6 @@
 }
 
 .body__bottom--addlist {
-	position: absolute;
 	width: 100%;
 	//display: none;
 }
@@ -178,6 +177,14 @@
 
 	.list__header {
 		border-right:2px solid #ffffff;
+
+		.close span {
+			float: right;
+			font-size: 32px !important;
+			line-height: 50px;
+			margin-right: 30px;
+			text-shadow: none;
+		}
 
 		.list-sort__button {
 			position: relative;
@@ -385,6 +392,14 @@
 		.list__container {
 			padding-bottom: 464px;
 
+			.empty-list__text {
+				text-align: center;
+				font-size: 18px;
+				font-weight: 400;
+				line-height: 1.3;
+				margin-top: 15px;	
+			}
+
 			.list__entry {
 				background-color: $background--LT;
 				height: 60px;
@@ -523,6 +538,14 @@
 
 
 .quick-view__container {
+
+	.empty-list__text {
+		text-align: center;
+		font-size: 18px;
+		font-weight: 300;
+		line-height: 1.3;
+		margin-top: 15px;	
+	}
 
 	.quick-view__panel {
 		padding: 20px 30px;
@@ -1308,6 +1331,7 @@
 					font-size: 26px;
 					line-height: 1.75;
 					font-weight: 400;
+					margin-top: 5px;
 				}
 
 				.list__description {
@@ -1319,142 +1343,15 @@
 					color: $link-blue;
 					cursor: pointer;
 					font-size: 16px;
-					line-height: 1;
-					padding: 10px 0 0;
+					line-height: 1.5;
+					padding: 15px 0 0;
+				}
+
+				.close {
+					float:left;
+					opacity: 1;
 				}
 			}
-		}
-
-		.list__option--relativestrength.selected .list__image img {
-			width: 110px;
-			height: auto;
-			margin-top: -2px;
-		}
-
-		.list__option--relativestrength.hover .list__image img {
-			width: 110px;
-			height: auto;
-			margin-top: -2px;
-		}
-
-		.list__option--buyingstrength.selected .list__image img {
-			width: 110px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--buyingstrength.hover .list__image img {
-			width: 110px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--earningschamps.selected .list__image img {
-			width: 123px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--earningschamps.hover .list__image img {
-			width: 123px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--earningsbears.selected .list__image img {
-			width: 115px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--earningsbears.hover .list__image img {
-			width: 115px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--earningsbulls.selected .list__image img {
-			width: 115px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--earningsbulls.hover .list__image img {
-			width: 115px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--growthstock.selected .list__image img {
-			width: 90px;
-			height: auto;
-			margin-top: -6px;
-		}
-
-		.list__option--growthstock.hover .list__image img {
-			width: 90px;
-			height: auto;
-			margin-top: -6px;
-		}
-
-		.list__option--bestvalue.selected .list__image img {
-			width: 90px;
-			height: auto;
-			margin-top: -3px;
-		}
-
-		.list__option--bestvalue.hover .list__image img {
-			width: 90px;
-			height: auto;
-			margin-top: -3px;
-		}
-
-		.list__option--smallcap.selected .list__image img {
-			width: 88px;
-			height: auto;
-			margin-top: 20px;
-		}
-
-		.list__option--smallcap.hover .list__image img {
-			width: 88px;
-			height: auto;
-			margin-top: 20px;
-		}
-
-		.list__option--dogsofthedow.selected .list__image img {
-			width: 115px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--dogsofthedow.hover .list__image img {
-			width: 115px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--bestofthenasdaq.selected .list__image img {
-			width: 95px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--bestofthenasdaq.hover .list__image img {
-			width: 95px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--bestofthedow.selected .list__image img {
-			width: 95px;
-			height: auto;
-			margin-top: 0px;
-		}
-
-		.list__option--bestofthedow.hover .list__image img {
-			width: 95px;
-			height: auto;
-			margin-top: 0px;
 		}
 	}
 }

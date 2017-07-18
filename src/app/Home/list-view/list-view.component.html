@@ -490,20 +490,8 @@
             <div class="icon__discover col-md-3 col-lg-2">
               <img class="align-absolute" src="assets/imgs/icon-discover.svg">
             </div>
-            <div class="similar-stock similar-stock-1 col-md-3 col-lg-2">
-              <p>ATO</p>
-            </div>
-            <div class="similar-stock similar-stock-2 col-md-3 col-lg-2">
-              <p>GM</p>
-            </div>
-            <div class="similar-stock similar-stock-3 col-md-3 col-lg-2">
-              <p>FORD</p>
-            </div>
-            <div class="similar-stock similar-stock-4 col-md-3 col-lg-2">
-              <p>PG</p>
-            </div>
-            <div class="similar-stock similar-stock-5 col-md-3 col-lg-2">
-              <p>MS</p>
+            <div *ngFor="let stock of idea?.panelViewIdeasList['discovery-similars'].stocks" class="similar-stock similar-stock-1 col-md-3 col-lg-2">
+              <p>{{stock}}</p>
             </div>
           </div>
 

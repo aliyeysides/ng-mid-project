@@ -69,6 +69,7 @@ export class ListViewComponent implements OnInit {
       .switchMap(val => this.sharedService.symbolList({listId: val['list_id']}))
       .subscribe(res => {
         this.ideaList = res['symbols'];
+        console.log('ideaList', this.ideaList);
         if (this.ideaList) {
           this.selectStock(this.ideaList[0] as Idea);
         }
@@ -81,6 +82,7 @@ export class ListViewComponent implements OnInit {
 
   selectStock(stock: Idea) {
     this.selectedStock = stock;
+    console.log('selectedStock', this.selectedStock);
     if (stock) {this.getSelectedStockData(stock)}
   }
 

@@ -123,12 +123,20 @@
                 *ngFor="let idea of ideaList | orderBy:orderByObject.field:orderByObject.ascending ">
               <div *ngIf="popupOptionsMap[idea.symbol] == true" class="stock-options__popup">
                 <ul class="nav nav-justified">
-                  <li (click)="addToHoldingList(idea.symbol, $event)" class="nav-item stock-option--hold">
+                  <li *ngIf="!idea.is_holding_stock" (click)="addToHoldingList(idea.symbol, $event)" class="nav-item stock-option--hold">
                     <img src="assets/imgs/icon-plus.svg">
                     <p>Hold</p>
                   </li>
-                  <li (click)="addToWatchingList(idea.symbol, $event)" class="nav-item stock-option--watch">
+                  <li *ngIf="idea.is_holding_stock" (click)="addToHoldingList(idea.symbol, $event)" class="nav-item stock-option--hold">
+                    <!--<img src="assets/imgs/icon-plus.svg">-->
+                    <p>Hold</p>
+                  </li>
+                  <li *ngIf="!idea.is_watching_stock" (click)="addToWatchingList(idea.symbol, $event)" class="nav-item stock-option--watch">
                     <img src="assets/imgs/icon-watch.svg">
+                    <p>Watch</p>
+                  </li>
+                  <li *ngIf="idea.is_watching_stock" (click)="addToWatchingList(idea.symbol, $event)" class="nav-item stock-option--watch">
+                    <!--<img src="assets/imgs/icon-watch.svg">-->
                     <p>Watch</p>
                   </li>
                   <li (click)="goToStockView(idea, $event)" class="nav-item stock-option--view">
@@ -187,8 +195,10 @@
               </div>
               <div class="stock-panel__company-name row">
                 <div class="button__add-to-list">
-                  <a (click)="addToWatchingList(selectedStock, $event)" class="button__watch"><i class="fa fa-binoculars" aria-hidden="true"></i></a>
-                  <a (click)="addToHoldingList(selectedStock, $event)" class="button__hold"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                  <a *ngIf="!selectedStock.is_watching_stock" (click)="addToWatchingList(selectedStock.symbol, $event)" class="button__watch"><i class="fa fa-binoculars" aria-hidden="true"></i></a>
+                  <a *ngIf="selectedStock.is_watching_stock" (click)="removeFromList(selectedStock.symbol, $event)" class="button__watch"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                  <a *ngIf="!selectedStock.is_holding_stock" (click)="addToHoldingList(selectedStock.symbol, $event)" class="button__hold"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                  <a *ngIf="selectedStock.is_holding_stock" (click)="removeFromList(selectedStock.symbol, $event)" class="button__hold"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
                 </div>
                 <p>{{selectedStock.name}}</p>
               </div>
@@ -374,8 +384,8 @@
               </div>
               <div class="stock-panel__company-name row">
                 <div class="button__add-to-list">
-                  <a (click)="addToWatchingList(idea, $event)" class="button__watch"><i class="fa fa-binoculars" aria-hidden="true"></i></a>
-                  <a (click)="addToHoldingList(idea, $event)" class="button__hold"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                  <a (click)="addToWatchingList(idea.symbol, $event)" class="button__watch"><i class="fa fa-binoculars" aria-hidden="true"></i></a>
+                  <a (click)="addToHoldingList(idea.symbol, $event)" class="button__hold"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                 </div>
                 <p>{{idea.name}}</p>
               </div>

@@ -160,6 +160,27 @@ export class SidePanelComponent implements OnInit {
 						}
 					}
 				}
+				
+				/*Check if pgr-alerts are present.*/
+				if (this.alertList['pgr_change_alerts']['DataAvailable']==true){
+					for (var key in this.alertList['pgr_change_alerts']) {
+						if (key != 'DataAvailable') {
+							for (var obj in this.alertList['pgr_change_alerts'][key]) {
+								let jsonObj = {};
+								jsonObj['symbol'] = obj;
+								jsonObj['alert_type'] = 'pgr_change_alerts';
+								jsonObj['pgr'] = this.calculatePGR(this.alertList['pgr_change_alerts'][key][obj]['corrected_pgr']);
+								jsonObj['per_change'] = this.alertList['pgr_change_alerts'][key][obj]['chg_direction'];
+								this.allItems.push(jsonObj);
+								if (jsonObj['per_change'] > 0) {
+									this.alertCount.upCount++;
+								} else {
+									this.alertCount.downCount++;
+								}
+							}
+						}
+					}
+				}
 
 				this.setPage(1);
 			},

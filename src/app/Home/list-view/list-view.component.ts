@@ -87,6 +87,7 @@ export class ListViewComponent implements OnInit {
       this.ideaList.forEach(stock => {
         this.getSelectedStockData(stock as Idea, function(res) {
           stock["panelViewIdeasList"] = res;
+          console.log('stock', stock);
         });
       });
     }

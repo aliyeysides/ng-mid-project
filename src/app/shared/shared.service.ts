@@ -57,10 +57,17 @@ export class SharedService {
     return this.getJson(symbolLookupUrl, this.symbolLookupParams);
   }
 
-  public addStockIntoList(symbol: string, listId: string) {
+  public addStockIntoHoldingList(symbol: string) {
     const addStockToListUrl = `${this.apiHostName}/CPTRestSecure/app/portfolio/addStockIntoList?`;
     this.addStockIntoListParams.set('symbol', symbol);
-    this.addStockIntoListParams.set('listId', listId);
+    this.addStockIntoListParams.set('listId', "1220535");
+    return this.getJson(addStockToListUrl, this.addStockIntoListParams);
+  }
+
+  public addStockIntoWatchingList(symbol: string) {
+    const addStockToListUrl = `${this.apiHostName}/CPTRestSecure/app/portfolio/addStockIntoList?`;
+    this.addStockIntoListParams.set('symbol', symbol);
+    this.addStockIntoListParams.set('listId', "1220536");
     return this.getJson(addStockToListUrl, this.addStockIntoListParams);
   }
 

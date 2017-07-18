@@ -81,7 +81,7 @@ export class ListViewComponent implements OnInit {
 
   selectStock(stock: Idea) {
     this.selectedStock = stock;
-    this.getSelectedStockData(stock);
+    if (stock) {this.getSelectedStockData(stock)}
   }
 
   getSelectedStockData(stock: Idea) {
@@ -123,9 +123,17 @@ export class ListViewComponent implements OnInit {
     this.router.navigate(['/report', stock.symbol]);
   }
 
-  addToList(stock: any, listId: string, e) {
+  addToHoldingList(stock: any, e) {
     e.stopPropagation();
-    this.sharedService.addStockIntoList(stock.symbol, listId)
+    this.sharedService.addStockIntoHoldingList(stock)
+      .subscribe(res => {
+        console.log('res from addToList', res);
+      });
+  }
+
+  addToWatchingList(stock: any,e ) {
+    e.stopPropagation();
+    this.sharedService.addStockIntoWatchingList(stock)
       .subscribe(res => {
         console.log('res from addToList', res);
       });
@@ -256,6 +264,21 @@ export class ListViewComponent implements OnInit {
         return 'slider-bearish';
       case 1:
         return 'slider-veryBearish';
+    }
+  }
+
+  public appendSliderBarClass(pgr: number): string {
+    switch (pgr) {
+      case 5:
+        return 'sliderbar-veryBullish';
+      case 4:
+        return 'sliderbar-bullish';
+      case 3:
+        return 'sliderbar-neutral';
+      case 2:
+        return 'sliderbar-bearish';
+      case 1:
+        return 'sliderbar-veryBearish';
     }
   }
 

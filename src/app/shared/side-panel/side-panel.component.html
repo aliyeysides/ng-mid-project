@@ -41,7 +41,7 @@
 						<p class="icon-expand" (click)="toggleClass('sector');"><a><i class="fa fa-angle-down" aria-hidden="true"></i></a></p>
 						<p class="panel-breakdown"><img src="assets/imgs/icon_green-arrow.svg"> <span> {{sectorCount.upCount}} </span> &nbsp;|&nbsp;<img src="assets/imgs/icon_red-arrow.svg"> <span> {{sectorCount.downCount}} </span> </p>
 					</div>
-					<div class="panel__expand  clearfix" [ngClass]="{'panel__expand--sectors' : sectorClass }">
+					<div class="panel__expand clearfix panel__expand--sectors" [ngClass]="{'panel__expand--sectors' : sectorClass }">
 						<ul>
 							<li *ngFor = "let sector of sectorsData">
 								<span [ngSwitch]="sector.percent_change">

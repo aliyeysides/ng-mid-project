@@ -51,7 +51,7 @@ export class SharedService {
   }
 
   public symbolList(query: any): Observable<Array<object>>{
-    const symbolLookupUrl = `${this.apiHostName}/CPTRestSecure/app/portfolio/getListSymbols?${Math.random()}`;
+    const symbolLookupUrl = `${this.apiHostName}/CPTRestSecure/app/midTier/getListSymbols?${Math.random()}`;
     this.symbolLookupParams.set('listId', query.listId);
     this.symbolLookupParams.set('uid', query.userId);
     return this.getJson(symbolLookupUrl, this.symbolLookupParams);

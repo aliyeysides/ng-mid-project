@@ -22,7 +22,7 @@
 						<p class="market-price">
 							<span [ngClass]="{'up-change': market.percent_change > 0 , 'down-change': market.percent_change < 0, 'neutrals': market.percent_change == 0 }">{{market.last | number : '1.2-2'}} </span>
 							&nbsp;&nbsp;
-							<span [ngClass]="{'up-change': market.percent_change > 0 , 'down-change': market.percent_change < 0, 'neutrals': market.percent_change == 0 }">({{market.percent_change < 0 ? (market.percent_change | number : '1.2-2') : '+'+(market.percent_change | number : '1.2-2') }}%)</span>
+							<span [ngClass]="{'up-change': market.percent_change > 0 , 'down-change': market.percent_change < 0, 'neutral-grey': market.percent_change == 0 }">({{market.percent_change < 0 ? (market.percent_change | number : '1.2-2') : '+'+(market.percent_change | number : '1.2-2') }}%)</span>
 						</p>
 
 				<!-- INTRADAY CHART STARTS HERE -->						
@@ -39,7 +39,7 @@
 					<div class="panel__header clearfix">
 						<p class="panel__title">Sectors</p>
 						<p class="icon-expand" (click)="toggleClass('sector');"><a><i class="fa fa-angle-down" aria-hidden="true"></i></a></p>
-						<p class="panel-breakdown"><img src="assets/imgs/icon_green-arrow.svg"> <span> {{sectorCount.upCount}} </span> &nbsp;|&nbsp;<img src="assets/imgs/icon_red-arrow.svg"> <span> {{sectorCount.downCount}} </span> </p>
+						<p class="panel-breakdown"><img src="assets/imgs/icon_green-arrow.svg" *ngIf="sectorCount.upCount > 0"> <span *ngIf="sectorCount.upCount>0"> {{sectorCount.upCount}} </span> &nbsp;<span class="panel-breakdown-span" *ngIf=" sectorCount.upCount > 0  && sectorCount.downCount > 0" >|</span>&nbsp;<img src="assets/imgs/icon_red-arrow.svg" *ngIf=" sectorCount.downCount 	> 0 "> <span *ngIf="sectorCount.downCount>0"> {{sectorCount.downCount}} </span> </p>
 					</div>
 					<div class="panel__expand clearfix panel__expand--sectors" [ngClass]="{'panel__expand--sectors' : sectorClass }">
 						<ul>
@@ -49,7 +49,7 @@
 								<img width="13" height="13" class="sector-arrow" *ngSwitchCase="0" [src]="'assets/imgs/icon_none-arrow.svg'" >
 								</span>
 								<p class="sector ellipsis">{{sector.name}}</p>
-								<p class="sector-change"><span [ngClass]="{'up-change': sector.percent_change > 0 , 'down-change': sector.percent_change < 0, 'neutrals': sector.percent_change == 0 }">{{sector.percent_change < 0 ? (sector.percent_change | number : '1.2-2') : '+'+(sector.percent_change | number : '1.2-2') }}%</span></p>
+								<p class="sector-change"><span [ngClass]="{'up-change': sector.percent_change > 0 , 'down-change': sector.percent_change < 0, 'neutral-grey': sector.percent_change == 0 }">{{sector.percent_change < 0 ? (sector.percent_change | number : '1.2-2') : '+'+(sector.percent_change | number : '1.2-2') }}%</span></p>
 							</li>
 						</ul>
 					</div>
@@ -60,16 +60,19 @@
 					<div class="panel__header clearfix">
 						<p class="panel__title">ALERTS</p>
 						<p class="icon-expand" (click)="toggleClass('alert');"><a><i class="fa fa-angle-down" aria-hidden="true"></i></a></p>
-						<p class="panel-breakdown"><img src="assets/imgs/icon_green-circle.svg"> <span> {{alertCount.upCount}} </span> &nbsp;|&nbsp;<img src="assets/imgs/icon_red-circle.svg"> <span> {{alertCount.downCount}} </span> </p>
+						<p class="panel-breakdown"><img src="assets/imgs/icon_green-circle.svg" *ngIf=" alertCount.upCount > 0 "> <span *ngIf=" alertCount.upCount > 0"> {{alertCount.upCount}} </span> &nbsp;<span class="panel-breakdown-span" *ngIf=" alertCount.upCount > 0  && alertCount.downCount > 0" >|</span>&nbsp;<img src="assets/imgs/icon_red-circle.svg" *ngIf=" alertCount.downCount > 0"> <span *ngIf=" alertCount.downCount > 0" > {{alertCount.downCount}} </span> </p>
 					</div>
 					<div class="panel__expand  clearfix" [ngClass]="{'panel__expand--alerts' : alertClass }">
  
 					<ul class="clearfix" *ngIf="alertClass">
+							<li *ngIf="!pagedItems?.length">
+								<p class="text-center">No alerts.</p>
+							</li>
 							<li *ngFor="let item of pagedItems">
 								<img class="alert__pgr" [src]="appendPGRImage(item['pgr'])" width="26" height="13">
 								<p class="alert__ticker">{{item.symbol}}</p>
 
-								<p class="alert__description" *ngIf="item.alert_type=='pgr_change_alerts'">Power Gauge Turned Very Bullish</p>
+								<p class="alert__description" *ngIf="item.alert_type=='pgr_change_alerts'">Power Gauge Turned {{description[item.pgr]}}</p>
 
 								<p class="alert__description" *ngIf="item.alert_type=='estimate_revision_alerts'">Estimate revision<br>Q{{item.quarter}}: ${{item.old_value | number : '1.2-2'}}  <i class="fa fa-long-arrow-right" aria-hidden="true"></i>  ${{item.new_value | number : '1.2-2'}}</p>
 
@@ -93,6 +96,14 @@
 						        <a (click)="setPage(pager.currentPage + 1)"><i class="fa fa-caret-right" aria-hidden="true"></i></a>
 						    </li> 
 						</ul>
+
+						<style>
+						.pagination{ display: table; vertical-align: middle; }
+							.pagination>li { vertical-align: middle; float:none!important;  display: table-cell!important;     clear: none!important;width: auto!important;}
+							.pagination>li>a { background: none; border: none; padding:6px; margin:0px 1px; }
+							.pagination>li:first-child{ float:left!important; width:24px; }
+							.pagination>li:last-child{ float:right!important; width:24px;}
+						</style>
 
 					</div>
 				</div>

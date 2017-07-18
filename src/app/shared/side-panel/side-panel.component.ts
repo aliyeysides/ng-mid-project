@@ -5,7 +5,8 @@ import { SidePanelProvider } from 'app/providers/side-panel.provider';
 import { PagerProvider } from 'app/providers/paging.provider';
 import { IdeaListProvider } from 'app/providers/idea-list.provider';
 // import * as d3 from 'd3';
-import * as moment from 'moment/moment';
+//import * as moment from 'moment/moment';
+import * as moment from 'moment-timezone'
 
 @Component({
   selector: 'side-panel',
@@ -59,14 +60,16 @@ export class SidePanelComponent implements OnInit {
 
 	public symbol: string = 'SPY';
 	constructor(private sidePanelProvider: SidePanelProvider, private ideaListProvider: IdeaListProvider, private pagerProvider: PagerProvider) {
-		console.log(this.getPresentDate('ddd MMM DD  h:mma'));
+		let date = this.getPresentDate('ddd MMM DD  h:mma');
+		console.log("First",date);
+		let newYork = moment.tz(date, "EST");
+		console.log("second", newYork.format('ddd MMM DD  h:mma'));
+		var losAngeles = moment.tz("2014-06-01 12:00", "America/New_York");
+		console.log(losAngeles.format());
 	}
 
-
-
-
 	getPresentDate(dateFormat){
-		return moment().format(dateFormat);
+		return moment().format();
 	}
 
 	ngOnInit() {
@@ -154,6 +157,27 @@ export class SidePanelComponent implements OnInit {
 							this.alertCount.upCount++;
 						} else {
 							this.alertCount.downCount++;
+						}
+					}
+				}
+				
+				/*Check if pgr-alerts are present.*/
+				if (this.alertList['pgr_change_alerts']['DataAvailable']==true){
+					for (var key in this.alertList['pgr_change_alerts']) {
+						if (key != 'DataAvailable') {
+							for (var obj in this.alertList['pgr_change_alerts'][key]) {
+								let jsonObj = {};
+								jsonObj['symbol'] = obj;
+								jsonObj['alert_type'] = 'pgr_change_alerts';
+								jsonObj['pgr'] = this.calculatePGR(this.alertList['pgr_change_alerts'][key][obj]['corrected_pgr']);
+								jsonObj['per_change'] = this.alertList['pgr_change_alerts'][key][obj]['chg_direction'];
+								this.allItems.push(jsonObj);
+								if (jsonObj['per_change'] > 0) {
+									this.alertCount.upCount++;
+								} else {
+									this.alertCount.downCount++;
+								}
+							}
 						}
 					}
 				}

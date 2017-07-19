@@ -368,22 +368,22 @@
     <!-- END: QUICKVIEW PANEL  -->
 
   </div>
-  <div *ngIf="currentView == 'panel-view' && additionalLists != true" class="view-option--panel">
+  <div infinite-scroll  [infiniteScrollDistance]="1" [infiniteScrollThrottle]="1000" (scrolled)="onScroll()" [scrollWindow]="false" *ngIf="currentView == 'panel-view' && additionalLists != true" class="view-option--panel">
     <div *ngIf="!ideaList?.length">There are currently no stocks in this list.</div>
     <div *ngIf="ideaList?.length" class="row no-gutters">
 
       <!--  PANEL  -->
-      <div *ngFor="let idea of ideaList | orderBy:orderByObject?.field:orderByObject?.ascending" class="panel-view__container col-md-6">
+      <div *ngFor="let idea of panelViewIdeasList | orderBy:orderByObject?.field:orderByObject?.ascending" class="panel-view__container col-md-6">
         <div class="quick-view__panel">
           <div class="quick-view__data row">
 
             <div class="col-lg-8">
               <div class="clearfix">
                 <div class="stock-panel__PGR">
-                  <img src="{{appendPGRImage(idea.PGR)}}">
+                  <img src="{{appendPGRImage(idea.pgr['Corrected PGR Value'])}}">
                 </div>
                 <div class="stock-panel__ticker">
-                  <p>{{idea.symbol}}</p>
+                  <p>{{idea['meta-info'].symbol}}</p>
                 </div>
                 <div (click)="goToStockView(idea, $event)" class="button__view-summary">
                   <img src="assets/imgs/icon-stockview--blue.svg">
@@ -391,47 +391,47 @@
               </div>
               <div class="stock-panel__company-name row">
                 <div class="button__add-to-list">
-                  <a (click)="addToWatchingList(idea.symbol, $event)" class="button__watch"><i class="fa fa-binoculars" aria-hidden="true"></i></a>
-                  <a (click)="addToHoldingList(idea.symbol, $event)" class="button__hold"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+                  <a (click)="addToWatchingList(idea['meta-info'].symbol, $event)" class="button__watch"><i class="fa fa-binoculars" aria-hidden="true"></i></a>
+                  <a (click)="addToHoldingList(idea['meta-info'].symbol, $event)" class="button__hold"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
                 </div>
-                <p>{{idea.name}}</p>
+                <p>{{idea['meta-info'].name}}</p>
               </div>
               <div class="stock-panel__price row">
                 <div class="col-4">
-                  <p [ngClass]="{'up-change' : idea['Percentage '] > 0, 'down-change' : idea['Percentage '] < 0}" class="current-price">{{idea.Last}}</p>
+                  <p [ngClass]="{'up-change' : idea['meta-info']['Percentage '] > 0, 'down-change' : idea['meta-info']['Percentage '] < 0}" class="current-price">{{idea['meta-info'].Last}}</p>
                 </div>
                 <div class="col-4">
-                  <p [ngClass]="{'up-change' : idea['Percentage '] > 0, 'down-change' : idea['Percentage '] < 0}" class="price-change">{{idea.Change}}</p>
+                  <p [ngClass]="{'up-change' : idea['meta-info']['Percentage '] > 0, 'down-change' : idea['meta-info']['Percentage '] < 0}" class="price-change">{{idea['meta-info'].Change}}</p>
                 </div>
                 <div class="col-4">
-                  <p [ngClass]="{'up-change' : idea['Percentage '] > 0, 'down-change' : idea['Percentage '] < 0}" class="percent-change">({{idea["Percentage "]}}%)</p>
+                  <p [ngClass]="{'up-change' : idea['meta-info']['Percentage '] > 0, 'down-change' : idea['meta-info']['Percentage '] < 0}" class="percent-change">({{idea['meta-info']["Percentage "]}}%)</p>
                 </div>
               </div>
               <div class="stock-panel__industry row">
-                <p>Industry: <span class="industry">{{idea.industry_name}}</span></p>
+                <p>Industry: <span class="industry">{{idea['meta-info'].industry_name}}</span></p>
                 <p>Ind.&nbsp;Strength: <span class="industry-strength strong"> Strong</span></p>
               </div>
               <div class="stock-panel__details row">
                 <div class="col-lg-6">
-                  <p>Mkt&nbsp;Cap:<span>{{idea.market_cap}}</span></p>
+                  <p>Mkt&nbsp;Cap:<span>{{idea['meta-info'].marketCap}}</span></p>
                 </div>
                 <div class="col-lg-6">
-                  <p>Yield:<span>{{idea.div_yield}}%</span></p>
+                  <!--<p>Yield:<span>{{idea.div_yield}}%</span></p>-->
                 </div>
               </div>
             </div>
 
             <div class="quick-view__pgr col-lg-4">
               <p class="pgr__title">Power Gauge Rating:</p>
-              <p class="pgr__text" [ngClass]="appendPGRClass(idea.PGR)">
-                {{appendPGRText(idea.PGR)}}
+              <p class="pgr__text" [ngClass]="appendPGRClass(idea.pgr['Corrected PGR Value'])">
+                {{appendPGRText(idea.pgr['Corrected PGR Value'])}}
               </p>
               <ul class="pgr__sliders row">
                 <li class="col-12">
                   <div class="sliderBar-container">
                     <div class="sliderProgress">
-                      <div [ngClass]="appendSliderClass(idea?.panelViewIdeasList?.pgr?.Financials)"></div>
-                      <div [ngClass]="appendSliderBarClass(idea?.panelViewIdeasList?.pgr?.Financials)" class="sliderBar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                      <div [ngClass]="appendSliderClass(idea.pgr.Financials)"></div>
+                      <div [ngClass]="appendSliderBarClass(idea.pgr.Financials)" class="sliderBar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
                       </div>
                     </div>
                     <div class="pgr__label">
@@ -442,8 +442,8 @@
                 <li class="col-12">
                   <div class="sliderBar-container">
                     <div class="sliderProgress">
-                      <div [ngClass]="appendSliderClass(idea?.panelViewIdeasList?.pgr?.Earnings)"></div>
-                      <div [ngClass]="appendSliderBarClass(idea?.panelViewIdeasList?.pgr?.Earnings)" class="sliderBar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                      <div [ngClass]="appendSliderClass(idea.pgr.Earnings)"></div>
+                      <div [ngClass]="appendSliderBarClass(idea.pgr.Earnings)" class="sliderBar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
                       </div>
                     </div>
                     <div class="pgr__label">
@@ -454,8 +454,8 @@
                 <li class="col-12">
                   <div class="sliderBar-container">
                     <div class="sliderProgress">
-                      <div [ngClass]="appendSliderClass(idea?.panelViewIdeasList?.pgr?.Technicals)"></div>
-                      <div [ngClass]="appendSliderBarClass(idea?.panelViewIdeasList?.pgr?.Technicals)" class="sliderBar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                      <div [ngClass]="appendSliderClass(idea.pgr.Technicals)"></div>
+                      <div [ngClass]="appendSliderBarClass(idea.pgr.Technicals)" class="sliderBar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
                       </div>
                     </div>
                     <div class="pgr__label">
@@ -466,8 +466,8 @@
                 <li class="col-12">
                   <div class="sliderBar-container">
                     <div class="sliderProgress">
-                      <div [ngClass]="appendSliderClass(idea?.panelViewIdeasList?.pgr?.Experts)"></div>
-                      <div [ngClass]="appendSliderBarClass(idea?.panelViewIdeasList?.pgr?.Experts)" class="sliderBar" role="progressbar" aria-valuemin="0"
+                      <div [ngClass]="appendSliderClass(idea.pgr.Experts)"></div>
+                      <div [ngClass]="appendSliderBarClass(idea.pgr.Experts)" class="sliderBar" role="progressbar" aria-valuemin="0"
                            aria-valuemax="100">
                       </div>
                     </div>
@@ -490,7 +490,7 @@
             <div class="icon__discover col-md-3 col-lg-2">
               <img class="align-absolute" src="assets/imgs/icon-discover.svg">
             </div>
-            <div *ngFor="let stock of idea?.panelViewIdeasList?.discovery-similars?.stocks" class="similar-stock similar-stock-1 col-md-3 col-lg-2">
+            <div *ngFor="let stock of idea['discovery-similars'].stocks" class="similar-stock similar-stock-1 col-md-3 col-lg-2">
               <p>{{stock}}</p>
             </div>
           </div>
@@ -498,7 +498,7 @@
           <div class="quick-view__news row">
             <div class="news-panel__header">
               <div class="pull-left" style="float: left;">
-                <p><i class="fa fa-newspaper-o" aria-hidden="true"></i> Headlines for: <span>{{idea.symbol}}</span></p>
+                <p><i class="fa fa-newspaper-o" aria-hidden="true"></i> Headlines for: <span>{{idea['meta-info'].symbol}}</span></p>
               </div>
               <div class="pull-right" style="float: right;">
                 <p class="headlines-expand">See all headlines &nbsp;<i class="fa fa-angle-up" aria-hidden="true"></i></p>

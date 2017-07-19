@@ -385,7 +385,7 @@
                 <div class="stock-panel__ticker">
                   <p>{{idea['meta-info'].symbol}}</p>
                 </div>
-                <div (click)="goToStockView(idea, $event)" class="button__view-summary">
+                <div (click)="goToStockView(idea['meta-info'], $event)" class="button__view-summary">
                   <img src="assets/imgs/icon-stockview--blue.svg">
                 </div>
               </div>

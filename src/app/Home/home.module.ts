@@ -10,8 +10,8 @@ import {SymbolSearchModule} from '../shared/symbol-search/symbol-search.module';
 import {OnboardingComponent} from './onboarding/onboarding.component';
 
 import {ModalModule} from 'ngx-bootstrap/modal';
-
 import {AlertModule} from 'ngx-bootstrap/alert';
+import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 
 @NgModule({
   imports: [
@@ -20,7 +20,8 @@ import {AlertModule} from 'ngx-bootstrap/alert';
     SharedModule,
     SymbolSearchModule,
     ModalModule,
-    AlertModule
+    AlertModule,
+    InfiniteScrollModule
   ],
   exports: [
     HomeComponent

@@ -7,7 +7,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 /* Bootstrap component */
 import {AppComponent} from './app.component';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 /* Modules */
 import {SharedModule} from './shared/shared.module';
@@ -21,6 +21,7 @@ import {
   ModalModule,
   AlertModule
 } from 'ngx-bootstrap';
+
 
 @NgModule({
   declarations: [

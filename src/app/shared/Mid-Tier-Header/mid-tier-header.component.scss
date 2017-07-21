@@ -20,6 +20,7 @@
 		.nav {
 			.nav-item {
 				padding:0 15px;
+
 				a {
 					color: rgba(255,255,255, 0.5);
 					font-size: 15px;
@@ -46,6 +47,10 @@
 					box-shadow: inset 0px 5px 0px #ffffff;
 					font-weight: 400;
 				}
+
+				&:hover {
+					background-color: transparent;
+				}
 			}
 		}
 	}
@@ -69,5 +74,8 @@
 	}
 }
 
-
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: transparent;
+}
 

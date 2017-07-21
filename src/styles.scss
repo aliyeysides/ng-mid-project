@@ -137,27 +137,27 @@ input:focus {
 \*------------------------------------*/
 
 .list__option--userlist .list__image {
-  background-image: linear-gradient(-145deg, #00CD00 0%, #00A3FF 100%);
+  background-image: linear-gradient(-45deg, #6B0097 0%, #1199FF 100%);
 }
 
 .list__option--yourideaslist .list__image {
-  background-image: linear-gradient(148deg, #FDDC04 15%, #E10281 100%);
+  background-image: linear-gradient(135deg, #FDDB05 0%, #E00281 100%);
 }
 
 .list__option--IPlist .list__image {
-  background-image: linear-gradient(-32deg, #7000A8 0%, #FF8500 94%);
+  background-image: linear-gradient(135deg, #FDDB05 0%, #E00281 100%);
 }
 
 .list__option--chartlist .list__image {
-  background-image: linear-gradient(-36deg, #6D0A95 0%, #0096D4 100%);
+  background-image: linear-gradient(135deg, #FDDB05 0%, #E00281 100%);
 }
 
 .list__option--companylist .list__image {
-  background-image: linear-gradient(-29deg, #FFE500 0%, #3FCC0B 47%, #179731 100%);
+  background-image: linear-gradient(135deg, #FDDB05 0%, #E00281 100%);
 }
 
 .list__option--championlist .list__image {
-  background-image: linear-gradient(-36deg, #EC2E2E 0%, #2517DC 100%);
+  background-image: linear-gradient(135deg, #FDDB05 0%, #E00281 100%);
 }
 
 .list__option--addlist .list__image {
@@ -444,6 +444,99 @@ input:focus {
     overflow-y: hidden !important;
   }
 }
+
+
+
+
+
+/*------------------------------------*\
+  #CHARTS
+\*------------------------------------*/
+
+
+
+.panel__chart {
+
+  .chart-container {
+
+    .mainGroup {
+
+      .xAxisGroup {
+
+        .domain {
+          stroke:#efefef;
+        }
+
+        .tick {
+
+          text {
+            fill: #999999;
+            transform:translateY(3px);
+          }
+        }
+      }
+
+      .yAxisGroup {
+
+        .tick {
+
+          line {
+            stroke: #efefef;
+            stroke-dasharray: (0,0);
+          }
+
+          text {
+            fill: #999999;
+          }
+        }
+      }
+
+      path#areaChart.area-chart {
+        fill: #1199ff;
+        opacity: 0.15 !important;
+      }
+
+      .close-price-line {
+        stroke:#4a4a4a !important;
+        stroke-dasharray: (3,3);
+      }
+
+      path.area-chart-line {
+        stroke: #1199ff;
+        stroke-width: 1.5;
+        fill: none;
+        opacity: 1 !important;
+        shape-rendering: initial !important;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

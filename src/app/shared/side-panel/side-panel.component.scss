@@ -150,11 +150,12 @@
 
 				.market {
 					color: $font-color;
-					font-weight: 700;
+					font-weight: 600;
 					margin-left: 10px;
 					line-height: 1;
 					float: left;
 					text-transform: uppercase;
+					white-space: nowrap;
 				}
 
 				.market-price {
@@ -391,6 +392,9 @@
 						    color: $link-blue;
 						}
 					}
+				}
+				.pagination {
+				    margin: 0px;
 				}
 			}
 

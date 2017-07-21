@@ -34,7 +34,10 @@ body {
   overflow: hidden;
   height: 100vh;
   line-height: 1;
+}
 
+input:focus {
+    outline:none;
 }
 
 .align-absolute {
@@ -53,6 +56,11 @@ body {
     padding-right: 0;
     padding-left: 0;
   }
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: transparent;
 }
 
 .container {
@@ -119,39 +127,7 @@ body {
   font-family: 'Open Sans', sans-serif !important;
 }
 
-.list-view__actionbar .form-control {
-  background-color: transparent;
-  color: #FFFFFF;
-}
 
-.search-box {
-  height: 50px;
-  text-align: left;
-  padding: 0;
-  border: 0;
-  font-size: 24px;
-  border-radius: 0;
-  outline: none;
-  color: #FFFFFF;
-}
-
-.search-submit {
-  width: 60px;
-  height: 50px;
-  margin: 0 0px 0 5px;
-  position: relative;
-  font-size: 28px;
-}
-
-.fa-search {
-  font-size: 28px;
-  color: #ffffff;
-}
-
-.list-view__actionbar .form-inline .form-control {
-  width: 500px;
-  font-weight: 300;
-}
 
 
 
@@ -454,6 +430,10 @@ body {
 
 
 
+
+/*------------------------------------*\
+  #MODALS
+\*------------------------------------*/
 
 
 

@@ -21,7 +21,7 @@
 						</p>
 						<p class="market-price">
 							<span [ngClass]="{'up-change': market.percent_change > 0 , 'down-change': market.percent_change < 0, 'neutrals': market.percent_change == 0 }">{{market.last | number : '1.2-2'}} </span>
-							&nbsp;&nbsp;
+							&nbsp;
 							<span [ngClass]="{'up-change': market.percent_change > 0 , 'down-change': market.percent_change < 0, 'neutral-grey': market.percent_change == 0 }">({{market.percent_change < 0 ? (market.percent_change | number : '1.2-2') : '+'+(market.percent_change | number : '1.2-2') }}%)</span>
 						</p>
 

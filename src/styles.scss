@@ -87,6 +87,8 @@ body {
   color: $veryBearish-red !important;
 }
 
+
+
 /*------------------------------------*\
   #SEARCH BOX
 \*------------------------------------*/
@@ -151,6 +153,9 @@ body {
   font-weight: 300;
 }
 
+
+
+
 /*------------------------------------*\
   #LIST-OPTION Gradients
 \*------------------------------------*/
@@ -183,6 +188,9 @@ body {
   background-image: linear-gradient(0deg, #6F7689 0%, #313540 100%);
   border: 3px dashed #FFFFFF;
 }
+
+
+
 
 /*------------------------------------*\
   #PGR SLIDERS
@@ -276,6 +284,11 @@ body {
   border-radius: 25px;
   border: 4px solid #ffffff;
 }
+
+
+
+
+
 
 /*------------------------------------*\
   #DROP DOWNS
@@ -445,7 +458,12 @@ body {
 
 
 
-
+.modal-open {
+  .modal {
+    overflow-x: hidden;
+    overflow-y: hidden !important;
+  }
+}
 
 
 

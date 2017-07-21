@@ -44,7 +44,7 @@ export class IdeasComponent implements OnInit {
     'Power Gauge Rating Upgrades': { 'style': 'list__option--IPlist list__option--PGRupgrade', 'imgName': 'img_list-PGRupgrade.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
     'Best of the Dow': { 'style': 'list__option--championlist list__option--bestofthedow', 'imgName': 'img_list-bestofthedow.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
     'Earnings Champs': { 'style': 'list__option--IPlist list__option--earningschamps', 'imgName': 'img_list-earningschamps.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
-    'sell the Rallies': { 'style': 'list__option--chartlist list__option--sellrallies', 'imgName': 'img_list-buyrallies.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
+    'Sell the Rallies': { 'style': 'list__option--chartlist list__option--sellrallies', 'imgName': 'img_list-buyrallies.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
     'Bears of the Week': { 'style': 'list__option--IPlist list__option--classicbears', 'imgName': 'img_list-classicbears.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
     'Power Gauge Rating Downgrades': { 'style': 'list__option--IPlist list__option--PGRdowngrade', 'imgName': 'img_list-PGRdowngrade.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
     'Don\'t Fight the Shorts': { 'style': 'list__option--IPlist list__option--dontfighttheshorts', 'imgName': 'img_list-dontfighttheshorts.svg', 'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis' },
@@ -97,7 +97,7 @@ export class IdeasComponent implements OnInit {
 
   public getActiveClasses(listName) {
     let slectedClass = (this.selected == listName) ? ' selected' : ''
-    return this.mappingClassArray[listName].style + `${slectedClass}`;
+    return this.mappingClassArray[listName]['style'] + `${slectedClass}`;
   }
 
   public selectedIdeasList(event, list) {

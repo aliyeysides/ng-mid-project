@@ -45,6 +45,7 @@
     "@types/jquery": "^3.2.5",
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0",
+    "d3": "^4.10.0",
     "jasmine-core": "~2.5.2",
     "jasmine-spec-reporter": "~3.2.0",
     "jquery-ui-dist": "^1.12.1",

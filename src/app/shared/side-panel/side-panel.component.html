@@ -17,7 +17,7 @@
 					*ngFor="let market of marketsData;let i = index" >
 						<p class="market"> {{market.name}} </p>
 						<p class="icon-expand">
-							<a (click)="appendArrowClass($event,i)"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+							<a (click)="appendArrowClass($event,i,market.symbol)"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
 						</p>
 						<p class="market-price">
 							<span [ngClass]="{'up-change': market.percent_change > 0 , 'down-change': market.percent_change < 0, 'neutrals': market.percent_change == 0 }">{{market.last | number : '1.2-2'}} </span>
@@ -27,7 +27,7 @@
 
 				<!-- INTRADAY CHART STARTS HERE -->						
 						<div class="panel__chart" [ngClass] = "{'panel__chart--SPY' : !marketDropdown[i]}">
-							<div class="chart-container" [id]="marketSymbols[i]+'-chart-container'">
+							<div class="chart-container" [id]="market.symbol+'-chart-container'">
 							</div>
 						</div>
 				<!-- INTRADAY CHART END -->

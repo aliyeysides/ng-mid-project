@@ -312,7 +312,7 @@ export class SidePanelComponent implements OnInit {
 				midValue: 243.7
 			}
 			this.realTimeAreaChartControler.init({ data: chartData, id: chartClass }, false);
-			setInterval(() => {
+			/*setInterval(() => {
 				data.timeIntervals.push("09:30:49");
 				data.intraDayPrices.push(243.97);
 				let chartData = {
@@ -321,7 +321,7 @@ export class SidePanelComponent implements OnInit {
 					midValue: 243.7
 				}
 				this.realTimeAreaChartControler.init({ data: chartData, id: chartClass }, true);
-			 }, 1000);
+			 }, 1000);*/
 		}
 	}
 

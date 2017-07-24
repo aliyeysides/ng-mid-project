@@ -21,7 +21,7 @@ import {
   ModalModule,
   AlertModule
 } from 'ngx-bootstrap';
-
+import {BusyConfig, BusyModule} from 'angular2-busy';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,15 @@ import {
     StockReportModule,
     BrowserAnimationsModule,
     ModalModule.forRoot(),
-    AlertModule.forRoot()
+    AlertModule.forRoot(),
+    BusyModule.forRoot(
+      new BusyConfig({
+        message: 'Loading...',
+        backdrop: true,
+        template: '<div>{{message}}</div>',
+        wrapperClass: 'ng-busy'
+      })
+    )
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]

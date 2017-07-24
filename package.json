@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "@types/underscore": "^1.8.1",
+    "angular2-busy": "^2.0.4",
     "angular2-debounce": "^1.0.4",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",

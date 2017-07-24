@@ -12,13 +12,12 @@
             <li class="dropdown-submenu">
               <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="#">Relevance</a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                <li (click)="setOrderByObject('', true)"><a class="dropdown-subtoggle" tabindex="-1" href="#">A-Z</a></li>
-                <li (click)="setOrderByObject('', false)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Z-A</a></li>
+                <li (click)="setOrderByObject('', true)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Most Relevant</a></li>
+                <li (click)="setOrderByObject('', false)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Least Relevant</a></li>
               </ul>
             </li>
             <li class="dropdown-submenu">
-              <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="#">Company
-                Name</a>
+              <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="#">Company Name</a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
                 <li (click)="setOrderByObject('name', true)"><a class="dropdown-subtoggle" tabindex="-1" href="#">A-Z</a></li>
                 <li (click)="setOrderByObject('name', false)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Z-A</a></li>

@@ -25,7 +25,7 @@ export class ListViewComponent implements OnInit {
   public activeIdeasList: Array<object>;
   private userId = '1024494';
   public selectedStock: Idea;
-  public orderByObject: object;
+  public orderByObject: object = {};
   public selectedStockPGR: object;
   public selectedStockChartPoints: object;
   public selectedStockSimilars: object;

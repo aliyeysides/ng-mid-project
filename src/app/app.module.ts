@@ -21,7 +21,17 @@ import {
   ModalModule,
   AlertModule
 } from 'ngx-bootstrap';
+
 import {BusyConfig, BusyModule} from 'angular2-busy';
+
+const loadingMaskConfig: BusyConfig = ({
+  message: 'Loading...',
+  backdrop: true,
+  delay: 0,
+  minDuration: 0,
+  template: '<div>{{message}}</div>',
+  wrapperClass: 'ng-busy'
+});
 
 @NgModule({
   declarations: [
@@ -41,14 +51,7 @@ import {BusyConfig, BusyModule} from 'angular2-busy';
     BrowserAnimationsModule,
     ModalModule.forRoot(),
     AlertModule.forRoot(),
-    BusyModule.forRoot(
-      new BusyConfig({
-        message: 'Loading...',
-        backdrop: true,
-        template: '<div>{{message}}</div>',
-        wrapperClass: 'ng-busy'
-      })
-    )
+    BusyModule.forRoot(loadingMaskConfig)
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]

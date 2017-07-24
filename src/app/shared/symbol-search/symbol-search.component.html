@@ -1,7 +1,6 @@
 <form class="form-inline" (submit)="onSubmit()">
   <div class="form-group">
-	  <span (click)="gotoReport()"
-      class="search-submit" id="basic-addon1">
+	  <span class="search-submit" id="basic-addon1">
         <i class="fa fa-search align-absolute" aria-hidden="true"></i>
     </span>
     <input [formControl]="symbolSearchForm" type="search" class="form-control search-box"
@@ -22,12 +21,12 @@
       </div>
       <div class="col-lg-4 col-xl-2 search__company">
         <p class="company-ticker">
-        	{{ result.Symbol }}
+          {{ result.Symbol }}
         </p>
       </div>
       <div class="col-lg-6 col-xl-8">
-      	<p class="company-name">
-        	{{ result.CompanyName }}
+        <p class="company-name">
+          {{ result.CompanyName }}
         </p>
       </div>
     </li>

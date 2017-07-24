@@ -185,7 +185,7 @@
         <p class="empty-list__text">Oops...Looks like you'll have to select a stock to get started!</p>
       </div>
       <div *ngIf="this.selectedStock" class="quick-view__container col-md-6">
-        <div class="quick-view__panel">
+        <div [ngBusy]="loading" class="quick-view__panel">
           <div class="quick-view__data row">
 
             <div class="col-lg-8">
@@ -368,7 +368,7 @@
     <!-- END: QUICKVIEW PANEL  -->
 
   </div>
-  <div infinite-scroll  [infiniteScrollDistance]="1" [infiniteScrollThrottle]="1000" (scrolled)="onScroll()" [scrollWindow]="false" *ngIf="currentView == 'panel-view' && additionalLists != true" class="view-option--panel">
+  <div [ngBusy]="loading" infinite-scroll  [infiniteScrollDistance]="1" [infiniteScrollThrottle]="1000" (scrolled)="onScroll()" [scrollWindow]="false" *ngIf="currentView == 'panel-view' && additionalLists != true" class="view-option--panel">
     <div *ngIf="!ideaList?.length">There are currently no stocks in this list.</div>
     <div *ngIf="ideaList?.length" class="row no-gutters">
 

@@ -4,6 +4,7 @@ import {SearchPanelComponent} from '../search-panel/search-panel.component';
 import {NgForm} from '@angular/forms';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs/Observable';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'symbol-search',
@@ -14,37 +15,43 @@ import {Observable} from 'rxjs/Observable';
 })
 export class SymbolSearchComponent implements OnInit {
   public symbolSearchForm: FormControl;
-  public searchResults: Array<object>;
+  public searchResults: Array<any>;
 
-  constructor(private sharedService: SharedService, private searchPanelComponent: SearchPanelComponent) {
+  constructor(private sharedService: SharedService,
+              private searchPanelComponent: SearchPanelComponent,
+              private router: Router) {
     this.symbolSearchForm = new FormControl();
-    /* console.log(searchPanelComponent.test)*/
   }
 
   ngOnInit() {
     this.searchResults = [];
-    /* $window.open(`https://dev.chaikinanalytics.com/CPTRestSecure/
-     ResearchReport/index.jsp?lang=English&uid=9582&environment
-     =desktop&subEnvironment=chaikinAnalytics&version=1.3.2&symbol=ILMN&userType=CAUser`);*/
-
     this.symbolSearchForm.valueChanges
       .debounceTime(500)
       .switchMap(val => this.sharedService.symbolLookup(val))
-      // .switchMap(val => this.doSomething(val))
-      .subscribe(val => this.searchResults = val);
+      .subscribe(val => {
+        this.searchResults = val;
+      });
   }
 
-  gotoReport() {
-    // doSomething();
+  gotoReport(symbol: string) {
+    this.router.navigate(['/report', symbol])
   }
 
-  doSomething(val) {
-    return [];
-    //  (val != null || val != undefined || val != '') ? this.sharedService.symbolLookup(val) : ''
+  onSubmit() {
+    // console.log(this.searchResults);
+    // if (isNullOrUndefined(this.symbolSearchForm.value) || this.searchResults.length == 0) {
+    //   this.sharedService.addAlert(INVALIDSYMBOLALERT.type, INVALIDSYMBOLALERT.msg);
+    //   return;
+    // }
+    this.gotoReport(this.searchResults[0].Symbol);
+    this.symbolSearchForm.reset();
   }
 
-  onSubmit(event: Event) {
-    console.log(this.searchResults);
-    // this.symbolSearchForm.reset();
+  addToWatchingList(stock: any, e ) {
+    e.stopPropagation();
+    this.sharedService.addStockIntoWatchingList(stock)
+      .subscribe(res => {
+        console.log('res from addToList', res);
+      });
   }
 }

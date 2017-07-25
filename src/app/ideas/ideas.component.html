@@ -2,10 +2,8 @@
 		<div class="row no-gutters">
 			<div class="list-carousel">
 				<div class="list-category list-category--mylists">
-					<!-- <p>MY LISTS</p> -->
 				</div>
 				<div class="list-category list-category--ideas">
-					<!-- <p>IDEAS</p> -->
 				</div>
 				<ul class="">
 					<li *ngFor = "let list of activeIdeasList ; let i = index " (click)="selectedIdeasList($event,list)" class="list__option" [ngClass]="getActiveClasses(list.name)">
@@ -28,49 +26,6 @@
 		</div>
 <!-- END: CAROUSEL  -->
 
-<!-- ROW: LIST DESCRIPTION  -->
-		<div class="list-description__container">
-			<p class="list-description align-absolute">
-				<span class="list-description--holding selected"><i class="fa fa-user-circle" aria-hidden="true"></i> <strong>USER LIST:</strong> These are stocks you currently hold. Add more by dragging them here.</span>
-				<span class="list-description--watching"><i class="fa fa-user-circle" aria-hidden="true"></i> <strong>USER LIST:</strong> These are stocks you are currently watching. Add more by dragging them here.</span>
-				<span class="list-description--ideasforyou">These ideas have been highlighted as some you might be interested in.</span>
-				<span class="list-description--classicbears">Bears, bears, and bears, Oh My!</span>
-				<span class="list-description--classicbulls">Run with the bulls here.</span>
-				<span class="list-description--buydips">Buy these stocks after they dip.</span>
-				<span class="list-description--sellrallies">Sell these stocks after they rally.</span>
-				<span class="list-description--largecap">These are companies that make a lot of money.</span>
-
-				<span class="list-description--smallcap">Small cap stocks here.</span>
-				<span class="list-description--buyingstrength">Strong money flow.</span>
-				<span class="list-description--relativestrength">Good relative strength.</span>
-				<span class="list-description--earningschamps">Earn that money.</span>
-				<span class="list-description--earningsbulls">The earning fo the bulls.</span>
-				<span class="list-description--earningsbears">The earning of the bears.</span>
-				<span class="list-description--dontfighttheshorts">Don't fight against short positions.</span>
-				<span class="list-description--analystdarlings">Analysts love these.</span>
-
-				<span class="list-description--moneymakers">Shake your money maker.</span>
-				<span class="list-description--insiderconfidence">The people who work there seem to like it.</span>
-				<span class="list-description--underten">Ten stocks under ten bucks.</span>
-				<span class="list-description--bestgrowth">Growers not showers.</span>
-				<span class="list-description--bestvalue">Good value on these.</span>
-				<span class="list-description--dogsofthedow">Down, Boy. </span>
-				<span class="list-description--bestofthedow">Best of the DIA.</span>
-				<span class="list-description--bestofthenasdaq">Best of the QQQ.</span>
-
-				<span class="list-description--PGRupgrades">These stocks changes their rating to bullish.</span>
-				<span class="list-description--PGRdowngrade">These stocks changes their rating to bearish.</span>
-
-				<span class="list-description--addlist">Add a new list here...</span>
-			</p>
-			<div class="toggle-arrow toggle-arrow--left">
-				<i class="fa fa-angle-left" aria-hidden="true"></i>
-			</div>
-			<div class="toggle-arrow toggle-arrow--right">
-				<i class="fa fa-angle-right" aria-hidden="true"></i>
-			</div>
-		</div>
-<!-- END: LIST DESCRIPTION  -->
 
 
 

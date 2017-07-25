@@ -79,10 +79,9 @@
 			.panel__header {
 				color: $font-color;
 				padding: 10px 0 7px;
-				border-top: $border-line--LT;
 				border-bottom: $border-line--LT;
 				text-transform: uppercase;
-				background-color: $background--LT;
+				background-color: #ffffff;
 
 				.panel__title {
 					margin-left: 10px;
@@ -141,7 +140,7 @@
 				color: $font-color;
 				padding: 10px 0 4px;
 				border-bottom: $border-line--LT;
-				background-color: $background--LT3;
+				background-color: $background--LT2;
 
 				p {
 					font-size: 14px;
@@ -186,27 +185,29 @@
 				    position: relative;
 
 				    .chart-container {
-					    width: 237px;
+					    width: 239px;
 					    float:left;
 					    height: 120px;
 					    border-top: $chart-border--LT;
 					    border-bottom: $chart-border--LT;
 					    background-color: #ffffff;
-					    margin-top:7px;
+					    margin-top: 5px;
+					    margin-bottom: -4px;
 					    position: relative;
+					    padding-right: 2px;
 					}
 
 					.previous-close-line {
-						top:25px;
+						top: 25px;
 					}
 
 					hr.midline {
 						position: absolute;
 						border: $chart-border--LT;
 						width: 210px;
-						top:50px;
-						padding:0;
-						margin:0;
+						top: 50px;
+						padding: 0;
+						margin: 0;
 						z-index: 50;
 					}
 
@@ -215,8 +216,8 @@
 						border: 1px dotted #383838;
 					    border-style: none none dotted;
 						width: 210px;
-						padding:0;
-						margin:0;
+						padding: 0;
+						margin: 0;
 						z-index: 100;
 					}
 
@@ -318,10 +319,14 @@
 				padding: 0px 5px 0px 5px;
 				display: block;
 
+				ul {
+					margin: 3px 0 5px;
+				}
+
 				li {
 					width: 100%;
 					clear: both;
-					padding: 15px 0;
+					padding: 10px 0;
 				}
 
 				.alert__pgr {
@@ -359,7 +364,7 @@
 					border-top: $border-line--LT2;
 
 					li {
-						padding: 2px 0px 4px;
+						padding: 0px;
 					}
 
 					a  {
@@ -383,8 +388,6 @@
 					}
 
 					.dots {
-					    float: left;
-					    line-height: 1.6;
 					    text-align: center;
 
 						.selected {
@@ -410,25 +413,21 @@
 					.insights__title {
 						font-weight: 600;
 						font-size: 13px;
-						line-height: 1.3;
-						margin-bottom: 5px;
+						line-height: 1.4;
+						margin-bottom: 3px;
+						font-style: italic;
 					}
 
-					.insights__snippet {
-						font-weight: 400;
-						font-size: 11px;
-						line-height: 1.4;
-
-						a {
-							color: $link-blue;
-						}
+					.insights__readmore {
+						color: $link-blue;
+						font-size: 12px;
+						line-height: 1.3;
 					}
 
 					.insights__date {
 						font-weight: 700;
 						font-size: 10px;
 						line-height: 1;
-						font-style: italic;
 						color: $font-color--Blue;
 						margin-bottom:6px;
 					}

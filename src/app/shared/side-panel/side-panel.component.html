@@ -5,7 +5,7 @@
 					<img src="assets/imgs/logo-chaikin.svg" alt="" width="" height="">
 				</div>
 				<div class="sidebar__date">
-					<p>{{date}}&nbsp;&nbsp; &bull; &nbsp;&nbsp; {{time}} ET</p>
+					<p>{{date}} &nbsp;&nbsp; &bull; &nbsp;&nbsp; {{time}} ET</p>
 				</div>
 
 		<!-- SECTION: MARKET PANEL  -->
@@ -22,7 +22,7 @@
 						<p class="market-price">
 							<span [ngClass]="{'up-change': market.percent_change > 0 , 'down-change': market.percent_change < 0, 'neutrals': market.percent_change == 0 }">{{market.last | number : '1.2-2'}} </span>
 							&nbsp;
-							<span [ngClass]="{'up-change': market.percent_change > 0 , 'down-change': market.percent_change < 0, 'neutral-grey': market.percent_change == 0 }">({{market.percent_change < 0 ? (market.percent_change | number : '1.2-2') : '+'+(market.percent_change | number : '1.2-2') }}%)</span>
+							<span [ngClass]="{'up-change': market.percent_change > 0 , 'down-change': market.percent_change < 0, 'neutral-grey': market.percent_change == 0 }">({{market.percent_change < 0 ? (market.percent_change | number : '1.2-2') : '+'+(market.percent_change | number : '1.2-2') }})</span>
 						</p>
 
 				<!-- INTRADAY CHART STARTS HERE -->						
@@ -119,7 +119,7 @@
 							<li>
 								<p class="insights__date">July 2nd, 2017</p>
 								<p class="insights__title">S&amp;P 500 Makes Another New High with Small Caps Leading the Way and Nearing New Highs as Well</p>
-								<p class="insights__snippet">The S&amp;P 500 Index closed on Friday at 2,423.41, down 0.61% on the week. Hints that the European Central Bank may soon end its quantitative easing sent interest rates higher with Financial stocks the prime beneficiary. Financial stocks also benefitted from the positive stress test results that were [&hellip;] &nbsp; <a class="insights__readmore">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a></p>
+								<a class="insights__readmore">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
 							</li>
 						</ul>
 					</div>

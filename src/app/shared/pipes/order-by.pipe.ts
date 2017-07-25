@@ -6,7 +6,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class OrderByPipe implements PipeTransform {
 
   transform(array, orderBy, asc = true){
-    console.log('array', array, 'oderBy', orderBy, 'asc', asc);
 
     // if array has multidimensional objects, reassign object meta-info to top level
     if (array[0]['meta-info']) {

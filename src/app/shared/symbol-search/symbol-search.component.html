@@ -10,30 +10,33 @@
   </div>
 </form>
 <div *ngIf="searchResults && symbolSearchForm.value" class="search__dropdown">
-  <ul *ngFor="let result of searchResults">
+  <ul *ngFor="let result of searchResults" class="container">
     <li class="row search__entry">
-      <div (click)="addToWatchingList(result.Symbol, $event)" class="col-lg-1 col-xl-1 pull-right search__action">
+      <div (click)="addToWatchingList(result.Symbol, $event)" class="col-lg-1 col-xl-1  search__action">
         <i class="fa fa-plus-circle" aria-hidden="true"></i>
       </div>
-      <div (click)="gotoReport(result.Symbol)" class="col-lg-1 col-xl-1 pull-right
-       search__action">
-        <img class="align-absolute" src="assets/imgs/icon-stockview.svg">
+      <div (click)="addToWatchingList(result.Symbol, $event)" class="col-lg-1 col-xl-1 search__action">
+        <i class="fa fa-binoculars" aria-hidden="true"></i>
       </div>
       <div class="col-lg-4 col-xl-2 search__company">
         <p class="company-ticker">
           {{ result.Symbol }}
         </p>
       </div>
-      <div class="col-lg-6 col-xl-8">
+      <div class="col-lg-5 col-xl-7">
         <p class="company-name">
           {{ result.CompanyName }}
         </p>
+      </div>
+      <div (click)="gotoReport(result.Symbol)" class="col-lg-1 col-xl-1
+       search__action">
+        <img class="align-absolute" src="assets/imgs/icon-stockview.svg">
       </div>
     </li>
   </ul>
   <ul *ngIf="searchResults && symbolSearchForm.value && searchResults.length == 0">
     <li>
-      <p>There is no such symbol</p>
+      <p class="search__none">There is no such symbol</p>
     </li>
   </ul>
 </div>

@@ -44,7 +44,6 @@ export class ListViewComponent implements OnInit {
         this.wholeIdeasList = res;
         this.updateInActiveIdeaList(this.wholeIdeasList);
         this.updateActiveIdeaList(this.wholeIdeasList);
-
       });
 
     this.ideaListProvider.mappingClassArray$

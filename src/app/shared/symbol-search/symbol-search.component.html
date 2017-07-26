@@ -1,7 +1,6 @@
-<form class="form-inline" (submit)="onSubmit($event)">
+<form class="form-inline" (submit)="onSubmit()">
   <div class="form-group">
-	  <span (click)="gotoReport()"
-      class="search-submit" id="basic-addon1">
+	  <span class="search-submit" id="basic-addon1">
         <i class="fa fa-search align-absolute" aria-hidden="true"></i>
     </span>
     <input [formControl]="symbolSearchForm" type="search" class="form-control search-box"
@@ -10,30 +9,34 @@
     <button type="submit" style="display:none">hidden submit</button>
   </div>
 </form>
-<div class="search__dropdown">
-  <ul *ngFor="let result of searchResults">
+<div *ngIf="searchResults && symbolSearchForm.value" class="search__dropdown">
+  <ul *ngFor="let result of searchResults" class="container">
     <li class="row search__entry">
-      <div class="col-lg-1 col-xl-1 pull-right search__action">
+      <div (click)="addToWatchingList(result.Symbol, $event)" class="col-lg-1 col-xl-1  search__action">
         <i class="fa fa-plus-circle" aria-hidden="true"></i>
       </div>
-      <div (click)="gotoReport(result.Symbol)" class="col-lg-1 col-xl-1 pull-right
-       search__action">
-        <img class="align-absolute" src="assets/imgs/icon-stockview.svg">
+      <div (click)="addToWatchingList(result.Symbol, $event)" class="col-lg-1 col-xl-1 search__action">
+        <i class="fa fa-binoculars" aria-hidden="true"></i>
       </div>
       <div class="col-lg-4 col-xl-2 search__company">
         <p class="company-ticker">
-        	{{ result.Symbol }}
+          {{ result.Symbol }}
         </p>
       </div>
-      <div class="col-lg-6 col-xl-8">
-      	<p class="company-name">
-        	{{ result.CompanyName }}
+      <div class="col-lg-5 col-xl-7">
+        <p class="company-name">
+          {{ result.CompanyName }}
         </p>
+      </div>
+      <div (click)="gotoReport(result.Symbol)" class="col-lg-1 col-xl-1
+       search__action">
+        <img class="align-absolute" src="assets/imgs/icon-stockview.svg">
       </div>
     </li>
   </ul>
   <ul *ngIf="searchResults && symbolSearchForm.value && searchResults.length == 0">
     <li>
-      <p>There is no such symbol</p>
+      <p class="search__none">There is no such symbol</p>
     </li>
-  </ul> 
+  </ul>
+</div>

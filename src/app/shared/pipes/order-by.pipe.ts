@@ -7,6 +7,13 @@ export class OrderByPipe implements PipeTransform {
 
   transform(array, orderBy, asc = true){
 
+    // if array has multidimensional objects, reassign object meta-info to top level
+    if (array[0]['meta-info']) {
+      for (let i=0;i<array.length;i++) {
+        Object.assign(array[i], array[i]['meta-info'])
+      }
+    }
+
     if (!orderBy || orderBy.trim() == ""){
       return array;
     }

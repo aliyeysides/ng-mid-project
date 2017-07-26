@@ -11,9 +11,9 @@
 
 
 .list-carousel {
-	height: 265px;
+	height: 170px;
 	margin-left: 47px;
-	border-left: 1px dashed #999999;
+	border-left: $border-dashed--MD;
 	overflow-x: scroll;
 	position: relative;
 	overflow-y: hidden;
@@ -22,7 +22,7 @@
 	.list-category {
 		position: absolute;
 		font-size: 20px;
-		height: 265px;
+		height: 160px;
 		font-weight: 300;
 		line-height: 1;
 		top: -2px;
@@ -38,8 +38,8 @@
 	}
 
 	.list-category--ideas {
-		left: 420px;
-		border-left: 1px dashed #999999;
+		left: 450px;
+		border-left: $border-dashed--MD;
 
 		p {
 			margin-left: 20px;
@@ -56,38 +56,54 @@
 		.list__option {
 			display: inline-block;
 			position: relative;
-			height: 240px;
+			height: 170px;
 			vertical-align: top;
 
 			.list__image {
-				width: 160px;
-				height: 160px;
-				border: 3px solid #FFFFFF;
+				width: 100px;
+				height: 100px;
+				border: 1.5px solid #FFFFFF;
 				box-shadow: 0 0 18px 0 rgba(0,0,0,0.33);
 				position: relative;
-				margin: 20px 25px 10px;
-				border-radius: 80px;
+				margin: 5px 25px 7px;
+				border-radius: 50px;
 
 				.close {
-					color:#ffffff;
-					text-shadow: 0 0 0 #ffffff;
+					float: right;
+					font-size: 19px;
+					line-height: 1;
+					color: #FFFFFF !important;
+					text-shadow: 0 0 0 #fff !important;
+					opacity: .3;
+					margin: -2px -2px 0 0;
+
+					&:hover {
+						opacity: .6;
+					}
 				}
 			}
 
 			.list__label {
-				font-size: 20px;
+				font-size: 15px;
 				color: #FFFFFF;
-				line-height: 25px;
+				line-height: 1.3;
 				text-align: center;
 				font-weight: 300;
-				width: 206px;
-				height: 70px;
-				padding: 0 15px;
+				width: 150px;
+				padding: 0 20px;
 				white-space: normal;
+			}
 
-				i {
-					font-size: 18px;
-					padding-right: 5px;
+			&:hover {
+
+				.list__image {
+					width: 110px;
+					height: 110px;
+					border: 1.5px solid #FFFFFF;
+					box-shadow: 0 0 18px 0 rgba(0,0,0,0.33);
+					position: relative;
+					margin: 0 20px 7px 20px;
+					border-radius: 55px;
 				}
 			}
 		}
@@ -95,58 +111,62 @@
 		.list__option.selected {
 			background-image: linear-gradient(0deg, rgba(0,0,0,0.00) 35%, rgba(0,0,0,0.40) 90%);
 		    background-repeat: no-repeat;
-		    background-position: 14px 95px;
-		    background-size: 182px;
+    		background-position: 20px 52px;
+    		background-size: 110px 160px;
 
 		    .list__image {
-				width: 180px;
-				height: 180px;
-				border: 3px solid #FFFFFF;
+				width: 110px;
+				height: 110px;
+				border: 1.5px solid #FFFFFF;
 				box-shadow: 0 0 18px 0 rgba(0,0,0,0.33);
 				position: relative;
-				margin: 0 15px 13px 15px;
-				border-radius: 90px;
+				margin: 0 20px 7px 20px;
+				border-radius: 55px;
 			}
+
 			.list__label {
 				font-weight: 400;
 			}
 		}
+
+		.list__option--add {
+			margin-right: 300px;
+
+			.list__image {
+				border: 2px dashed #FFFFFF !important;
+
+				i {
+					font-size: 32px;
+					color: #FFFFFF;
+				}
+			}
+
+			&:hover {
+
+				.list__image {
+					border: 2px dashed #FFFFFF !important;
+
+					i {
+						font-size: 35px;
+						color: #FFFFFF;
+					}
+				}
+			}
+		}
+		
+		.list__option--add.selected {
+
+			.list__image {
+				border: 2px dashed #FFFFFF;
+
+				i {
+					font-size: 35px;
+					color: #FFFFFF;
+				}
+			}
+		}
 	}
 }
-
-
-
-
-
-.list-carousel .list__option.hover, .list-carousel li.list__option:hover {
-	background-image: linear-gradient(0deg, rgba(0,0,0,0.00) 35%, rgba(0,0,0,0.40) 90%);
-    background-repeat: no-repeat;
-		    background-position: 14px 95px;
-		    background-size: 182px;
-}
-
-.list-carousel .list__option.hover .list__image, .list-carousel li.list__option:hover .list__image {
-	width: 180px;
-	height: 180px;
-	border: 3px solid #FFFFFF;
-	box-shadow: 0 0 18px 0 rgba(0,0,0,0.33);
-	position: relative;
-	margin: 0 15px 13px 15px;
-	border-radius: 90px;
-}
-
-.list-carousel .list__option--add .list__image {
-	border: 3px dashed #FFFFFF !important;
-}
-
-.list-carousel .list__option--add.selected .list__image {
-	border: 3px dashed #FFFFFF;
-}
-
-.list-carousel .list__option--add.hover .list__image {
-	border: 3px dashed #FFFFFF !important;
-}
-
 
 
 
@@ -160,720 +180,327 @@
 
 
 .list__option--holding .list__image img {
-	width: 112px;
-	height: auto;
-	margin-top:-1px;
-}
-
-.list__option--holding.selected .list__image img {
-	width: 130px;
+	width: 64px;
 	height: auto;
 	margin-top:-2px;
 }
-
+.list__option--holding.selected .list__image img, 
 .list__option--holding:hover .list__image img {
-	width: 130px;
+	width: 72px;
 	height: auto;
 	margin-top:-2px;
 }
-
 
 
 .list__option--watching .list__image img {
-	width: 132px;
+	width: 75px;
 	height:auto;
-	margin-top: 2px;
 }
-
-.list__option--watching.selected .list__image img {
-	width: 147px;
-	height: auto;
-}
-
+.list__option--watching.selected .list__image img,
 .list__option--watching:hover .list__image img {
-	width: 147px;
+	width: 83px;
 	height: auto;
 }
-
 
 
 .list__option--ideasforyou .list__image img {
-	width: 78px;
+	width: 48px;
 	height: auto;
-	margin-top: 1px;
-}
 
-.list__option--ideasforyou.selected .list__image img {
-	width: 90px;
-	height: auto;
-	margin-top: 1px;
 }
-
+.list__option--ideasforyou.selected .list__image img,
 .list__option--ideasforyou:hover .list__image img {
-	width: 90px;
+	width: 50px;
 	height: auto;
-	margin-top: 1px;
 }
-
 
 
 .list__option--classicbulls .list__image img {
-	width: 120px;
+	width: 70px;
 	height: auto;
 	margin-top: 2px;
 }
-
-.list__option--classicbulls.selected .list__image img {
-	width: 132px;
-	height: auto;
-	margin-top: 2px;
-}
-
+.list__option--classicbulls.selected .list__image img,
 .list__option--classicbulls:hover .list__image img {
-	width: 132px;
+	width: 77px;
 	height: auto;
-	margin-top: 2px;
+	margin-top: 3px;
 }
-
 
 
 .list__option--classicbears .list__image img {
-	width: 118px;
+	width: 70px;
 	height: auto;
 	margin-top: 2px;
 }
-
-.list__option--classicbears.selected .list__image img {
-	width: 132px;
-	height: auto;
-	margin-top: 2px;
-}
-
+.list__option--classicbears.selected .list__image img,
 .list__option--classicbears:hover .list__image img {
-	width: 132px;
+	width: 77px;
 	height: auto;
 	margin-top: 2px;
 }
-
 
 
 .list__option--buydips .list__image img {
-	width: 107px;
+	width: 69px;
 	height: auto;
-	margin-top: -3px;
+	margin-top: -1px;
 }
-
-.list__option--buydips.selected .list__image img {
-	width: 120px;
-	height: auto;
-	margin-top: -3px;
-}
-
+.list__option--buydips.selected .list__image img,
 .list__option--buydips:hover .list__image img {
-	width: 120px;
+	width: 76px;
 	height: auto;
-	margin-top: -3px;
+	margin-top: -1px;
 }
-
 
 
 .list__option--sellrallies .list__image img {
-	width: 107px;
-	height: auto;
-	margin-top: 5px;
+    width: 69px;
+    height: auto;
 }
-
-.list__option--sellrallies.selected .list__image img {
-	width: 120px;
-	height: auto;
-	margin-top: 5px;
-}
-
+.list__option--sellrallies.selected .list__image img,
 .list__option--sellrallies:hover .list__image img {
-	width: 120px;
+	width: 76px;
 	height: auto;
-	margin-top: 5px;
 }
-
 
 
 .list__option--largecap .list__image img {
-	width: 106px;
+	width: 64px;
 	height: auto;
-	margin-top: -8px;
+	margin-top: -4px;
 }
-
-.list__option--largecap.selected .list__image img {
-	width: 120px;
-	height: auto;
-	margin-top: -8px;
-}
-
+.list__option--largecap.selected .list__image img,
 .list__option--largecap:hover .list__image img {
-	width: 120px;
+	width: 70px;
 	height: auto;
-	margin-top: -8px;
+	margin-top: -4px;
 }
-
 
 
 .list__option--buyingstrength .list__image img {
-	width: 106px;
+	width: 65px;
 	height: auto;
-	margin-top: 0px;
 }
-
-.list__option--buyingstrength.selected .list__image img {
-	width: 120px;
-	height: auto;
-	margin-top: 0px;
-}
-
+.list__option--buyingstrength.selected .list__image img,
 .list__option--buyingstrength:hover .list__image img {
-	width: 120px;
+	width: 72px;
 	height: auto;
-	margin-top: 0px;
 }
-
 
 
 .list__option--relativestrength .list__image img {
-	width: 106px;
+	width: 65px;
 	height: auto;
-	margin-top: -2px;
+	margin-top: -1px;
 }
-
-.list__option--relativestrength.selected .list__image img {
-	width: 120px;
-	height: auto;
-	margin-top: -2px;
-}
-
+.list__option--relativestrength.selected,
 .list__option--relativestrength:hover .list__image img {
-	width: 120px;
+	width: 72px;
 	height: auto;
-	margin-top: -2px;
+	margin-top: -1px;
 }
-
 
 
 .list__option--earningschamps .list__image img {
-	width: 116px;
+	width:70px;
 	height: auto;
-	margin-top: 0px;
 }
-
-.list__option--earningschamps.selected .list__image img {
-	width: 132px;
-	height: auto;
-	margin-top: 0px;
-}
-
+.list__option--earningschamps.selected .list__image img,
 .list__option--earningschamps:hover .list__image img {
-	width: 132px;
+	width: 77px;
 	height: auto;
-	margin-top: 0px;
 }
-
 
 
 .list__option--earningsbulls .list__image img {
-    width: 100px;
+    width: 65px;
     height: auto;
     margin-top: 2px;
 }
-
-.list__option--earningsbulls.selected .list__image img {
-	width: 128px;
-	height: auto;
-	margin-top: 0px;
-}
-
+.list__option--earningsbulls.selected .list__image img,
 .list__option--earningsbulls:hover .list__image img {
-	width: 128px;
+	width: 72px;
 	height: auto;
 	margin-top: 0px;
 }
-
 
 
 .list__option--earningsbears .list__image img {
-    width: 100px;
+	width: 65px;
     height: auto;
     margin-top: 2px;
 }
-
-.list__option--earningsbears.selected .list__image img {
-	width: 122px;
-	height: auto;
-	margin-top: 0px;
-}
-
+.list__option--earningsbears.selected .list__image img,
 .list__option--earningsbears:hover .list__image img {
-	width: 122px;
+	width: 72px;
 	height: auto;
 	margin-top: 0px;
 }
-
 
 
 .list__option--underten .list__image img {
-	width: 115px;
+	width: 70px;
 	height: auto;
 	margin-top: 0px;
 }
-
-.list__option--underten.selected .list__image img {
-	width: 128px;
-	height: auto;
-	margin-top: 0px;
-}
-
+.list__option--underten.selected .list__image img,
 .list__option--underten:hover .list__image img {
-	width: 128px;
+	width: 77px;
 	height: auto;
 	margin-top: 0px;
 }
-
 
 
 .list__option--growthstock .list__image img {
-	width: 85px;
-	height: auto;
-	margin-top: -5px;
+    width: 53px;
+    height: auto;
+    margin-top: -3px;
 }
-
-.list__option--growthstock.selected .list__image img {
-	width: 98px;
-	height: auto;
-	margin-top: -3px;
-}
-
+.list__option--growthstock.selected .list__image img,
 .list__option--growthstock:hover .list__image img {
-	width: 98px;
+	width: 58px;
 	height: auto;
 	margin-top: -3px;
 }
-
 
 
 .list__option--smallcap .list__image img {
-	width: 80px;
+	width: 60px;
 	height: auto;
-	margin-top: 22px;
+	margin-top: 10px;
 }
-
-.list__option--smallcap.selected .list__image img {
-	width: 96px;
-	height: auto;
-	margin-top: 20px;
-}
-
+.list__option--smallcap.selected .list__image img,
 .list__option--smallcap:hover .list__image img {
-	width: 96px;
+	width: 66px;
 	height: auto;
-	margin-top: 20px;
+	margin-top: 10px;
 }
-
 
 
 .list__option--bestvalue .list__image img {
-	width: 85px;
+	width: 55px;
 	height: auto;
-	margin-top: -5px;
+	margin-top: -1px;
 }
-
-.list__option--bestvalue.selected .list__image img {
-	width: 100px;
-	height: auto;
-	margin-top: 0px;
-}
-
+.list__option--bestvalue.selected .list__image img,
 .list__option--bestvalue:hover .list__image img {
-	width: 100px;
+	width: 60px;
 	height: auto;
-	margin-top: 0px;
 }
-
 
 
 .list__option--dogsofthedow .list__image img {
-	width: 110px;
+	width: 70px;
 	height: auto;
-	margin-top: 0px;
 }
-
-.list__option--dogsofthedow.selected .list__image img {
-	width: 128px;
-	height: auto;
-	margin-top: 0px;
-}
-
+.list__option--dogsofthedow.selected .list__image img,
 .list__option--dogsofthedow:hover .list__image img {
-	width: 128px;
+	width: 77px;
 	height: auto;
-	margin-top: 0px;
 }
-
 
 
 .list__option--bestofthedow .list__image img {
-	width: 90px;
+	width: 50px;
 	height: auto;
-	margin-top: 0px;
 }
-
-.list__option--bestofthedow.selected .list__image img {
-	width: 106px;
-	height: auto;
-	margin-top: 0px;
-}
-
+.list__option--bestofthedow.selected .list__image img,
 .list__option--bestofthedow:hover .list__image img {
-	width: 106px;
+	width: 55px;
 	height: auto;
-	margin-top: 0px;
 }
-
 
 
 .list__option--bestofthenasdaq .list__image img {
-	width: 90px;
+	width: 50px;
 	height: auto;
-	margin-top: 0px;
 }
-
-.list__option--bestofthenasdaq.selected .list__image img {
-	width: 106px;
-	height: auto;
-	margin-top: 0px;
-}
-
+.list__option--bestofthenasdaq.selected .list__image img,
 .list__option--bestofthenasdaq:hover .list__image img {
-	width: 106px;
+	width: 55px;
 	height: auto;
-	margin-top: 0px;
 }
-
 
 
 .list__option--PGRupgrade .list__image img {
-	width: 108px;
-	height: auto;
-	margin-top: 0px;
+    width: 67px;
+    height: auto;
+    margin-top: 1px;
 }
-
-.list__option--PGRupgrade.selected .list__image img {
-	width: 124px;
-	height: auto;
-	margin-top: 0px;
-}
-
+.list__option--PGRupgrade.selected .list__image img,
 .list__option--PGRupgrade:hover .list__image img {
-	width: 124px;
-	height: auto;
-	margin-top: 0px;
+    width: 73px;
+    height: auto;
+    margin-top: 1px;
 }
-
 
 
 .list__option--PGRdowngrade .list__image img {
-	width: 108px;
-	height: auto;
-	margin-top: 0px;
+    width: 67px;
+    height: auto;
+    margin-top: 1px;
 }
-
-.list__option--PGRdowngrade.selected .list__image img {
-	width: 124px;
-	height: auto;
-	margin-top: 0px;
-}
-
+.list__option--PGRdowngrade.selected .list__image img,
 .list__option--PGRdowngrade:hover .list__image img {
-	width: 124px;
-	height: auto;
-	margin-top: 0px;
+    width: 73px;
+    height: auto;
+    margin-top: 1px;
 }
-
-
 
 
 .list__option--analystdarlings .list__image img {
-	width: 108px;
+	width: 70px;
 	height: auto;
-	margin-top: 0px;
 }
-
-.list__option--analystdarlings.selected .list__image img {
-	width: 128px;
-	height: auto;
-	margin-top: 0px;
-}
-
+.list__option--analystdarlings.selected .list__image img,
 .list__option--analystdarlings:hover .list__image img {
-	width: 128px;
+	width: 77px;
 	height: auto;
-	margin-top: 0px;
 }
-
-
 
 
 .list__option--insiderconfidence .list__image img {
-    width: 90px;
+    width: 58px;
     height: auto;
-    margin-top: -5px;
+    margin-top: -3px;
 }
-
-.list__option--insiderconfidence.selected .list__image img {
-	width: 110px;
-	height: auto;
-	margin-top: -3px;
-}
-
+.list__option--insiderconfidence.selected .list__image img,
 .list__option--insiderconfidence:hover .list__image img {
-	width: 110px;
-	height: auto;
-	margin-top: -3px;
+    width: 63px;
+    height: auto;
+    margin-top: -3px;
 }
-
-
 
 
 .list__option--moneymakers .list__image img {
-    width: 100px;
+    width: 65px;
     height: auto;
     margin-top: 3px;
 }
-
-.list__option--moneymakers.selected .list__image img {
-	width: 122px;
-	height: auto;
-	margin-top: 0px;
-}
-
+.list__option--moneymakers.selected .list__image img,
 .list__option--moneymakers:hover .list__image img {
-	width: 122px;
+	width: 72px;
 	height: auto;
 	margin-top: 0px;
 }
-
-
 
 
 .list__option--dontfighttheshorts .list__image img {
-	width: 108px;
-	height: auto;
-	margin-top: 0px;
+    width: 71px;
+    height: auto;
+    margin-top: 1px;
 }
-
-.list__option--dontfighttheshorts.selected .list__image img {
-	width: 128px;
-	height: auto;
-	margin-top: 0px;
-}
-
+.list__option--dontfighttheshorts.selected .list__image img,
 .list__option--dontfighttheshorts:hover .list__image img {
-	width: 128px;
-	height: auto;
-	margin-top: 0px;
+    width: 78px;
+    height: auto;
+    margin-top: 1px;
 }
 
 
 
 
 
-
-.list__option--add .list__image i {
-	font-size: 48px;
-	color: #FFFFFF;
-}
-
-.list__option--add.selected .list__image i {
-	font-size: 54px;
-	color: #FFFFFF;
-}
-
-.list__option--add:hover .list__image i {
-	font-size: 54px;
-	color: #FFFFFF;
-}
-
-.list__option--add {
-	margin-right: 300px;
-}
-
-
-
-
-
-
-
-/*------------------------------------*\
-  #LIST-DESCRIPTION
-\*------------------------------------*/
-
-
-
-
-.list-description__container {
-	position: absolute;
-	bottom: 0;
-	background-color: #393d47;
-	height: 40px;
-	width: 100%;
-
-	.list-description {
-		font-size: 16px;
-		color: #FFFFFF !important;
-		line-height: 45px;
-		font-weight: 300;
-		letter-spacing: 0.05em;
-		white-space: nowrap;
-		position: absolute;
-	}
-
-	.toggle-arrow {
-		position: absolute;
-		font-size: 40px;
-		color: #999999;
-		margin-top: -2px;
-		line-height: 40px;
-
-		&:hover {
-			color: #ffffff;
-		}
-	}
-}
-
-.list-description__container .toggle-arrow--left {
-	left:10px;
-}
-
-.list-description__container .toggle-arrow--right {
-	right:10px;
-}
-
-
-
-
-
-
-.list-description span {
-	display: none;
-}
-
-.list-description span.selected-hidden {
-	display: none !important;
-}
-
-.list-description--holding.hover, .list-description--holding.selected {
-	display: block;
-}
-
-.list-description--watching.hover, .list-description--watching.selected  {
-	display: block;
-}
-
-.list-description--ideasforyou.hover, .list-description--ideasforyou.selected {
-	display: block;
-}
-
-.list-description--classicbears.hover, .list-description--classicbears.selected {
-	display: block;
-}
-
-.list-description--classicbulls.hover, .list-description--classicbulls.selected {
-	display: block;
-}
-
-.list-description--buydips.hover, .list-description--buydips.selected {
-	display: block;
-}
-
-.list-description--sellrallies.hover, .list-description--sellrallies.selected {
-	display: block;
-}
-
-.list-description--largecap.hover, .list-description--largecap.selected {
-	display: block;
-}
-
-.list-description--smallcap.hover, .list-description--smallcap.selected {
-	display: block;
-}
-
-.list-description--buyingstrength.hover, .list-description--buyingstrength.selected {
-	display: block;
-}
-
-.list-description--relativestrength.hover, .list-description--relativestrength.selected {
-	display: block;
-}
-
-.list-description--earningschamps.hover, .list-description--earningschamps.selected {
-	display: block;
-}
-
-.list-description--earningsbulls.hover, .list-description--earningsbulls.selected {
-	display: block;
-}
-
-.list-description--earningsbears.hover, .list-description--earningsbears.selected {
-	display: block;
-}
-
-
-.list-description--dontfighttheshorts.hover, .list-description--dontfighttheshorts.selected {
-	display: block;
-}
-
-.list-description--analystdarlings.hover, .list-description--analystdarlings.selected {
-	display: block;
-}
-
-.list-description--moneymakers.hover, .list-description--moneymakers.selected {
-	display: block;
-}
-
-.list-description--insiderconfidence.hover, .list-description--insiderconfidence.selected {
-	display: block;
-}
-
-.list-description--underten.hover, .list-description--underten.selected {
-	display: block;
-}
-
-.list-description--bestgrowth.hover, .list-description--bestgrowth.selected {
-	display: block;
-}
-
-.list-description--bestvalue.hover, .list-description--bestvalue.selected {
-	display: block;
-}
-
-.list-description--dogsofthedow.hover, .list-description--dogsofthedow.selected {
-	display: block;
-}
-
-.list-description--bestofthedow.hover, .list-description--bestofthedow.selected {
-	display: block;
-}
-
-.list-description--bestofthenasdaq.hover, .list-description--bestofthenasdaq.selected {
-	display: block;
-}
-
-.list-description--PGRupgrade.hover, .list-description--PGRupgrade.selected {
-	display: block;
-}
-
-.list-description--PGRdowngrade.hover, .list-description--PGRdowngrade.selected {
-	display: block;
-}
-
-.list-description--addlist.hover, .list-description--addlist.selected {
-	display: block;
-}
 
 

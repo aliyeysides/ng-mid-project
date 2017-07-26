@@ -12,13 +12,12 @@
             <li class="dropdown-submenu">
               <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="#">Relevance</a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                <li (click)="setOrderByObject('', true)"><a class="dropdown-subtoggle" tabindex="-1" href="#">A-Z</a></li>
-                <li (click)="setOrderByObject('', false)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Z-A</a></li>
+                <li (click)="setOrderByObject('', true)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Most Relevant</a></li>
+                <li (click)="setOrderByObject('', false)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Least Relevant</a></li>
               </ul>
             </li>
             <li class="dropdown-submenu">
-              <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="#">Company
-                Name</a>
+              <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="#">Company Name</a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
                 <li (click)="setOrderByObject('name', true)"><a class="dropdown-subtoggle" tabindex="-1" href="#">A-Z</a></li>
                 <li (click)="setOrderByObject('name', false)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Z-A</a></li>
@@ -86,8 +85,7 @@
         <span class="list__title--PGRdowngrade">Power Gauge Downgrades</span>
       </p>
       <a (click)="gotoPanelView()" [ngClass]="{'active selected' : this.currentView == 'panel-view'}" class="view-toggle view-toggle--panel-view"><i class="fa fa-th-large align-absolute" aria-hidden="true"></i></a>
-      <a (click)="gotoListView()" [ngClass]="{'active selected' : this.currentView == 'list-view'}" class="view-toggle view-toggle--list-view active"><i class="fa fa-list align-absolute"
-                                                                                       aria-hidden="true"></i></a>
+      <a (click)="gotoListView()" [ngClass]="{'active selected' : this.currentView == 'list-view'}" class="view-toggle view-toggle--list-view active"><i class="fa fa-list align-absolute" aria-hidden="true"></i></a>
     </div>
 
     <div class="col-md-6 search__container">
@@ -165,7 +163,7 @@
                 <p class="">{{ idea.name }}</p>
               </div>
               <div class="col-lg-2 col-xl-2 stock__price">
-                <p class="data" [ngClass]="{'up-change' : idea['Percentage '] > 0, 'down-change' : idea['Percentage '] < 0}">{{ idea.Last }}</p>
+                <p class="data" [ngClass]="{'up-change' : idea['Percentage '] > 0, 'down-change' : idea['Percentage '] < 0}">${{ idea.Last }}</p>
               </div>
               <div class="col-lg-2 col-xl-2 stock__price">
                 <p class="data" [ngClass]="{'up-change' : idea['Percentage '] > 0, 'down-change' : idea['Percentage '] < 0}">{{ idea["Percentage "] }}%</p>
@@ -185,7 +183,7 @@
         <p class="empty-list__text">Oops...Looks like you'll have to select a stock to get started!</p>
       </div>
       <div *ngIf="this.selectedStock" class="quick-view__container col-md-6">
-        <div class="quick-view__panel">
+        <div [ngBusy]="loading" class="quick-view__panel">
           <div class="quick-view__data row">
 
             <div class="col-lg-8">
@@ -211,7 +209,7 @@
               </div>
               <div class="stock-panel__price row">
                 <div class="col-4">
-                  <p class="current-price" [ngClass]="{'up-change' : selectedStock['Percentage '] > 0, 'down-change' : selectedStock['Percentage '] < 0}">{{selectedStock?.Last}}</p>
+                  <p class="current-price" [ngClass]="{'up-change' : selectedStock['Percentage '] > 0, 'down-change' : selectedStock['Percentage '] < 0}">${{selectedStock?.Last}}</p>
                 </div>
                 <div class="col-4">
                   <p class="price-change" [ngClass]="{'up-change' : selectedStock['Percentage '] > 0, 'down-change' : selectedStock['Percentage '] < 0}">{{selectedStock?.Change}}</p>
@@ -368,7 +366,7 @@
     <!-- END: QUICKVIEW PANEL  -->
 
   </div>
-  <div infinite-scroll  [infiniteScrollDistance]="1" [infiniteScrollThrottle]="1000" (scrolled)="onScroll()" [scrollWindow]="false" *ngIf="currentView == 'panel-view' && additionalLists != true" class="view-option--panel">
+  <div [ngBusy]="loading" infinite-scroll  [infiniteScrollDistance]="1" [infiniteScrollThrottle]="1000" (scrolled)="onScroll()" [scrollWindow]="false" *ngIf="currentView == 'panel-view' && additionalLists != true" class="view-option--panel">
     <div *ngIf="!ideaList?.length">There are currently no stocks in this list.</div>
     <div *ngIf="ideaList?.length" class="row no-gutters">
 
@@ -591,12 +589,12 @@
       <ul>
 
       <li class="list__option row" *ngFor = " let list of ( inActiveIdeasList | evenodd: 'even')" [ngClass]="mappingClassArray[list.name]['style']" >
-          <div class="col-md-4">
+          <div class="col-md-4 col-lg-3">
             <div class="list__image">
               <img class="align-absolute" [src]="'assets/imgs/'+mappingClassArray[list.name].imgName">
             </div>
           </div>
-          <div class="list__option--description col-md-8">
+          <div class="list__option--description col-md-8 col-lg-9">
             <p class="list__title">{{list.name}}</p>
             <p class="list__description">{{mappingClassArray[list.name]['description']}}</p>
             <button (click)="manageActiveInactive('activate',list.list_id);$event.stopPropagation()" type="button" class="close" aria-label="Close" >
@@ -610,12 +608,12 @@
     <div class="col-6">
       <ul>
         <li class="list__option row" *ngFor = " let list of ( inActiveIdeasList | evenodd: 'odd')" [ngClass]="mappingClassArray[list.name]['style']"  >
-          <div class="col-md-4">
+          <div class="col-md-4 col-lg-3">
             <div class="list__image">
               <img class="align-absolute" [src]="'assets/imgs/'+mappingClassArray[list.name].imgName">
             </div>
           </div>
-          <div class="list__option--description col-md-8">
+          <div class="list__option--description col-md-8 col-lg-9">
             <p class="list__title">{{list.name}}</p>
             <p class="list__description">{{mappingClassArray[list.name]['description']}}</p>
             <button (click)="manageActiveInactive('activate',list.list_id);$event.stopPropagation()" type="button" class="close" aria-label="Close" >

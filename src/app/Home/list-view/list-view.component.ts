@@ -3,6 +3,7 @@ import {SharedService} from '../../shared/shared.service';
 import { IdeaListProvider } from 'app/providers/idea-list.provider'
 import {Router} from '@angular/router';
 import {Idea} from '../../shared/models/idea';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-list-view',
@@ -24,12 +25,13 @@ export class ListViewComponent implements OnInit {
   public activeIdeasList: Array<object>;
   private userId = '1024494';
   public selectedStock: Idea;
-  public orderByObject: object;
+  public orderByObject: object = {};
   public selectedStockPGR: object;
   public selectedStockChartPoints: object;
   public selectedStockSimilars: object;
   public loadedStockIdeas: number = 0;
   public panelViewIdeasList: Array<object> = [];
+  public loading: Subscription;
 
   constructor(private sharedService: SharedService,
     private router: Router, private ideaListProvider: IdeaListProvider) {
@@ -42,7 +44,6 @@ export class ListViewComponent implements OnInit {
         this.wholeIdeasList = res;
         this.updateInActiveIdeaList(this.wholeIdeasList);
         this.updateActiveIdeaList(this.wholeIdeasList);
-
       });
 
     this.ideaListProvider.mappingClassArray$
@@ -78,7 +79,7 @@ export class ListViewComponent implements OnInit {
   }
 
   getSelectedStockData(stock: Idea, callback?) {
-    this.sharedService.getStockCardData(stock.symbol)
+    this.loading = this.sharedService.getStockCardData(stock.symbol)
       .subscribe(res => {
         return callback(res);
       });

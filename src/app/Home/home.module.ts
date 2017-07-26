@@ -12,6 +12,7 @@ import {OnboardingComponent} from './onboarding/onboarding.component';
 import {ModalModule} from 'ngx-bootstrap/modal';
 import {AlertModule} from 'ngx-bootstrap/alert';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
+import {BusyConfig, BusyModule} from 'angular2-busy';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import {InfiniteScrollModule} from 'ngx-infinite-scroll';
     SymbolSearchModule,
     ModalModule,
     AlertModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    BusyModule
   ],
   exports: [
     HomeComponent

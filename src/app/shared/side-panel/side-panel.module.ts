@@ -8,6 +8,7 @@ import { SidePanelComponent } from './side-panel.component';
 import { SidePanelProvider } from 'app/providers/side-panel.provider'
 import { IdeaListProvider } from 'app/providers/idea-list.provider';
 import { PagerProvider } from 'app/providers/paging.provider';
+import { ChartService } from '../charts/chart.service';
 @NgModule({
 	imports: [
 		CommonModule,
@@ -23,7 +24,7 @@ import { PagerProvider } from 'app/providers/paging.provider';
 		SidePanelComponent
 	],
 	bootstrap: [SidePanelComponent],
-	providers: [SharedService, SidePanelProvider, IdeaListProvider, PagerProvider]
+	providers: [SharedService, SidePanelProvider, IdeaListProvider, PagerProvider, ChartService]
 })
 export class SidePanelModule {
 }

@@ -54,4 +54,12 @@ export class SymbolSearchComponent implements OnInit {
         console.log('res from addToList', res);
       });
   }
+
+  addToHoldingList(stock: any, e) {
+    e.stopPropagation();
+    this.sharedService.addStockIntoHoldingList(stock)
+      .subscribe(res => {
+        console.log('res from addToList', res);
+      })
+  }
 }

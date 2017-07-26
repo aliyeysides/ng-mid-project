@@ -75,6 +75,7 @@ export class ListViewComponent implements OnInit {
 
   selectStock(stock: Idea) {
     this.selectedStock = stock;
+    console.log('this.selectedStock', this.selectedStock);
     if (stock) {this.getSelectedStockData(stock, this.assignSelectedStock.bind(this))}
   }
 

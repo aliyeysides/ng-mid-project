@@ -491,8 +491,4 @@ $(document).ready(function () {
 //   });
 //
 //
-
-$("#iframeId").contents().find(".row-summaryDate").css('margin-top', '40px');
-
-
 });

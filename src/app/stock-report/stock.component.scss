@@ -6,7 +6,7 @@
 .stock-view__container {
 	position: relative;
 	background-image: linear-gradient(0deg, #6F7689 0%, #313540 100%);
-	padding: 10px 5% 0;
+	padding: 5px 5% 0;
 
 	.stock-view__iframe {
 		height: 100vh;
@@ -15,7 +15,20 @@
 	}
 
 	.stock-view__header {
-		margin-bottom: 10px;
+		margin-bottom: 5px;
+
+		.back {
+			font-size: 28px;
+			float: left;
+			color: #FFFFFF;
+			opacity: 0.4;
+		    line-height: 48px;
+
+			&:hover {
+				opacity: 1;
+				color: #FFFFFF;
+			}
+		}
 
 		.stock-view__title {
 			font-size: 28px;
@@ -23,7 +36,7 @@
 			color: #FFFFFF;
 			line-height: 48px;
 			font-weight: 300;
-			margin-left: 20px;
+			margin-left: 18px;
 		}
 	}
 }

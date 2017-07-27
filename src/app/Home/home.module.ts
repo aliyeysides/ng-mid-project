@@ -18,7 +18,6 @@ import {BusyModule} from 'angular2-busy';
   imports: [
     SharedModule,
     IdeasModule,
-    SharedModule,
     SymbolSearchModule,
     ModalModule,
     AlertModule,

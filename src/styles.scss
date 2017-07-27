@@ -184,27 +184,18 @@ input:focus {
   background-image: linear-gradient(135deg, #FDDB05 0%, #E00281 100%);
 }
 
-.list__option--IPlist .list__image {
-  background-image: linear-gradient(135deg, #FDDB05 0%, #E00281 100%);
-}
-
-.list__option--chartlist .list__image {
-  background-image: linear-gradient(135deg, #FDDB05 0%, #E00281 100%);
-}
-
-.list__option--companylist .list__image {
-  background-image: linear-gradient(135deg, #FDDB05 0%, #E00281 100%);
-}
-
-.list__option--championlist .list__image {
-  background-image: linear-gradient(135deg, #FDDB05 0%, #E00281 100%);
-}
-
 .list__option--addlist .list__image {
   background-image: linear-gradient(0deg, #6F7689 0%, #313540 100%);
   border: 3px dashed #FFFFFF;
 }
 
+.list__option--bulllist .list__image {
+  background-image: linear-gradient(145deg, #00CC00 0%, #00A3FF 100%);
+}
+
+.list__option--bearlist .list__image {
+  background-image: linear-gradient(45deg, #D02B47 0%, #70209A 100%);
+}
 
 
 

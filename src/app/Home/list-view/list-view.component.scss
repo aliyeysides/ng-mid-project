@@ -71,6 +71,30 @@
 	}
 }
 
+.list-view__actionbar--bulllist {
+	background-image: linear-gradient(-135deg, #00C724 0%, #00A3FF 100%);
+
+	.list__header {
+		.view-toggle.active {
+			i {
+				color: #00C59B;
+			}
+		}
+	}
+}
+
+.list-view__actionbar--bearlist {
+	background-image: linear-gradient(-50deg, #EC2E2E 0%, #2517DC 100%);
+
+	.list__header {
+		.view-toggle.active {
+			i {
+				color: #992477;
+			}
+		}
+	}
+}
+
 .list-view__actionbar--addlist {
 	background-image: linear-gradient(146deg, #EEEEEE 0%, #8F8F8F 100%);
 

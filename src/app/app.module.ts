@@ -28,7 +28,7 @@ const loadingMaskConfig: BusyConfig = ({
   message: '',
   backdrop: true,
   delay: 0,
-  minDuration: 600,
+  minDuration: 0,
   template: `<div class="spinner">
   <div class="rect1"></div>
   <div class="rect2"></div>

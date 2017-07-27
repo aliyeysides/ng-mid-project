@@ -13,11 +13,11 @@
 					<div class="panel__header clearfix">
 						<p class="panel__title">Markets</p>
 					</div>
-					<div class="panel__market-data panel__market-data--SPY  clearfix" [ngClass] = "{'open' : marketDropdown[i]}" 
+					<div class="panel__market-data panel__market-data--SPY  clearfix" [ngClass] = "{'open' : marketDropdown[i]}"
 					*ngFor="let market of marketsData;let i = index" >
-						<p class="market"> {{market.name}} </p>
+						<p class="market" [ngClass]="{'selected' : marketDropdown[i]}"> {{market.name}} </p>
 						<p class="icon-expand">
-							<a (click)="appendArrowClass($event,i,market.symbol)"><i class="fa fa-angle-down" aria-hidden="true"></i></a>
+							<a (click)="appendArrowClass($event,i,market.symbol)"><i class="fa fa-angle-down" [ngClass]="{'selected' : marketDropdown[i]}" aria-hidden="true"></i></a>
 						</p>
 						<p class="market-price">
 							<span [ngClass]="{'up-change': market.percent_change > 0 , 'down-change': market.percent_change < 0, 'neutrals': market.percent_change == 0 }">{{market.last | number : '1.2-2'}} </span>
@@ -25,9 +25,9 @@
 							<span [ngClass]="{'up-change': market.percent_change > 0 , 'down-change': market.percent_change < 0, 'neutral-grey': market.percent_change == 0 }">({{market.percent_change < 0 ? (market.percent_change | number : '1.2-2') : '+'+(market.percent_change | number : '1.2-2') }})</span>
 						</p>
 
-				<!-- INTRADAY CHART STARTS HERE -->						
+				<!-- INTRADAY CHART STARTS HERE -->
 						<div class="panel__chart" [ngClass] = "{'panel__chart--SPY' : !marketDropdown[i]}">
-							<div class="chart-container" [id]="market.symbol+'-chart-container'">
+							<div [ngBusy]="loading" class="chart-container" [id]="market.symbol+'-chart-container'">
 							</div>
 						</div>
 				<!-- INTRADAY CHART END -->
@@ -38,7 +38,7 @@
 				<div class="sidebar__panel sidebar__panel--sectors" [ngClass]="{'open' : sectorClass }">
 					<div class="panel__header clearfix">
 						<p class="panel__title">Sectors</p>
-						<p class="icon-expand" (click)="toggleClass('sector');"><a><i class="fa fa-angle-down" aria-hidden="true"></i></a></p>
+						<p class="icon-expand" (click)="toggleClass('sector');"><a><i class="fa fa-angle-down" [ngClass]="{'selected' : sectorClass}" aria-hidden="true"></i></a></p>
 						<p class="panel-breakdown"><img src="assets/imgs/icon_green-arrow.svg" *ngIf="sectorCount.upCount > 0"> <span *ngIf="sectorCount.upCount>0"> {{sectorCount.upCount}} </span> &nbsp;<span class="panel-breakdown-span" *ngIf=" sectorCount.upCount > 0  && sectorCount.downCount > 0" >|</span>&nbsp;<img src="assets/imgs/icon_red-arrow.svg" *ngIf=" sectorCount.downCount 	> 0 "> <span *ngIf="sectorCount.downCount>0"> {{sectorCount.downCount}} </span> </p>
 					</div>
 					<div class="panel__expand clearfix panel__expand--sectors" [ngClass]="{'panel__expand--sectors' : sectorClass }">
@@ -59,11 +59,11 @@
 				<div class="sidebar__panel sidebar__panel--alerts" [ngClass]="{'open' : alertClass }">
 					<div class="panel__header clearfix">
 						<p class="panel__title">ALERTS</p>
-						<p class="icon-expand" (click)="toggleClass('alert');"><a><i class="fa fa-angle-down" aria-hidden="true"></i></a></p>
+						<p class="icon-expand" (click)="toggleClass('alert');"><a><i class="fa fa-angle-down" [ngClass]="{'selected' : alertClass}" aria-hidden="true"></i></a></p>
 						<p class="panel-breakdown"><img src="assets/imgs/icon_green-circle.svg" *ngIf=" alertCount.upCount > 0 "> <span *ngIf=" alertCount.upCount > 0"> {{alertCount.upCount}} </span> &nbsp;<span class="panel-breakdown-span" *ngIf=" alertCount.upCount > 0  && alertCount.downCount > 0" >|</span>&nbsp;<img src="assets/imgs/icon_red-circle.svg" *ngIf=" alertCount.downCount > 0"> <span *ngIf=" alertCount.downCount > 0" > {{alertCount.downCount}} </span> </p>
 					</div>
 					<div class="panel__expand  clearfix" [ngClass]="{'panel__expand--alerts' : alertClass }">
- 
+
 					<ul class="clearfix" *ngIf="alertClass">
 							<li *ngIf="!pagedItems?.length">
 								<p class="text-center">No alerts.</p>
@@ -84,7 +84,7 @@
 								</span>
 							</li>
 						</ul>
-						
+
 						<ul *ngIf=" pager.pages && pager.pages.length && alertClass " class="pagination clearfix alerts-toggle">
 						    <li [ngClass]="{disabled:pager.currentPage === 1}">
 						        <a (click)="setPage(pager.currentPage - 1)"><i class="fa fa-caret-left" aria-hidden="true"></i></a>
@@ -94,7 +94,7 @@
 						    </li>
 						    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
 						        <a (click)="setPage(pager.currentPage + 1)"><i class="fa fa-caret-right" aria-hidden="true"></i></a>
-						    </li> 
+						    </li>
 						</ul>
 
 						<style>
@@ -107,14 +107,14 @@
 
 					</div>
 				</div>
-				
+
 		<!-- SECTION: INSIGHTS PANEL  -->
-				<div class="sidebar__panel sidebar__panel--insights open">
+				<div class="sidebar__panel sidebar__panel--insights" [ngClass]="{'open' : insightsClass}">
 					<div class="panel__header clearfix">
 						<p class="panel__title">Market Insights</p>
-						<p class="icon-expand"><a><i class="fa fa-angle-down" aria-hidden="true"></i></a></p>
+						<p class="icon-expand" (click)="toggleClass('insights');"><a><i class="fa fa-angle-down" [ngClass]="{'selected' : insightsClass}" aria-hidden="true"></i></a></p>
 					</div>
-					<div class="panel__expand panel__expand--insights clearfix">
+					<div *ngIf="insightsClass" class="panel__expand panel__expand--insights clearfix">
 						<ul class="">
 							<li>
 								<p class="insights__date">July 2nd, 2017</p>
@@ -125,13 +125,13 @@
 					</div>
 				</div>
 
-		<!-- SECTION: COLLAPSE BUTTON  -->		
+		<!-- SECTION: COLLAPSE BUTTON  -->
 				<div class="collapse-sidebar">
 					<a><i class="fa fa-bars" aria-hidden="true"></i></a>
 				</div>
 			</div>
 		</div>
-		
+
 		<div class="sidebar__container--collapsed">
 			<div class="sidebar__logo">
 				<img src="assets/imgs/logo-chaikin-arch.svg" alt="logo">

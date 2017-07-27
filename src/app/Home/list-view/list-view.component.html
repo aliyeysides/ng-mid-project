@@ -98,7 +98,7 @@
   <div *ngIf="this.currentView == 'list-view' && this.additionalLists != true" class="body__bottom--listview selected">
 
     <!-- ROW: CURRENT LIST  -->
-    <div class="row no-gutters">
+    <div [ngBusy]="symbolListLoading" class="row no-gutters">
       <div class="current-list__container col-md-6">
         <div class="sort-header row no-gutters">
           <div class="col-lg-2 col-xl-2 ">

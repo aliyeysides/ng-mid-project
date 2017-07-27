@@ -4,12 +4,16 @@ import {Subject} from "rxjs/Subject";
 import {Observable} from 'rxjs/Rx';
 import { environment } from '../../environments/environment';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {Subscription} from 'rxjs/Subscription';
 
 @Injectable()
 export class SharedService {
 
   private symbolListValues: Subject<Array<object>> = new Subject<Array<object>>();
   symbolListValues$ = this.symbolListValues.asObservable();
+
+  // private symbolListLoadingObj: Subject<Subscription> = new Subject<Subscription>();
+  // symbolListLoadingObj$ = this.symbolListLoadingObj.asObservable();
 
   private additionalLists: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   additionalLists$ = this.additionalLists.asObservable();
@@ -32,6 +36,10 @@ export class SharedService {
   setSymbolListValues(data) {
     this.symbolListValues.next(data);
   }
+
+  // setSymbolListLoadingObj(obj) {
+  //   this.symbolListLoadingObj.next(obj);
+  // }
 
   updateActiveIdeaList(list: Array<object>) {
     this.symbolListValues.next(list);

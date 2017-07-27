@@ -2,6 +2,7 @@ import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 import {environment} from '../../environments/environment';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'mid-tier-stock',
@@ -19,7 +20,8 @@ export class StockComponent implements OnInit {
   apiHostName = environment.envProtocol + '://' + environment.envHostName;
 
   constructor(private route: ActivatedRoute,
-              private sanitizer: DomSanitizer) {
+              private sanitizer: DomSanitizer,
+              private location: Location) {
   }
 
   ngOnInit() {
@@ -35,6 +37,10 @@ export class StockComponent implements OnInit {
         this.sanitizedSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.src);
         }
       )
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 }

@@ -148,7 +148,6 @@
 				}
 
 				.market {
-					color: $font-color;
 					font-weight: 600;
 					margin-left: 10px;
 					line-height: 1;
@@ -529,6 +528,10 @@
 			height: auto;
 		}
 	}
+}
+
+.selected {
+  color: $link-blue;
 }
 
 

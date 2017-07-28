@@ -25,11 +25,17 @@ import {
 import {BusyConfig, BusyModule} from 'angular2-busy';
 
 const loadingMaskConfig: BusyConfig = ({
-  message: 'Loading...',
+  message: '',
   backdrop: true,
   delay: 0,
   minDuration: 0,
-  template: '<div>{{message}}</div>',
+  template: `<div class="spinner">
+  <div class="rect1"></div>
+  <div class="rect2"></div>
+  <div class="rect3"></div>
+  <div class="rect4"></div>
+  <div class="rect5"></div>
+</div>`,
   wrapperClass: 'ng-busy'
 });
 

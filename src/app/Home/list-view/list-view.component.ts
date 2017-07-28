@@ -1,6 +1,6 @@
-import { Component, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SharedService} from '../../shared/shared.service';
-import { IdeaListProvider } from 'app/providers/idea-list.provider'
+import {IdeaListProvider} from 'app/providers/idea-list.provider'
 import {Router} from '@angular/router';
 import {Idea} from '../../shared/models/idea';
 import {Subscription} from 'rxjs/Subscription';
@@ -32,9 +32,10 @@ export class ListViewComponent implements OnInit {
   public loadedStockIdeas: number = 0;
   public panelViewIdeasList: Array<object> = [];
   public loading: Subscription;
+  public symbolListLoading: Subscription;
 
   constructor(private sharedService: SharedService,
-    private router: Router, private ideaListProvider: IdeaListProvider) {
+              private router: Router, private ideaListProvider: IdeaListProvider) {
   }
 
   ngOnInit() {
@@ -52,21 +53,37 @@ export class ListViewComponent implements OnInit {
       });
 
     this.sharedService.symbolListValues$
-      .switchMap(val => this.sharedService.symbolList({listId: val['list_id']}))
-      .subscribe(res => {
-        this.loadedStockIdeas = 0;
-        this.panelViewIdeasList = [];
-        this.ideaList = [];
-        this.ideaList = res['symbols'];
-        this.assignStockData(4);
-        if (this.ideaList) {
-          this.selectStock(this.ideaList[0] as Idea);
-        }
+      .subscribe(val => {
+        this.symbolListLoading = this.sharedService.symbolList({listId: val['list_id']})
+          .subscribe(
+          res => {
+            this.loadedStockIdeas = 0;
+            this.panelViewIdeasList = [];
+            this.ideaList = [];
+            this.ideaList = res['symbols'];
+            this.assignStockData(4);
+            if (this.ideaList) {
+              this.selectStock(this.ideaList[0] as Idea);
+            }
+          }
+        );
+        return val;
       });
+      // .subscribe(res => {
+      //   this.loadedStockIdeas = 0;
+      //   this.panelViewIdeasList = [];
+      //   this.ideaList = [];
+      //   this.ideaList = res['symbols'];
+      //   this.assignStockData(4);
+      //   if (this.ideaList) {
+      //     this.selectStock(this.ideaList[0] as Idea);
+      //   }
+      // });
 
     this.sharedService.additionalLists$.subscribe(val => {
       this.additionalLists = val;
     });
+
   }
 
   onScroll() {
@@ -75,7 +92,9 @@ export class ListViewComponent implements OnInit {
 
   selectStock(stock: Idea) {
     this.selectedStock = stock;
-    if (stock) {this.getSelectedStockData(stock, this.assignSelectedStock.bind(this))}
+    if (stock) {
+      this.getSelectedStockData(stock, this.assignSelectedStock.bind(this))
+    }
   }
 
   getSelectedStockData(stock: Idea, callback?) {
@@ -89,7 +108,6 @@ export class ListViewComponent implements OnInit {
     this.selectedStockPGR = res['pgr'];
     this.selectedStockChartPoints = res['chart-points'];
     this.selectedStockSimilars = res['discovery-similars'].stocks;
-    console.log('this.selectedStockSimilars', this.selectedStockSimilars);
   }
 
   assignStockData(amount: number) {
@@ -98,7 +116,7 @@ export class ListViewComponent implements OnInit {
       for (let i = this.loadedStockIdeas; i < loadNum; i++) {
         let stock = this.ideaList[i];
         this.loadedStockIdeas++;
-        this.getSelectedStockData(stock as Idea, function(res) {
+        this.getSelectedStockData(stock as Idea, function (res) {
           this.panelViewIdeasList.push(res);
         }.bind(this));
       }
@@ -142,7 +160,7 @@ export class ListViewComponent implements OnInit {
       });
   }
 
-  addToWatchingList(stock: any,e ) {
+  addToWatchingList(stock: any, e) {
     e.stopPropagation();
     this.sharedService.addStockIntoWatchingList(stock)
       .subscribe(res => {
@@ -171,39 +189,39 @@ export class ListViewComponent implements OnInit {
   }
 
 
-/* hardeep: logic for idea inactive list */
+  /* hardeep: logic for idea inactive list */
 
   public updateInActiveIdeaList(list) {
-    this.inActiveIdeasList = list.filter(function(key, val, array) {
+    this.inActiveIdeasList = list.filter(function (key, val, array) {
       return !key.is_active;
     });
   }
 
   public updateActiveIdeaList(list) {
-    this.activeIdeasList = list.filter(function(key, val, array) {
+    this.activeIdeasList = list.filter(function (key, val, array) {
       return key.is_active;
     });
   }
 
   public manageActiveInactive(status, list_id) {
-    if (this.activeIdeasList.length < 10){
-      this.ideaListProvider.manageActiveInactive({ uid: this.userId, listId: list_id, mode: status })
+    if (this.activeIdeasList.length < 10) {
+      this.ideaListProvider.manageActiveInactive({uid: this.userId, listId: list_id, mode: status})
         .subscribe(res => {
-          this.getIdeasList();
-        },
-        err => console.log('err', err));
-    }else{
-      alert("First you have to delete Idea liss, then try again.")
+            this.getIdeasList();
+          },
+          err => console.log('err', err));
+    } else {
+      alert('First you have to delete Idea liss, then try again.')
     }
   }
 
 
   public getIdeasList() {
-    this.ideaListProvider.getIdeasList({ uid: this.userId })
+    this.ideaListProvider.getIdeasList({uid: this.userId})
       .subscribe(res => {
-        this.ideaListProvider.setIdeaListData(res);
-      },
-      err => console.log('err', err));
+          this.ideaListProvider.setIdeaListData(res);
+        },
+        err => console.log('err', err));
 
   }
 

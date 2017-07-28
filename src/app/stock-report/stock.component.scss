@@ -5,15 +5,41 @@
 
 .stock-view__container {
 	position: relative;
-	background-image: linear-gradient(0deg, #6F7689 0%, #313540 97%);
+	background-image: linear-gradient(0deg, #6F7689 0%, #313540 100%);
+	padding: 5px 5% 0;
 
 	.stock-view__iframe {
-		height: 1000px;
+		height: 100vh;
 		width: 100%;
-		padding-top:10px;
+    	box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5);
+	}
+
+	.stock-view__header {
+		margin-bottom: 5px;
+
+		.back {
+			font-size: 28px;
+			float: left;
+			color: #FFFFFF;
+			opacity: 0.4;
+		    line-height: 48px;
+
+			&:hover {
+				opacity: 1;
+				color: #FFFFFF;
+			}
+		}
+
+		.stock-view__title {
+			font-size: 28px;
+			float: left;
+			color: #FFFFFF;
+			line-height: 48px;
+			font-weight: 300;
+			margin-left: 18px;
+		}
 	}
 }
-
 
 
 

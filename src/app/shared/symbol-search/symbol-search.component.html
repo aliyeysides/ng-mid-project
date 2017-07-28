@@ -12,7 +12,7 @@
 <div *ngIf="searchResults && symbolSearchForm.value" class="search__dropdown">
   <ul *ngFor="let result of searchResults" class="container">
     <li class="row search__entry">
-      <div (click)="addToWatchingList(result.Symbol, $event)" class="col-lg-1 col-xl-1  search__action">
+      <div (click)="addToHoldingList(result.Symbol, $event)" class="col-lg-1 col-xl-1  search__action">
         <i class="fa fa-plus-circle" aria-hidden="true"></i>
       </div>
       <div (click)="addToWatchingList(result.Symbol, $event)" class="col-lg-1 col-xl-1 search__action">

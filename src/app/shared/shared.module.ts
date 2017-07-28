@@ -12,6 +12,7 @@ import { SignalService } from './signal.service';
 import { EvenOddPipe } from './shared.filters'
 
 import { OrderByPipe } from './pipes/order-by.pipe';
+import { DecimalPipe } from './pipes/decimal.pipe';
 
 
 @NgModule({
@@ -30,11 +31,12 @@ import { OrderByPipe } from './pipes/order-by.pipe';
 		MidTierHeaderModule,
 		SidePanelModule,
 		SymbolSearchModule,
-    	OrderByPipe
+    OrderByPipe,
+    DecimalPipe
 	],
 
 	providers: [SharedService, SignalService, EvenOddPipe],
-	declarations: [OrderByPipe]
+	declarations: [OrderByPipe, DecimalPipe]
 
 })
 export class SharedModule {

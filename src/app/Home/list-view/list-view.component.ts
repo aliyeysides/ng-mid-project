@@ -1,9 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {ApplicationRef, ChangeDetectorRef, Component, NgZone, OnInit} from '@angular/core';
 import {SharedService} from '../../shared/shared.service';
 import {IdeaListProvider} from 'app/providers/idea-list.provider'
 import {Router} from '@angular/router';
 import {Idea} from '../../shared/models/idea';
 import {Subscription} from 'rxjs/Subscription';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-list-view',
@@ -30,12 +32,13 @@ export class ListViewComponent implements OnInit {
   public selectedStockChartPoints: object;
   public selectedStockSimilars: object;
   public loadedStockIdeas: number = 0;
-  public panelViewIdeasList: Array<object> = [];
+  public panelViewIdeasList: Array<object>;
   public loading: Subscription;
   public symbolListLoading: Subscription;
 
   constructor(private sharedService: SharedService,
-              private router: Router, private ideaListProvider: IdeaListProvider) {
+              private router: Router,
+              private ideaListProvider: IdeaListProvider) {
   }
 
   ngOnInit() {
@@ -53,32 +56,21 @@ export class ListViewComponent implements OnInit {
       });
 
     this.sharedService.symbolListValues$
-      .subscribe(val => {
-        this.symbolListLoading = this.sharedService.symbolList({listId: val['list_id']})
-          .subscribe(
-          res => {
-            this.loadedStockIdeas = 0;
-            this.panelViewIdeasList = [];
-            this.ideaList = [];
-            this.ideaList = res['symbols'];
-            this.assignStockData(4);
-            if (this.ideaList) {
-              this.selectStock(this.ideaList[0] as Idea);
-            }
+      .switchMap(val => this.sharedService.symbolList({listId: val['list_id']}))
+      .subscribe(res => {
+          this.loadedStockIdeas = 0;
+          this.panelViewIdeasList = [];
+          this.ideaList = [];
+          this.ideaList = res['symbols'];
+          setTimeout(this.assignStockData(4), 0);
+          if (this.ideaList) {
+            this.selectStock(this.ideaList[0] as Idea);
           }
-        );
-        return val;
-      });
-      // .subscribe(res => {
-      //   this.loadedStockIdeas = 0;
-      //   this.panelViewIdeasList = [];
-      //   this.ideaList = [];
-      //   this.ideaList = res['symbols'];
-      //   this.assignStockData(4);
-      //   if (this.ideaList) {
-      //     this.selectStock(this.ideaList[0] as Idea);
-      //   }
-      // });
+        },
+        err => {
+          this.sharedService.handleError(err)
+        }
+      );
 
     this.sharedService.additionalLists$.subscribe(val => {
       this.additionalLists = val;
@@ -98,10 +90,12 @@ export class ListViewComponent implements OnInit {
   }
 
   getSelectedStockData(stock: Idea, callback?) {
-    this.loading = this.sharedService.getStockCardData(stock.symbol)
-      .subscribe(res => {
-        return callback(res);
-      });
+    if (stock) {
+      this.loading = this.sharedService.getStockCardData(stock.symbol)
+        .subscribe(res => {
+          return callback(res);
+        });
+    }
   }
 
   assignSelectedStock(res) {
@@ -118,8 +112,9 @@ export class ListViewComponent implements OnInit {
         this.loadedStockIdeas++;
         this.getSelectedStockData(stock as Idea, function (res) {
           this.panelViewIdeasList.push(res);
-        }.bind(this));
+        }.bind(this))
       }
+      console.log('this.panelViewIdeasList', this.panelViewIdeasList);
     }
   }
 
@@ -146,10 +141,14 @@ export class ListViewComponent implements OnInit {
     this.showHeadlines = !this.showHeadlines;
   }
 
-
-  goToStockView(stock: Idea, e) {
+  goToStockView(stock: (Idea|string), e) {
     e.stopPropagation();
-    this.router.navigate(['/report', stock.symbol]);
+    if (typeof stock === 'object') {
+      this.router.navigate(['/report', stock.symbol]);
+    }
+    if (typeof stock === 'string') {
+      this.router.navigate(['/report', stock]);
+    }
   }
 
   addToHoldingList(stock: any, e) {

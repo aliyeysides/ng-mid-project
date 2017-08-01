@@ -489,7 +489,7 @@
               <img class="align-absolute" src="assets/imgs/icon-discover.svg">
             </div>
             <div *ngFor="let stock of idea['discovery-similars'].stocks" class="similar-stock similar-stock-1 col-md-3 col-lg-2">
-              <p>{{stock}}</p>
+              <p (click)="goToStockView(stock, $event)">{{stock}}</p>
             </div>
           </div>
 

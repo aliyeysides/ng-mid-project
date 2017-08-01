@@ -42,8 +42,8 @@
               <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="#">Market
                 Cap</a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                <li (click)="setOrderByObject('market_cap', false)"><a class="dropdown-subtoggle" tabindex="-1" href="#">High to Low</a></li>
-                <li (click)="setOrderByObject('market_cap', true)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Low to High</a></li>
+                <li (click)="setOrderByObject('marketCap', false)"><a class="dropdown-subtoggle" tabindex="-1" href="#">High to Low</a></li>
+                <li (click)="setOrderByObject('marketCap', true)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Low to High</a></li>
               </ul>
             </li>
             <li class="dropdown-submenu">
@@ -302,7 +302,7 @@
               <img class="align-absolute" src="assets/imgs/icon-discover.svg">
             </div>
             <div *ngFor="let idea of selectedStockSimilars" class="similar-stock similar-stock-1 col-md-3 col-lg-2">
-              <p (click)="goToStockView(idea)">{{idea}}</p>
+              <p (click)="goToStockView(idea, $event)">{{idea}}</p>
             </div>
           </div>
 

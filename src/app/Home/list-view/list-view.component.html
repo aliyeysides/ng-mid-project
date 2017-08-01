@@ -57,32 +57,7 @@
         </li>
       </ul>
       <p class="list__title">
-        <span class="list__title--holding selected"><i class="fa fa-user-circle" aria-hidden="true"></i> &nbsp;Holding</span>
-        <span class="list__title--watching"><i class="fa fa-user-circle" aria-hidden="true"></i> &nbsp;Watching</span>
-        <span class="list__title--ideasforyou">Ideas For You</span>
-        <span class="list__title--classicbears">Classic Bears</span>
-        <span class="list__title--classicbulls">Classic Bulls</span>
-        <span class="list__title--buydips">Buy the Dips</span>
-        <span class="list__title--sellrallies">Sell the Rallies</span>
-        <span class="list__title--largecap">Best of the Large Caps</span>
-        <span class="list__title--smallcap">Best of the Small Caps</span>
-        <span class="list__title--buyingstrength">Buying Strength</span>
-        <span class="list__title--relativestrength">Relative Strength</span>
-        <span class="list__title--earningschamps">Earnings Champs</span>
-        <span class="list__title--earningsbulls">Upcoming Earnings Bulls</span>
-        <span class="list__title--earningsbears">Upcoming Earnings Bears</span>
-        <span class="list__title--dontfighttheshorts">Don't Fight the Shorts</span>
-        <span class="list__title--analystdarlings">Analyst Darlings</span>
-        <span class="list__title--moneymakers">Money Makers</span>
-        <span class="list__title--insiderconfidence">Insider Confidence</span>
-        <span class="list__title--underten">Stocks Under $10</span>
-        <span class="list__title--bestgrowth">Best Growth Stocks</span>
-        <span class="list__title--bestvalue">Best Value Stocks</span>
-        <span class="list__title--dogsofthedow">Dogs of the Dow</span>
-        <span class="list__title--bestofthedow">Best of the Dow</span>
-        <span class="list__title--bestofthenasdaq">Best of the Nasdaq</span>
-        <span class="list__title--PGRupgrade">Power Gauge Upgrades</span>
-        <span class="list__title--PGRdowngrade">Power Gauge Downgrades</span>
+        <span class="list__title"><i *ngIf="isUserList" class="fa fa-user-circle" aria-hidden="true"></i> &nbsp; {{selectedListName}}</span>
       </p>
       <a (click)="gotoPanelView()" [ngClass]="{'active selected' : this.currentView == 'panel-view'}" class="view-toggle view-toggle--panel-view"><i class="fa fa-th-large align-absolute" aria-hidden="true"></i></a>
       <a (click)="gotoListView()" [ngClass]="{'active selected' : this.currentView == 'list-view'}" class="view-toggle view-toggle--list-view active"><i class="fa fa-list align-absolute" aria-hidden="true"></i></a>

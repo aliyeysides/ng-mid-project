@@ -6,6 +6,7 @@ import {Idea} from '../../shared/models/idea';
 import {Subscription} from 'rxjs/Subscription';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Observable} from 'rxjs/Observable';
+import {IdeasComponent} from '../../ideas/ideas.component';
 
 @Component({
   selector: 'app-list-view',
@@ -27,6 +28,8 @@ export class ListViewComponent implements OnInit {
   public activeIdeasList: Array<object>;
   private userId = '1024494';
   public selectedStock: Idea;
+  public selectedListId: string;
+  public selectedListName: string;
   public orderByObject: object = {};
   public selectedStockPGR: object;
   public selectedStockChartPoints: object;
@@ -35,6 +38,9 @@ export class ListViewComponent implements OnInit {
   public panelViewIdeasList: Array<object>;
   public loading: Subscription;
   public symbolListLoading: Subscription;
+
+  public isUserList: boolean = this.selectedListName === 'Ideas for You' ||
+    this.selectedListName === 'Holding' || this.selectedListName === 'Watching';
 
   constructor(private sharedService: SharedService,
               private router: Router,
@@ -58,6 +64,8 @@ export class ListViewComponent implements OnInit {
     this.sharedService.symbolListValues$
       .switchMap(val => this.sharedService.symbolList({listId: val['list_id']}))
       .subscribe(res => {
+          this.selectedListId = res['list_id'];
+          console.log('isUserList', this.isUserList, 'selectedListName', this.selectedListName);
           this.loadedStockIdeas = 0;
           this.panelViewIdeasList = [];
           this.ideaList = [];
@@ -71,6 +79,11 @@ export class ListViewComponent implements OnInit {
           this.sharedService.handleError(err)
         }
       );
+
+    this.sharedService.powerBarHeader$
+      .subscribe(res => {
+        this.selectedListName = res['name'];
+      });
 
     this.sharedService.additionalLists$.subscribe(val => {
       this.additionalLists = val;
@@ -114,7 +127,6 @@ export class ListViewComponent implements OnInit {
           this.panelViewIdeasList.push(res);
         }.bind(this))
       }
-      console.log('this.panelViewIdeasList', this.panelViewIdeasList);
     }
   }
 
@@ -210,7 +222,7 @@ export class ListViewComponent implements OnInit {
           },
           err => console.log('err', err));
     } else {
-      alert('First you have to delete Idea liss, then try again.')
+      alert('First you have to delete another Idea list, then try again.')
     }
   }
 

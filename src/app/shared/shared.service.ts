@@ -12,11 +12,11 @@ export class SharedService {
   private symbolListValues: Subject<Array<object>> = new Subject<Array<object>>();
   symbolListValues$ = this.symbolListValues.asObservable();
 
-  // private symbolListLoadingObj: Subject<Subscription> = new Subject<Subscription>();
-  // symbolListLoadingObj$ = this.symbolListLoadingObj.asObservable();
-
   private additionalLists: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   additionalLists$ = this.additionalLists.asObservable();
+
+  private powerBarHeader: BehaviorSubject<any> = new BehaviorSubject({name:'Ideas for You'});
+  powerBarHeader$ = this.powerBarHeader.asObservable();
 
   private symbolLookupParams: URLSearchParams;
   private addStockIntoListParams: URLSearchParams;
@@ -37,12 +37,12 @@ export class SharedService {
     this.symbolListValues.next(data);
   }
 
-  // setSymbolListLoadingObj(obj) {
-  //   this.symbolListLoadingObj.next(obj);
-  // }
-
   updateActiveIdeaList(list: Array<object>) {
     this.symbolListValues.next(list);
+  }
+
+  public setPowerBarHeader(data) {
+    this.powerBarHeader.next(data);
   }
 
   public symbolLookup(query: string): Observable<Array<object>> {

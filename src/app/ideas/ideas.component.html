@@ -6,7 +6,7 @@
 				<div class="list-category list-category--ideas">
 				</div>
 				<ul class="">
-					<li *ngFor = "let list of activeIdeasList ; let i = index " (click)="selectedIdeasList($event,list)" class="list__option" [ngClass]="getActiveClasses(list.name)">
+					<li *ngFor = "let list of activeIdeasList ; let i = index " (click)="selectedIdeasList(list)" class="list__option" [ngClass]="getActiveClasses(list.name)">
 						<div class="list__image" >
 							<button (click)="manageActiveInactive('deactivate',list.list_id);$event.stopPropagation()" type="button" class="close" aria-label="Close" *ngIf=" list.name!='Holding' && list.name!='Watching' && list.name!='Ideas for You'">
 						      <span aria-hidden="true">&times;</span>

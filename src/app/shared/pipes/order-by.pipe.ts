@@ -17,7 +17,12 @@ export class OrderByPipe implements PipeTransform {
     }
 
     if (!orderBy || orderBy.trim() == ""){
-      return array;
+      if (asc == true) {
+        return array;
+      }
+      if (asc == false) {
+        return array.reverse();
+      }
     }
 
     //ascending

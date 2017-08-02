@@ -292,7 +292,10 @@
                 <p *ngIf="showHeadlines == true" class="headlines-collapse">Close &nbsp;<i class="fa fa-angle-up" aria-hidden="true"></i></p>
               </div>
             </div>
-            <ul class="headlines-container row">
+            <ul *ngIf="!headlines?.length" class="headlines-container row">
+              <p>There are no headlines for this symbol</p>
+            </ul>
+            <ul *ngIf="headlines?.length" class="headlines-container row">
               <li *ngFor="let headline of headlines" class="headline col-lg-6">
                 <h2 (click)="goToHeadline(headline)">{{headline.title}}</h2>
                 <p class="news-source"><a>{{headline.source}}</a></p>

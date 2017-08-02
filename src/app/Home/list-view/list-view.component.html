@@ -2,7 +2,7 @@
 <div class="body__bottom">
 
   <!-- ROW: ACTION BAR  -->
-  <div [ngClass]="{'list-view__actionbar--bulllist' : checkIfBullList(), 'list-view__actionbar--userlist' : checkIfUserList(), 'list-view__actionbar--bearlist' : checkIfBearList()}" class="list-view__actionbar row no-gutters">
+  <div *ngIf="additionalLists != true" [ngClass]="{'list-view__actionbar--bulllist' : checkIfBullList(), 'list-view__actionbar--userlist' : checkIfUserList(), 'list-view__actionbar--bearlist' : checkIfBearList()}" class="list-view__actionbar row no-gutters">
     <div class="list__header col-md-6">
       <ul>
         <li class="list-sort__button dropdown">

@@ -1,12 +1,9 @@
-import {ApplicationRef, ChangeDetectorRef, Component, NgZone, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SharedService} from '../../shared/shared.service';
 import {IdeaListProvider} from 'app/providers/idea-list.provider'
 import {Router} from '@angular/router';
 import {Idea} from '../../shared/models/idea';
 import {Subscription} from 'rxjs/Subscription';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {Observable} from 'rxjs/Observable';
-import {IdeasComponent} from '../../ideas/ideas.component';
 
 @Component({
   selector: 'app-list-view',
@@ -22,7 +19,7 @@ export class ListViewComponent implements OnInit {
   public mouseHoverOptionsMap: object = {};
   public popupOptionsMap: object = {};
   public currentView: string = 'list-view';
-  public showHeadlines: boolean = false;
+  public showHeadlines: boolean;
   public mappingClassArray: Array<object>;
   public inActiveIdeasList: Array<object>;
   public activeIdeasList: Array<object>;
@@ -98,6 +95,7 @@ export class ListViewComponent implements OnInit {
 
   selectStock(stock: Idea) {
     this.selectedStock = stock;
+    this.toggleHeadlines();
     if (stock) {
       this.getSelectedStockData(stock, this.assignSelectedStock.bind(this));
       this.getSelectedStockHeadlines(stock);
@@ -165,7 +163,7 @@ export class ListViewComponent implements OnInit {
     this.showHeadlines = !this.showHeadlines;
   }
 
-  goToStockView(stock: (Idea|string), e) {
+  goToStockView(stock: (Idea | string), e) {
     e.stopPropagation();
     if (typeof stock === 'object') {
       this.router.navigate(['/report', stock.symbol]);
@@ -176,7 +174,7 @@ export class ListViewComponent implements OnInit {
   }
 
   goToHeadline(headline) {
-    this.router.navigate(headline.url);
+    window.open(headline.url, '_blank');
   }
 
   addToHoldingList(stock: any, e) {

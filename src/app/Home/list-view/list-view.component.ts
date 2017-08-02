@@ -19,7 +19,7 @@ export class ListViewComponent implements OnInit {
   public mouseHoverOptionsMap: object = {};
   public popupOptionsMap: object = {};
   public currentView: string = 'list-view';
-  public showHeadlines: boolean;
+  public showHeadlines: boolean = false;
   public mappingClassArray: Array<object>;
   public inActiveIdeasList: Array<object>;
   public activeIdeasList: Array<object>;
@@ -35,10 +35,10 @@ export class ListViewComponent implements OnInit {
   public loadedStockIdeas: number = 0;
   public panelViewIdeasList: Array<object>;
   public loading: Subscription;
+  public headlinesLoading: Subscription;
   public symbolListLoading: Subscription;
 
-  public isUserList: boolean = this.selectedListName === 'Ideas for You' ||
-    this.selectedListName === 'Holding' || this.selectedListName === 'Watching';
+  public isUserList: boolean;
 
   constructor(private sharedService: SharedService,
               private router: Router,
@@ -63,7 +63,6 @@ export class ListViewComponent implements OnInit {
       .switchMap(val => this.sharedService.symbolList({listId: val['list_id']}))
       .subscribe(res => {
           this.selectedListId = res['list_id'];
-          console.log('isUserList', this.isUserList, 'selectedListName', this.selectedListName);
           this.loadedStockIdeas = 0;
           this.panelViewIdeasList = [];
           this.ideaList = [];
@@ -95,7 +94,6 @@ export class ListViewComponent implements OnInit {
 
   selectStock(stock: Idea) {
     this.selectedStock = stock;
-    this.toggleHeadlines();
     if (stock) {
       this.getSelectedStockData(stock, this.assignSelectedStock.bind(this));
       this.getSelectedStockHeadlines(stock);
@@ -113,9 +111,8 @@ export class ListViewComponent implements OnInit {
 
   getSelectedStockHeadlines(stock: Idea) {
     if (stock) {
-      this.sharedService.getHeadlines(stock.symbol)
+      this.headlinesLoading = this.sharedService.getHeadlines(stock.symbol)
         .subscribe(res => {
-          console.log('res', res);
           this.headlines = res['headlines'];
         })
     }
@@ -199,6 +196,56 @@ export class ListViewComponent implements OnInit {
       .subscribe(res => {
         console.log('res from removeFromList', res);
       });
+  }
+
+  checkIfUserList() {
+    switch (this.selectedListName) {
+      case 'Ideas for You':
+      case 'Holding':
+      case 'Watching':
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  checkIfBullList() {
+    switch (this.selectedListName) {
+      case 'Bulls of the Week':
+      case 'Best Growth Stocks':
+      case 'Best of the Large Caps':
+      case 'Best of the NASDAQ':
+      case 'Best of the Small Caps':
+      case 'Buy the Dips':
+      case 'Best Under $10':
+      case 'Best Value Stocks':
+      case 'Insider Confidence':
+      case 'Money Makers':
+      case 'Relative Strength Champs':
+      case 'Money Flow Champs':
+      case 'Analyst Darlings':
+      case 'Power Gauge Rating Upgrades':
+      case 'Best of the Dow':
+      case 'Earnings Champs':
+      case 'Upcoming Earnings Bulls':
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  checkIfBearList() {
+    switch (this.selectedListName) {
+      case 'Sell the Rallies':
+      case 'Bears of the Week':
+      case 'Power Gauge Rating Downgrades':
+      case 'Don\'t Fight the Shorts':
+      case 'Dogs of the Dow':
+      case 'Upcoming Earnings Bears':
+        return true;
+      default:
+        return false;
+    }
   }
 
   gotoPanelView() {

@@ -268,7 +268,10 @@
 
           <div class="quick-view__chart-container row">
             <div class="quick-view__chart">
-              <div id="mainChart"></div>
+              <div class="panel__chart">
+                <div class="chart-container" [id]="selectedStock.symbol+'-chart-container'">
+                </div>
+              </div>
             </div>
           </div>
 
@@ -423,7 +426,10 @@
 
           <div class="quick-view__chart-container row">
             <div class="quick-view__chart">
-              <div id="mainChart"></div>
+              <div class="panel__chart">
+                <div class="chart-container" [id]="selectedStock+'-chart-container'">
+                </div>
+              </div>
             </div>
           </div>
 
@@ -450,6 +456,10 @@
 <!-- END: ADD LIST BODY BOTTOM  -->
 <div class="quick-view__chart-container row">
   <div class="quick-view__chart">
+    <div class="panel__chart">
+      <div class="chart-container" [id]="selectedStock+'-chart-container'">
+      </div>
+    </div>
   </div>
 </div>
 <!-- END: CURRENT LIST  -->

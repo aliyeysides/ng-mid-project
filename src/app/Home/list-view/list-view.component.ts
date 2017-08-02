@@ -4,6 +4,7 @@ import {IdeaListProvider} from 'app/providers/idea-list.provider'
 import {Router} from '@angular/router';
 import {Idea} from '../../shared/models/idea';
 import {Subscription} from 'rxjs/Subscription';
+import {ChartService} from '../../shared/charts/chart.service';
 
 @Component({
   selector: 'app-list-view',
@@ -42,7 +43,8 @@ export class ListViewComponent implements OnInit {
 
   constructor(private sharedService: SharedService,
               private router: Router,
-              private ideaListProvider: IdeaListProvider) {
+              private ideaListProvider: IdeaListProvider,
+              private chartService: ChartService) {
   }
 
   ngOnInit() {
@@ -122,6 +124,23 @@ export class ListViewComponent implements OnInit {
     this.selectedStockPGR = res['pgr'];
     this.selectedStockChartPoints = res['chart-points'];
     this.selectedStockSimilars = res['discovery-similars'].stocks;
+    this.intraDayChart(this.selectedStockChartPoints, `${this.selectedStock.symbol}-chart-container`);
+  }
+
+  intraDayChart(data, chartClass) {
+    console.log('chartClass', chartClass);
+    let chartData = {
+      xAxisData: [
+        "Jan'16", "Feb'16", "Mar'16", "May'16", "Jun'16", "Jul'16", "Aug'16", "Sep'16", "Oct'16", "Nov'16", "Dec'16",
+        "Jan'16", "Feb'16", "Mar'16", "May'16", "Jun'16", "Jul'16", "Aug'16", "Sep'16", "Oct'16", "Nov'16", "Dec'16",
+        "Jan'16", "Feb'16", "Mar'16", "May'16", "Jun'16", "Jul'16", "Aug'16", "Sep'16", "Oct'16", "Nov'16", "Dec'16",
+        "Jan'16", "Feb'16", "Mar'16", "May'16", "Jun'16", "Jul'16", "Aug'16", "Sep'16", "Oct'16", "Nov'16", "Dec'16",
+        "Jan'16", "Feb'16", "Mar'16", "May'16", "Jun'16", "Jul'16", "Aug'16", "Sep'16", "Oct'16", "Nov'16", "Dec'16",
+      ],
+      yAxisData: data['dema'],
+      midValue: parseFloat(data['closePrice'])
+    };
+    this.chartService.realTimeAreaChartControler.init({data: chartData, id: chartClass});
   }
 
   assignStockData(amount: number) {

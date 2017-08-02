@@ -16,6 +16,7 @@ import {Router} from '@angular/router';
 export class SymbolSearchComponent implements OnInit {
   public symbolSearchForm: FormControl;
   public searchResults: Array<any>;
+  public focus: boolean = false;
 
   constructor(private sharedService: SharedService,
               private searchPanelComponent: SearchPanelComponent,
@@ -45,6 +46,14 @@ export class SymbolSearchComponent implements OnInit {
     // }
     this.gotoReport(this.searchResults[0].Symbol);
     this.symbolSearchForm.reset();
+  }
+
+  focusOff() {
+    this.focus = false;
+  }
+
+  focusOn() {
+    this.focus = true;
   }
 
   addToWatchingList(stock: any, e ) {

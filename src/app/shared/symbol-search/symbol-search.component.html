@@ -1,15 +1,15 @@
-<form class="form-inline" (submit)="onSubmit()">
+<form (focusout)="focusOff()" class="form-inline" (submit)="onSubmit()">
   <div class="form-group">
 	  <span class="search-submit" id="basic-addon1">
         <i class="fa fa-search align-absolute" aria-hidden="true"></i>
     </span>
-    <input [formControl]="symbolSearchForm" type="search" class="form-control search-box"
+    <input (focus)="focusOn()" [formControl]="symbolSearchForm" type="search" class="form-control search-box"
            placeholder="Search a ticker or company"
            aria-describedby="basic-addon1">
     <button type="submit" style="display:none">hidden submit</button>
   </div>
 </form>
-<div *ngIf="searchResults && symbolSearchForm.value" class="search__dropdown">
+<div *ngIf="searchResults && symbolSearchForm.value && focus == true" class="search__dropdown">
   <ul *ngFor="let result of searchResults" class="container">
     <li class="row search__entry">
       <div (click)="addToHoldingList(result.Symbol, $event)" class="col-lg-1 col-xl-1  search__action">

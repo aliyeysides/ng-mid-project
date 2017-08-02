@@ -34,6 +34,7 @@ export class ListViewComponent implements OnInit {
   public selectedStockPGR: object;
   public selectedStockChartPoints: object;
   public selectedStockSimilars: object;
+  public headlines: any;
   public loadedStockIdeas: number = 0;
   public panelViewIdeasList: Array<object>;
   public loading: Subscription;
@@ -98,7 +99,8 @@ export class ListViewComponent implements OnInit {
   selectStock(stock: Idea) {
     this.selectedStock = stock;
     if (stock) {
-      this.getSelectedStockData(stock, this.assignSelectedStock.bind(this))
+      this.getSelectedStockData(stock, this.assignSelectedStock.bind(this));
+      this.getSelectedStockHeadlines(stock);
     }
   }
 
@@ -108,6 +110,16 @@ export class ListViewComponent implements OnInit {
         .subscribe(res => {
           return callback(res);
         });
+    }
+  }
+
+  getSelectedStockHeadlines(stock: Idea) {
+    if (stock) {
+      this.sharedService.getHeadlines(stock.symbol)
+        .subscribe(res => {
+          console.log('res', res);
+          this.headlines = res['headlines'];
+        })
     }
   }
 
@@ -161,6 +173,10 @@ export class ListViewComponent implements OnInit {
     if (typeof stock === 'string') {
       this.router.navigate(['/report', stock]);
     }
+  }
+
+  goToHeadline(headline) {
+    this.router.navigate(headline.url);
   }
 
   addToHoldingList(stock: any, e) {

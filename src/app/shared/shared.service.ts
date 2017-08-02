@@ -22,6 +22,7 @@ export class SharedService {
   private addStockIntoListParams: URLSearchParams;
   private deleteSymbolFromListParams: URLSearchParams;
   private getStockCardDataParams: URLSearchParams;
+  private getHeadlinesParams: URLSearchParams;
 
   environmentName = environment.envName;
   apiHostName = environment.envProtocol + '://' + environment.envHostName;
@@ -31,6 +32,7 @@ export class SharedService {
     this.addStockIntoListParams = new URLSearchParams;
     this.deleteSymbolFromListParams = new URLSearchParams;
     this.getStockCardDataParams = new URLSearchParams;
+    this.getHeadlinesParams = new URLSearchParams;
   }
 
   setSymbolListValues(data) {
@@ -67,15 +69,17 @@ export class SharedService {
 
   public addStockIntoHoldingList(symbol: string) {
     const addStockToListUrl = `${this.apiHostName}/CPTRestSecure/app/portfolio/addStockIntoList?`;
+    const holdingListId = "1220535";
     this.addStockIntoListParams.set('symbol', symbol);
-    this.addStockIntoListParams.set('listId', "1220535");
+    this.addStockIntoListParams.set('listId', holdingListId);
     return this.getJson(addStockToListUrl, this.addStockIntoListParams);
   }
 
   public addStockIntoWatchingList(symbol: string) {
     const addStockToListUrl = `${this.apiHostName}/CPTRestSecure/app/portfolio/addStockIntoList?`;
+    const watchingListId = "1220536";
     this.addStockIntoListParams.set('symbol', symbol);
-    this.addStockIntoListParams.set('listId', "1220536");
+    this.addStockIntoListParams.set('listId', watchingListId);
     return this.getJson(addStockToListUrl, this.addStockIntoListParams);
   }
 
@@ -90,6 +94,12 @@ export class SharedService {
     const getStockCardDataUrl = `${this.apiHostName}/CPTRestSecure/app/midTier/getStockCardData?`;
     this.getStockCardDataParams.set('symbol', symbol);
     return this.getJson(getStockCardDataUrl, this.getStockCardDataParams);
+  }
+
+  public getHeadlines(symbol: string) {
+    const getHeadlinesUrl = `${this.apiHostName}/CPTRestSecure/app/xigniteNews/getHeadlines?`;
+    this.getHeadlinesParams.set('symbol', symbol);
+    return this.getJson(getHeadlinesUrl, this.getHeadlinesParams);
   }
 
   public getJson(url, params): Observable<Array<object>>{

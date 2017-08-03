@@ -13,6 +13,7 @@ import {ModalModule} from 'ngx-bootstrap/modal';
 import {AlertModule} from 'ngx-bootstrap/alert';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import {BusyModule} from 'angular2-busy';
+import {ChartService} from '../shared/charts/chart.service';
 
 @NgModule({
   imports: [
@@ -28,7 +29,7 @@ import {BusyModule} from 'angular2-busy';
     HomeComponent
   ],
   declarations: [HomeComponent, ListViewComponent, EvenOddPipe, OnboardingComponent],
-  providers: [HomeService]
+  providers: [HomeService, ChartService]
 })
 export class HomeModule {
 }

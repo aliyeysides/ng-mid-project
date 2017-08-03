@@ -4,6 +4,7 @@ import {IdeaListProvider} from 'app/providers/idea-list.provider'
 import {Router} from '@angular/router';
 import {Idea} from '../../shared/models/idea';
 import {Subscription} from 'rxjs/Subscription';
+import {ChartService} from '../../shared/charts/chart.service';
 
 @Component({
   selector: 'app-list-view',
@@ -42,7 +43,8 @@ export class ListViewComponent implements OnInit {
 
   constructor(private sharedService: SharedService,
               private router: Router,
-              private ideaListProvider: IdeaListProvider) {
+              private ideaListProvider: IdeaListProvider,
+              private chartService: ChartService) {
   }
 
   ngOnInit() {
@@ -122,6 +124,23 @@ export class ListViewComponent implements OnInit {
     this.selectedStockPGR = res['pgr'];
     this.selectedStockChartPoints = res['chart-points'];
     this.selectedStockSimilars = res['discovery-similars'].stocks;
+    this.intraDayChart(this.selectedStockChartPoints, `${this.selectedStock.symbol}-chart-container`);
+  }
+
+  intraDayChart(data, chartClass) {
+    console.log('chartClass', chartClass);
+    let chartData = {
+      xAxisData: [
+        "Jan'16", "Feb'16", "Mar'16", "May'16", "Jun'16", "Jul'16", "Aug'16", "Sep'16", "Oct'16", "Nov'16", "Dec'16",
+        "Jan'16", "Feb'16", "Mar'16", "May'16", "Jun'16", "Jul'16", "Aug'16", "Sep'16", "Oct'16", "Nov'16", "Dec'16",
+        "Jan'16", "Feb'16", "Mar'16", "May'16", "Jun'16", "Jul'16", "Aug'16", "Sep'16", "Oct'16", "Nov'16", "Dec'16",
+        "Jan'16", "Feb'16", "Mar'16", "May'16", "Jun'16", "Jul'16", "Aug'16", "Sep'16", "Oct'16", "Nov'16", "Dec'16",
+        "Jan'16", "Feb'16", "Mar'16", "May'16", "Jun'16", "Jul'16", "Aug'16", "Sep'16", "Oct'16", "Nov'16", "Dec'16",
+      ],
+      yAxisData: [48.63, 48.55, 48.47, 48.39, 48.32, 48.35, 48.32, 48.27, 48.23, 48.20, 48.16, 48.12, 48.09, 48.06, 48.02, 47.98, 47.95, 47.92, 47.88, 47.85, 47.82, 47.79, 47.76, 47.74, 47.62, 47.60, 47.60, 47.60, 47.60, 47.60, 47.60, 47.56, 47.51, 47.47, 47.43, 47.39, 47.35, 47.32, 47.29, 47.29, 47.31, 47.34, 47.34, 47.33, 47.33, 47.33, 47.33, 47.32, 47.31, 47.30, 47.29, 47.28, 47.27, 47.27, 47.24]
+    };
+    //yAxisData: data['dema']
+    this.chartService.interactiveAreaChartControler.init({ data: chartData, id: chartClass });
   }
 
   assignStockData(amount: number) {

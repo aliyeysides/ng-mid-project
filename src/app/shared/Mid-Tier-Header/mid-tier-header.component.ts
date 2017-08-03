@@ -9,7 +9,7 @@ import {SharedService} from '../shared.service';
 })
 export class MidTierHeaderComponent implements OnInit {
 
-  public settingsVisible: boolean;
+  public content: string = "You can get back to the Quick Start walkthrough anytime in your settings!";
   public showPopup: boolean;
 
   constructor(private sharedService: SharedService) {
@@ -20,6 +20,11 @@ export class MidTierHeaderComponent implements OnInit {
       .subscribe(res => {
         this.showPopup = res;
       })
+  }
+
+  popoverClicked(event: Event) {
+    event.stopPropagation();
+    this.showPopup = false;
   }
 
 }

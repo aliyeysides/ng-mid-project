@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, Output, ViewChild, EventEmitter} from '@angular/core';
 import {ModalDirective} from 'ngx-bootstrap/modal';
 import {Idea} from '../../shared/models/idea';
 import {SharedService} from '../../shared/shared.service';
@@ -37,6 +37,7 @@ export class OnboardingComponent {
 
   public onHidden():void {
     this.isModalShown = false;
+    this.sharedService.triggerOnboardingPopup(true);
   }
 
   public switchSlide(slide: number) {

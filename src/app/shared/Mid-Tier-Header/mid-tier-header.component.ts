@@ -1,6 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/switchMap';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {SharedService} from '../shared.service';
 
 @Component({
   selector: 'mid-tier-header',
@@ -11,8 +10,16 @@ import 'rxjs/add/operator/switchMap';
 export class MidTierHeaderComponent implements OnInit {
 
   public settingsVisible: boolean;
+  public showPopup: boolean;
 
-  constructor() {}
+  constructor(private sharedService: SharedService) {
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.sharedService.onboardingPopup$
+      .subscribe(res => {
+        this.showPopup = res;
+      })
+  }
+
 }

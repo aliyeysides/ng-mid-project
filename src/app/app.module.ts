@@ -19,7 +19,8 @@ import {StockReportModule} from './stock-report/stock.module';
 
 import {
   ModalModule,
-  AlertModule
+  AlertModule,
+  PopoverModule
 } from 'ngx-bootstrap';
 
 import {BusyConfig, BusyModule} from 'angular2-busy';
@@ -57,6 +58,7 @@ const loadingMaskConfig: BusyConfig = ({
     BrowserAnimationsModule,
     ModalModule.forRoot(),
     AlertModule.forRoot(),
+    PopoverModule.forRoot(),
     BusyModule.forRoot(loadingMaskConfig)
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],

@@ -18,6 +18,9 @@ export class SharedService {
   private powerBarHeader: BehaviorSubject<any> = new BehaviorSubject({name:'Ideas for You'});
   powerBarHeader$ = this.powerBarHeader.asObservable();
 
+  private onboardingPopup: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  onboardingPopup$ = this.onboardingPopup.asObservable();
+
   private symbolLookupParams: URLSearchParams;
   private addStockIntoListParams: URLSearchParams;
   private deleteSymbolFromListParams: URLSearchParams;
@@ -35,11 +38,15 @@ export class SharedService {
     this.getHeadlinesParams = new URLSearchParams;
   }
 
-  setSymbolListValues(data) {
+  public setSymbolListValues(data) {
     this.symbolListValues.next(data);
   }
 
-  updateActiveIdeaList(list: Array<object>) {
+  public triggerOnboardingPopup(data) {
+    this.onboardingPopup.next(data);
+  }
+
+  public updateActiveIdeaList(list: Array<object>) {
     this.symbolListValues.next(list);
   }
 

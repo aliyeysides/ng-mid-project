@@ -292,7 +292,7 @@
               <p class="news__none">There are no headlines for this symbol</p>
             </ul>
             <ul *ngIf="headlines?.length" class="news-panel__container">
-              <li *ngFor="let headline of headlines" class="headline">
+              <li *ngFor="let headline of headlines" class="headline clearfix">
                 <h2 (click)="goToHeadline(headline)">{{headline.title}}</h2>
                 <p class="news__source"><a>{{headline.source}}</a></p>
                 <p class="update-time"><span>{{headline.headline_last_updated}}</span></p>

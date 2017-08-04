@@ -315,10 +315,12 @@
 				color: #ffffff;
 				margin-top: -2px;
 			}
+
 			&:hover  {
 				background-image: linear-gradient(0deg, rgba(255,255,255,0.00) 0%, rgba(255,255,255,0.50) 100%);
 			}
 		}
+
 		.view-toggle.active  {
 			background-image: linear-gradient(0deg, rgba(255,255,255,0.20) 0%, #FFFFFF 100%);
 		}
@@ -362,8 +364,7 @@
 		overflow-y: scroll;
 		background-color: $background--LT;
     	box-shadow: inset -1px 0 0px 0px #cccccc;
-    	padding-bottom: 330px;
-    	border-left:3px;
+    	padding-bottom: 324px;
 
 		.list__container {
 
@@ -523,7 +524,7 @@
 	}
 
 	.quick-view__panel {
-		padding: 20px 30px 285px;
+		padding: 20px 30px 300px;
 		overflow-y: scroll;
 		height: 100vh;
 
@@ -717,8 +718,6 @@
 		}
 
 		.quick-view__chart-container {
-			width: 100%;
-			margin: 0px 0 25px;
 
 			.quick-view__chart {
 				padding-top: 20px;
@@ -733,7 +732,8 @@
 		.quick-view__similar {
 			background-color: $background--LT-blue;
 			height: 50px;
-			margin: 10px 0 25px;
+			margin-top: 10px;
+			margin-bottom: 25px;
 
 			.icon__discover {
 				cursor: pointer;
@@ -761,13 +761,12 @@
 		}
 
 		.quick-view__news {
-			width: 100%;
 			padding: 0 15px;
 
 			.news-panel__header {
 				width: 100%;
 				font-size: 24px;
-				margin-bottom: 20px;
+				margin-bottom: 10px;
 
 				span {
 					font-weight: 700;
@@ -778,12 +777,14 @@
 				width: 100%;
 
 				.headline {
+					width: 100%;
 					position: relative;
 					margin: 10px 0;
+					padding: 0px 10px;
 
 					h2 {
-					    font-size: 24px;
-					    font-weight: 600;
+					    font-size: 16px;
+					    font-weight: 400;
 					    line-height: 1.5;
 					    margin: 0;
 					    padding: 0;
@@ -797,7 +798,7 @@
 					}
 
 					.news__source {
-						font-size: 12px;
+						font-size: 14px;
 						display: block;
 						float:left;
 					    font-weight: 700;
@@ -812,7 +813,7 @@
 					}
 
 					.update-time {
-						font-size: 10px;
+						font-size: 12px;
 					    display: block;
 					    float: right;
 					    line-height: 1.6;
@@ -821,6 +822,15 @@
 					    padding: 0;
 					    color: #383838;
 					}
+				}
+
+				.news__none {
+					font-size: 14px;
+					display: block;
+					font-weight: 700;
+					line-height: 1.6;
+					margin: 10px 0 0;
+					padding: 0;
 				}
 			}
 		}
@@ -1075,111 +1085,6 @@
 
 					&:hover {
 						color: $link-blue;
-					}
-				}
-			}
-		}
-
-		.quick-view__news {
-			width: 95%;
-			position: absolute;
-			bottom: 0px;
-			height: 40px;
-			padding: 13px 15px 8px;
-			font-size: 18px;
-			background-color: #ffffff;
-			z-index: 20;
-			overflow: hidden;
-			border-bottom: $border-line--LT2;
-
-			.news-panel__header {
-				width: 100%;
-				margin-bottom: 10px;
-
-				span {
-					font-weight: 700;
-				}
-
-				.headlines-expand {
-					display: block;
-					font-size: 12px;
-					color: $font-color;
-					font-weight: 600;
-					text-transform: uppercase;
-					cursor: pointer;
-					text-align: right;
-
-					i {
-						font-size: 20px;
-						color: $link-blue;
-						margin-top: -3px;
-					}
-				}
-
-				.headlines-collapse {
-					//display: none;
-					font-size: 12px;
-					color: $link-blue;
-					font-weight: 600;
-					text-transform: uppercase;
-					cursor: pointer;
-					text-align: right;
-
-					i {
-						font-size: 20px;
-						color: $link-blue;
-						margin-top: -3px;
-						transform: rotate(180deg);
-					}
-				}
-			}
-
-			.headlines-container {
-				height: 220px;
-
-				.headline {
-					position: relative;
-					margin: 10px 0;
-
-					h2 {
-					    font-size: 14px;
-					    font-weight: 600;
-					    line-height: 1.5;
-					    margin: 0;
-					    padding: 0;
-						color: #383838;
-
-						a {
-							text-decoration: none;
-							color: #383838;
-						}
-					}
-
-					.news-source {
-						font-size: 12px;
-						display: block;
-						float:left;
-						width: 200px;
-					    font-weight: 700;
-					    line-height: 1.6;
-					    margin: 0;
-					    padding: 0;
-
-						a {
-							text-decoration: none;
-							color: #003366;
-						}
-					}
-
-					.update-time {
-						font-size: 10px;
-						display: block;
-						float:left;
-					    line-height: 1.6;
-					    margin: 0;
-					    font-style: italic;
-					    padding: 0;
-						color: #383838;
 					}
 				}
 			}

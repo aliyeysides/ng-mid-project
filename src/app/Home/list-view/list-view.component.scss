@@ -766,7 +766,7 @@
 			.news-panel__header {
 				width: 100%;
 				font-size: 24px;
-				margin-bottom: 10px;
+				margin-bottom: 5px;
 
 				span {
 					font-weight: 700;
@@ -779,8 +779,9 @@
 				.headline {
 					width: 100%;
 					position: relative;
-					margin: 10px 0;
-					padding: 0px 10px;
+					margin: 10px 0 15px;
+					padding: 5px 5px;
+					border-top: 1px solid #efefef;
 
 					h2 {
 					    font-size: 16px;

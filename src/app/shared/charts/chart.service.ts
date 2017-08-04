@@ -39,9 +39,6 @@ export class ChartService {
 		},
 		setupChart: function() {
 			let self = this;
-			if (self.mainSVG) {
-				self.mainSVG.remove();
-			}
 			self.mainSVG = d3.select(`#${self.id}`).append("svg").attr("preserveAspectRatio", "none").attr("viewBox", "0 0 " + self.width + " " + self.height + "").attr("type", "chart");
 
 			// Actual width and height for charts

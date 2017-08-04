@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import {SharedService} from '../../shared/shared.service';
 import {IdeaListProvider} from 'app/providers/idea-list.provider'
 import {Router} from '@angular/router';
@@ -7,13 +7,56 @@ import {Subscription} from 'rxjs/Subscription';
 import {ChartService} from '../../shared/charts/chart.service';
 
 @Component({
+  selector: 'chart-profile',
+  template: '<div class="chart-container" [id]="classPanelId" style="height: 100%; width: 100%;"> </div>'
+})
+
+export class ChartPanelComponent {
+  public classPanelId: string;
+  @Input()
+  set classId(id: string) {
+    this.classPanelId = id;
+  }
+  
+  constructor(private chartService: ChartService) { 
+  }
+ 
+  @Input()
+  set chartInit(data : any){
+    /*
+      For ALi understanding( chart for panel view )
+      key points:- Need to notice  before draw chart.
+      1. Make sure that xAxisData has string values and yAxisData has Int/Float values.
+      2. length of  xAxisData and yAxisData data array has same length.
+      3. Before draw chart make sure that div have width and height prperty(For the time i'm apply inline style).
+      4. update hardCoded chart data describe in '_chartPanelData' variable with your
+         particular symbol data.
+      
+      Change According to your requirement
+    */
+    setTimeout(() => {
+      if (document.getElementById(this.classPanelId)){
+        let ele = document.getElementById(this.classPanelId)
+        ele.removeChild(ele.childNodes[0]);
+      }
+      this.chartService.interactiveAreaChartControler.init({ data: data, id: this.classPanelId });
+    }, 500);   
+  }
+  sendData() {
+    //Not using in code only for future use for ali
+  }
+}
+
+
+
+@Component({
   selector: 'app-list-view',
   templateUrl: './list-view.component.html',
   styleUrls: ['./list-view.component.scss'],
 })
 
 export class ListViewComponent implements OnInit {
-
+  
   public ideaList: Array<object>;
   public wholeIdeasList: Array<object>;
   public additionalLists: boolean = false;
@@ -38,6 +81,16 @@ export class ListViewComponent implements OnInit {
   public loading: Subscription;
   public headlinesLoading: Subscription;
   public symbolListLoading: Subscription;
+  public _chartPanelData: any = {
+    xAxisData: [
+      "Jan'16", "Feb'16", "Mar'16", "May'16", "Jun'16", "Jul'16", "Aug'16", "Sep'16", "Oct'16", "Nov'16", "Dec'16",
+      "Jan'16", "Feb'16", "Mar'16", "May'16", "Jun'16", "Jul'16", "Aug'16", "Sep'16", "Oct'16", "Nov'16", "Dec'16",
+      "Jan'16", "Feb'16", "Mar'16", "May'16", "Jun'16", "Jul'16", "Aug'16", "Sep'16", "Oct'16", "Nov'16", "Dec'16",
+      "Jan'16", "Feb'16", "Mar'16", "May'16", "Jun'16", "Jul'16", "Aug'16", "Sep'16", "Oct'16", "Nov'16", "Dec'16",
+      "Jan'16", "Feb'16", "Mar'16", "May'16", "Jun'16", "Jul'16", "Aug'16", "Sep'16", "Oct'16", "Nov'16", "Dec'16",
+    ],
+    yAxisData: [48.63, 48.55, 48.47, 48.39, 48.32, 48.35, 48.32, 48.27, 48.23, 48.20, 48.16, 48.12, 48.09, 48.06, 48.02, 47.98, 47.95, 47.92, 47.88, 47.85, 47.82, 47.79, 47.76, 47.74, 47.62, 47.60, 47.60, 47.60, 47.60, 47.60, 47.60, 47.56, 47.51, 47.47, 47.43, 47.39, 47.35, 47.32, 47.29, 47.29, 47.31, 47.34, 47.34, 47.33, 47.33, 47.33, 47.33, 47.32, 47.31, 47.30, 47.29, 47.28, 47.27, 47.27, 47.24]
+  };
 
   public isUserList: boolean;
 
@@ -46,7 +99,7 @@ export class ListViewComponent implements OnInit {
               private ideaListProvider: IdeaListProvider,
               private chartService: ChartService) {
   }
-
+ 
   ngOnInit() {
 
     this.ideaListProvider.wholeIdeasList$
@@ -89,6 +142,11 @@ export class ListViewComponent implements OnInit {
     });
 
   }
+  
+  updateChart() {
+    //Not using in code only for future use for ali
+   // this.userProfile.sendData();
+  }
 
   onScroll() {
     this.assignStockData(2);
@@ -128,7 +186,14 @@ export class ListViewComponent implements OnInit {
   }
 
   intraDayChart(data, chartClass) {
-    console.log('chartClass', chartClass);
+    /*
+      For ALi understanding( chart for card view )
+      Some points need to notice  before draw chart.
+      1. Make sure that xAxisData has string values and yAxisData has Int/Float values.
+      2. length of  xAxisData and yAxisData data array has same length.
+      3. Before draw chart make sure that div have width and height prperty(For the time i'm apply inline style).
+      4. update hardCoded chart data with your api data.
+    */
     let chartData = {
       xAxisData: [
         "Jan'16", "Feb'16", "Mar'16", "May'16", "Jun'16", "Jul'16", "Aug'16", "Sep'16", "Oct'16", "Nov'16", "Dec'16",
@@ -140,6 +205,16 @@ export class ListViewComponent implements OnInit {
       yAxisData: [48.63, 48.55, 48.47, 48.39, 48.32, 48.35, 48.32, 48.27, 48.23, 48.20, 48.16, 48.12, 48.09, 48.06, 48.02, 47.98, 47.95, 47.92, 47.88, 47.85, 47.82, 47.79, 47.76, 47.74, 47.62, 47.60, 47.60, 47.60, 47.60, 47.60, 47.60, 47.56, 47.51, 47.47, 47.43, 47.39, 47.35, 47.32, 47.29, 47.29, 47.31, 47.34, 47.34, 47.33, 47.33, 47.33, 47.33, 47.32, 47.31, 47.30, 47.29, 47.28, 47.27, 47.27, 47.24]
     };
     //yAxisData: data['dema']
+   
+    this.drawPanelChart(chartData, chartClass);
+    
+  }
+
+  drawPanelChart(chartData, chartClass) {
+    if (document.getElementById(chartClass)) {
+      let ele = document.getElementById(chartClass)
+      ele.removeChild(ele.childNodes[0]);
+    }
     this.chartService.interactiveAreaChartControler.init({ data: chartData, id: chartClass });
   }
 

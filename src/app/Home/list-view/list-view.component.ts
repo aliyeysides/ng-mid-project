@@ -17,10 +17,10 @@ export class ChartPanelComponent {
   set classId(id: string) {
     this.classPanelId = id;
   }
-  
-  constructor(private chartService: ChartService) { 
+
+  constructor(private chartService: ChartService) {
   }
- 
+
   @Input()
   set chartInit(data : any){
     /*
@@ -31,7 +31,7 @@ export class ChartPanelComponent {
       3. Before draw chart make sure that div have width and height prperty(For the time i'm apply inline style).
       4. update hardCoded chart data describe in '_chartPanelData' variable with your
          particular symbol data.
-      
+
       Change According to your requirement
     */
     setTimeout(() => {
@@ -40,7 +40,7 @@ export class ChartPanelComponent {
         ele.removeChild(ele.childNodes[0]);
       }
       this.chartService.interactiveAreaChartControler.init({ data: data, id: this.classPanelId });
-    }, 500);   
+    }, 500);
   }
   sendData() {
     //Not using in code only for future use for ali
@@ -56,7 +56,7 @@ export class ChartPanelComponent {
 })
 
 export class ListViewComponent implements OnInit {
-  
+
   public ideaList: Array<object>;
   public wholeIdeasList: Array<object>;
   public additionalLists: boolean = false;
@@ -99,7 +99,7 @@ export class ListViewComponent implements OnInit {
               private ideaListProvider: IdeaListProvider,
               private chartService: ChartService) {
   }
- 
+
   ngOnInit() {
 
     this.ideaListProvider.wholeIdeasList$
@@ -142,7 +142,7 @@ export class ListViewComponent implements OnInit {
     });
 
   }
-  
+
   updateChart() {
     //Not using in code only for future use for ali
    // this.userProfile.sendData();
@@ -194,6 +194,7 @@ export class ListViewComponent implements OnInit {
       3. Before draw chart make sure that div have width and height prperty(For the time i'm apply inline style).
       4. update hardCoded chart data with your api data.
     */
+
     let chartData = {
       xAxisData: [
         "Jan'16", "Feb'16", "Mar'16", "May'16", "Jun'16", "Jul'16", "Aug'16", "Sep'16", "Oct'16", "Nov'16", "Dec'16",
@@ -205,9 +206,8 @@ export class ListViewComponent implements OnInit {
       yAxisData: [48.63, 48.55, 48.47, 48.39, 48.32, 48.35, 48.32, 48.27, 48.23, 48.20, 48.16, 48.12, 48.09, 48.06, 48.02, 47.98, 47.95, 47.92, 47.88, 47.85, 47.82, 47.79, 47.76, 47.74, 47.62, 47.60, 47.60, 47.60, 47.60, 47.60, 47.60, 47.56, 47.51, 47.47, 47.43, 47.39, 47.35, 47.32, 47.29, 47.29, 47.31, 47.34, 47.34, 47.33, 47.33, 47.33, 47.33, 47.32, 47.31, 47.30, 47.29, 47.28, 47.27, 47.27, 47.24]
     };
     //yAxisData: data['dema']
-   
     this.drawPanelChart(chartData, chartClass);
-    
+
   }
 
   drawPanelChart(chartData, chartClass) {

@@ -8,6 +8,23 @@
 					<p>{{date}} &nbsp;&nbsp; &bull; &nbsp;&nbsp; {{time}} ET</p>
 				</div>
 
+		<!-- SECTION: INSIGHTS PANEL  -->
+				<div class="sidebar__panel sidebar__panel--insights" [ngClass]="{'open' : insightsClass}">
+					<div class="panel__header clearfix">
+						<p class="panel__title">Market Insights</p>
+						<p class="icon-expand" (click)="toggleClass('insights');"><a><i class="fa fa-angle-down" [ngClass]="{'selected' : insightsClass}" aria-hidden="true"></i></a></p>
+					</div>
+					<div *ngIf="insightsClass" class="panel__expand panel__expand--insights clearfix">
+						<ul class="">
+							<li>
+								<p class="insights__date">July 2nd, 2017</p>
+								<p class="insights__title">S&amp;P 500 Makes Another New High with Small Caps Leading the Way and Nearing New Highs as Well</p>
+								<a class="insights__readmore">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
 		<!-- SECTION: MARKET PANEL  -->
 				<div class="sidebar__panel">
 					<div class="panel__header clearfix">
@@ -41,7 +58,7 @@
 						<p class="icon-expand" (click)="toggleClass('sector');"><a><i class="fa fa-angle-down" [ngClass]="{'selected' : sectorClass}" aria-hidden="true"></i></a></p>
 						<p class="panel-breakdown"><img src="assets/imgs/icon_green-arrow.svg" *ngIf="sectorCount.upCount > 0"> <span *ngIf="sectorCount.upCount>0"> {{sectorCount.upCount}} </span> &nbsp;<span class="panel-breakdown-span" *ngIf=" sectorCount.upCount > 0  && sectorCount.downCount > 0" >|</span>&nbsp;<img src="assets/imgs/icon_red-arrow.svg" *ngIf=" sectorCount.downCount 	> 0 "> <span *ngIf="sectorCount.downCount>0"> {{sectorCount.downCount}} </span> </p>
 					</div>
-					<div class="panel__expand clearfix panel__expand--sectors" [ngClass]="{'panel__expand--sectors' : sectorClass }">
+					<div class="panel__expand clearfix" [ngClass]="{'panel__expand--sectors' : sectorClass }">
 						<ul>
 							<li *ngFor = "let sector of sectorsData">
 								<span [ngSwitch]="sector.percent_change">
@@ -105,23 +122,6 @@
 							.pagination>li:last-child{ float:right!important; width:24px;}
 						</style>
 
-					</div>
-				</div>
-
-		<!-- SECTION: INSIGHTS PANEL  -->
-				<div class="sidebar__panel sidebar__panel--insights" [ngClass]="{'open' : insightsClass}">
-					<div class="panel__header clearfix">
-						<p class="panel__title">Market Insights</p>
-						<p class="icon-expand" (click)="toggleClass('insights');"><a><i class="fa fa-angle-down" [ngClass]="{'selected' : insightsClass}" aria-hidden="true"></i></a></p>
-					</div>
-					<div *ngIf="insightsClass" class="panel__expand panel__expand--insights clearfix">
-						<ul class="">
-							<li>
-								<p class="insights__date">July 2nd, 2017</p>
-								<p class="insights__title">S&amp;P 500 Makes Another New High with Small Caps Leading the Way and Nearing New Highs as Well</p>
-								<a class="insights__readmore">Read More <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
-							</li>
-						</ul>
 					</div>
 				</div>
 

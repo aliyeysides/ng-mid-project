@@ -167,7 +167,7 @@ export class ListViewComponent implements OnInit {
 
   drawPanelChart(chartData, chartClass) {
     if (document.getElementById(chartClass)) {
-      let ele = document.getElementById(chartClass)
+      let ele = document.getElementById(chartClass);
       ele.removeChild(ele.childNodes[0]);
     }
     this.chartService.interactiveAreaChartControler.init({data: chartData, id: chartClass});

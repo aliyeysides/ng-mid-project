@@ -268,8 +268,8 @@
 
           <div class="quick-view__chart-container row">
             <div class="quick-view__chart">
-              <div class="panel__chart">
-                <div class="chart-container" [id]="selectedStock.symbol+'-chart-container'">
+              <div class="panel__chart" style="height: 100%; width: 100%;">
+                <div class="chart-container" [id]="selectedStock.symbol+'-chart-container'" style="height: 100%; width: 100%;">
                 </div>
               </div>
             </div>
@@ -425,7 +425,10 @@
           </div>
 
           <div class="quick-view__chart-container row">
-            <div class="quick-view__chart">
+            <div class="quick-view__chart" style="height: 100%; width: 100%;">
+
+              <div class="panel__chart" style="height: 100%; width: 100%;">
+                <chart-profile #myProfile (click)="updateChart()" [classId] = "idea['meta-info'].symbol+'-chart-container-panel'" [chartInit]="_chartPanelData"></chart-profile>
               <div class="panel__chart">
                 <div class="chart-container" [id]="selectedStock+'-chart-container'">
                 </div>

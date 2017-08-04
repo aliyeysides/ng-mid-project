@@ -4,6 +4,11 @@
   <!-- ROW: ACTION BAR  -->
   <div *ngIf="additionalLists != true" [ngClass]="{'list-view__actionbar--bulllist' : checkIfBullList(), 'list-view__actionbar--userlist' : checkIfUserList(), 'list-view__actionbar--bearlist' : checkIfBearList()}" class="list-view__actionbar row no-gutters">
     <div class="list__header col-md-6">
+      <p class="list__title">
+        <span class="list__title"><i *ngIf="checkIfUserList()" class="fa fa-user-circle" aria-hidden="true"></i>&nbsp; {{selectedListName}}</span>
+      </p>
+      <a (click)="gotoPanelView()" [ngClass]="{'active selected' : this.currentView == 'panel-view'}" class="view-toggle view-toggle--panel-view"><i class="fa fa-th-large align-absolute" aria-hidden="true"></i></a>
+      <a (click)="gotoListView()" [ngClass]="{'active selected' : this.currentView == 'list-view'}" class="view-toggle view-toggle--list-view active"><i class="fa fa-list align-absolute" aria-hidden="true"></i></a>
       <ul>
         <li class="list-sort__button dropdown">
           <a class="sort-toggle dropdown-toggle" data-toggle="dropdown"><i
@@ -56,11 +61,6 @@
           </ul>
         </li>
       </ul>
-      <p class="list__title">
-        <span class="list__title"><i *ngIf="checkIfUserList()" class="fa fa-user-circle" aria-hidden="true"></i> &nbsp; {{selectedListName}}</span>
-      </p>
-      <a (click)="gotoPanelView()" [ngClass]="{'active selected' : this.currentView == 'panel-view'}" class="view-toggle view-toggle--panel-view"><i class="fa fa-th-large align-absolute" aria-hidden="true"></i></a>
-      <a (click)="gotoListView()" [ngClass]="{'active selected' : this.currentView == 'list-view'}" class="view-toggle view-toggle--list-view active"><i class="fa fa-list align-absolute" aria-hidden="true"></i></a>
     </div>
 
     <div class="col-md-6 search__container">
@@ -175,10 +175,10 @@
               </div>
               <div class="stock-panel__company-name row">
                 <div class="button__add-to-list">
+                  <a *ngIf="!selectedStock.is_holding_stock" (click)="addToHoldingList(selectedStock.symbol, $event)" class="button__hold"><i class="fa fa-briefcase" aria-hidden="true"></i></a>
+                  <a *ngIf="selectedStock.is_holding_stock" (click)="removeFromList(selectedStock.symbol, $event)" class="button__hold"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
                   <a *ngIf="!selectedStock.is_watching_stock" (click)="addToWatchingList(selectedStock.symbol, $event)" class="button__watch"><i class="fa fa-binoculars" aria-hidden="true"></i></a>
                   <a *ngIf="selectedStock.is_watching_stock" (click)="removeFromList(selectedStock.symbol, $event)" class="button__watch"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
-                  <a *ngIf="!selectedStock.is_holding_stock" (click)="addToHoldingList(selectedStock.symbol, $event)" class="button__hold"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-                  <a *ngIf="selectedStock.is_holding_stock" (click)="removeFromList(selectedStock.symbol, $event)" class="button__hold"><i class="fa fa-times-circle" aria-hidden="true"></i></a>
                 </div>
                 <p>{{selectedStock.name}}</p>
               </div>
@@ -284,25 +284,18 @@
             </div>
           </div>
 
-          <div [ngClass]="{'expanded' : showHeadlines}" class="quick-view__news row">
+          <div class="quick-view__news row">
             <div class="news-panel__header">
-              <div class="pull-left" style="float: left;">
-                <p><i class="fa fa-newspaper-o" aria-hidden="true"></i> Headlines for: <span>{{selectedStock.symbol}}</span></p>
-              </div>
-              <div (click)="toggleHeadlines()" class="pull-right" style="float: right;">
-                <p *ngIf="showHeadlines == false" class="headlines-expand">See all headlines &nbsp;<i class="fa fa-angle-up" aria-hidden="true"></i>
-                </p>
-                <p *ngIf="showHeadlines == true" class="headlines-collapse">Close &nbsp;<i class="fa fa-angle-up" aria-hidden="true"></i></p>
-              </div>
+              <p><i class="fa fa-newspaper-o" aria-hidden="true"></i> Headlines for: <span>{{selectedStock.symbol}}</span></p>
             </div>
-            <ul *ngIf="!headlines?.length" class="headlines-container row">
-              <p>There are no headlines for this symbol</p>
+            <ul *ngIf="!headlines?.length" class="news-panel__container">
+              <p class="news__none">There are no headlines for this symbol</p>
             </ul>
-            <ul *ngIf="headlines?.length" class="headlines-container row">
-              <li *ngFor="let headline of headlines" class="headline col-lg-6">
+            <ul *ngIf="headlines?.length" class="news-panel__container">
+              <li *ngFor="let headline of headlines" class="headline">
                 <h2 (click)="goToHeadline(headline)">{{headline.title}}</h2>
-                <p class="news-source"><a>{{headline.source}}</a></p>
-                <p class="update-time"><span>{{headline.headline_last_updated}}</span></p><br>
+                <p class="news__source"><a>{{headline.source}}</a></p>
+                <p class="update-time"><span>{{headline.headline_last_updated}}</span></p>
               </li>
             </ul>
           </div>
@@ -473,7 +466,7 @@
   <div class="list-view__actionbar list-view__actionbar--addlist row no-gutters">
     <div class="list__header col-12">
       <p class="list__title">
-        <span>Select a new idea list</span>
+        <span><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp; Add a new list...</span>
       </p>
       <button (click)="setAdditionalLists(false)" type="button" class="close" aria-label="Close">
         <span aria-hidden="true"><i class="fa fa-times-circle" aria-hidden="true"></i></span>

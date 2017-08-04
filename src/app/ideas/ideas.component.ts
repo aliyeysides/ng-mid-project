@@ -79,7 +79,7 @@ export class IdeasComponent implements OnInit {
       'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis'
     },
     'Buy the Dips': {
-      'style': 'list__option--bearlist list__option--buydips',
+      'style': 'list__option--bulllist list__option--buydips',
       'imgName': 'img_list-selldips.svg',
       'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis'
     },
@@ -124,7 +124,7 @@ export class IdeasComponent implements OnInit {
       'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis'
     },
     'Sell the Rallies': {
-      'style': 'list__option--bulllist list__option--sellrallies',
+      'style': 'list__option--bearlist list__option--sellrallies',
       'imgName': 'img_list-buyrallies.svg',
       'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis'
     },

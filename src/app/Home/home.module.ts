@@ -12,6 +12,7 @@ import {OnboardingComponent} from './onboarding/onboarding.component';
 
 import {ModalModule} from 'ngx-bootstrap/modal';
 import {AlertModule} from 'ngx-bootstrap/alert';
+import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import {BusyModule} from 'angular2-busy';
 import {ChartService} from '../shared/charts/chart.service';
@@ -23,6 +24,7 @@ import {ChartService} from '../shared/charts/chart.service';
     SymbolSearchModule,
     ModalModule,
     AlertModule,
+    TooltipModule,
     InfiniteScrollModule,
     BusyModule
   ],

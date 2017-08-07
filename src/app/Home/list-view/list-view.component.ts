@@ -128,7 +128,7 @@ export class ListViewComponent implements OnInit {
     if (stock) {
       this.headlinesLoading = this.sharedService.getHeadlines(stock.symbol)
         .subscribe(res => {
-          this.headlines = res['headlines'];
+          this.headlines = res['headlines'].filter((item, index) => index < 7);
         })
     }
   }

@@ -20,10 +20,13 @@
             class="fa fa-sort-amount-desc align-absolute" aria-hidden="true"></i></a>
           <ul class="top-sort-menu dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
             <li class="dropdown-submenu">
-              <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="#">Power Gauge Rating</a>
+              <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="#">Power Gauge
+                Rating</a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                <li (click)="setOrderByObject('PGR', false)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Bullish</a></li>
-                <li (click)="setOrderByObject('PGR', true)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Bearish</a></li>
+                <li (click)="setOrderByObject('PGR', false)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Bullish</a>
+                </li>
+                <li (click)="setOrderByObject('PGR', true)"><a class="dropdown-subtoggle" tabindex="-1"
+                                                               href="#">Bearish</a></li>
               </ul>
             </li>
             <li class="dropdown-submenu">
@@ -323,7 +326,7 @@
               <p class="news__none">There are no headlines for this symbol</p>
             </ul>
             <ul *ngIf="headlines?.length" class="news-panel__container">
-              <li *ngFor="let headline of headlines" class="headline clearfix">
+              <li *ngFor="let headline of headlines; let i = index" class="headline clearfix">
                 <h2 (click)="goToHeadline(headline)">{{headline.title}}</h2>
                 <p class="news__source"><a>{{headline.source}}</a></p>
                 <p class="update-time"><span>{{headline.headline_last_updated}}</span></p>

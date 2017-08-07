@@ -72,6 +72,7 @@ export class ListViewComponent implements OnInit {
     this.sharedService.symbolListValues$
       .switchMap(val => this.sharedService.symbolList({listId: val['list_id']}))
       .subscribe(res => {
+          this.orderByObject = {};
           this.selectedListId = res['list_id'];
           this.loadedStockIdeas = 0;
           this.panelViewIdeasList = [];
@@ -180,6 +181,7 @@ export class ListViewComponent implements OnInit {
         let stock = this.ideaList[i];
         this.loadedStockIdeas++;
         this.getSelectedStockData(stock as Idea, function (res) {
+          this.orderByObject = {};
           this.panelViewIdeasList.push(res);
         }.bind(this))
       }

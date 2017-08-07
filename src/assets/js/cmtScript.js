@@ -473,7 +473,7 @@ $(document).ready(function () {
 //         filter: "progid:DXImageTransform.Microsoft.gradient( startColorstr='#e00000', endColorstr='#24a300',GradientType=1 )"
 //       })
 //     }
-//   });
+//   });q
 //
 //
   $(".collapse-sidebar").click(function () {

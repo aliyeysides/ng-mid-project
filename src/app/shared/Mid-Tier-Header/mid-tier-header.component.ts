@@ -23,7 +23,7 @@ export class MidTierHeaderComponent implements OnInit {
   }
 
   popoverClicked(event: Event) {
-    event.stopPropagation();
+    event.preventDefault();
     this.showPopup = false;
   }
 

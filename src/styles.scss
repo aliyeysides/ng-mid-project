@@ -464,6 +464,7 @@ input:focus {
   padding-left: 10px;
   padding-top: 15px;
   padding-bottom: 15px;
+  pointer-events: auto;
 
   &:hover {
     color: #ffffff;
@@ -486,6 +487,10 @@ input:focus {
     color: #FFFFFF;
     text-decoration: none;
     background-color: $link-blue;
+}
+
+.dropdown-menu>li.selected {
+  background-color: $link-blue;
 }
 
 

@@ -127,13 +127,13 @@
                 <ul class="nav nav-justified">
                   <li *ngIf="!idea.is_holding_stock" (click)="addToHoldingList(idea.symbol, $event)"
                       class="nav-item stock-option--hold">
-                    <img src="assets/imgs/icon-plus.svg">
-                    <p>Hold</p>
+                    <i class="fa fa-briefcase"></i>
+                    <p>Add</p>
                   </li>
                   <li *ngIf="idea.is_holding_stock" (click)="addToHoldingList(idea.symbol, $event)"
                       class="nav-item stock-option--hold">
-                    <!--<img src="assets/imgs/icon-plus.svg">-->
-                    <p>Hold</p>
+                    <i class="fa fa-briefcase"></i>
+                    <p>Remove</p>
                   </li>
                   <li *ngIf="!idea.is_watching_stock" (click)="addToWatchingList(idea.symbol, $event)"
                       class="nav-item stock-option--watch">

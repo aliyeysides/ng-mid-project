@@ -232,7 +232,7 @@ export class SidePanelComponent implements OnInit {
           this.marketsData = this.initialData['market_indices'];
           this.sectorsData = this.initialData['sectors_data']['symbolsList']
             .sort((a,b) => {
-              a.percent_change > b.percent_change;
+              return a.percent_change < b.percent_change;
             });
           this.sectorCount.upCount = this.initialData['sectors_data']['upCount'];
           this.sectorCount.downCount = this.initialData['sectors_data']['downCount'];

@@ -121,6 +121,69 @@
 
 
 
+.list-view__actionbar ::-webkit-input-placeholder { /* Chrome */
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 300;
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+.list-view__actionbar :-ms-input-placeholder { /* IE 10+ */
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 300;
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+.list-view__actionbar ::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(255, 255, 255, 0.75);
+  opacity: 1;
+  font-weight: 300;
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+.list-view__actionbar :-moz-placeholder { /* Firefox 4 - 18 */
+  color: rgba(255, 255, 255, 0.75);
+  opacity: 1;
+  font-weight: 300;
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+
+
+
+
+
+.list-view__actionbar--discovery ::-webkit-input-placeholder { /* Chrome */
+  color: rgba(0,0,0,0.3);
+  font-weight: 400;
+  font-family: 'Open Sans', sans-serif !important;
+}
+.list-view__actionbar--discovery :-ms-input-placeholder { /* IE 10+ */
+  color: rgba(0,0,0,0.3);
+  font-weight: 400;
+  font-family: 'Open Sans', sans-serif !important;
+}
+.list-view__actionbar--discovery ::-moz-placeholder { /* Firefox 19+ */
+  color: rgba(0,0,0,0.3);
+  opacity: 1;
+  font-weight: 400;
+  font-family: 'Open Sans', sans-serif !important;
+}
+.list-view__actionbar--discovery :-moz-placeholder { /* Firefox 4 - 18 */
+  color: rgba(0,0,0,0.3);
+  opacity: 1;
+  font-weight: 400;
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+
+
+.list-view__actionbar--discovery .fa-search {
+  font-size: 28px;
+  color: #A2A2A2 !important;
+}
+
+
+
 
 
 

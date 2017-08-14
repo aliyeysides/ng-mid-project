@@ -1,16 +1,12 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, Output, ViewEncapsulation} from '@angular/core';
 import {SharedService} from '../shared.service';
-import {SearchPanelComponent} from '../search-panel/search-panel.component';
-import {NgForm} from '@angular/forms';
 import {FormControl} from '@angular/forms';
-import {Observable} from 'rxjs/Observable';
 import {Router} from '@angular/router';
 
 @Component({
   selector: 'symbol-search',
   templateUrl: './symbol-search.component.html',
   styleUrls: ['./symbol-search.component.scss'],
-  providers: [SearchPanelComponent],
   encapsulation: ViewEncapsulation.None
 })
 export class SymbolSearchComponent implements OnInit {
@@ -19,7 +15,6 @@ export class SymbolSearchComponent implements OnInit {
   public focus: boolean = false;
 
   constructor(private sharedService: SharedService,
-              private searchPanelComponent: SearchPanelComponent,
               private router: Router) {
     this.symbolSearchForm = new FormControl();
   }
@@ -48,12 +43,8 @@ export class SymbolSearchComponent implements OnInit {
     this.symbolSearchForm.reset();
   }
 
-  focusOff() {
-    this.focus = false;
-  }
-
-  focusOn() {
-    this.focus = true;
+  toggleFocus() {
+    this.focus = !this.focus;
   }
 
   addToWatchingList(stock: any, e ) {

@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SymbolSearchComponent} from './symbol-search.component';
-import {SearchPanelComponent} from '../search-panel/search-panel.component';
+import { FocusoffDirective } from './focusoff.directive';
 
 @NgModule({
   imports: [
@@ -11,10 +11,9 @@ import {SearchPanelComponent} from '../search-panel/search-panel.component';
     ReactiveFormsModule
   ],
   exports: [
-    SymbolSearchComponent,
-    SearchPanelComponent
+    SymbolSearchComponent
   ],
-  declarations: [SearchPanelComponent, SymbolSearchComponent]
+  declarations: [SymbolSearchComponent, FocusoffDirective]
 })
 export class SymbolSearchModule {
 }

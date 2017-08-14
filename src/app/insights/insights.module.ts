@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { InsightsComponent } from './insights.component';
+import { InsightsDashboardComponent } from './insights-dashboard/insights-dashboard.component';
+import { InsightsListsComponent } from './insights-lists/insights-lists.component';
 
 @NgModule({
 	imports: [
@@ -14,7 +16,7 @@ import { InsightsComponent } from './insights.component';
 	exports: [
 		InsightsComponent
 	],
-	declarations: [InsightsComponent],
+	declarations: [InsightsComponent, InsightsDashboardComponent, InsightsListsComponent],
 	bootstrap: [InsightsComponent],
 	providers: []
 })

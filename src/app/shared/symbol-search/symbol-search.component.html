@@ -9,7 +9,7 @@
     <button type="submit" style="display:none">hidden submit</button>
   </div>
 </form>
-<div appFocusoff *ngIf="searchResults && symbolSearchForm.value && focus == true" class="search__dropdown">
+<div (mousedown)="$event.preventDefault();" *ngIf="searchResults && symbolSearchForm.value && focus == true" class="search__dropdown">
   <ul *ngFor="let result of searchResults" class="container">
     <li class="row search__entry">
       <div (click)="addToHoldingList(result.Symbol, $event)" class="col-lg-1 col-xl-1  search__action">

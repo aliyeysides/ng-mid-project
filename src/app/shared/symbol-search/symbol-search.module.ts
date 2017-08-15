@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SymbolSearchComponent} from './symbol-search.component';
-import { FocusoffDirective } from './focusoff.directive';
 
 @NgModule({
   imports: [
@@ -13,7 +12,7 @@ import { FocusoffDirective } from './focusoff.directive';
   exports: [
     SymbolSearchComponent
   ],
-  declarations: [SymbolSearchComponent, FocusoffDirective]
+  declarations: [SymbolSearchComponent]
 })
 export class SymbolSearchModule {
 }

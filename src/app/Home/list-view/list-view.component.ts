@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SharedService} from '../../shared/shared.service';
-import {IdeaListProvider} from 'app/providers/idea-list.provider'
+import {IdeaListProvider} from 'app/providers/idea-list.provider';
 import {Router} from '@angular/router';
 import {Idea} from '../../shared/models/idea';
 import {Subscription} from 'rxjs/Subscription';
@@ -178,12 +178,12 @@ export class ListViewComponent implements OnInit {
     let loadNum = this.loadedStockIdeas + amount; // 0 + 4
     if (this.ideaList && this.loadedStockIdeas < this.ideaList.length) {
       for (let i = this.loadedStockIdeas; i < loadNum; i++) {
-        let stock = this.ideaList[i];
+        const stock = this.ideaList[i];
         this.loadedStockIdeas++;
         this.getSelectedStockData(stock as Idea, function (res) {
           this.orderByObject = {};
           this.panelViewIdeasList.push(res);
-        }.bind(this))
+        }.bind(this));
       }
     }
   }
@@ -334,7 +334,7 @@ export class ListViewComponent implements OnInit {
           },
           err => console.log('err', err));
     } else {
-      alert('First you have to delete another Idea list, then try again.')
+      alert('First you have to delete another Idea list, then try again.');
     }
   }
 

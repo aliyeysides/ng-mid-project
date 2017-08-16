@@ -21,6 +21,9 @@ export class SharedService {
   private onboardingPopup: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   onboardingPopup$ = this.onboardingPopup.asObservable();
 
+  private onboardingModal: Subject<boolean> = new Subject<boolean>();
+  onboardingModal$ = this.onboardingModal.asObservable();
+
   private symbolLookupParams: URLSearchParams;
   private addStockIntoListParams: URLSearchParams;
   private deleteSymbolFromListParams: URLSearchParams;
@@ -52,6 +55,10 @@ export class SharedService {
 
   public setPowerBarHeader(data) {
     this.powerBarHeader.next(data);
+  }
+
+  public relaunchOnboardingModal() {
+    this.onboardingModal.next(true);
   }
 
   public symbolLookup(query: string): Observable<Array<object>> {

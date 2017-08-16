@@ -7,6 +7,8 @@ import {SharedService} from '../shared.service';
 import {MidTierHeaderComponent} from './mid-tier-header.component';
 
 import {PopoverModule} from 'ngx-bootstrap/popover';
+import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
+import {SupportModalComponent} from './support-modal/support-modal.component';
 
 @NgModule({
   imports: [
@@ -15,14 +17,15 @@ import {PopoverModule} from 'ngx-bootstrap/popover';
     RouterModule,
     FormsModule,
     PopoverModule,
+    BsDropdownModule,
     ReactiveFormsModule
   ],
   exports: [
-    MidTierHeaderComponent,
-
+    MidTierHeaderComponent
   ],
   declarations: [
-    MidTierHeaderComponent
+    MidTierHeaderComponent,
+    SupportModalComponent
   ],
   providers: [SharedService]
 })

@@ -21,7 +21,8 @@ import {
   ModalModule,
   AlertModule,
   PopoverModule,
-  TooltipModule
+  TooltipModule,
+  BsDropdownModule
 } from 'ngx-bootstrap';
 
 import {BusyConfig, BusyModule} from 'angular2-busy';
@@ -61,6 +62,7 @@ const loadingMaskConfig: BusyConfig = ({
     AlertModule.forRoot(),
     PopoverModule.forRoot(),
     TooltipModule.forRoot(),
+    BsDropdownModule.forRoot(),
     BusyModule.forRoot(loadingMaskConfig)
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],

@@ -85,7 +85,7 @@
             left: 60px;
           }
 
-          svg {
+          svg g {
             fill: #C4C5C9;
           }
 
@@ -120,9 +120,10 @@
 
         .list-item.selected {
 
-          svg {
+          svg g {
             fill: #ffffff;
           }
+
           p {
             color:#ffffff;
           }

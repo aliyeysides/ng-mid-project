@@ -223,18 +223,25 @@
 				}
 
 				.stock__options-button {
-					//display: none;
 					position: absolute;
 					right:0px;
-					top:0px;
+					top:12px;
 					cursor: pointer;
-					width: 20px;
+					width: 36px;
 					height: 60px;
-					padding: 12px 5px;
+
+					svg {
+						float: right;
+						height: 36px;
+						width: 36px;
+					}
+
+					svg g {
+						fill: #1199ff;
+					}
 				}
 
 				.stock-options__popup {
-					//display: none;
 					position: absolute;
 					right: 0;
 					top: 0;
@@ -262,8 +269,13 @@
 								margin-top: 8px;
 							}
 
-							img {
+							svg {
 								height: 27px;
+								width: 27px;
+							}
+
+							svg g {
+								fill: #ffffff;
 							}
 						}
 					}
@@ -273,10 +285,15 @@
 						margin-right: 260px;
 						cursor: pointer;
 						width: 5000px;
-						padding-right: 10px;
 
-						img {
+						svg {
 							float: right;
+							height: 36px;
+							width: 36px;
+						}
+
+						svg g {
+							fill: #1199ff;
 						}
 					}
 				}
@@ -302,10 +319,6 @@
 			  	margin-left: 0;
 			  	overflow: hidden;
 			  	position: relative;
-
-				.stock__options-button {
-					//display: none;
-				}
 			}
 		}
 	}
@@ -365,15 +378,22 @@
 				width: 28px;
 				margin-top: 3px;
 				cursor: pointer;
-				opacity: 0.9;
 
-				img {
-					float: left;
-					width: 27px;
+				svg {
+					width: 28px;
+					height: 28px;
+				}
+
+				svg g {
+					fill:#4a4a4a;
+					opacity: .5;
 				}
 
 				&:hover {
-					opacity: 1;
+					svg g {
+						fill: #1199ff;
+						opacity: 1;
+					}
 				}
 			}
 
@@ -384,20 +404,28 @@
 					float: left;
 
 					a {
-						opacity: 0.9;
-						font-size: 23px;
-						color: $link-blue;
 						margin-right: 15px;
 						cursor: pointer;
-						line-height: 1;
 
 						&:hover {
-							opacity: 1;
-						}
-					}
+							svg {
+								opacity: 1;
+							}
 
-					a.button__watch {
-						font-size: 21px;
+							svg g {
+								fill: #1199ff;
+							}
+						}
+
+						svg {
+							height: 22px;
+							width: 22px;
+							opacity: 0.5;
+						}
+
+						svg g {
+							fill: #4a4a4a;
+						}
 					}
 				}
 
@@ -531,9 +559,6 @@
 				padding-top: 20px;
 			  	width: 100%;
 			  	border-top: $border-line--LT2;
-
-			  	.chart-container {
-				}
 			}
 		}
 
@@ -546,9 +571,14 @@
 			.icon__discover {
 				cursor: pointer;
 
-				img {
+				svg {
 					width: 35px;
+					height: 35px;
 					cursor: help;
+				}
+
+				svg g {
+					fill: #1199ff;
 				}
 			}
 
@@ -697,40 +727,54 @@
 				width: 28px;
 				margin-top: 3px;
 				cursor: pointer;
-				opacity: 0.33;
 
-				img {
-					float: left;
-					width: 27px;
+				svg {
+					width: 28px;
+					height: 28px;
+				}
+
+				svg g {
+					fill:#4a4a4a;
+					opacity: .5;
 				}
 
 				&:hover {
-					opacity: 1;
+					svg g {
+						fill: #1199ff;
+						opacity: 1;
+					}
 				}
 			}
 
 			.stock-panel__company-name {
-				margin: 7px 0 10px;
+				margin: 10px 0 10px;
 
 				.button__add-to-list {
 					float: left;
-					margin-top: -1px;
 
 					a {
-						opacity: 0.33;
-						font-size: 25px;
-						color: $link-blue;
 						margin-right: 15px;
 						cursor: pointer;
-						line-height: 1;
 
 						&:hover {
-							opacity: 1;
-						}
-					}
+							svg {
+								opacity: 1;
+							}
 
-					a.button__watch {
-						font-size: 21px;
+							svg g {
+								fill: #1199ff;
+							}
+						}
+
+						svg {
+							height: 22px;
+							width: 22px;
+							opacity: 0.5;
+						}
+
+						svg g {
+							fill: #4a4a4a;
+						}
 					}
 				}
 
@@ -877,9 +921,14 @@
 			.icon__discover {
 				cursor: pointer;
 
-				img {
+				svg {
 					width: 35px;
+					height: 35px;
 					cursor: help;
+				}
+
+				svg g {
+					fill: #1199ff;
 				}
 			}
 

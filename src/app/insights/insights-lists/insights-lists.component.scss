@@ -71,7 +71,7 @@
           height: 80px;
           background-color: $background--LT2;
           margin: 3px 2px;
-          padding:0 15px 0 120px;
+          padding: 0 15px 0 120px;
           position: relative;
           cursor: pointer;
 
@@ -80,7 +80,7 @@
           }
 
           img, svg {
-            height: 80%;
+            height: 70%;
             max-width: 70px;
             left: 60px;
           }
@@ -92,7 +92,7 @@
           p {
             float: left;
             line-height: 80px;
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 400;
           }
 
@@ -133,6 +133,13 @@
               color: #ffffff;
             }
           }
+
+          &:hover {
+
+            svg g {
+              fill: #ffffff !important;
+            }
+          }
         }
 
         .list-item.selected.bear-list {
@@ -141,6 +148,28 @@
 
         .list-item.selected.bull-list {
           background-image: linear-gradient(-45deg, #C3DD03 0%, #3FCC0B 47%, #26AB23 100%);
+        }
+
+        .list-item.bull-list {
+
+          &:hover {
+            background-color: #FFFFFF;
+
+            svg g {
+              fill: #26AB23;
+            }
+          }
+        }
+
+        .list-item.bear-list {
+
+          &:hover {
+            background-color: #FFFFFF;
+
+            svg g {
+              fill: #AA2667;
+            }
+          }
         }
       }
     }
@@ -194,8 +223,10 @@
       .description__header {
         margin-bottom: 30px;
 
-        img {
+        svg {
           margin-right: 20px;
+          width: 90px;
+          max-height: 95px;
         }
 
         .header__copy {
@@ -220,6 +251,20 @@
         }
       }
 
+      .description__header.bear-list {
+
+        svg g {
+          fill:#AA2667;
+        }
+      }
+
+      .description__header.bull-list {
+
+        svg g {
+          fill:#129305;
+        }
+      }
+
       .description__copy {
         border-top:1px dashed #cccccc;
         margin-bottom: 45px;
@@ -227,13 +272,6 @@
       }
 
       .copy__block {
-        
-        h4 {
-          font-size: 18px;
-          font-weight: 600;
-          margin-bottom: 20px;
-          line-height: 1.3;
-        }
 
         p {
           font-size: 14px;

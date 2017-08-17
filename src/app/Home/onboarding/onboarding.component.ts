@@ -18,7 +18,12 @@ export class OnboardingComponent {
     this.sharedService.symbolList({listId: '1220535', userId: this.userId})
       .subscribe(res => {
         this.holdings = res['symbols'];
-      })
+      });
+
+    this.sharedService.onboardingModal$
+      .subscribe(res => {
+        this.isModalShown = res;
+      });
   }
 
   public removeFromHolding(ticker: string) {

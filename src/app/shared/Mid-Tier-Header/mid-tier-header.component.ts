@@ -9,21 +9,16 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
   encapsulation: ViewEncapsulation.None
 })
 export class MidTierHeaderComponent implements OnInit {
+  @ViewChild('supportModal') public supportModal: ModalDirective;
   public content: string = "You can get back to the Quick Start walkthrough anytime in your settings!";
-  public showPopup: boolean;
+  public showPopupTooltip: boolean;
   public items: object[] = [
-    { title: 'Quickstart', href: '#', target: '', fn: this.sharedService.relaunchOnboardingModal },
+    { title: 'Quickstart', href: '#', target: '', fn: this.relaunchOnboarding.bind(this) },
     { title: 'Upgrade', href: 'https://mh214.infusionsoft.com/app/orderForms/Chaikin-Analytics---Annual-Subscription', target: '_blank', fn: '' },
     { title: 'User guide', href: 'https://www.chaikinanalytics.com/analytics-resource-guide/', target: '_blank', fn: '' },
-    { title: 'Support/Contact', href: '#', target: '', fn: this.openSupportModal },
+    { title: 'Support/Contact', href: '#', target: '', fn: this.openSupportModal.bind(this) },
     { title: 'Log out', href: '#', target: '', fn: this.logOutSession }
   ];
-
-  // Quickstart – relaunch onboarding walk through on click
-  // Upgrade – on click, open a new tab with this link: https://mh214.infusionsoft.com/app/orderForms/Chaikin-Analytics---Annual-Subscription
-  // User guide – on click, open a new tab with this link: https://www.chaikinanalytics.com/analytics-resource-guide/
-  // Support/contact – on click, open a popout with support info as follows: "Please contact customer support at support@chaikinanalytics.com or call 1-877-978-6257"
-  // Log out – on click, log out and return to sign-in page
 
   constructor(private sharedService: SharedService) {
   }
@@ -31,26 +26,21 @@ export class MidTierHeaderComponent implements OnInit {
   ngOnInit() {
     this.sharedService.onboardingPopup$
       .subscribe(res => {
-        this.showPopup = res;
+        this.showPopupTooltip = res;
       });
   }
 
   popoverClicked(e: Event) {
     e.preventDefault();
-    this.showPopup = false;
+    this.showPopupTooltip = false;
   }
 
-  toggleSettingsDropdown() {
-    console.log('toggleSettingsDropdown');
+  relaunchOnboarding() {
+    this.sharedService.setOnboardingModal(true);
   }
-
-  // relaunchOnboarding() {
-  //   console.log('this.sharedService', this.sharedService);
-  //   this.sharedService.relaunchOnboardingModal();
-  // }
 
   openSupportModal() {
-    console.log('openSupportModal');
+    this.supportModal['supportModal'].show();
   }
 
   logOutSession() {

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, ViewChild } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
 @Component({
@@ -6,26 +6,17 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
   templateUrl: './support-modal.component.html',
   styleUrls: ['./support-modal.component.scss']
 })
-export class SupportModalComponent implements OnInit {
+export class SupportModalComponent implements AfterViewInit {
 
-  @ViewChild('supportModal') public supportModal: ModalDirective;
-  public isModalShown: boolean = true;
-
+  @ViewChild('supportModal') supportModal: ModalDirective;
   constructor() { }
 
-  ngOnInit() {
+  ngAfterViewInit() {
+    this.showModal();
   }
 
-  public showModal(): void {
-    this.isModalShown = true;
+  showModal() {
+    this.supportModal.show();
   }
-
-  // public hideModal(): void {
-  //   // this.autoShownModal.hide();
-  // }
-
-  // public onHidden(): void {
-  //   this.isModalShown = false;
-  // };
 
 }

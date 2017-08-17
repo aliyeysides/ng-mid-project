@@ -57,8 +57,8 @@ export class SharedService {
     this.powerBarHeader.next(data);
   }
 
-  public relaunchOnboardingModal() {
-    this.onboardingModal.next(true);
+  public setOnboardingModal(data: boolean) {
+    this.onboardingModal.next(data);
   }
 
   public symbolLookup(query: string): Observable<Array<object>> {

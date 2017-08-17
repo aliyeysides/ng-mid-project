@@ -9,6 +9,7 @@ import {ChartPanelComponent} from './chart-panel/chart-panel.component';
 import {EvenOddPipe} from '../shared/shared.filters';
 import {SymbolSearchModule} from '../shared/symbol-search/symbol-search.module';
 import {OnboardingComponent} from './onboarding/onboarding.component';
+import {SupportModalComponent} from './support-modal/support-modal.component';
 
 import {ModalModule} from 'ngx-bootstrap/modal';
 import {AlertModule} from 'ngx-bootstrap/alert';
@@ -31,7 +32,7 @@ import {ChartService} from '../shared/charts/chart.service';
   exports: [
     HomeComponent
   ],
-  declarations: [HomeComponent, ListViewComponent, EvenOddPipe, OnboardingComponent, ChartPanelComponent],
+  declarations: [HomeComponent, ListViewComponent, EvenOddPipe, OnboardingComponent, ChartPanelComponent, SupportModalComponent],
   providers: [HomeService, ChartService]
 })
 export class HomeModule {

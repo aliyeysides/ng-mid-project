@@ -21,7 +21,7 @@ $weak: #EB001C;
 
 
 $link-blue: #1199ff;
-
+$link-grey: #646A7C;
 
 
 
@@ -57,10 +57,12 @@ $background--sidebar: #cccccc;
 
 /*  Lines & Borders  */
 
+$border-line--W: 2px solid #FFFFFF;
 
 $border-line--LT: 1px solid #cccccc;
 $border-line--LT2: 1px solid #eeeeee;
 
+$border-dashed--LT: 1px dashed #D9DADF;
 $border-dashed--MD: 1px dashed #999999;
 
 $chart-border--LT: 1px solid #dddddd;

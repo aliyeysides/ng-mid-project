@@ -1,5 +1,7 @@
 @import 'variables';
 
+
+
 .VeryBearish { color: $veryBearish-red };
 .Bearish { color: $bearish-red };
 .Neutral { color: $neutral-yellow };
@@ -15,7 +17,6 @@
 .body__bottom--listview {
 	position: absolute;
 	width: 100%;
-	//display: none;
 }
 
 .body__bottom--listview.selected {
@@ -24,7 +25,6 @@
 
 .body__bottom--addlist {
 	width: 100%;
-	//display: none;
 }
 
 .body__bottom--addlist.selected {
@@ -99,7 +99,6 @@
 	background-image: linear-gradient(0deg, #6F7689 0%, #313540 100%);
 
 	.list__header {
-		border-right: 0px solid #ffffff !important;
 
 		.list__title {
 			color: #ffffff !important;
@@ -112,25 +111,11 @@
 	}
 }
 
-.view-option--list {
-	//display: none;
-}
-
-.view-option--list.selected {
-	display: block;
-}
-
 .view-option--panel {
-	//display: none;
 	height: 100vh;
 	overflow-y: scroll;
 	overflow-x: hidden;
 }
-
-.view-option--panel.selected {
-	display: block;
-}
-
 
 
 
@@ -154,8 +139,7 @@
 		letter-spacing: 0;
 		line-height: 28px;
 		font-weight: 300;
-		border-bottom: $border-line--LT;
-		border-right: $border-line--LT;
+		border-bottom: $border-dashed--LT;
 
 		p {
 			color: $font-color--MD;
@@ -171,7 +155,6 @@
 		height: 100vh;
 		overflow-y: scroll;
 		background-color: $background--LT;
-    	box-shadow: inset -1px 0 0px 0px #cccccc;
     	padding-bottom: 324px;
 
 		.list__container {
@@ -188,8 +171,7 @@
 				background-color: $background--LT;
 				height: 60px;
 				border-left: 0;
-				border-bottom: $border-line--LT;
-				border-right: $border-line--LT;
+				border-bottom: $border-line--W;
 				padding-left:0;
 				padding-right:0;
 				margin-right: 0;
@@ -223,18 +205,31 @@
 				}
 
 				.stock__options-button {
-					//display: none;
 					position: absolute;
 					right:0px;
-					top:0px;
+					top:15px;
 					cursor: pointer;
-					width: 20px;
+					width: 30px;
 					height: 60px;
-					padding: 12px 5px;
+
+					svg {
+						float: right;
+						height: 30px;
+						width: 30px;
+					}
+
+					svg g {
+						fill: $link-grey;
+					}
+
+					&:hover {
+						svg g {
+							fill: $link-blue;
+						}
+					}
 				}
 
 				.stock-options__popup {
-					//display: none;
 					position: absolute;
 					right: 0;
 					top: 0;
@@ -262,50 +257,48 @@
 								margin-top: 8px;
 							}
 
-							img {
+							svg {
 								height: 27px;
+								width: 27px;
+							}
+
+							svg g {
+								fill: #ffffff;
 							}
 						}
 					}
 
 					.stock__options-button {
 						display: block;
-						margin-right: 260px;
+						margin-right: 255px;
 						cursor: pointer;
 						width: 5000px;
-						padding-right: 10px;
 
-						img {
+						svg {
 							float: right;
+							height: 30px;
+							width: 30px;
+						}
+
+						svg g {
+							fill: $link-grey;
+						}
+
+						&:hover {
+							svg g {
+								fill: $link-blue;
+							}
 						}
 					}
 				}
-			}
 
-			.list__entry.hover {
-				background-color: #ffffff;
-
-				.stock__options-button {
-					display: block;
+				&:hover {
+					background-color: $background--LT2;
 				}
 			}
 
 			.list__entry.selected {
 				background-color: #ffffff;
-				height: 60px;
-				border-left: 0;
-				border-bottom: $border-line--LT;
-				border-right: 1px solid #ffffff;
-				padding-left:0;
-				padding-right:0;
-				margin-right: 0;
-			  	margin-left: 0;
-			  	overflow: hidden;
-			  	position: relative;
-
-				.stock__options-button {
-					//display: none;
-				}
 			}
 		}
 	}
@@ -365,15 +358,21 @@
 				width: 28px;
 				margin-top: 3px;
 				cursor: pointer;
-				opacity: 0.9;
 
-				img {
-					float: left;
-					width: 27px;
+				svg {
+					width: 28px;
+					height: 28px;
+				}
+
+				svg g {
+					fill:$link-grey;
 				}
 
 				&:hover {
-					opacity: 1;
+					svg g {
+						fill: $link-blue;
+						opacity: 1;
+					}
 				}
 			}
 
@@ -384,20 +383,28 @@
 					float: left;
 
 					a {
-						opacity: 0.9;
-						font-size: 23px;
-						color: $link-blue;
 						margin-right: 15px;
 						cursor: pointer;
-						line-height: 1;
 
 						&:hover {
-							opacity: 1;
-						}
-					}
+							svg {
+								opacity: 1;
+							}
 
-					a.button__watch {
-						font-size: 21px;
+							svg g {
+								fill: $link-blue;
+							}
+						}
+
+						svg {
+							height: 22px;
+							width: 22px;
+							opacity: 0.5;
+						}
+
+						svg g {
+							fill: $link-grey;
+						}
 					}
 				}
 
@@ -410,7 +417,7 @@
 
 			.stock-panel__price {
 				padding-bottom: 10px;
-				border-bottom: $border-line--LT2;
+				border-bottom: $border-dashed--LT;
 				margin-bottom: 6px;
 
 				p {
@@ -424,7 +431,7 @@
 			}
 
 			.stock-panel__industry {
-				border-bottom: $border-line--LT2;
+				border-bottom: $border-dashed--LT;
 				margin-top: 10px;
 				margin-bottom: 10px;
 				padding-left: 15px;
@@ -479,7 +486,7 @@
 			}
 
 			.quick-view__pgr {
-				border-left: $border-line--LT2;
+				border-left: $border-dashed--LT;
 
 				.pgr__title {
 					font-weight: 400;
@@ -530,10 +537,7 @@
 			.quick-view__chart {
 				padding-top: 20px;
 			  	width: 100%;
-			  	border-top: $border-line--LT2;
-
-			  	.chart-container {
-				}
+			  	border-top: $border-dashed--LT;
 			}
 		}
 
@@ -546,9 +550,14 @@
 			.icon__discover {
 				cursor: pointer;
 
-				img {
+				svg {
 					width: 35px;
+					height: 35px;
 					cursor: help;
+				}
+
+				svg g {
+					fill: $link-blue;
 				}
 			}
 
@@ -589,7 +598,7 @@
 					position: relative;
 					margin: 10px 0 15px;
 					padding: 5px 5px;
-					border-top: 1px solid #efefef;
+					border-top: $border-dashed--LT;
 
 					h2 {
 					    font-size: 16px;
@@ -597,12 +606,12 @@
 					    line-height: 1.5;
 					    margin: 0;
 					    padding: 0;
-						color: #383838;
+						color: $font-color--MD;
               			cursor: pointer;
 
 						a {
 							text-decoration: none;
-							color: #383838;
+							color: $font-color--MD;
 						}
 					}
 
@@ -617,7 +626,7 @@
 
 						a {
 							text-decoration: none;
-							color: #003366;
+							color: $font-color--Blue;
 						}
 					}
 
@@ -629,7 +638,7 @@
 					    margin: 0 5px 0 0;
 					    font-style: italic;
 					    padding: 0;
-					    color: #383838;
+					    color: $font-color--MD;
 					}
 				}
 
@@ -697,40 +706,54 @@
 				width: 28px;
 				margin-top: 3px;
 				cursor: pointer;
-				opacity: 0.33;
 
-				img {
-					float: left;
-					width: 27px;
+				svg {
+					width: 28px;
+					height: 28px;
+				}
+
+				svg g {
+					fill: $link-grey;
+					opacity: .5;
 				}
 
 				&:hover {
-					opacity: 1;
+					svg g {
+						fill: $link-blue;
+						opacity: 1;
+					}
 				}
 			}
 
 			.stock-panel__company-name {
-				margin: 7px 0 10px;
+				margin: 10px 0 10px;
 
 				.button__add-to-list {
 					float: left;
-					margin-top: -1px;
 
 					a {
-						opacity: 0.33;
-						font-size: 25px;
-						color: $link-blue;
 						margin-right: 15px;
 						cursor: pointer;
-						line-height: 1;
 
 						&:hover {
-							opacity: 1;
-						}
-					}
+							svg {
+								opacity: 1;
+							}
 
-					a.button__watch {
-						font-size: 21px;
+							svg g {
+								fill: $link-blue;
+							}
+						}
+
+						svg {
+							height: 22px;
+							width: 22px;
+							opacity: 0.5;
+						}
+
+						svg g {
+							fill: $link-grey;
+						}
 					}
 				}
 
@@ -742,7 +765,7 @@
 
 			.stock-panel__price {
 				padding-bottom: 10px;
-				border-bottom: $border-line--LT2;
+				border-bottom: $border-dashed--LT;
 				margin-bottom: 6px;
 
 				p {
@@ -756,7 +779,7 @@
 			}
 
 			.stock-panel__industry {
-				border-bottom: $border-line--LT2;
+				border-bottom: $border-dashed--LT;
 				margin-top: 10px;
 				margin-bottom: 10px;
 				padding-left: 15px;
@@ -810,7 +833,7 @@
 			}
 
 			.quick-view__pgr {
-				border-left: $border-line--LT2;
+				border-left: $border-dashed--LT;
 
 				.pgr__title {
 					font-weight: 400;
@@ -861,7 +884,7 @@
 
 			.quick-view__chart {
 			  	width: 100%;
-			  	border-top: $border-line--LT2;
+			  	border-top: $border-dashed--LT;
 
 			  	#mainChart {
 
@@ -877,9 +900,14 @@
 			.icon__discover {
 				cursor: pointer;
 
-				img {
+				svg {
 					width: 35px;
+					height: 35px;
 					cursor: help;
+				}
+
+				svg g {
+					fill: $link-blue;
 				}
 			}
 

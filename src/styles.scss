@@ -138,7 +138,10 @@ display: none;
 }
 
 
-
+.list-view__actionbar--discovery .form-inline svg g#icon_search {
+  fill:$font-color;
+  opacity: 0.6;
+}
 
 
 

@@ -56,7 +56,12 @@
 					<div class="panel__header clearfix">
 						<p class="panel__title">Sectors</p>
 						<p class="icon-expand" (click)="toggleClass('sector');"><a><i class="fa fa-angle-down" [ngClass]="{'selected' : sectorClass}" aria-hidden="true"></i></a></p>
-						<p class="panel-breakdown"><img src="assets/imgs/icon_green-arrow.svg" *ngIf="sectorCount.upCount > 0"> <span *ngIf="sectorCount.upCount>0"> {{sectorCount.upCount}} </span> &nbsp;<span class="panel-breakdown-span" *ngIf=" sectorCount.upCount > 0  && sectorCount.downCount > 0" >|</span>&nbsp;<img src="assets/imgs/icon_red-arrow.svg" *ngIf=" sectorCount.downCount 	> 0 "> <span *ngIf="sectorCount.downCount>0"> {{sectorCount.downCount}} </span> </p>
+						<p class="panel-breakdown">
+							<img src="assets/imgs/icon_green-arrow.svg" *ngIf="sectorCount.upCount > 0"> 
+							<span *ngIf="sectorCount.upCount>0"> {{sectorCount.upCount}} </span> &nbsp;<span class="panel-breakdown-span" *ngIf=" sectorCount.upCount > 0  && sectorCount.downCount > 0" >|</span>&nbsp;
+							<img src="assets/imgs/icon_red-arrow.svg" *ngIf=" sectorCount.downCount 	> 0 "> 
+							<span *ngIf="sectorCount.downCount>0"> {{sectorCount.downCount}} </span> 
+						</p>
 					</div>
 					<div class="panel__expand clearfix" [ngClass]="{'panel__expand--sectors' : sectorClass }">
 						<ul>

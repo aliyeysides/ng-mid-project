@@ -41,14 +41,15 @@
 		.search__action {
 			text-align: center;
 			opacity: 0.6;
+			position: relative;
 
-			i {
-				font-size: 28px;
-				line-height: 70px;
+			svg {
+				width: 30px;
+				height: 30px;
 			}
 
-			img {
-
+			svg g {
+				fill: #ffffff;
 			}
 
 			&:hover {
@@ -180,11 +181,6 @@
 }
 
 
-
-.list-view__actionbar--discovery .fa-search {
-  font-size: 28px;
-  color: #A2A2A2 !important;
-}
 
 
 

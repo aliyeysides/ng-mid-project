@@ -17,15 +17,15 @@
     opacity:0.97;
 
 	.search__entry {
-		height: 70px;
-		border-bottom: 2px solid #ffffff;
+		height: 60px;
+		border-bottom: 1px solid #ffffff;
 		color:#ffffff;
 
 		.company-name {
 			font-weight: 400;
 			font-size: 18px;
 			color:#ffffff;
-			line-height: 70px;
+			line-height: 60px;
 		}
 
 		.search__company {
@@ -33,7 +33,7 @@
 			.company-ticker {
 				font-weight: 700;
 				font-size: 28px;
-				line-height: 70px;
+				line-height: 60px;
 				color:#ffffff;
 			}
 		}
@@ -44,8 +44,8 @@
 			position: relative;
 
 			svg {
-				width: 30px;
-				height: 30px;
+				width: 25px;
+				height: 25px;
 			}
 
 			svg g {
@@ -122,7 +122,11 @@
 }
 
 
-
+.list-view__actionbar--discovery {
+	.search-box {
+		color: $font-color;
+	}
+}
 
 
 

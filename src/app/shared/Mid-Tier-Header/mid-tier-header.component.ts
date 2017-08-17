@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { SharedService } from '../shared.service';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
+import {noop} from 'rxjs/util/noop';
+
 @Component({
   selector: 'mid-tier-header',
   templateUrl: './mid-tier-header.component.html',
@@ -14,8 +16,8 @@ export class MidTierHeaderComponent implements OnInit {
   public showPopupTooltip: boolean;
   public items: object[] = [
     { title: 'Quickstart', href: '#', target: '', fn: this.relaunchOnboarding.bind(this) },
-    { title: 'Upgrade', href: 'https://mh214.infusionsoft.com/app/orderForms/Chaikin-Analytics---Annual-Subscription', target: '_blank', fn: '' },
-    { title: 'User guide', href: 'https://www.chaikinanalytics.com/analytics-resource-guide/', target: '_blank', fn: '' },
+    { title: 'Upgrade', href: 'https://mh214.infusionsoft.com/app/orderForms/Chaikin-Analytics---Annual-Subscription', target: '_blank', fn: noop },
+    { title: 'User guide', href: 'https://www.chaikinanalytics.com/analytics-resource-guide/', target: '_blank', fn: noop },
     { title: 'Support/Contact', href: '#', target: '', fn: this.openSupportModal.bind(this) },
     { title: 'Log out', href: '#', target: '', fn: this.logOutSession }
   ];

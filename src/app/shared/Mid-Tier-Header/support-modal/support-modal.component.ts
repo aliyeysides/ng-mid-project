@@ -12,7 +12,6 @@ export class SupportModalComponent implements AfterViewInit {
   constructor() { }
 
   ngAfterViewInit() {
-    this.showModal();
   }
 
   showModal() {

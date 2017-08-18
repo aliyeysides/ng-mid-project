@@ -4,7 +4,7 @@
 /*------------------------------------*\
   #DISCOVERY
 \*------------------------------------*/
-
+ 
 
 
 
@@ -66,7 +66,7 @@
 
           .company-industry {
             font-size: 14px;
-            color: #B2B1AD;
+            color: $font-color--MD;
             line-height: 1.5;
             font-weight: 400;
             font-style: italic;
@@ -552,13 +552,33 @@
 
 
 
+.pgr__sliders {
+  margin-top: 4px;
+
+  li {
+    margin: 3px 0 3px;
+
+    .sliderBar-container {
+
+      .pgr__label {
+        font-weight: 600;
+        font-size: 13px;
+        color: $font-color--MD;
+        text-transform: uppercase;
+        margin: -2px 0 2px;
+      }
+    }
+  }
+}
 
 
 
 
 
-
-
+.tile__pgr {
+  display: block;
+  float: left;
+}
 
 
 

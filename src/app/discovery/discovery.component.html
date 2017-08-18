@@ -132,7 +132,62 @@
                           <img src="assets/imgs/pgr-bullish.svg">
                           <p class="ticker">AMZN</p>
                         </div>
-                        <div class="">
+                        <div class="tile__pgr">
+                          <ul class="pgr__sliders row">
+                            <li class="col-12">
+                              <div class="sliderBar-container row no-gutters">
+                                <div class="pgr__label col-8 pull-left">
+                                  <p>Financials</p>
+                                </div>
+                                <div class="sliderProgress col-4">
+                                  <div [ngClass]="appendSliderClass(idea.pgr.Financials)"></div>
+                                  <div [ngClass]="appendSliderBarClass(idea.pgr.Financials)" class="sliderBar" role="progressbar"
+                                       aria-valuemin="0" aria-valuemax="100">
+                                  </div>
+                                </div>
+                              </div>
+                            </li>
+                            <li class="col-12">
+                              <div class="sliderBar-container">
+                                <div class="sliderProgress">
+                                  <div [ngClass]="appendSliderClass(idea.pgr.Earnings)"></div>
+                                  <div [ngClass]="appendSliderBarClass(idea.pgr.Earnings)" class="sliderBar" role="progressbar"
+                                       aria-valuemin="0" aria-valuemax="100">
+                                  </div>
+                                </div>
+                                <div class="pgr__label">
+                                  <p>Earnings</p>
+                                </div>
+                              </div>
+                            </li>
+                            <li class="col-12">
+                              <div class="sliderBar-container">
+                                <div class="sliderProgress">
+                                  <div [ngClass]="appendSliderClass(idea.pgr.Technicals)"></div>
+                                  <div [ngClass]="appendSliderBarClass(idea.pgr.Technicals)" class="sliderBar" role="progressbar"
+                                       aria-valuemin="0" aria-valuemax="100">
+                                  </div>
+                                </div>
+                                <div class="pgr__label">
+                                  <p>Technicals</p>
+                                </div>
+                              </div>
+                            </li>
+                            <li class="col-12">
+                              <div class="sliderBar-container">
+                                <div class="sliderProgress">
+                                  <div [ngClass]="appendSliderClass(idea.pgr.Experts)"></div>
+                                  <div [ngClass]="appendSliderBarClass(idea.pgr.Experts)" class="sliderBar" role="progressbar"
+                                       aria-valuemin="0"
+                                       aria-valuemax="100">
+                                  </div>
+                                </div>
+                                <div class="pgr__label">
+                                  <p>Experts</p>
+                                </div>
+                              </div>
+                            </li>
+                          </ul>
                         </div>
                       </div>
                       <div class="tile__actions">

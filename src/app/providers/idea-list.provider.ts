@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Http, URLSearchParams} from '@angular/http';
-import {Observable} from 'rxjs/Rx';
-import {Subject} from "rxjs/Subject";
-import {environment} from 'environments/environment';
+import { Injectable } from '@angular/core';
+import { Http, URLSearchParams } from '@angular/http';
+import { Observable } from 'rxjs/Rx';
+import { Subject } from "rxjs/Subject";
+import { environment } from 'environments/environment';
 
 @Injectable()
 export class IdeaListProvider {
@@ -24,19 +24,19 @@ export class IdeaListProvider {
   }
 
   public getIdeasList(query): Observable<Array<object>> {
-    let symbolLookupUrl = `${this.apiHostName}${this.apiPrependText}/portfolio/getMidTierUserLists?`;
+    const symbolLookupUrl = `${this.apiHostName}${this.apiPrependText}/portfolio/getMidTierUserLists?`;
     this.symbolLookupParams.set('uid', query.uid);
     return this.getJson(symbolLookupUrl, this.symbolLookupParams);
   }
 
   public manageActiveInactive(query): Observable<Array<object>> {
-    let symbolLookupUrl = `${this.apiHostName}${this.apiPrependText}/midTier/manageIdeaListActiveInactiveState?`;
+    const symbolLookupUrl = `${this.apiHostName}${this.apiPrependText}/midTier/manageIdeaListActiveInactiveState?`;
     this.setKeysForAPICall(query);
     return this.getJson(symbolLookupUrl, this.symbolLookupParams);
   }
 
   public setIdeaListData(list: Array<object>) {
-     this.wholeIdeasList.next(list);
+    this.wholeIdeasList.next(list);
   }
 
   public setMappingClassArray(list: Array<object>) {
@@ -64,15 +64,15 @@ export class IdeaListProvider {
   }
 
   public handleError(err: any) {
-    let errMsg = (err.message) ? err.message :
+    const errMsg = (err.message) ? err.message :
       err.status ? `${err.status} - ${err.statusText}` : 'Server error';
     return Observable.throw(errMsg);
   }
 
   public setKeysForAPICall(query) {
-      Object.keys(query).forEach((key) => {
+    Object.keys(query).forEach((key) => {
       this.symbolLookupParams.set(key, query[key]);
-    })
+    });
   }
 
 }

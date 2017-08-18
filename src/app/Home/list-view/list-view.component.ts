@@ -256,8 +256,8 @@ export class ListViewComponent implements OnInit {
       });
   }
 
-  checkIfUserList() {
-    switch (this.selectedListName) {
+  checkIfUserList(listName) {
+    switch (listName) {
       case 'Ideas for You':
       case 'Holding':
       case 'Watching':
@@ -267,8 +267,8 @@ export class ListViewComponent implements OnInit {
     }
   }
 
-  checkIfBullList() {
-    switch (this.selectedListName) {
+  checkIfBullList(listName) {
+    switch (listName) {
       case 'Bulls of the Week':
       case 'Best Growth Stocks':
       case 'Best of the Large Caps':
@@ -292,8 +292,8 @@ export class ListViewComponent implements OnInit {
     }
   }
 
-  checkIfBearList() {
-    switch (this.selectedListName) {
+  checkIfBearList(listName) {
+    switch (listName) {
       case 'Sell the Rallies':
       case 'Bears of the Week':
       case 'Power Gauge Rating Downgrades':
@@ -325,6 +325,7 @@ export class ListViewComponent implements OnInit {
     this.inActiveIdeasList = list.filter(function (key, val, array) {
       return !key.is_active;
     });
+    console.log('inActiveIdeasList', this.inActiveIdeasList);
   }
 
   public updateActiveIdeaList(list) {

@@ -1,10 +1,12 @@
-import {Component, OnInit} from '@angular/core';
-import {SharedService} from '../../shared/shared.service';
-import {IdeaListProvider} from 'app/providers/idea-list.provider';
-import {Router} from '@angular/router';
-import {Idea} from '../../shared/models/idea';
-import {Subscription} from 'rxjs/Subscription';
-import {ChartService} from '../../shared/charts/chart.service';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { SharedService } from '../../shared/shared.service';
+import { IdeaListProvider } from 'app/providers/idea-list.provider';
+import { Router } from '@angular/router';
+import { Idea } from '../../shared/models/idea';
+import { Subscription } from 'rxjs/Subscription';
+import { ChartService } from '../../shared/charts/chart.service';
+import { HomeService } from '../service/home.service';
+import { IdeasComponent } from '../ideas/ideas.component';
 
 @Component({
   selector: 'app-list-view',
@@ -13,7 +15,7 @@ import {ChartService} from '../../shared/charts/chart.service';
 })
 
 export class ListViewComponent implements OnInit {
-
+  @Output() toggleAdditionalIdeasLists: EventEmitter<any> = new EventEmitter();
   public ideaList: Array<object>;
   public wholeIdeasList: Array<object>;
   public additionalLists: boolean = false;
@@ -50,9 +52,9 @@ export class ListViewComponent implements OnInit {
   };
 
   constructor(private sharedService: SharedService,
-              private router: Router,
-              private ideaListProvider: IdeaListProvider,
-              private chartService: ChartService) {
+    private router: Router,
+    private ideaListProvider: IdeaListProvider,
+    private chartService: ChartService) {
   }
 
   ngOnInit() {
@@ -70,22 +72,22 @@ export class ListViewComponent implements OnInit {
       });
 
     this.sharedService.symbolListValues$
-      .switchMap(val => this.sharedService.symbolList({listId: val['list_id']}))
+      .switchMap(val => this.sharedService.symbolList({ listId: val['list_id'] }))
       .subscribe(res => {
-          this.orderByObject = {};
-          this.selectedListId = res['list_id'];
-          this.loadedStockIdeas = 0;
-          this.panelViewIdeasList = [];
-          this.ideaList = [];
-          this.ideaList = res['symbols'];
-          setTimeout(this.assignStockData(4), 0);
-          if (this.ideaList) {
-            this.selectStock(this.ideaList[0] as Idea);
-          }
-        },
-        err => {
-          this.sharedService.handleError(err)
+        this.orderByObject = {};
+        this.selectedListId = res['list_id'];
+        this.loadedStockIdeas = 0;
+        this.panelViewIdeasList = [];
+        this.ideaList = [];
+        this.ideaList = res['symbols'];
+        setTimeout(this.assignStockData(4), 0);
+        if (this.ideaList) {
+          this.selectStock(this.ideaList[0] as Idea);
         }
+      },
+      err => {
+        this.sharedService.handleError(err)
+      }
       );
 
     this.sharedService.powerBarHeader$
@@ -94,6 +96,7 @@ export class ListViewComponent implements OnInit {
       });
 
     this.sharedService.additionalLists$.subscribe(val => {
+      console.log('additionalLists', val);
       this.additionalLists = val;
     });
 
@@ -171,7 +174,7 @@ export class ListViewComponent implements OnInit {
       let ele = document.getElementById(chartClass);
       ele.removeChild(ele.childNodes[0]);
     }
-    this.chartService.interactiveAreaChartControler.init({data: chartData, id: chartClass});
+    this.chartService.interactiveAreaChartControler.init({ data: chartData, id: chartClass });
   }
 
   assignStockData(amount: number) {
@@ -209,6 +212,10 @@ export class ListViewComponent implements OnInit {
 
   toggleHeadlines() {
     this.showHeadlines = !this.showHeadlines;
+  }
+
+  toggleAdditionalLists() {
+    this.toggleAdditionalIdeasLists.emit(null);
   }
 
   goToStockView(stock: (Idea | string), e) {
@@ -249,8 +256,8 @@ export class ListViewComponent implements OnInit {
       });
   }
 
-  checkIfUserList() {
-    switch (this.selectedListName) {
+  checkIfUserList(listName) {
+    switch (listName) {
       case 'Ideas for You':
       case 'Holding':
       case 'Watching':
@@ -260,8 +267,8 @@ export class ListViewComponent implements OnInit {
     }
   }
 
-  checkIfBullList() {
-    switch (this.selectedListName) {
+  checkIfBullList(listName) {
+    switch (listName) {
       case 'Bulls of the Week':
       case 'Best Growth Stocks':
       case 'Best of the Large Caps':
@@ -285,8 +292,8 @@ export class ListViewComponent implements OnInit {
     }
   }
 
-  checkIfBearList() {
-    switch (this.selectedListName) {
+  checkIfBearList(listName) {
+    switch (listName) {
       case 'Sell the Rallies':
       case 'Bears of the Week':
       case 'Power Gauge Rating Downgrades':
@@ -318,6 +325,7 @@ export class ListViewComponent implements OnInit {
     this.inActiveIdeasList = list.filter(function (key, val, array) {
       return !key.is_active;
     });
+    console.log('inActiveIdeasList', this.inActiveIdeasList);
   }
 
   public updateActiveIdeaList(list) {
@@ -328,11 +336,11 @@ export class ListViewComponent implements OnInit {
 
   public manageActiveInactive(status, list_id) {
     if (this.activeIdeasList.length < 10) {
-      this.ideaListProvider.manageActiveInactive({uid: this.userId, listId: list_id, mode: status})
+      this.ideaListProvider.manageActiveInactive({ uid: this.userId, listId: list_id, mode: status })
         .subscribe(res => {
-            this.getIdeasList();
-          },
-          err => console.log('err', err));
+          this.getIdeasList();
+        },
+        err => console.log('err', err));
     } else {
       alert('First you have to delete another Idea list, then try again.');
     }
@@ -340,11 +348,11 @@ export class ListViewComponent implements OnInit {
 
 
   public getIdeasList() {
-    this.ideaListProvider.getIdeasList({uid: this.userId})
+    this.ideaListProvider.getIdeasList({ uid: this.userId })
       .subscribe(res => {
-          this.ideaListProvider.setIdeaListData(res);
-        },
-        err => console.log('err', err));
+        this.ideaListProvider.setIdeaListData(res);
+      },
+      err => console.log('err', err));
 
   }
 

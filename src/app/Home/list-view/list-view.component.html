@@ -8,7 +8,8 @@
     <div class="list__header col-md-6">
       <div (click)="toggleAdditionalLists(); $event.stopPropagation()">BUTTON</div>
       <p class="list__title">
-        <span class="list__title"><i *ngIf="checkIfUserList(this.selectedListName)" class="fa fa-user-circle"
+        <span class="list__title"><i tooltip="This is a user list." *ngIf="checkIfUserList(this.selectedListName)"
+                                     class="fa fa-user-circle"
                                      aria-hidden="true"></i>&nbsp; {{selectedListName}}</span>
       </p>
       <a (click)="gotoPanelView()" [ngClass]="{'active selected' : this.currentView == 'panel-view'}"
@@ -666,7 +667,8 @@
     <div class="list-view__actionbar list-view__actionbar--addlist row no-gutters">
       <div class="list__header col-12">
         <p class="list__title">
-          <span><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp; Add a new list...</span>
+          <span><i tooltip="We will not surrender our people to the false song of globalism" class="fa fa-plus-circle"
+                   aria-hidden="true"></i>&nbsp; Add a new list...</span>
         </p>
         <button (click)="setAdditionalLists(false)" type="button" class="close" aria-label="Close">
           <span aria-hidden="true"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
@@ -1046,7 +1048,8 @@
               <div class="description__actions row">
                 <p class="label">Current List:</p>
                 <ul class="col nav nav-justified">
-                  <li (click)="manageActiveInactive('activate',this.selectedListId);$event.stopPropagation()" class="nav-item">
+                  <li (click)="manageActiveInactive('activate',this.selectedListId);$event.stopPropagation()"
+                      class="nav-item">
                     <a class="nav-link"><i class="fa fa-star" aria-hidden="true"></i>&nbsp;&nbsp;Add to Favorites</a>
                   </li>
                   <li (click)="setAdditionalLists(false)" class="nav-item">

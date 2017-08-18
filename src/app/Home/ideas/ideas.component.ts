@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { SharedService } from '../shared/shared.service';
-import { SignalService } from '../shared/signal.service';
-import {HomeService} from '../Home/service/home.service';
+import { SharedService } from '../../shared/shared.service';
+import { SignalService } from '../../shared/signal.service';
+import {HomeService} from '../service/home.service';
 import { IdeaListProvider } from 'app/providers/idea-list.provider';
-import { Idea } from '../shared/models/idea';
+import { Idea } from '../../shared/models/idea';
 import { Subscription } from 'rxjs/Subscription';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 

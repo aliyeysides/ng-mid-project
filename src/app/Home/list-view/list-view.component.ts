@@ -6,7 +6,7 @@ import { Idea } from '../../shared/models/idea';
 import { Subscription } from 'rxjs/Subscription';
 import { ChartService } from '../../shared/charts/chart.service';
 import { HomeService } from '../service/home.service';
-import { IdeasComponent } from '../../ideas/ideas.component';
+import { IdeasComponent } from '../ideas/ideas.component';
 
 @Component({
   selector: 'app-list-view',

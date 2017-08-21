@@ -10,9 +10,9 @@
 
 .sidebar__container {
 	display:block;
-	width: 240px;
+	width: 202px;
 	background: $background--sidebar;
-	border-right: $border-line--LT;
+	//border-right: $border-line--W;
 	height: 100vh;
 	overflow: hidden;
 	position: absolute;
@@ -27,21 +27,22 @@
 
 		.sidebar__logo {
 			padding: 15px 0 10px;
-			width: 183px;
+			width: 166px;
 			margin: 0 auto;
 
 			img {
-				width: 183px;
-				height: 26px;
+				width: 166px;
+				height: 23px;
 			}
 		}
 
 		.sidebar__date {
-			padding: 22px 0 34px;
+			padding: 22px 15px 20px;
+			border-bottom: $border-dashed--LT;
 
 			p {
 			  	font-family: $font-stack !important;
-				font-size: 14px;
+				font-size: 12px;
 				color: $font-color;
 				font-weight: 400;
 				text-align: center;
@@ -49,28 +50,7 @@
 		}
 
 		.collapse-sidebar {
-			position: absolute;
-			bottom:7px;
-			right:7px;
-		    -ms-transform: rotate(90deg); /* IE 9 */
-		    -webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
-		    transform: rotate(90deg);
-		    color: $font-color--MD;
-
-			a {
-				cursor: pointer;
-				font-size: 18px;
-
-				i {
-					&:hover {
-						color: $link-blue;
-					}
-				}
-			}
-
-			@media screen and ( max-height: 750px ){
-		        display:none;
-		    }
+			
 		}
 
 		.sidebar__panel {
@@ -540,3 +520,67 @@
 
 
 
+
+
+.side-nav {
+
+	.side-nav__section {
+		padding: 10px 0px;
+		width: 100%;
+		border-bottom: $border-dashed--LT;
+
+		li {
+			height: 50px;
+			padding: 0 15px;
+
+			svg {
+				float: left;
+				width: 25px;
+				height: 25px;
+				margin-top: 12px;
+				margin-right: 13px;
+			}
+
+			svg.stockview {
+				width: 22px;
+				height: 22px;
+				margin-top: 14px;
+			}
+
+			svg g {
+				fill: $font-color;
+			}
+
+			a {
+				float: left;
+				font-size: 18px;
+				font-weight: 400;
+				color: $font-color;
+				line-height: 50px;
+			}
+
+			&:hover {
+				background-color: $link-blue;
+
+				a {
+					color: #ffffff;
+					font-weight: 600;
+				}
+
+				svg g {
+					fill: #ffffff;
+				}
+			}
+		}
+	}
+}
+
+.side-nav__section--secondary {
+	li {
+		opacity: 0.7;
+
+		&:hover {
+			opacity: 1;
+		}
+	}
+}

@@ -118,9 +118,9 @@
         </div>
         <!-- LIST: HOLDING  -->
         <div class="current-list  current-list--holding ">
-          <ul *ngIf="!ideaList?.length" class="list__container">
+          <div *ngIf="!ideaList?.length" class="list__container">
             <p class="empty-list__text">There are currently no stocks in this list.</p>
-          </ul>
+          </div>
           <ul *ngIf="ideaList?.length" class="list__container">
             <li [ngClass]="{'active selected' : selectedStock == idea}"
                 (click)="toggleOptions(idea, $event); selectStock(idea)" (mouseenter)="toggleHoverOptions(idea)"
@@ -450,7 +450,9 @@
   <div [ngBusy]="loading" infinite-scroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="1000"
        (scrolled)="onScroll()" [scrollWindow]="false" *ngIf="currentView == 'panel-view' && additionalLists != true"
        class="view-option--panel">
-    <div *ngIf="!ideaList?.length">There are currently no stocks in this list.</div>
+    <div *ngIf="!ideaList?.length">
+      <p class="empty-list__text">There are currently no stocks in this list.</p>
+    </div>
     <div *ngIf="ideaList?.length" class="row no-gutters">
 
       <!--  PANEL  -->

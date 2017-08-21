@@ -5,8 +5,6 @@ import { Router } from '@angular/router';
 import { Idea } from '../../shared/models/idea';
 import { Subscription } from 'rxjs/Subscription';
 import { ChartService } from '../../shared/charts/chart.service';
-import { HomeService } from '../service/home.service';
-import { IdeasComponent } from '../ideas/ideas.component';
 
 @Component({
   selector: 'app-list-view',
@@ -18,7 +16,9 @@ export class ListViewComponent implements OnInit {
   @Output() toggleAdditionalIdeasLists: EventEmitter<any> = new EventEmitter();
   public ideaList: Array<object>;
   public wholeIdeasList: Array<object>;
+  public userList: Array<object>;
   public additionalLists: boolean = false;
+  public whichAdditionalLists: string = 'Ideas';
   public mouseHoverOptionsMap: object = {};
   public popupOptionsMap: object = {};
   public currentView: string = 'list-view';
@@ -64,6 +64,7 @@ export class ListViewComponent implements OnInit {
         this.wholeIdeasList = res;
         this.updateInActiveIdeaList(this.wholeIdeasList);
         this.updateActiveIdeaList(this.wholeIdeasList);
+        this.updateUserIdeaList(this.wholeIdeasList);
       });
 
     this.ideaListProvider.mappingClassArray$
@@ -318,20 +319,16 @@ export class ListViewComponent implements OnInit {
     this.sharedService.setAdditionalListsMenu(val);
   }
 
-
-  /* hardeep: logic for idea inactive list */
-
   public updateInActiveIdeaList(list) {
-    this.inActiveIdeasList = list.filter(function (key, val, array) {
-      return !key.is_active;
-    });
-    console.log('inActiveIdeasList', this.inActiveIdeasList);
+    this.inActiveIdeasList = list.filter(val => !val.is_active);
   }
 
   public updateActiveIdeaList(list) {
-    this.activeIdeasList = list.filter(function (key, val, array) {
-      return key.is_active;
-    });
+    this.activeIdeasList = list.filter(val => val.is_active)
+  }
+
+  public updateUserIdeaList(list) {
+    this.userList = list.filter((idea, index) => index <= 2 );
   }
 
   public manageActiveInactive(status, list_id) {
@@ -346,7 +343,6 @@ export class ListViewComponent implements OnInit {
     }
   }
 
-
   public getIdeasList() {
     this.ideaListProvider.getIdeasList({ uid: this.userId })
       .subscribe(res => {
@@ -355,9 +351,6 @@ export class ListViewComponent implements OnInit {
       err => console.log('err', err));
 
   }
-
-  /* hardeep: end logic for idea inactive list */
-
   setOrderByObject(val: string, order: boolean) {
     this.orderByObject['field'] = val;
     this.orderByObject['ascending'] = order;

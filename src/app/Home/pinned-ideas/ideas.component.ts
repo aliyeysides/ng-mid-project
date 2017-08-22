@@ -52,7 +52,7 @@ export class IdeasComponent implements OnInit {
   }
 
   public updateActiveIdeaList(list) {
-    this.activeIdeasList = list.filter(val => val.is_active );
+    this.activeIdeasList = list.filter(val => val.is_active);
   }
 
   public getActiveClasses(listName) {
@@ -105,9 +105,7 @@ export class IdeasComponent implements OnInit {
   }
 
   public castIdeaObjects(symbols: Array<object>): Array<Idea> {
-    return symbols.map(res => {
-      return res as Idea;
-    });
+    return symbols.map(res => res as Idea );
   }
 
   public toggleAdditionalLists() {

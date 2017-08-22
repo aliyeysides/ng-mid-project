@@ -15,7 +15,7 @@ export class SharedService {
   private additionalLists: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   additionalLists$ = this.additionalLists.asObservable();
 
-  private powerBarHeader: BehaviorSubject<any> = new BehaviorSubject({name:'Ideas for You'});
+  private powerBarHeader: BehaviorSubject<any> = new BehaviorSubject({name:'Holding'});
   powerBarHeader$ = this.powerBarHeader.asObservable();
 
   private onboardingPopup: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);

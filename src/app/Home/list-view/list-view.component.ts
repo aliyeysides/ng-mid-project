@@ -1,6 +1,5 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {SharedService} from '../../shared/shared.service';
-import {IdeaListProvider} from 'app/providers/idea-list.provider';
 import {Router} from '@angular/router';
 import {Idea} from '../../shared/models/idea';
 import {Subscription} from 'rxjs/Subscription';
@@ -47,7 +46,6 @@ export class ListViewComponent implements OnInit {
 
   constructor(private sharedService: SharedService,
               private router: Router,
-              private ideaListProvider: IdeaListProvider,
               private chartService: ChartService) {
   }
 

@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SharedService} from '../shared.service';
 import {IdeaListProvider} from '../../providers/idea-list.provider';
 
@@ -74,41 +74,10 @@ export class ListSelectionComponent implements OnInit {
   }
 
   checkIfBullList(listName) {
-    switch (listName) {
-      case 'Bulls of the Week':
-      case 'Best Growth Stocks':
-      case 'Best of the Large Caps':
-      case 'Best of the NASDAQ':
-      case 'Best of the Small Caps':
-      case 'Buy the Dips':
-      case 'Best Under $10':
-      case 'Best Value Stocks':
-      case 'Insider Confidence':
-      case 'Money Makers':
-      case 'Relative Strength Champs':
-      case 'Money Flow Champs':
-      case 'Analyst Darlings':
-      case 'Power Gauge Rating Upgrades':
-      case 'Best of the Dow':
-      case 'Earnings Champs':
-      case 'Upcoming Earnings Bulls':
-        return true;
-      default:
-        return false;
-    }
+    this.sharedService.checkIfBullList(listName);
   }
 
   checkIfBearList(listName) {
-    switch (listName) {
-      case 'Sell the Rallies':
-      case 'Bears of the Week':
-      case 'Power Gauge Rating Downgrades':
-      case 'Don\'t Fight the Shorts':
-      case 'Dogs of the Dow':
-      case 'Upcoming Earnings Bears':
-        return true;
-      default:
-        return false;
-    }
+    this.sharedService.checkIfBearList(listName);
   }
 }

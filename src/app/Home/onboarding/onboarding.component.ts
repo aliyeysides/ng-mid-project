@@ -15,7 +15,8 @@ export class OnboardingComponent {
   private userId = '1024494';
 
   constructor(private sharedService: SharedService) {
-    this.sharedService.symbolList({listId: '1220535', userId: this.userId})
+    const holdingListId = '1220535';
+    this.sharedService.symbolList({listId: holdingListId, userId: this.userId})
       .subscribe(res => {
         this.holdings = res['symbols'];
       });
@@ -27,7 +28,8 @@ export class OnboardingComponent {
   }
 
   public removeFromHolding(ticker: string) {
-    this.sharedService.deleteSymbolFromList(ticker, '1220535');
+    const holdingListId = '1220535';
+    this.sharedService.deleteSymbolFromList(ticker, holdingListId);
   }
 
   public isModalShown:boolean = true;

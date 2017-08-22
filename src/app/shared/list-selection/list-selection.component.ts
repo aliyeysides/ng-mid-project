@@ -74,10 +74,11 @@ export class ListSelectionComponent implements OnInit {
   }
 
   checkIfBullList(listName) {
-    this.sharedService.checkIfBullList(listName);
+    return this.sharedService.checkIfBullList(listName);
   }
 
   checkIfBearList(listName) {
-    this.sharedService.checkIfBearList(listName);
+    return this.sharedService.checkIfBearList(listName);
   }
+
 }

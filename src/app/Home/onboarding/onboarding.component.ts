@@ -1,4 +1,4 @@
-import {Component, Output, ViewChild, EventEmitter} from '@angular/core';
+import {Component, ViewChild} from '@angular/core';
 import {ModalDirective} from 'ngx-bootstrap/modal';
 import {Idea} from '../../shared/models/idea';
 import {SharedService} from '../../shared/shared.service';

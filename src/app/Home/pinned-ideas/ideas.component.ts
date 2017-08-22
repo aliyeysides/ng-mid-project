@@ -22,10 +22,8 @@ export class IdeasComponent implements OnInit {
   public symbolList: Array<object>;
   public activeUserList = {name: ''};
   public selectedActiveList: Array<object>;
-  public selected: string = 'Ideas for You';
+  public selected: string = 'Holding';
   public additionalLists: boolean = false;
-  public activeClassStyle = ['strong', 'hold', 'weak'];
-  public ratingMap = ['WEAK', 'NEUTRAL', 'STRONG'];
   public loading: Subscription;
   public ideaListLoading: Subscription;
   public mappingClassArray = mappingClassArray;
@@ -59,18 +57,6 @@ export class IdeasComponent implements OnInit {
     });
   }
 
-  public appendListImg(i) {
-    let imgName = `${this.activeIdeasList[i]['name']}`;
-    imgName = (imgName.replace(/[ ]/g, '')).toLowerCase();
-    return `assets/imgs/img_list-${imgName}.svg`;
-  }
-
-  public appendListClass(i) {
-    let imgName = `${this.activeIdeasList[i]['name']}`;
-    imgName = (imgName.replace(/[ ]/g, '')).toLowerCase();
-    return imgName;
-  }
-
   public getActiveClasses(listName) {
     let selectedClass = (this.selected == listName) ? ' selected' : '';
     return this.mappingClassArray[listName]['style'] + `${selectedClass}`;
@@ -93,12 +79,12 @@ export class IdeasComponent implements OnInit {
     this.sharedService.userList(this.userId)
       .subscribe(res => {
           this.userList = res;
-          this.updateActiveUser(this.userList[0]);
+          this.updateActiveList(this.userList[0]);
         },
         err => console.log('err', err));
   }
 
-  public updateActiveUser(val) {
+  public updateActiveList(val) {
     if (this.activeUserList !== val) {
       this.activeUserList = val;
       this.loading = this.sharedService.symbolList({userId: this.userId, listId: this.activeUserList['list_id']})
@@ -124,68 +110,6 @@ export class IdeasComponent implements OnInit {
     return symbols.map(res => {
       return res as Idea;
     });
-  }
-
-  public getSignal(res) {
-    return this.signalService.getSignal(res);
-  }
-
-  public getClassStyle(val) {
-    let returnVal: string;
-    if (val > 0) {
-      returnVal = this.activeClassStyle[0];
-    } else if (val < 0) {
-      returnVal = this.activeClassStyle[2];
-    } else {
-      returnVal = this.activeClassStyle[1];
-    }
-    return returnVal;
-  }
-
-  public calculateMarketCap(val) {
-    return val < 1000 ? ((val).toFixed(2) + 'm') : (val / 1000).toFixed(2) + 'b';
-  }
-
-  public roundOff(num) {
-    return Math.round(num * 100) / 100;
-  }
-
-  public trendRating(rating) {
-    /*if rating is less than or equal to zero then return NONE for technical Rating*/
-    if (rating <= 0) {
-      return 'NONE';
-    } else {
-      return this.ratingMap[rating - 1];
-    }
-  }
-
-  public industryRating(rating, list_rating) {
-    return rating === 0 ? this.listRating('NONE') : this.listRating(list_rating);
-  }
-
-  public listRating(rating) {
-    if (!isNaN(rating)) {
-      return (rating > 50) ? 'STRONG' : 'WEAK';
-    } else {
-      return rating;
-    }
-  }
-
-  public appendPGRImage(pgr) {
-    const imageUrl = 'assets/images/';
-    if (pgr === 1) {
-      return imageUrl + 'arc_VeryBearish.svg';
-    } else if (pgr === 2) {
-      return imageUrl + 'arc_Bearish.svg';
-    } else if (pgr === 3) {
-      return imageUrl + 'arc_Neutral.svg';
-    } else if (pgr === 4) {
-      return imageUrl + 'arc_Bullish.svg';
-    } else if (pgr === 5) {
-      return imageUrl + 'arc_VeryBullish.svg';
-    } else {
-      return imageUrl + 'arc_None.svg';
-    }
   }
 
   public toggleAdditionalLists() {

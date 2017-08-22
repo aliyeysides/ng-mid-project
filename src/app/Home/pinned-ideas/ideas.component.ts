@@ -52,9 +52,7 @@ export class IdeasComponent implements OnInit {
   }
 
   public updateActiveIdeaList(list) {
-    this.activeIdeasList = list.filter(function (val) {
-      return val.is_active;
-    });
+    this.activeIdeasList = list.filter(val => val.is_active );
   }
 
   public getActiveClasses(listName) {

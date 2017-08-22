@@ -6,7 +6,6 @@ import {HomeService} from './service/home.service';
 import {IdeasModule} from './pinned-ideas/ideas.module';
 import {ListViewComponent} from './list-view/list-view.component';
 import {ChartPanelComponent} from './chart-panel/chart-panel.component';
-import {EvenOddPipe} from '../shared/shared.filters';
 import {SymbolSearchModule} from '../shared/symbol-search/symbol-search.module';
 import {OnboardingComponent} from './onboarding/onboarding.component';
 
@@ -31,7 +30,7 @@ import {ChartService} from '../shared/charts/chart.service';
   exports: [
     HomeComponent
   ],
-  declarations: [HomeComponent, ListViewComponent, EvenOddPipe, OnboardingComponent, ChartPanelComponent],
+  declarations: [HomeComponent, ListViewComponent, OnboardingComponent, ChartPanelComponent],
   providers: [HomeService, ChartService]
 })
 export class HomeModule {

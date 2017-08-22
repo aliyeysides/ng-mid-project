@@ -14,18 +14,13 @@ import {ChartService} from '../../shared/charts/chart.service';
 
 export class ListViewComponent implements OnInit {
   @Output() toggleAdditionalIdeasLists: EventEmitter<any> = new EventEmitter();
+  private userId = '1024494';
   public ideaList: Array<object>;
-  public userList: Array<object>;
   public additionalLists: boolean = false;
-  public whichAdditionalLists: string = 'Ideas';
   public mouseHoverOptionsMap: object = {};
   public popupOptionsMap: object = {};
   public currentView: string = 'list-view';
   public showHeadlines: boolean = false;
-  public mappingClassArray: Array<object>;
-  public inActiveIdeasList: Array<object>;
-  public activeIdeasList: Array<object>;
-  private userId = '1024494';
   public selectedStock: Idea;
   public selectedListId: string;
   public selectedListName: string;
@@ -57,19 +52,6 @@ export class ListViewComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.ideaListProvider.wholeIdeasList$
-      .subscribe(res => {
-        this.updateInActiveIdeaList(res);
-        this.updateActiveIdeaList(res);
-        this.updateUserIdeaList(res);
-      });
-
-    this.ideaListProvider.mappingClassArray$
-      .subscribe(res => {
-        this.mappingClassArray = res;
-      });
-
     this.sharedService.symbolListValues$
       .switchMap(val => this.sharedService.symbolList({listId: val['list_id']}))
       .subscribe(res => {
@@ -317,43 +299,6 @@ export class ListViewComponent implements OnInit {
 
   gotoListView() {
     this.currentView = 'list-view';
-  }
-
-  setAdditionalLists(val: boolean) {
-    this.sharedService.setAdditionalListsMenu(val);
-  }
-
-  public updateInActiveIdeaList(list) {
-    this.inActiveIdeasList = list.filter(val => !val.is_active);
-  }
-
-  public updateActiveIdeaList(list) {
-    this.activeIdeasList = list.filter(val => val.is_active)
-  }
-
-  public updateUserIdeaList(list) {
-    this.userList = list.filter((idea, index) => index <= 2);
-  }
-
-  public manageActiveInactive(status, list_id) {
-    if (this.activeIdeasList.length < 10) {
-      this.ideaListProvider.manageActiveInactive({uid: this.userId, listId: list_id, mode: status})
-        .subscribe(() => {
-            this.getIdeasList();
-          },
-          err => console.log('err', err));
-    } else {
-      // TODO: Replace with internal Alert system.
-      alert('First you have to delete another Idea list, then try again.');
-    }
-  }
-
-  public getIdeasList() {
-    this.ideaListProvider.getIdeasList({uid: this.userId})
-      .subscribe(res => {
-          this.ideaListProvider.setIdeaListData(res);
-        },
-        err => console.log('err', err));
   }
 
   public appendPGRImage(pgr) {

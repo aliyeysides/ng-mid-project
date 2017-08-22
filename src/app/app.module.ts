@@ -4,7 +4,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-
 /* Bootstrap component */
 import {AppComponent} from './app.component';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';

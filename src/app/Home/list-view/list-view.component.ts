@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {Idea} from '../../shared/models/idea';
 import {Subscription} from 'rxjs/Subscription';
 import {ChartService} from '../../shared/charts/chart.service';
+import {SignalService} from '../../shared/signal.service';
 
 @Component({
   selector: 'app-list-view',
@@ -46,7 +47,8 @@ export class ListViewComponent implements OnInit {
 
   constructor(private sharedService: SharedService,
               private router: Router,
-              private chartService: ChartService) {
+              private chartService: ChartService,
+              private signalService: SignalService) {
   }
 
   ngOnInit() {
@@ -242,53 +244,15 @@ export class ListViewComponent implements OnInit {
   }
 
   checkIfUserList(listName) {
-    switch (listName) {
-      case 'Ideas for You':
-      case 'Holding':
-      case 'Watching':
-        return true;
-      default:
-        return false;
-    }
+    return this.sharedService.checkIfUserList(listName);
   }
 
   checkIfBullList(listName) {
-    switch (listName) {
-      case 'Bulls of the Week':
-      case 'Best Growth Stocks':
-      case 'Best of the Large Caps':
-      case 'Best of the NASDAQ':
-      case 'Best of the Small Caps':
-      case 'Buy the Dips':
-      case 'Best Under $10':
-      case 'Best Value Stocks':
-      case 'Insider Confidence':
-      case 'Money Makers':
-      case 'Relative Strength Champs':
-      case 'Money Flow Champs':
-      case 'Analyst Darlings':
-      case 'Power Gauge Rating Upgrades':
-      case 'Best of the Dow':
-      case 'Earnings Champs':
-      case 'Upcoming Earnings Bulls':
-        return true;
-      default:
-        return false;
-    }
+    return this.sharedService.checkIfBullList(listName);
   }
 
   checkIfBearList(listName) {
-    switch (listName) {
-      case 'Sell the Rallies':
-      case 'Bears of the Week':
-      case 'Power Gauge Rating Downgrades':
-      case 'Don\'t Fight the Shorts':
-      case 'Dogs of the Dow':
-      case 'Upcoming Earnings Bears':
-        return true;
-      default:
-        return false;
-    }
+    return this.sharedService.checkIfBearList(listName);
   }
 
   gotoPanelView() {
@@ -300,83 +264,23 @@ export class ListViewComponent implements OnInit {
   }
 
   public appendPGRImage(pgr) {
-    const imageUrl = 'assets/imgs/';
-    if (pgr === 1) {
-      return imageUrl + 'arc_VeryBearish.svg';
-    } else if (pgr === 2) {
-      return imageUrl + 'arc_Bearish.svg';
-    } else if (pgr === 3) {
-      return imageUrl + 'arc_Neutral.svg';
-    } else if (pgr === 4) {
-      return imageUrl + 'arc_Bullish.svg';
-    } else if (pgr === 5) {
-      return imageUrl + 'arc_VeryBullish.svg';
-    } else {
-      return imageUrl + 'arc_None.svg';
-    }
+    return this.signalService.appendPGRImage(pgr);
   }
 
-  public appendPGRText(pgr): string {
-    if (pgr === 1) {
-      return 'Very Bearish';
-    } else if (pgr === 2) {
-      return 'Bearish';
-    } else if (pgr === 3) {
-      return 'Neutral';
-    } else if (pgr === 4) {
-      return 'Bullish';
-    } else if (pgr === 5) {
-      return 'Very Bullish';
-    } else {
-      return 'N/A';
-    }
+  public appendPGRText(pgr) {
+    return this.signalService.appendPGRText(pgr);
   }
 
-  public appendPGRClass(pgr): string {
-    if (pgr === 1) {
-      return 'VeryBearish';
-    } else if (pgr === 2) {
-      return 'Bearish';
-    } else if (pgr === 3) {
-      return 'Neutral';
-    } else if (pgr === 4) {
-      return 'Bullish';
-    } else if (pgr === 5) {
-      return 'VeryBullish';
-    } else {
-      return '';
-    }
+  public appendPGRClass(pgr) {
+    return this.signalService.appendPGRClass(pgr);
   }
 
-  public appendSliderClass(pgr: number): string {
-    switch (pgr) {
-      case 5:
-        return 'slider-veryBullish';
-      case 4:
-        return 'slider-bullish';
-      case 3:
-        return 'slider-neutral';
-      case 2:
-        return 'slider-bearish';
-      case 1:
-        return 'slider-veryBearish';
-    }
+  public appendSliderClass(pgr) {
+    return this.signalService.appendSliderClass(pgr);
   }
 
-  public appendSliderBarClass(pgr: number): string {
-    switch (pgr) {
-      case 5:
-        return 'sliderbar-veryBullish';
-      case 4:
-        return 'sliderbar-bullish';
-      case 3:
-        return 'sliderbar-neutral';
-      case 2:
-        return 'sliderbar-bearish';
-      case 1:
-        return 'sliderbar-veryBearish';
-    }
+  public appendSliderBarClass(pgr) {
+    return this.signalService.appendSliderBarClass(pgr);
   }
-
 
 }

@@ -1,8 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Http, URLSearchParams } from '@angular/http';
-import { Subject } from "rxjs/Subject";
-import { Observable } from 'rxjs/Rx';
-import { environment } from '../../environments/environment';
 
 @Injectable()
 export class SignalService {
@@ -74,4 +70,83 @@ export class SignalService {
 
 		return -1; // no sell or buy signal
 	}
+
+  public appendPGRImage(pgr) {
+    const imageUrl = 'assets/imgs/';
+    if (pgr === 1) {
+      return imageUrl + 'arc_VeryBearish.svg';
+    } else if (pgr === 2) {
+      return imageUrl + 'arc_Bearish.svg';
+    } else if (pgr === 3) {
+      return imageUrl + 'arc_Neutral.svg';
+    } else if (pgr === 4) {
+      return imageUrl + 'arc_Bullish.svg';
+    } else if (pgr === 5) {
+      return imageUrl + 'arc_VeryBullish.svg';
+    } else {
+      return imageUrl + 'arc_None.svg';
+    }
+  }
+
+  public appendPGRText(pgr): string {
+    if (pgr === 1) {
+      return 'Very Bearish';
+    } else if (pgr === 2) {
+      return 'Bearish';
+    } else if (pgr === 3) {
+      return 'Neutral';
+    } else if (pgr === 4) {
+      return 'Bullish';
+    } else if (pgr === 5) {
+      return 'Very Bullish';
+    } else {
+      return 'N/A';
+    }
+  }
+
+  public appendPGRClass(pgr): string {
+    if (pgr === 1) {
+      return 'VeryBearish';
+    } else if (pgr === 2) {
+      return 'Bearish';
+    } else if (pgr === 3) {
+      return 'Neutral';
+    } else if (pgr === 4) {
+      return 'Bullish';
+    } else if (pgr === 5) {
+      return 'VeryBullish';
+    } else {
+      return '';
+    }
+  }
+
+  public appendSliderClass(pgr: number): string {
+    switch (pgr) {
+      case 5:
+        return 'slider-veryBullish';
+      case 4:
+        return 'slider-bullish';
+      case 3:
+        return 'slider-neutral';
+      case 2:
+        return 'slider-bearish';
+      case 1:
+        return 'slider-veryBearish';
+    }
+  }
+
+  public appendSliderBarClass(pgr: number): string {
+    switch (pgr) {
+      case 5:
+        return 'sliderbar-veryBullish';
+      case 4:
+        return 'sliderbar-bullish';
+      case 3:
+        return 'sliderbar-neutral';
+      case 2:
+        return 'sliderbar-bearish';
+      case 1:
+        return 'sliderbar-veryBearish';
+    }
+  }
 }

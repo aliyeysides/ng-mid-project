@@ -1,10 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { SharedService } from '../../shared/shared.service';
-import { IdeaListProvider } from 'app/providers/idea-list.provider';
-import { Router } from '@angular/router';
-import { Idea } from '../../shared/models/idea';
-import { Subscription } from 'rxjs/Subscription';
-import { ChartService } from '../../shared/charts/chart.service';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {SharedService} from '../../shared/shared.service';
+import {IdeaListProvider} from 'app/providers/idea-list.provider';
+import {Router} from '@angular/router';
+import {Idea} from '../../shared/models/idea';
+import {Subscription} from 'rxjs/Subscription';
+import {ChartService} from '../../shared/charts/chart.service';
 
 @Component({
   selector: 'app-list-view',
@@ -14,19 +14,13 @@ import { ChartService } from '../../shared/charts/chart.service';
 
 export class ListViewComponent implements OnInit {
   @Output() toggleAdditionalIdeasLists: EventEmitter<any> = new EventEmitter();
+  private userId = '1024494';
   public ideaList: Array<object>;
-  public wholeIdeasList: Array<object>;
-  public userList: Array<object>;
   public additionalLists: boolean = false;
-  public whichAdditionalLists: string = 'Ideas';
   public mouseHoverOptionsMap: object = {};
   public popupOptionsMap: object = {};
   public currentView: string = 'list-view';
   public showHeadlines: boolean = false;
-  public mappingClassArray: Array<object>;
-  public inActiveIdeasList: Array<object>;
-  public activeIdeasList: Array<object>;
-  private userId = '1024494';
   public selectedStock: Idea;
   public selectedListId: string;
   public selectedListName: string;
@@ -52,55 +46,31 @@ export class ListViewComponent implements OnInit {
   };
 
   constructor(private sharedService: SharedService,
-    private router: Router,
-    private ideaListProvider: IdeaListProvider,
-    private chartService: ChartService) {
+              private router: Router,
+              private ideaListProvider: IdeaListProvider,
+              private chartService: ChartService) {
   }
 
   ngOnInit() {
-
-    this.ideaListProvider.wholeIdeasList$
-      .subscribe(res => {
-        this.wholeIdeasList = res;
-        this.updateInActiveIdeaList(this.wholeIdeasList);
-        this.updateActiveIdeaList(this.wholeIdeasList);
-        this.updateUserIdeaList(this.wholeIdeasList);
-      });
-
-    this.ideaListProvider.mappingClassArray$
-      .subscribe(res => {
-        this.mappingClassArray = res;
-      });
-
     this.sharedService.symbolListValues$
-      .switchMap(val => this.sharedService.symbolList({ listId: val['list_id'] }))
+      .switchMap(val => this.sharedService.symbolList({listId: val['list_id']}))
       .subscribe(res => {
-        this.orderByObject = {};
-        this.selectedListId = res['list_id'];
-        this.loadedStockIdeas = 0;
-        this.panelViewIdeasList = [];
-        this.ideaList = [];
-        this.ideaList = res['symbols'];
-        setTimeout(this.assignStockData(4), 0);
-        if (this.ideaList) {
-          this.selectStock(this.ideaList[0] as Idea);
+          this.clearOrderByObject();
+          this.clearIdeasLists();
+          this.selectedListId = res['list_id'];
+          this.ideaList = res['symbols'];
+          setTimeout(this.assignStockData(4), 0);
+          if (this.ideaList) {
+            this.selectStock(this.ideaList[0] as Idea);
+          }
+        },
+        err => {
+          this.sharedService.handleError(err)
         }
-      },
-      err => {
-        this.sharedService.handleError(err)
-      }
       );
 
-    this.sharedService.powerBarHeader$
-      .subscribe(res => {
-        this.selectedListName = res['name'];
-      });
-
-    this.sharedService.additionalLists$.subscribe(val => {
-      console.log('additionalLists', val);
-      this.additionalLists = val;
-    });
-
+    this.sharedService.powerBarHeader$.subscribe(res => this.selectedListName = res['name']);
+    this.sharedService.additionalLists$.subscribe(val => this.additionalLists = val);
   }
 
   updateChart() {
@@ -136,6 +106,21 @@ export class ListViewComponent implements OnInit {
           this.headlines = res['headlines'].filter((item, index) => index < 7);
         })
     }
+  }
+
+  clearOrderByObject() {
+    this.orderByObject = {};
+  }
+
+  setOrderByObject(val: string, order: boolean) {
+    this.orderByObject['field'] = val;
+    this.orderByObject['ascending'] = order;
+  }
+
+  clearIdeasLists() {
+    this.loadedStockIdeas = 0;
+    this.panelViewIdeasList = [];
+    this.ideaList = [];
   }
 
   assignSelectedStock(res) {
@@ -175,20 +160,21 @@ export class ListViewComponent implements OnInit {
       let ele = document.getElementById(chartClass);
       ele.removeChild(ele.childNodes[0]);
     }
-    this.chartService.interactiveAreaChartControler.init({ data: chartData, id: chartClass });
+    this.chartService.interactiveAreaChartControler.init({data: chartData, id: chartClass});
   }
 
   assignStockData(amount: number) {
     let loadNum = this.loadedStockIdeas + amount; // 0 + 4
     if (this.ideaList && this.loadedStockIdeas < this.ideaList.length) {
-      for (let i = this.loadedStockIdeas; i < loadNum; i++) {
-        const stock = this.ideaList[i];
-        this.loadedStockIdeas++;
-        this.getSelectedStockData(stock as Idea, function (res) {
-          this.orderByObject = {};
-          this.panelViewIdeasList.push(res);
-        }.bind(this));
-      }
+      this.ideaList.map((stock, index) => {
+        if (index >= this.loadedStockIdeas && index < loadNum) {
+          this.getSelectedStockData(stock as Idea, res => {
+            this.clearOrderByObject();
+            this.panelViewIdeasList.push(res);
+            this.loadedStockIdeas++;
+          })
+        }
+      })
     }
   }
 
@@ -313,47 +299,6 @@ export class ListViewComponent implements OnInit {
 
   gotoListView() {
     this.currentView = 'list-view';
-  }
-
-  setAdditionalLists(val: boolean) {
-    this.sharedService.setAdditionalListsMenu(val);
-  }
-
-  public updateInActiveIdeaList(list) {
-    this.inActiveIdeasList = list.filter(val => !val.is_active);
-  }
-
-  public updateActiveIdeaList(list) {
-    this.activeIdeasList = list.filter(val => val.is_active)
-  }
-
-  public updateUserIdeaList(list) {
-    this.userList = list.filter((idea, index) => index <= 2 );
-  }
-
-  public manageActiveInactive(status, list_id) {
-    if (this.activeIdeasList.length < 10) {
-      this.ideaListProvider.manageActiveInactive({ uid: this.userId, listId: list_id, mode: status })
-        .subscribe(res => {
-          this.getIdeasList();
-        },
-        err => console.log('err', err));
-    } else {
-      alert('First you have to delete another Idea list, then try again.');
-    }
-  }
-
-  public getIdeasList() {
-    this.ideaListProvider.getIdeasList({ uid: this.userId })
-      .subscribe(res => {
-        this.ideaListProvider.setIdeaListData(res);
-      },
-      err => console.log('err', err));
-
-  }
-  setOrderByObject(val: string, order: boolean) {
-    this.orderByObject['field'] = val;
-    this.orderByObject['ascending'] = order;
   }
 
   public appendPGRImage(pgr) {

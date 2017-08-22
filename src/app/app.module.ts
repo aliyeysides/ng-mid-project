@@ -4,7 +4,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-
 /* Bootstrap component */
 import {AppComponent} from './app.component';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
@@ -12,7 +11,7 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 /* Modules */
 import {SharedModule} from './shared/shared.module';
 import {HomeModule} from './Home/home.module';
-import {IdeasModule} from './Home/ideas/ideas.module';
+import {IdeasModule} from './Home/pinned-ideas/ideas.module';
 import {DiscoveryModule} from './discovery/discovery.module';
 import {InsightsModule} from './insights/insights.module';
 import {StockReportModule} from './stock-report/stock.module';

@@ -34,7 +34,7 @@ export class IdeasComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getIdeasList();
+    this.getPinnedIdeaLists();
     this.updateUserList();
     this.ideaListProvider.wholeIdeasList$
       .subscribe(res => {
@@ -43,7 +43,7 @@ export class IdeasComponent implements OnInit {
       });
   }
 
-  public getIdeasList() {
+  public getPinnedIdeaLists() {
     this.ideaListLoading = this.ideaListProvider.getIdeasList({uid: this.userId})
       .subscribe(res => {
           this.ideaListProvider.setIdeaListData(res);
@@ -77,12 +77,12 @@ export class IdeasComponent implements OnInit {
     this.sharedService.userList(this.userId)
       .subscribe(res => {
           this.userList = res;
-          this.updateActiveList(this.userList[0]);
+          this.updateActiveListSymbols(this.userList[0]);
         },
         err => console.log('err', err));
   }
 
-  public updateActiveList(val) {
+  public updateActiveListSymbols(val) {
     if (this.activeUserList !== val) {
       this.activeUserList = val;
       this.loading = this.sharedService.symbolList({userId: this.userId, listId: this.activeUserList['list_id']})
@@ -99,7 +99,7 @@ export class IdeasComponent implements OnInit {
   public manageActiveInactive(status, list_id) {
     this.ideaListProvider.manageActiveInactive({uid: this.userId, listId: list_id, mode: status})
       .subscribe(() => {
-          this.getIdeasList();
+          this.getPinnedIdeaLists();
         },
         err => console.log('err', err));
   }

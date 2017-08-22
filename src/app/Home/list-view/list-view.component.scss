@@ -125,6 +125,7 @@
 
 
 .current-list__container {
+			border-left: $border-line--W;
 
 	.sort-header {
 		text-transform: uppercase;
@@ -148,6 +149,7 @@
 		height: 100vh;
 		overflow-y: scroll;
 		background-color: $background--LT;
+
     	padding-bottom: 324px;
 
 		.list__container {

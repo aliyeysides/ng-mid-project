@@ -476,8 +476,8 @@ $(document).ready(function () {
 //   });q
 //
 //
-  $(".collapse-sidebar").click(function () {
-    $(".sidebar__container").toggleClass("collapsed");
+  $(".collapse-side-nav").click(function () {
+    $(".side-nav__container").toggleClass("collapsed");
     $(".body").toggleClass("collapsed");
   });
 

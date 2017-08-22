@@ -1,6 +1,6 @@
 @import 'variables';
 
-
+ 
 
 p, h1, h2, h3, h4 span, label, li, a, button {
   font-family: $font-stack;
@@ -20,7 +20,7 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-  font-weight: 300;
+  font-weight: 300 !important;
   font-size: 36px;
   margin-bottom: 20px;
   line-height: 1.3;

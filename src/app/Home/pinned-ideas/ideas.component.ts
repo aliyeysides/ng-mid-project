@@ -1,8 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {SharedService} from '../../shared/shared.service';
-import {SignalService} from '../../shared/signal.service';
 import {IdeaListProvider} from 'app/providers/idea-list.provider';
-import {Idea} from '../../shared/models/idea';
 import {Subscription} from 'rxjs/Subscription';
 
 import {mappingClassArray} from './ideasMappingClassArray';
@@ -17,10 +15,9 @@ import {mappingClassArray} from './ideasMappingClassArray';
 export class IdeasComponent implements OnInit {
   private userId = '1024494';
   public ideasList: Array<object>;
-  public activeIdeasList: Array<object>;
   public userList: Array<object> = [];
-  public symbolList: Array<object>;
-  public activeUserList = {name: ''};
+  public themeList: Array<object>;
+  public activeIdeasList: Array<object>;
   public selectedActiveList: Array<object>;
   public selected: string = 'Holding';
   public additionalLists: boolean = false;
@@ -29,21 +26,26 @@ export class IdeasComponent implements OnInit {
   public mappingClassArray = mappingClassArray;
 
   constructor(private sharedService: SharedService,
-              private signalService: SignalService,
               private ideaListProvider: IdeaListProvider) {
   }
 
   ngOnInit() {
-    this.getIdeasList();
-    this.updateUserList();
+    this.getPinnedIdeaLists();
     this.ideaListProvider.wholeIdeasList$
       .subscribe(res => {
-        this.ideasList = res;
-        this.updateActiveIdeaList(this.ideasList);
+        let list = this.parseListObject(res);
+        this.updateActiveIdeaList(list);
       });
   }
 
-  public getIdeasList() {
+  public parseListObject(obj): Array<object> {
+    this.ideasList = obj[0]['idea_lists'];
+    this.themeList = obj[1]['theme_lists'];
+    this.userList = obj[2]['user_lists'];
+    return this.userList.concat(this.ideasList, this.themeList);
+  }
+
+  public getPinnedIdeaLists() {
     this.ideaListLoading = this.ideaListProvider.getIdeasList({uid: this.userId})
       .subscribe(res => {
           this.ideaListProvider.setIdeaListData(res);
@@ -52,9 +54,7 @@ export class IdeasComponent implements OnInit {
   }
 
   public updateActiveIdeaList(list) {
-    this.activeIdeasList = list.filter(function (val) {
-      return val.is_active;
-    });
+    this.activeIdeasList = list.filter(val => val.is_active);
   }
 
   public getActiveClasses(listName) {
@@ -75,41 +75,12 @@ export class IdeasComponent implements OnInit {
     }
   }
 
-  public updateUserList() {
-    this.sharedService.userList(this.userId)
-      .subscribe(res => {
-          this.userList = res;
-          this.updateActiveList(this.userList[0]);
-        },
-        err => console.log('err', err));
-  }
-
-  public updateActiveList(val) {
-    if (this.activeUserList !== val) {
-      this.activeUserList = val;
-      this.loading = this.sharedService.symbolList({userId: this.userId, listId: this.activeUserList['list_id']})
-        .subscribe(res => {
-            this.symbolList = res['symbols'];
-            let ideas = this.castIdeaObjects(this.symbolList);
-            this.sharedService.setSymbolListValues(ideas);
-            ideas.map(res => res['parsedSignals'] = this.signalService.parseSignal(res['signals']))
-          },
-          err => console.log('err', err));
-    }
-  }
-
   public manageActiveInactive(status, list_id) {
     this.ideaListProvider.manageActiveInactive({uid: this.userId, listId: list_id, mode: status})
       .subscribe(() => {
-          this.getIdeasList();
+          this.getPinnedIdeaLists();
         },
         err => console.log('err', err));
-  }
-
-  public castIdeaObjects(symbols: Array<object>): Array<Idea> {
-    return symbols.map(res => {
-      return res as Idea;
-    });
   }
 
   public toggleAdditionalLists() {

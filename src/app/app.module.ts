@@ -10,7 +10,7 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 /* Modules */
 import {SharedModule} from './shared/shared.module';
-import {HomeModule} from './Home/home.module';
+import {IdeasModule} from './Ideas/ideas.module';
 import {DiscoveryModule} from './discovery/discovery.module';
 import {InsightsModule} from './insights/insights.module';
 import {StockReportModule} from './stock-report/stock.module';
@@ -50,7 +50,7 @@ const loadingMaskConfig: BusyConfig = ({
     ReactiveFormsModule,
     HttpModule,
     SharedModule,
-    HomeModule,
+    IdeasModule,
     DiscoveryModule,
     InsightsModule,
     StockReportModule,

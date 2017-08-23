@@ -26,11 +26,11 @@
         </svg>
       </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" triggers="" [popover]="content" placement="left" [isOpen]="showPopupTooltip">
       <a (click)="popoverClicked($event)" class="nav-link">
         <span dropdown>
           <a dropdownToggle (click)="popoverClicked($event)" href="#">
-                    <svg triggers="" [popover]="content" placement="left" [isOpen]="showPopupTooltip" width="300px"
+                    <svg width="300px"
                          height="300px" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg"
                          xmlns:xlink="http://www.w3.org/1999/xlink">
           <defs></defs>

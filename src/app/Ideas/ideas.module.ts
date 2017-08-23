@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {SharedModule} from '../shared/shared.module';
 
-import {HomeComponent} from './home.component';
+import {IdeasComponent} from './ideas.component';
 import {HomeService} from './service/home.service';
 import {ListViewComponent} from './list-view/list-view.component';
 import {ChartPanelComponent} from './chart-panel/chart-panel.component';
@@ -14,7 +14,7 @@ import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import {BusyModule} from 'angular2-busy';
 import {ChartService} from '../shared/charts/chart.service';
-import {IdeasComponent} from './pinned-ideas/ideas.component';
+import {PinnedIdeasComponent} from './pinned-ideas/pinned-ideas.component';
 
 @NgModule({
   imports: [
@@ -27,10 +27,10 @@ import {IdeasComponent} from './pinned-ideas/ideas.component';
     BusyModule
   ],
   exports: [
-    HomeComponent
+    PinnedIdeasComponent
   ],
-  declarations: [HomeComponent, IdeasComponent, ListViewComponent, OnboardingComponent, ChartPanelComponent],
+  declarations: [IdeasComponent, PinnedIdeasComponent, ListViewComponent, OnboardingComponent, ChartPanelComponent],
   providers: [HomeService, ChartService]
 })
-export class HomeModule {
+export class IdeasModule {
 }

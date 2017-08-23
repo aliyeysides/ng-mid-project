@@ -19,6 +19,7 @@
 		position: absolute;
 		right:20px;
 		height: 35px;
+		top: 3px;
 
 
 		li {
@@ -27,9 +28,6 @@
 			margin-left: 20px;
 
 			a {
-				padding-top: 9px;
-				height: 35px;
-				width: 35px;
 
 				svg {
 					width: 26px;
@@ -37,7 +35,7 @@
 				}
 
 				svg g {
-					fill: $font-color--MD;
+					fill: $font-color;
 				}
 			}
 

@@ -5,7 +5,7 @@
   <div *ngIf="additionalLists != true"
        [ngClass]="{'list-view__actionbar--bulllist' : checkIfBullList(selectedListName), 'list-view__actionbar--userlist' : checkIfUserList(selectedListName), 'list-view__actionbar--bearlist' : checkIfBearList(selectedListName)}"
        class="list-view__actionbar row no-gutters">
-    <div class="list__header col-md-6">
+    <div class="list__header col-lg-6">
       <div (click)="toggleAdditionalLists(); $event.stopPropagation()">BUTTON</div>
       <p class="list__title">
         <span class="list__title"><i tooltip="This is a user list." *ngIf="checkIfUserList(selectedListName)"
@@ -85,10 +85,6 @@
           </ul>
         </li>
       </ul>
-    </div>
-
-    <div class="col-md-6 search__container">
-      <symbol-search></symbol-search>
     </div>
   </div>
   <!-- END: ACTION BAR  -->

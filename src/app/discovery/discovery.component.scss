@@ -11,16 +11,17 @@
 .discovery__body {
 
   .body__top {
-    background-image: linear-gradient(0deg, #6F7689 0%, #313540 97%);
+    //background-image: linear-gradient(0deg, #6F7689 0%, #313540 97%);
+    background-color: $background--LT3;
     height: 220px;
     position: relative;
     padding-top: 10px;
 
     .row--header {
+      padding-left: 65px;
 
       h1 {
-        color: #ffffff;
-        margin-left: 55px;
+        //color: #ffffff;
         text-align: left;
         margin-bottom:15px;
       }
@@ -32,7 +33,7 @@
       .row {
         position: relative;
         height: 115px;
-        background: rgba(0,0,0,0.4);
+        background: $background--DK;
         padding:10px;
         border-radius: 30px 0px 0px 30px;
         min-width: 905px;
@@ -44,8 +45,8 @@
           height: 130px;
           border-radius: 65px;
           top:-10px;
-          left:-20px;
-          box-shadow: 2px 1px 4px rgba(0,0,0,0.3);
+          left:-35px;
+          //box-shadow: 2px 1px 4px rgba(0,0,0,0.3);
           overflow:hidden;
           
           img {
@@ -219,7 +220,7 @@
   .discovery-results__slider {
     height: 280px;
     position: relative;
-    background-color: #E3E3E3;
+    background-color: $background--LT;
     margin-bottom: 2px;
     padding:10px 70px 0;
 
@@ -231,8 +232,8 @@
       margin: 10px 0 0;
       font-weight: 400;
       font-size: 22px;
-      color: #4a4a4a;
-      line-height: 1;
+      color: $font-color;
+      line-height: 1.7;
 
       span {
         font-weight: 700;
@@ -273,7 +274,7 @@
       white-space: nowrap;
       overflow: hidden;
       padding: 0 15px;
-      margin: 0 0 0 -15px;
+      margin: 0 0 -15px -15px;
       height: 230px;
 
       .tile__wrapper {

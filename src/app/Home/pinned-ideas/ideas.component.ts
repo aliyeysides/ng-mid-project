@@ -57,10 +57,10 @@ export class IdeasComponent implements OnInit {
     this.activeIdeasList = list.filter(val => val.is_active);
   }
 
-  public getActiveClasses(listName) {
-    let selectedClass = (this.selected == listName) ? ' selected' : '';
-    return this.mappingClassArray[listName]['style'] + `${selectedClass}`;
-  }
+  // public getActiveClasses(listName) {
+  //   let selectedClass = (this.selected == listName) ? ' selected' : '';
+  //   return this.mappingClassArray[listName]['style'] + `${selectedClass}`;
+  // }
 
   public selectedIdeasList(list) {
     this.sharedService.setPowerBarHeader(list);

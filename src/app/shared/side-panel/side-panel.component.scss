@@ -105,6 +105,10 @@
 				background-color: $link-blue;
 				font-weight: 600;
 			}
+      li.active {
+        background-color: $link-blue;
+        font-weight: 600;
+      }
 		}
 	}
 }

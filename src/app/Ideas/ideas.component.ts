@@ -3,10 +3,10 @@ import {HomeService} from './service/home.service';
 
 @Component({
   selector: 'mid-tier-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  templateUrl: './ideas.component.html',
+  styleUrls: ['./ideas.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class IdeasComponent implements OnInit {
 
   constructor(private homeService: HomeService) {
 

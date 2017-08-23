@@ -7,12 +7,12 @@ import {mappingClassArray} from './ideasMappingClassArray';
 
 @Component({
   selector: 'mid-tier-ideas',
-  templateUrl: './ideas.component.html',
-  styleUrls: ['./ideas.component.scss'],
+  templateUrl: './pinned-ideas.component.html',
+  styleUrls: ['./pinned-ideas.component.scss'],
   encapsulation: ViewEncapsulation.None
 
 })
-export class IdeasComponent implements OnInit {
+export class PinnedIdeasComponent implements OnInit {
   private userId = '1024494';
   public ideasList: Array<object>;
   public userList: Array<object> = [];
@@ -57,10 +57,10 @@ export class IdeasComponent implements OnInit {
     this.activeIdeasList = list.filter(val => val.is_active);
   }
 
-  public getActiveClasses(listName) {
-    let selectedClass = (this.selected == listName) ? ' selected' : '';
-    return this.mappingClassArray[listName]['style'] + `${selectedClass}`;
-  }
+  // public getActiveClasses(listName) {
+  //   let selectedClass = (this.selected == listName) ? ' selected' : '';
+  //   return this.mappingClassArray[listName]['style'] + `${selectedClass}`;
+  // }
 
   public selectedIdeasList(list) {
     this.sharedService.setPowerBarHeader(list);

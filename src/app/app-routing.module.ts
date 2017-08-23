@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 /*import { AppComponent } from './app.component';*/
-import { HomeComponent } from './Home/home.component';
+import { IdeasComponent } from './Ideas/ideas.component';
 /*import { IdeasComponent } from './ideas/ideas.component';*/
 import { DiscoveryComponent } from './discovery/discovery.component';
 import { InsightsComponent } from './insights/insights.component';
@@ -13,9 +13,9 @@ import { StockComponent } from './stock-report/stock.component';
 
 const routes: Routes = [
 	{ path: '', redirectTo: '/home', pathMatch: 'full' },
-	{ path: 'home', component: HomeComponent },
-	{ path: 'discovery', component: DiscoveryComponent },
-	{ path: 'insights', component: InsightsComponent },
+  { path: 'home', component: InsightsComponent },
+  { path: 'ideas', component: IdeasComponent },
+  { path: 'discovery', component: DiscoveryComponent },
 	{ path: 'report', component: StockComponent },
   { path: 'report/:symbol', component: StockComponent }
 ];

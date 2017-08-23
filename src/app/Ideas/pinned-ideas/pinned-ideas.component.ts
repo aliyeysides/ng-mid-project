@@ -57,10 +57,12 @@ export class PinnedIdeasComponent implements OnInit {
     this.activeIdeasList = list.filter(val => val.is_active);
   }
 
-  // public getActiveClasses(listName) {
-  //   let selectedClass = (this.selected == listName) ? ' selected' : '';
-  //   return this.mappingClassArray[listName]['style'] + `${selectedClass}`;
-  // }
+  /* public getActiveClasses(listName) {
+     let selectedClass = (this.selected == listName) ? ' selected' : '';
+     return this.mappingClassArray[listName]['style'] + `${selectedClass}`;
+     [ngClass]="getActiveClasses(list.name)"
+     [src]="'assets/imgs/'+mappingClassArray[list.name].imgName"
+  } */
 
   public selectedIdeasList(list) {
     this.sharedService.setPowerBarHeader(list);

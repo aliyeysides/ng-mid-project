@@ -71,6 +71,8 @@ export class ListViewComponent implements OnInit {
 
     this.sharedService.powerBarHeader$.subscribe(res => this.selectedListName = res['name']);
     this.sharedService.additionalLists$.subscribe(val => this.additionalLists = val);
+
+    this.getWordPressListDescriptions();
   }
 
   updateChart() {
@@ -261,6 +263,11 @@ export class ListViewComponent implements OnInit {
 
   gotoListView() {
     this.currentView = 'list-view';
+  }
+
+  getWordPressListDescriptions() {
+    this.sharedService.getWordPressJson('45')
+      .subscribe(res => console.log(res));
   }
 
   public appendPGRImage(pgr) {

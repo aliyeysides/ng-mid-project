@@ -29,6 +29,7 @@ export class SharedService {
   private deleteSymbolFromListParams: URLSearchParams;
   private getStockCardDataParams: URLSearchParams;
   private getHeadlinesParams: URLSearchParams;
+  private getInsightsParams: URLSearchParams;
 
   environmentName = environment.envName;
   apiHostName = environment.envProtocol + '://' + environment.envHostName;
@@ -39,6 +40,7 @@ export class SharedService {
     this.deleteSymbolFromListParams = new URLSearchParams;
     this.getStockCardDataParams = new URLSearchParams;
     this.getHeadlinesParams = new URLSearchParams;
+    this.getInsightsParams = new URLSearchParams;
   }
 
   public setSymbolListValues(data) {
@@ -114,6 +116,12 @@ export class SharedService {
     const getHeadlinesUrl = `${this.apiHostName}/CPTRestSecure/app/xigniteNews/getHeadlines?`;
     this.getHeadlinesParams.set('symbol', symbol);
     return this.getJson(getHeadlinesUrl, this.getHeadlinesParams);
+  }
+
+  public getWordPressJson(id: string) {
+    const insightsUrl = `${this.apiHostName}/insights/?json=secursive.get_product_updates&dev=1`;
+    this.getInsightsParams.set('id', id);
+    return this.getJson(insightsUrl, this.getInsightsParams);
   }
 
   public getJson(url, params): Observable<Array<object>>{

@@ -5,7 +5,7 @@
   <div *ngIf="additionalLists != true"
        [ngClass]="{'list-view__actionbar--bulllist' : checkIfBullList(selectedListName), 'list-view__actionbar--userlist' : checkIfUserList(selectedListName), 'list-view__actionbar--bearlist' : checkIfBearList(selectedListName)}"
        class="list-view__actionbar row no-gutters">
-    <div class="list__header col-md-6">
+    <div class="list__header col-lg-6">
       <div (click)="toggleAdditionalLists(); $event.stopPropagation()">BUTTON</div>
       <p class="list__title">
         <span class="list__title"><i tooltip="This is a user list." *ngIf="checkIfUserList(selectedListName)"
@@ -86,10 +86,6 @@
         </li>
       </ul>
     </div>
-
-    <div class="col-md-6 search__container">
-      <symbol-search></symbol-search>
-    </div>
   </div>
   <!-- END: ACTION BAR  -->
 
@@ -101,7 +97,7 @@
       <div class="current-list__container col-md-6">
         <div class="sort-header row no-gutters">
           <div class="col-lg-2 col-xl-2 ">
-            <p class="active">Rating</p>
+            <p class="">Rating</p>
           </div>
           <div class="col-lg-3 col-xl-2 ">
             <p style="text-align: left;">Ticker</p>
@@ -118,9 +114,9 @@
         </div>
         <!-- LIST: HOLDING  -->
         <div class="current-list  current-list--holding ">
-          <ul *ngIf="!ideaList?.length" class="list__container">
+          <div *ngIf="!ideaList?.length" class="list__container">
             <p class="empty-list__text">There are currently no stocks in this list.</p>
-          </ul>
+          </div>
           <ul *ngIf="ideaList?.length" class="list__container">
             <li [ngClass]="{'active selected' : selectedStock == idea}"
                 (click)="toggleOptions(idea, $event); selectStock(idea)" (mouseenter)="toggleHoverOptions(idea)"
@@ -450,7 +446,9 @@
   <div [ngBusy]="loading" infinite-scroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="1000"
        (scrolled)="onScroll()" [scrollWindow]="false" *ngIf="currentView == 'panel-view' && additionalLists != true"
        class="view-option--panel">
-    <div *ngIf="!ideaList?.length">There are currently no stocks in this list.</div>
+    <div *ngIf="!ideaList?.length">
+      <p class="empty-list__text">There are currently no stocks in this list.</p>
+    </div>
     <div *ngIf="ideaList?.length" class="row no-gutters">
 
       <!--  PANEL  -->

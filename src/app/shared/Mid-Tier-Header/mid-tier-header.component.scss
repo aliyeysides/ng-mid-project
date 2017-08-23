@@ -10,73 +10,42 @@
 
 
 
-.nav__container {
-	margin-bottom: 0px;
-	padding-left:20px;
-	background-image: linear-gradient(0deg, #313540 0%, #313540 97%);
+.top-nav {
+	position: relative;
+	z-index: 100;
 	
-	.nav__main {
-	
-		.nav {
-			.nav-item {
-				padding:0 15px;
 
-				a {
-					color: rgba(255,255,255, 0.5);
-					font-size: 15px;
-					font-weight: 300;
-					line-height: 1.5;
-					letter-spacing: 0.1em;
-					white-space: nowrap;
-					margin-bottom:3px;
-					 
-					&:hover {
-						color: rgba(255,255,255, 1);
-						box-shadow: inset 0px 5px 0px #ffffff;
-						font-weight: 400;
-					}
+	.top-nav__contents {
+		position: absolute;
+		right:20px;
+		height: 35px;
+		top: 3px;
 
-					&:active {
-						color: rgba(255,255,255, 1);
-						box-shadow: inset 0px 5px 0px #ffffff;
-						font-weight: 400;
-					}
-				}
-				
-				a.active {
-					color: rgba(255,255,255, 1);
-					box-shadow: inset 0px 5px 0px #ffffff;
-					font-weight: 400;
+
+		li {
+			height: 35px;
+			width: 35px;
+			margin-left: 20px;
+
+			a {
+
+				svg {
+					width: 26px;
+					height: 26px;
 				}
 
-				&:hover {
-					background-color: transparent;
+				svg g {
+					fill: $font-color;
 				}
 			}
-		}
-	}
 
-	.nav__settings {
-		a {
-			i {
-				float: right;
-				font-size: 25px;
-				color: rgba(255,255,255, 0.5);
-				margin: 10px;
-				
-				&:hover {
-					float: right;
-					font-size: 25px;
-					color: rgba(255,255,255, 1);
-					margin: 10px;
+			&:hover {
+				svg g {
+					fill: $link-blue;
 				}
 			}
 		}
 	}
 }
 
-.nav>li>a:focus, .nav>li>a:hover {
-    text-decoration: none;
-    background-color: transparent;
-}
 

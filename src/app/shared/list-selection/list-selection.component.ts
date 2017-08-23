@@ -12,6 +12,10 @@ export class ListSelectionComponent implements OnInit {
   public additionalLists: boolean = false;
   public inActiveIdeasList: Array<object>;
   public activeIdeasList: Array<object>;
+  public inActiveThemeList: Array<object>;
+  public activeThemeList: Array<object>;
+  public ideaList: Array<object>;
+  public themeList: Array<object>;
   public userList: Array<object>;
   public mappingClassArray: Array<object>;
   public whichAdditionalLists: string = 'Ideas';
@@ -23,9 +27,11 @@ export class ListSelectionComponent implements OnInit {
   ngOnInit() {
     this.ideaListProvider.wholeIdeasList$
       .subscribe(res => {
-        this.updateInActiveIdeaList(res);
-        this.updateActiveIdeaList(res);
-        this.updateUserIdeaList(res);
+        this.parseListObject(res);
+        this.updateInActiveIdeaList();
+        this.updateActiveIdeaList();
+        this.updateInActiveThemeList();
+        this.updateActiveThemeList();
       });
 
     this.ideaListProvider.mappingClassArray$
@@ -61,16 +67,26 @@ export class ListSelectionComponent implements OnInit {
     }
   }
 
-  public updateInActiveIdeaList(list) {
-    this.inActiveIdeasList = list.filter(val => !val.is_active);
+  public updateInActiveIdeaList() {
+    this.inActiveIdeasList = this.ideaList.filter(val => !val['is_active']);
   }
 
-  public updateActiveIdeaList(list) {
-    this.activeIdeasList = list.filter(val => val.is_active)
+  public updateActiveIdeaList() {
+    this.activeIdeasList = this.ideaList.filter(val => val['is_active'])
   }
 
-  public updateUserIdeaList(list) {
-    this.userList = list.filter((idea, index) => index <= 2);
+  public updateInActiveThemeList() {
+    this.inActiveThemeList = this.themeList.filter(val => !val['is_active']);
+  }
+
+  public updateActiveThemeList() {
+    this.activeThemeList = this.themeList.filter(val => val['is_active'])
+  }
+
+  public parseListObject(list) {
+    this.ideaList = list[0]['idea_lists'];
+    this.themeList = list[1]['theme_lists'];
+    this.userList = list[2]['user_lists'];
   }
 
   checkIfBullList(listName) {

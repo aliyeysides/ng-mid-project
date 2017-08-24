@@ -257,6 +257,10 @@ export class ListViewComponent implements OnInit {
     return this.sharedService.checkIfBearList(listName);
   }
 
+  checkIfThemeList(listName) {
+    return this.sharedService.checkIfThemeList(listName);
+  }
+
   gotoPanelView() {
     this.currentView = 'panel-view';
   }

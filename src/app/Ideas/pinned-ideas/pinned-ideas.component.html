@@ -6,12 +6,12 @@
         <div class="list-category list-category--ideas">
         </div>
         <ul class="">
-            <li *ngFor="let list of activeIdeasList ; let i = index " (click)="selectedIdeasList(list)" class="list__option" >
+            <li *ngFor="let list of activeIdeasList ; let i = index " (click)="selectedIdeasList(list)" class="list__option" [ngClass]="getActiveClasses(list.name)">
                 <div class="list__image">
                     <button (click)="manageActiveInactive('deactivate',list.list_id);$event.stopPropagation()" type="button" class="close" aria-label="Close" *ngIf=" list.name!='Holding' && list.name!='Watching' && list.name!='Ideas for You'">
 						      <i class="fa fa-star" aria-hidden="true"></i>
 						    </button>
-                    <img class="align-absolute" >
+                    <img class="align-absolute" [src]="'assets/imgs/'+mappingClassArray[list.name].imgName">
                 </div>
                 <p class="list__label"> {{list.name}}</p>
             </li>

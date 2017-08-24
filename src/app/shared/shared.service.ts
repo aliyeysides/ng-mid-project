@@ -198,4 +198,28 @@ export class SharedService {
     }
   }
 
+  checkIfThemeList(listName) {
+    switch (listName) {
+      case 'Big Data':
+      case 'China Shops':
+      case 'Cybersecurity':
+      case 'Disruptors':
+      case 'E-Payments':
+      case 'Gold Standards':
+      case 'Internet Innovators':
+      case 'Social Butterflies':
+      case 'Video Games':
+      case 'Fashion & Luxury':
+      case 'Defense Titans':
+      case 'Earth-Friendly':
+      case 'Sin City':
+      case 'Health & Fitness':
+      case 'Cloud Computing':
+      case 'Upwardly Mobile':
+        return true;
+      default:
+        return false;
+    }
+  }
+
 }

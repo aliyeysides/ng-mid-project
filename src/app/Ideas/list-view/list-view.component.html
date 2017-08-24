@@ -3,7 +3,7 @@
 
   <!-- ROW: ACTION BAR  -->
   <div *ngIf="additionalLists != true"
-       [ngClass]="{'list-view__actionbar--bulllist' : checkIfBullList(selectedListName), 'list-view__actionbar--userlist' : checkIfUserList(selectedListName), 'list-view__actionbar--bearlist' : checkIfBearList(selectedListName)}"
+       [ngClass]="{'list-view__actionbar--bulllist' : checkIfBullList(selectedListName), 'list-view__actionbar--userlist' : checkIfUserList(selectedListName), 'list-view__actionbar--bearlist' : checkIfBearList(selectedListName), 'list-view__actionbar--themelist' : checkIfThemeList(selectedListName)}"
        class="list-view__actionbar row no-gutters">
     <div class="list__header col-lg-6">
       <div class="list__drop" (click)="toggleAdditionalLists(); $event.stopPropagation()">

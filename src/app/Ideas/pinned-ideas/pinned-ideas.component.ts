@@ -33,7 +33,7 @@ export class PinnedIdeasComponent implements OnInit {
     this.getPinnedIdeaLists();
     this.ideaListProvider.wholeIdeasList$
       .subscribe(res => {
-        let list = this.parseListObject(res);
+        const list = this.parseListObject(res);
         this.updateActiveIdeaList(list);
       });
   }
@@ -54,15 +54,16 @@ export class PinnedIdeasComponent implements OnInit {
   }
 
   public updateActiveIdeaList(list) {
+    console.log('activelist', list);
     this.activeIdeasList = list.filter(val => val.is_active);
   }
 
- /* public getActiveClasses(listName) {
+  public getActiveClasses(listName) {
      let selectedClass = (this.selected == listName) ? ' selected' : '';
      return this.mappingClassArray[listName]['style'] + `${selectedClass}`;
-     [ngClass]="getActiveClasses(list.name)"
-     [src]="'assets/imgs/'+mappingClassArray[list.name].imgName"
-  } */
+     // [ngClass]="getActiveClasses(list.name)"
+     // [src]="'assets/imgs/'+mappingClassArray[list.name].imgName"
+  }
 
   public selectedIdeasList(list) {
     this.sharedService.setPowerBarHeader(list);

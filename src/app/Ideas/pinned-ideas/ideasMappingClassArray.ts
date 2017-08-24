@@ -140,7 +140,7 @@ export const mappingClassArray: any = {
       'description': 'This theme list is all about this exact theme'
     },
 
-    'China Shop': {
+    'China Shops': {
       'style': 'list__option--themelist',
       'imgName': 'img_list-china.svg',
       'description': 'This theme list is all about this exact theme'
@@ -151,7 +151,7 @@ export const mappingClassArray: any = {
       'imgName': 'img_list-security.svg',
       'description': 'This theme list is all about this exact theme'
     },
-    
+
     'Disruptors': {
       'style': 'list__option--themelist',
       'imgName': 'img_list-disruptors.svg',
@@ -163,7 +163,7 @@ export const mappingClassArray: any = {
       'imgName': 'img_list-epayment.svg',
       'description': 'This theme list is all about this exact theme'
     },
-    
+
     'Gold Standards': {
       'style': 'list__option--themelist',
       'imgName': 'img_list-gold.svg',
@@ -187,7 +187,7 @@ export const mappingClassArray: any = {
       'imgName': 'img_list-videogames.svg',
       'description': 'This theme list is all about this exact theme'
     },
-    
+
     'Fashion & Luxury': {
       'style': 'list__option--themelist',
       'imgName': 'img_list-luxury.svg',
@@ -199,8 +199,8 @@ export const mappingClassArray: any = {
       'imgName': 'img_list-defense.svg',
       'description': 'This theme list is all about this exact theme'
     },
-    
-    'Earth Friendly': {
+
+    'Earth-Friendly': {
       'style': 'list__option--themelist',
       'imgName': 'img_list-ecofriendly.svg',
       'description': 'This theme list is all about this exact theme'

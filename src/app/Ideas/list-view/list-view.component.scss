@@ -320,7 +320,7 @@
 	}
 
 	.quick-view__panel {
-		padding: 20px 30px 300px;
+		padding: 30px 40px 300px;
 		overflow-y: scroll;
 		height: 100vh;
 
@@ -925,77 +925,6 @@
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-/*------------------------------------*\
-  #ADD-A-LIST
-\*------------------------------------*/
-
-
-
-
-.addlist__container {
-	height: 100vh;
-	overflow-y: scroll;
-
-	ul {
-	    margin-top: 0px;
-	    margin-left: 20px;
-	    margin-bottom:360px;
-
-		.list__option {
-			margin: 30px 0;
-
-			.list__image {
-				width: 100px;
-				height: 100px;
-				border: 3px solid #FFFFFF;
-				position: relative;
-				margin: 0px;
-				border-radius: 50px;
-			}
-
-			.list__option--description {
-
-				.list__title {
-					font-size: 18px;
-					line-height: 1.5;
-					font-weight: 600;
-					margin: 0px 0px 2px;
-				}
-
-				.list__description {
-					font-size: 14px;
-					line-height: 1.4;
-				}
-
-				.list__add {
-					color: $link-blue;
-					cursor: pointer;
-					font-size: 15px;
-					line-height: 1.5;
-					padding: 15px 0 0;
-				}
-
-				.close {
-					float:left;
-					opacity: 1;
-				}
-			}
-		}
-	}
-}
-
-
 
 
 

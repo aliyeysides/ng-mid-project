@@ -139,7 +139,9 @@ display: none;
 
 
 
-
+.list-selection__container .lists-container .lists ul .list-item {
+    background-color: #f5f5f5 !important;
+}
 
 
 
@@ -207,6 +209,23 @@ display: none;
         i {
           cursor: help;
         }
+      }
+    }
+
+    .list__drop {
+      float: left;
+      width: 60px;
+      height: 52px;
+      font-size: 22px;
+      position: relative;
+      cursor: pointer;
+
+      i {
+          color: #ffffff;
+      }
+      
+      &:hover  {
+        background-color: rgba(255,255,255,0.2);
       }
     }
 

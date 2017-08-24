@@ -2,20 +2,10 @@
 
 
 
-
 /*------------------------------------*\
   #LIST-CAROUSEL
 \*------------------------------------*/
 
-.row--header {
-
-	h1 {
-	  //color: #ffffff;
-	  margin-left: 55px;
-	  text-align: left;
-	  margin-bottom:0;
-	}
-}
 
 
 .list-carousel {
@@ -76,11 +66,11 @@
 
 				.close {
 					float: right;
-					font-size: 16px;
+					font-size: 15px;
 					line-height: 1;
 					color: $font-color !important;
 					text-shadow: 0 0 0 #fff !important;
-					opacity: .6;
+					opacity: .4;
 					margin: -2px -2px 0 0;
 
 					&:hover {

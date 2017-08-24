@@ -9,7 +9,7 @@
             <li *ngFor="let list of activeIdeasList ; let i = index " (click)="selectedIdeasList(list)" class="list__option" >
                 <div class="list__image">
                     <button (click)="manageActiveInactive('deactivate',list.list_id);$event.stopPropagation()" type="button" class="close" aria-label="Close" *ngIf=" list.name!='Holding' && list.name!='Watching' && list.name!='Ideas for You'">
-						      <span aria-hidden="true">&times;</span>
+						      <i class="fa fa-star" aria-hidden="true"></i>
 						    </button>
                     <img class="align-absolute" >
                 </div>

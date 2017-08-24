@@ -42,8 +42,8 @@
         </svg>
           </a>
               <ul *dropdownMenu class="dropdown-menu">
-                  <li *ngFor="let choice of items">
-                      <a (click)="choice.fn()" class="dropdown-item" href="{{choice.href}}" target="{{choice.target}}">{{choice.title}}</a>
+                  <li *ngFor="let choice of items" (click)="choice.fn()">
+                      <a class="dropdown-item" href="{{choice.href}}" target="{{choice.target}}">{{choice.title}}</a>
                   </li>
               </ul>
         </span>

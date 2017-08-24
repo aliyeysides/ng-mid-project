@@ -29,10 +29,10 @@
                 Rating</a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
                 <li [ngClass]="{'selected' : orderByObject['field'] == 'PGR' && orderByObject['ascending'] == false }"
-                    (click)="setOrderByObject('PGR', false)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Bullish</a>
+                    (click)="setOrderByObject('PGR', false, $event)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Bullish</a>
                 </li>
                 <li [ngClass]="{'selected' : orderByObject['field'] == 'PGR' && orderByObject['ascending'] == true }"
-                    (click)="setOrderByObject('PGR', true)"><a class="dropdown-subtoggle" tabindex="-1"
+                    (click)="setOrderByObject('PGR', true, $event)"><a class="dropdown-subtoggle" tabindex="-1"
                                                                href="#">Bearish</a></li>
               </ul>
             </li>
@@ -40,10 +40,10 @@
               <a class="dropdown-toggle dropdown-subtoggle" data-toggle="dropdown" tabindex="-1" href="#">Relevance</a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
                 <li [ngClass]="{'selected' : orderByObject['field'] == '' && orderByObject['ascending'] == true }"
-                    (click)="setOrderByObject('', true)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Most
+                    (click)="setOrderByObject('', true, $event)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Most
                   Relevant</a></li>
                 <li [ngClass]="{'selected' : orderByObject['field'] == '' && orderByObject['ascending'] == false }"
-                    (click)="setOrderByObject('', false)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Least
+                    (click)="setOrderByObject('', false, $event)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Least
                   Relevant</a></li>
               </ul>
             </li>
@@ -52,10 +52,10 @@
                 Name</a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
                 <li [ngClass]="{'selected' : orderByObject['field'] == 'name' && orderByObject['ascending'] == true }"
-                    (click)="setOrderByObject('name', true)"><a class="dropdown-subtoggle" tabindex="-1"
+                    (click)="setOrderByObject('name', true, $event)"><a class="dropdown-subtoggle" tabindex="-1"
                                                                 href="#">A-Z</a></li>
                 <li [ngClass]="{'selected' : orderByObject['field'] == 'name' && orderByObject['ascending'] == false }"
-                    (click)="setOrderByObject('name', false)"><a class="dropdown-subtoggle" tabindex="-1"
+                    (click)="setOrderByObject('name', false, $event)"><a class="dropdown-subtoggle" tabindex="-1"
                                                                  href="#">Z-A</a></li>
               </ul>
             </li>
@@ -64,10 +64,10 @@
                 Price</a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
                 <li [ngClass]="{'selected' : orderByObject['field'] == 'Last' && orderByObject['ascending'] == false }"
-                    (click)="setOrderByObject('Last', false)"><a class="dropdown-subtoggle" tabindex="-1" href="#">High
+                    (click)="setOrderByObject('Last', false, $event)"><a class="dropdown-subtoggle" tabindex="-1" href="#">High
                   to Low</a></li>
                 <li [ngClass]="{'selected' : orderByObject['field'] == 'Last' && orderByObject['ascending'] == true }"
-                    (click)="setOrderByObject('Last', true)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Low to
+                    (click)="setOrderByObject('Last', true, $event)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Low to
                   High</a></li>
               </ul>
             </li>
@@ -76,11 +76,11 @@
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
                 <li
                   [ngClass]="{'selected' : orderByObject['field'] == 'Percentage ' && orderByObject['ascending'] == false }"
-                  (click)="setOrderByObject('Percentage ', false)"><a class="dropdown-subtoggle" tabindex="-1" href="#">High
+                  (click)="setOrderByObject('Percentage ', false, $event)"><a class="dropdown-subtoggle" tabindex="-1" href="#">High
                   to Low</a></li>
                 <li
                   [ngClass]="{'selected' : orderByObject['field'] == 'Percentage ' && orderByObject['ascending'] == true }"
-                  (click)="setOrderByObject('Percentage ', true)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Low
+                  (click)="setOrderByObject('Percentage ', true, $event)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Low
                   to High</a></li>
               </ul>
             </li>

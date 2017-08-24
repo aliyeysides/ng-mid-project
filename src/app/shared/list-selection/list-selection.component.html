@@ -48,7 +48,7 @@
           <ul>
             <!-- Ideas Lists -->
             <ng-container *ngIf="whichAdditionalLists == 'Ideas'">
-              <li (click)="selectedListName = list.name; selectedListId = list.list_id" class="list-item"
+              <li (click)="selectList(list)" class="list-item"
                   *ngFor="let list of ( inActiveIdeasList | evenodd: 'even');let i = index;"
                   [ngClass]="{'selected' : list.name == selectedListName, 'bull-list' : checkIfBullList(list.name), 'bear-list' : checkIfBearList(list.name) }">
                 <svg class="align-absolute" width="259px" height="370px" viewBox="0 0 259 370" version="1.1"
@@ -69,7 +69,7 @@
 
             <!-- Themes Lists -->
             <ng-container *ngIf="whichAdditionalLists == 'Themes'">
-              <li (click)="selectedListName = list.name; selectedListId = list.list_id" class="list-item"
+              <li (click)="selectList(list)" class="list-item"
                   *ngFor="let list of ( inActiveThemeList | evenodd: 'even');let i = index;"
                   [ngClass]="{'selected' : list.name == selectedListName, 'bull-list' : checkIfBullList(list.name), 'bear-list' : checkIfBearList(list.name) }">
                 <svg class="align-absolute" width="259px" height="370px" viewBox="0 0 259 370" version="1.1"
@@ -90,7 +90,7 @@
 
             <!-- User Lists -->
             <ng-container *ngIf="whichAdditionalLists == 'User'">
-              <li (click)="selectedListName = list.name; selectedListId = list.list_id" class="list-item"
+              <li (click)="selectList(list)" class="list-item"
                   *ngFor="let list of userList;"
                   [ngClass]="{'selected' : list.name == selectedListName, 'bull-list' : checkIfBullList(list.name), 'bear-list' : checkIfBearList(list.name) }">
                 <svg class="align-absolute" width="259px" height="370px" viewBox="0 0 259 370" version="1.1"
@@ -153,32 +153,25 @@
                 <h1 class="bear-title"
                     [ngClass]="{'bear-title' : checkIfBearList(selectedListName), 'bull-title' : checkIfBullList(selectedListName)}">
                   {{selectedListName}}</h1>
-                <p>Mauris at tellus sed justo aliquet malesuada. </p>
+                <p>{{selectedListTagline}}</p>
               </div>
             </div>
             <div class="description__copy row">
               <div class="copy__block">
                 <h4>More about this list…</h4>
-                <p>Mauris at tellus sed justo aliquet malesuada. Morbi cursus elit sit amet sem consequat, eget
-                  bibendum magna venenatis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames
-                  ac turpis egestas.</p>
+                <p>{{selectedListMoreInfo}}</p>
               </div>
             </div>
             <div class="description__copy row">
               <div class="copy__block">
                 <h4>How should I use this list?</h4>
-                <p>Integer sagittis porttitor nisi, at faucibus eros sollicitudin non. Pellentesque ornare tristique
-                  feugiat. Duis dictum congue sodales. Integer sagittis porttitor nisi, at faucibus eros sollicitudin
-                  non.</p>
+                <p>{{selectedListHowInfo}}</p>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    <!-- END: ADD LIST  -->
-    <!-- hardeep: end Ideas inactive list section-->
 
   </div>
   <!-- END: ADD LIST BODY BOTTOM  -->

@@ -57,7 +57,7 @@ export class PinnedIdeasComponent implements OnInit {
     this.activeIdeasList = list.filter(val => val.is_active);
   }
 
-  /* public getActiveClasses(listName) {
+ /* public getActiveClasses(listName) {
      let selectedClass = (this.selected == listName) ? ' selected' : '';
      return this.mappingClassArray[listName]['style'] + `${selectedClass}`;
      [ngClass]="getActiveClasses(list.name)"

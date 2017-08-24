@@ -6,9 +6,11 @@
        [ngClass]="{'list-view__actionbar--bulllist' : checkIfBullList(selectedListName), 'list-view__actionbar--userlist' : checkIfUserList(selectedListName), 'list-view__actionbar--bearlist' : checkIfBearList(selectedListName)}"
        class="list-view__actionbar row no-gutters">
     <div class="list__header col-lg-6">
-      <div (click)="toggleAdditionalLists(); $event.stopPropagation()">BUTTON</div>
+      <div class="list__drop" (click)="toggleAdditionalLists(); $event.stopPropagation()">
+        <i class="fa fa-caret-square-o-down align-absolute" aria-hidden="true"></i>
+      </div>
       <p class="list__title">
-        <span class="list__title"><i tooltip="This is a user list." *ngIf="checkIfUserList(selectedListName)"
+        <span><i tooltip="This is a user list." *ngIf="checkIfUserList(selectedListName)"
                                      class="fa fa-user-circle"
                                      aria-hidden="true"></i>&nbsp; {{selectedListName}}</span>
       </p>

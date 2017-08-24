@@ -48,60 +48,71 @@
 
 
 .list-view__actionbar--userlist {
-	background-image: linear-gradient(-45deg, #512DB6 0%, #1E83F0 100%);
+	background-image: linear-gradient(47deg, #1500FF 0%, #00B7FF 98%);
 
 	.list__header {
 		.view-toggle.active {
 			i {
-				color: #345DD6;
+				color: #058bFF;
 			}
 		}
 	}
 }
 
 .list-view__actionbar--idealist {
-	background-image: linear-gradient(145deg, #FDDC04 0%, #E10281 100%);
+	background-image: linear-gradient(47deg, #1500FF 0%, #00B7FF 98%);
 
 	.list__header {
 		.view-toggle.active {
 			i {
-				color: #F0773F;
+				color: #058bFF;
 			}
 		}
 	}
 }
 
 .list-view__actionbar--bulllist {
-	background-image: linear-gradient(135deg, #00C724 0%, #00A3FF 100%);
+	background-image:  linear-gradient(-134deg, #CEFF00 0%, #3FCC0B 47%, #179731 100%);
 
 	.list__header {
 		.view-toggle.active {
 			i {
-				color: #00BC64;
+				color: #33BC17;
 			}
 		}
 	}
 }
 
 .list-view__actionbar--bearlist {
-	background-image: linear-gradient(50deg, #EC2E2E 0%, #2517DC 100%);
+	background-image: linear-gradient(134deg, #EC2E2E 0%, #8D135F 100%);
 
 	.list__header {
 		.view-toggle.active {
 			i {
-				color: #992477;
+				color: #BC2047;
+			}
+		}
+	}
+}
+
+.list-view__actionbar--themelist {
+	background-image: linear-gradient(-135deg, #F300C1 0%, #6700D0 100%);
+
+	.list__header {
+		.view-toggle.active {
+			i {
+				color: #AB00CC;
 			}
 		}
 	}
 }
 
 .list-view__actionbar--addlist {
-	background-image: linear-gradient(0deg, #6F7689 0%, #313540 100%);
 
 	.list__header {
 
 		.list__title {
-			color: #ffffff !important;
+			color: $font-color;
 
 			span {
 				display: block !important;
@@ -320,7 +331,7 @@
 	}
 
 	.quick-view__panel {
-		padding: 20px 30px 300px;
+		padding: 30px 40px 300px;
 		overflow-y: scroll;
 		height: 100vh;
 
@@ -925,77 +936,6 @@
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-/*------------------------------------*\
-  #ADD-A-LIST
-\*------------------------------------*/
-
-
-
-
-.addlist__container {
-	height: 100vh;
-	overflow-y: scroll;
-
-	ul {
-	    margin-top: 0px;
-	    margin-left: 20px;
-	    margin-bottom:360px;
-
-		.list__option {
-			margin: 30px 0;
-
-			.list__image {
-				width: 100px;
-				height: 100px;
-				border: 3px solid #FFFFFF;
-				position: relative;
-				margin: 0px;
-				border-radius: 50px;
-			}
-
-			.list__option--description {
-
-				.list__title {
-					font-size: 18px;
-					line-height: 1.5;
-					font-weight: 600;
-					margin: 0px 0px 2px;
-				}
-
-				.list__description {
-					font-size: 14px;
-					line-height: 1.4;
-				}
-
-				.list__add {
-					color: $link-blue;
-					cursor: pointer;
-					font-size: 15px;
-					line-height: 1.5;
-					padding: 15px 0 0;
-				}
-
-				.close {
-					float:left;
-					opacity: 1;
-				}
-			}
-		}
-	}
-}
-
-
 
 
 

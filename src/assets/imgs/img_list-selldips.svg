@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="107px" height="123px" viewBox="0 0 107 123" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
-    <title>Page 1</title>
-    <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Comps" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Home-v4_News-popup" transform="translate(-954.000000, -140.000000)" fill="#FFFFFF">
-            <g id="Page-1" transform="translate(954.000000, 140.000000)">
+    <g id="Comps" stroke="none" stroke-width="1"  fill="#FFFFFF" fill-rule="evenodd">
+        <g id="Home-v4_News-popup">
+            <g id="Page-1">
                 <polygon id="Fill-1" points="21.9451892 46.2932974 19.4634882 46.2932974 19.4634882 54.254654 16.3459706 54.254654 16.3459706 81.0328575 19.4634882 81.0328575 19.4634882 86.9279757 21.9451892 86.9279757 21.9451892 81.0328575 25.0616314 81.0328575 25.0616314 54.254654 21.9451892 54.254654"></polygon>
                 <polygon id="Fill-2" opacity="0.792119565" points="38.2903533 20.7243696 35.8078457 20.7243696 35.8078457 29.9369888 32.6914035 29.9369888 32.6914035 57.625177 35.8078457 57.625177 35.8078457 67.7445512 38.2903533 67.7445512 38.2903533 57.625177 41.4070643 57.625177 41.4070643 29.9369888 38.2903533 29.9369888"></polygon>
                 <polygon id="Fill-3" points="52.1532249 0 52.1532249 8.12069147 49.0367827 8.12069147 49.0367827 35.4371882 52.1532249 35.4371882 52.1532249 41.4504617 54.6354636 41.4504617 54.6354636 35.4371882 57.7527123 35.4371882 57.7527123 8.12069147 54.6354636 8.12069147 54.6354636 0"></polygon>

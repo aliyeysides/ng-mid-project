@@ -51,7 +51,7 @@ export const mappingClassArray: any = {
     },
     'Buy the Dips': {
       'style': 'list__option--bulllist',
-      'imgName': 'img_list-selldips.svg',
+      'imgName': 'img_list-buythedips.svg',
       'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis'
     },
     'Insider Confidence': {
@@ -96,7 +96,7 @@ export const mappingClassArray: any = {
     },
     'Sell the Rallies': {
       'style': 'list__option--bearlist',
-      'imgName': 'img_list-buyrallies.svg',
+      'imgName': 'img_list-sellrallies.svg',
       'description': 'This list contains companies who have exceeded earnings expectations on a quartly basis'
     },
     'Bears of the Week': {

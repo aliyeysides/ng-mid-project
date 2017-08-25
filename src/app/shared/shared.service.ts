@@ -119,7 +119,7 @@ export class SharedService {
   }
 
   public getWordPressJson(id: string) {
-    const insightsUrl = `${this.apiHostName}/insights/?json=secursive.get_product_updates&dev=1`;
+    const insightsUrl = `${this.apiHostName}/insights/?json=secursive.get_product_updates&dev=1&count=100`;
     this.getInsightsParams.set('id', id);
     return this.getJson(insightsUrl, this.getInsightsParams);
   }

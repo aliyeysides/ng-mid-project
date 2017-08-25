@@ -4,6 +4,8 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 
 import {noop} from 'rxjs/util/noop';
 
+declare var $: any;
+
 @Component({
   selector: 'mid-tier-header',
   templateUrl: './mid-tier-header.component.html',
@@ -12,6 +14,7 @@ import {noop} from 'rxjs/util/noop';
 })
 export class MidTierHeaderComponent implements OnInit {
   @ViewChild('supportModal') public supportModal: ModalDirective;
+  @ViewChild('nav') public nav;
   public content: string = "You can get back to the Quick Start walkthrough anytime in your settings!";
   public showPopupTooltip: boolean;
   public items: object[] = [
@@ -30,6 +33,11 @@ export class MidTierHeaderComponent implements OnInit {
       .subscribe(res => {
         this.showPopupTooltip = res;
       });
+  }
+
+  public toggleNav() {
+    const menu = $(this.nav.nativeElement);
+    menu.toggle("slide", {direction: 'right'}, 400);
   }
 
   popoverClicked(e: Event) {

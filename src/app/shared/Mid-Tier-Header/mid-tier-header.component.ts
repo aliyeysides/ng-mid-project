@@ -14,7 +14,6 @@ declare var $: any;
 })
 export class MidTierHeaderComponent implements OnInit {
   @ViewChild('supportModal') public supportModal: ModalDirective;
-  @ViewChild('nav') public nav;
   public content: string = "You can get back to the Quick Start walkthrough anytime in your settings!";
   public showPopupTooltip: boolean;
   public items: object[] = [
@@ -36,8 +35,13 @@ export class MidTierHeaderComponent implements OnInit {
   }
 
   public toggleNav() {
-    const menu = $(this.nav.nativeElement);
-    menu.toggle("slide", {direction: 'right'}, 400);
+    document.getElementById("mySidenav").style.width = "500px";
+    document.getElementById("main").style.opacity = '0.7';
+  }
+
+  public closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.opacity = '1.0';
   }
 
   popoverClicked(e: Event) {

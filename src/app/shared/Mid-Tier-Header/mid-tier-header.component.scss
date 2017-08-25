@@ -48,18 +48,21 @@
 	}
 }
 
-/* The side navigation menu */
+
+
+
 .sidenav {
-  height: 100%; /* 100% Full-height */
+  height: 100%;
   width: 0; /* 0 width - change this with JavaScript */
-  position: fixed; /* Stay in place */
-  z-index: 1000; /* Stay on top */
+  position: fixed;
+  z-index: 1000;
   top: 0;
   right: 0;
   background-color: white;
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  overflow-x: hidden;
+  padding:0;
+  transition: 0.5s;
+  box-shadow: -7px 0 20px 0px rgba(0, 0, 0, 0.2);
 }
 
 /* The navigation menu links */
@@ -81,16 +84,43 @@
 .sidenav .closebtn {
   position: absolute;
   top: 0;
-  right: 25px;
+  right: 20px;
   font-size: 36px;
   margin-left: 50px;
 }
 
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-#main {
-  transition: margin-left .5s;
-  padding: 20px;
+.darken {
+	background-color: rgba(0,0,0,0.5);
+	width: 100%;
+  	height: 100vh;
+  	position: absolute;
+  	z-index: 500;
+  	visibility: hidden;
+  	transition: 0.5s;
 }
+
+
+.right-sidebar__header {
+	width: 100%;
+	height: 60px;
+	background-color: $link-blue;
+	padding:6px 15px;
+
+	h1 {
+		color:#ffffff;
+		float: left;
+		margin-bottom:0px;
+	}
+
+	svg {
+		width: 36px;
+		height: 36px;
+		float: left;
+		margin: 5px 15px 0 0px;
+	}
+}
+
+
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {

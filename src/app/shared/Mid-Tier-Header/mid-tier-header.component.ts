@@ -36,12 +36,12 @@ export class MidTierHeaderComponent implements OnInit {
 
   public toggleNav() {
     document.getElementById("mySidenav").style.width = "500px";
-    document.getElementById("main").style.opacity = '0.7';
+    document.getElementById("search-darken").style.visibility = 'visible';
   }
 
   public closeNav() {
     document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.opacity = '1.0';
+    document.getElementById("search-darken").style.visibility = 'hidden';
   }
 
   popoverClicked(e: Event) {

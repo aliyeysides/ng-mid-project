@@ -15,7 +15,7 @@
   position: relative;
   height: 100%;
   padding-top:15px;
-  background-color: $background--LT3;
+  background-color: $background--LT2;
 
   .row--header {
     padding-left:55px;
@@ -140,7 +140,7 @@
 
       .content__article {
         margin-bottom: 30px;
-        border-top: 1px dashed #cccccc;
+        border-top: $border-dashed--LT;
         padding-top: 10px;
       }
 
@@ -163,7 +163,7 @@
       }
 
       .post__author {
-        border-top: 1px dashed #cccccc;
+        border-top: $border-dashed--LT;
         display: inline-block;
         vertical-align: bottom;
 
@@ -351,10 +351,10 @@
           .nav-link {
 
             i {
-              color: #cccccc;
+              color: $font-color--LT;
 
               &:hover {
-                color: #aaaaaa;
+                color: $font-color--MD;
               }
             }
           }

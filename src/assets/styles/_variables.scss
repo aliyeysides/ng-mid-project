@@ -1,8 +1,3 @@
-$test-color: orange;
-
- 
-
-
 /*  Colors  */
 
 
@@ -34,25 +29,27 @@ $font-stack: 'Open Sans', Helvetica, sans-serif;
 
 $font-color: #454D5F;
 $font-color--MD: #B5B8BF;
-$font-color--LT: #B5B8BF;
+$font-color--LT: #DBDCE0;
 $font-color--subhead: #7C828F;
 $font-color--Blue: #003366;
 
 
 
  
- 
+  
 /*  Backgrounds  */
 
 
 $background--LT: #F8F8F9;
-$background--LT2: #DBDCE0;
-$background--LT3: #EBEBED;
-$background--MD: #B5B8BF;
-$background--DK: #313540;
+$background--LT2: #EBEBED;
+$background--LT3: #DBDCE0;
+$background--LT-hover: #EBEBED;
+$background--MD: #7C828F;
+$background--MD-hover: #7C828F;
+$background--DK: #454D5F;
+$background--DK2: #313540;
 $background--LT-blue: #EFF8FF;
-
-$background--sidebar: #F8F8F9;
+$background--sidebar: #454D5F;
 
 
 
@@ -60,12 +57,13 @@ $background--sidebar: #F8F8F9;
 
 /*  Lines & Borders  */
 
+
 $border-line--W: 2px solid #FFFFFF;
 
-$border-line--LT: 1px solid #cccccc;
-$border-line--LT2: 1px solid #eeeeee;
+$border-line--LT: 1px solid #EBEBED;
+$border-line--MD: 1px solid #7C828F;
 
-$border-dashed--LT: 1px dashed #DBDCE0;
+$border-dashed--LT: 1px dashed #EBEBED;
 $border-dashed--MD: 1px dashed #7C828F;
 
 $chart-border--LT: 1px solid #dddddd;

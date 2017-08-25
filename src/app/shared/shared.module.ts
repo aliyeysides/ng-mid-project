@@ -11,7 +11,6 @@ import {PipesModule} from './pipes/pipes.module';
 
 import {SharedService} from './shared.service';
 import {SignalService} from './signal.service';
-import {ChaikinSvgModule} from './svg/chaikin-svg.module';
 
 @NgModule({
   imports: [
@@ -22,8 +21,7 @@ import {ChaikinSvgModule} from './svg/chaikin-svg.module';
     SidePanelModule,
     SymbolSearchModule,
     ListSelectionModule,
-    PipesModule,
-    ChaikinSvgModule
+    PipesModule
   ],
   exports: [
     CommonModule,
@@ -33,8 +31,7 @@ import {ChaikinSvgModule} from './svg/chaikin-svg.module';
     SidePanelModule,
     SymbolSearchModule,
     ListSelectionModule,
-    PipesModule,
-    ChaikinSvgModule
+    PipesModule
   ],
   providers: [SharedService, SignalService],
   declarations: []

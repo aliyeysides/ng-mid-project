@@ -55,8 +55,8 @@
             <ng-container *ngIf="whichAdditionalLists == 'Ideas'">
               <li (click)="selectList(list)" class="list-item"
                   *ngFor="let list of ( inActiveIdeasList | evenodd: 'even');let i = index;"
-                  [ngClass]="{'selected' : list.name == selectedListName, 'bull-list' : checkIfBullList(list.name), 'bear-list' : checkIfBearList(list.name) }">
-                <chaikin-svg path="{{chaikinSVGS[list.name]}}"></chaikin-svg>
+                  [ngClass]="{'selected' : list.name == selectedListName, 'bull-list' : checkIfBullList(list.name), 'bear-list' : checkIfBearList(list.name)}">
+                <img class="align-absolute" [src]="list.name != selectedListName ? 'assets/imgs/'+mappingClassArray[list.name].greyImgName : 'assets/imgs/'+mappingClassArray[list.name].imgName">
                 <p>{{list.name}}</p>
                 <a (click)="manageActiveInactive('activate',list.list_id);$event.stopPropagation()"><i
                   class="fa fa-star" aria-hidden="true"></i></a>
@@ -69,7 +69,7 @@
               <li (click)="selectList(list)" class="list-item"
                   *ngFor="let list of ( inActiveThemeList | evenodd: 'even');let i = index;"
                   [ngClass]="{'selected' : list.name == selectedListName, 'bull-list' : checkIfBullList(list.name), 'bear-list' : checkIfBearList(list.name) }">
-                <chaikin-svg path="{{chaikinSVGS[list.name]}}"></chaikin-svg>
+                <img class="align-absolute" [src]="list.name != selectedListName ? 'assets/imgs/'+mappingClassArray[list.name].greyImgName : 'assets/imgs/'+mappingClassArray[list.name].imgName">
                 <p>{{list.name}}</p>
                 <a (click)="manageActiveInactive('activate',list.list_id);$event.stopPropagation()"><i
                   class="fa fa-star" aria-hidden="true"></i></a>
@@ -82,8 +82,7 @@
               <li (click)="selectList(list)" class="list-item"
                   *ngFor="let list of userList;"
                   [ngClass]="{'selected' : list.name == selectedListName, 'bull-list' : checkIfBullList(list.name), 'bear-list' : checkIfBearList(list.name) }">
-                <!--<chaikin-svg path="{{chaikinSVGS[list.name]}}"></chaikin-svg>-->
-                <div [innerHTML]="chaikinSVGS[list.name]"></div>
+                <img class="align-absolute" [src]="list.name != selectedListName ? 'assets/imgs/'+mappingClassArray[list.name].greyImgName : 'assets/imgs/'+mappingClassArray[list.name].imgName">
                 <p>{{list.name}}</p>
                 <a (click)="manageActiveInactive('activate',list.list_id);$event.stopPropagation()"><i
                   class="fa fa-star" aria-hidden="true"></i></a>
@@ -107,7 +106,7 @@
               </ul>
             </div>
             <div class="description__header bear-list row">
-              <chaikin-svg path="chaikinSVGS[selectedListName]"></chaikin-svg>
+              <img class="" [src]="'assets/imgs/'+mappingClassArray[selectedListName].coloredImgName">
               <div class="header__copy col">
                 <h1 class="bear-title"
                     [ngClass]="{'bear-title' : checkIfBearList(selectedListName), 'bull-title' : checkIfBullList(selectedListName)}">

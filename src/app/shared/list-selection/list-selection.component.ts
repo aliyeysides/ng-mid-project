@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {SharedService} from '../shared.service';
 import {IdeaListProvider} from '../../providers/idea-list.provider';
-import {chaikinSVGS} from '../svg/SVGs';
 
 @Component({
   selector: 'app-list-selection',
@@ -20,13 +19,12 @@ export class ListSelectionComponent implements OnInit {
   public userList: Array<object>;
   public mappingClassArray: Array<object>;
   public wordPressPosts: Array<object>;
-  public whichAdditionalLists: string = 'Ideas';
-  public selectedListName: string;
+  public whichAdditionalLists: string = 'User';
+  public selectedListName: string = 'Holding';
   public selectedListId: any;
   public selectedListTagline: string;
   public selectedListMoreInfo: string;
   public selectedListHowInfo: string;
-  public chaikinSVGS = chaikinSVGS;
 
   constructor(private sharedService: SharedService,
               private ideaListProvider: IdeaListProvider) {
@@ -49,8 +47,6 @@ export class ListSelectionComponent implements OnInit {
 
     this.sharedService.additionalLists$.subscribe(val => this.additionalLists = val);
     this.sharedService.getWordPressJson('45').subscribe(val => this.wordPressPosts = val['0']['45']);
-
-    console.log('chaikinSVGS', this.chaikinSVGS);
   }
 
   public setAdditionalLists(val: boolean) {
@@ -84,6 +80,11 @@ export class ListSelectionComponent implements OnInit {
     const matchingPost = this.wordPressPosts.filter(post => post['post_title'] === this.selectedListName);
     const htmlStr = matchingPost[0]['post_content'];
     this.parseDomString(htmlStr);
+  }
+
+  public getActiveClasses(listName) {
+    let selectedClass = (this.selectedListName == listName) ? ' selected' : '';
+    return this.mappingClassArray[listName]['style'] + `${selectedClass}`;
   }
 
   public updateInActiveIdeaList() {

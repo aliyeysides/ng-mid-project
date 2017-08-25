@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SharedService} from '../shared.service';
 import {IdeaListProvider} from '../../providers/idea-list.provider';
-import {Subscription} from "rxjs/Subscription";
+import {chaikinSVGS} from '../svg/SVGs';
 
 @Component({
   selector: 'app-list-selection',
@@ -26,6 +26,7 @@ export class ListSelectionComponent implements OnInit {
   public selectedListTagline: string;
   public selectedListMoreInfo: string;
   public selectedListHowInfo: string;
+  public chaikinSVGS = chaikinSVGS;
 
   constructor(private sharedService: SharedService,
               private ideaListProvider: IdeaListProvider) {
@@ -48,9 +49,11 @@ export class ListSelectionComponent implements OnInit {
 
     this.sharedService.additionalLists$.subscribe(val => this.additionalLists = val);
     this.sharedService.getWordPressJson('45').subscribe(val => this.wordPressPosts = val['0']['45']);
+
+    console.log('chaikinSVGS', this.chaikinSVGS);
   }
 
-  setAdditionalLists(val: boolean) {
+  public setAdditionalLists(val: boolean) {
     this.sharedService.setAdditionalListsMenu(val);
   }
 
@@ -99,26 +102,33 @@ export class ListSelectionComponent implements OnInit {
     this.activeThemeList = this.themeList.filter(val => val['is_active']);
   }
 
-  public parseDomString(str: string) {
+  public checkIfBullList(listName) {
+    return this.sharedService.checkIfBullList(listName);
+  }
+
+  public checkIfBearList(listName) {
+    return this.sharedService.checkIfBearList(listName);
+  }
+
+  private parseDomString(str: string) {
     const parser = new DOMParser();
     const dom = parser.parseFromString(str, 'text/html');
     this.selectedListTagline = dom.getElementById('tagline').innerText;
     this.selectedListMoreInfo = dom.getElementById('more').innerText;
     this.selectedListHowInfo = dom.getElementById('how').innerText;
+    const test = {
+      dom: dom,
+      tagline: this.selectedListTagline,
+      more: this.selectedListMoreInfo,
+      how: this.selectedListHowInfo
+    }
+    console.log('test obj', test);
   }
 
-  public parseListObject(list) {
+  private parseListObject(list) {
     this.ideaList = list[0]['idea_lists'];
     this.themeList = list[1]['theme_lists'];
     this.userList = list[2]['user_lists'];
-  }
-
-  checkIfBullList(listName) {
-    return this.sharedService.checkIfBullList(listName);
-  }
-
-  checkIfBearList(listName) {
-    return this.sharedService.checkIfBearList(listName);
   }
 
 }

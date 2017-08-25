@@ -54,7 +54,6 @@ export class PinnedIdeasComponent implements OnInit {
   }
 
   public updateActiveIdeaList(list) {
-    console.log('activelist', list);
     this.activeIdeasList = list.filter(val => val.is_active);
   }
 

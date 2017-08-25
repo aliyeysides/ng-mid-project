@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {SharedService} from '../shared.service';
 import {IdeaListProvider} from '../../providers/idea-list.provider';
+import {Subscription} from "rxjs/Subscription";
 
 @Component({
   selector: 'app-list-selection',
@@ -18,7 +19,13 @@ export class ListSelectionComponent implements OnInit {
   public themeList: Array<object>;
   public userList: Array<object>;
   public mappingClassArray: Array<object>;
+  public wordPressPosts: Array<object>;
   public whichAdditionalLists: string = 'Ideas';
+  public selectedListName: string;
+  public selectedListId: any;
+  public selectedListTagline: string;
+  public selectedListMoreInfo: string;
+  public selectedListHowInfo: string;
 
   constructor(private sharedService: SharedService,
               private ideaListProvider: IdeaListProvider) {
@@ -40,6 +47,7 @@ export class ListSelectionComponent implements OnInit {
       });
 
     this.sharedService.additionalLists$.subscribe(val => this.additionalLists = val);
+    this.sharedService.getWordPressJson('45').subscribe(val => this.wordPressPosts = val['0']['45']);
   }
 
   setAdditionalLists(val: boolean) {
@@ -67,12 +75,20 @@ export class ListSelectionComponent implements OnInit {
     }
   }
 
+  public selectList(list) {
+    this.selectedListName = list.name;
+    this.selectedListId = list.list_id;
+    const matchingPost = this.wordPressPosts.filter(post => post['post_title'] === this.selectedListName);
+    const htmlStr = matchingPost[0]['post_content'];
+    this.parseDomString(htmlStr);
+  }
+
   public updateInActiveIdeaList() {
     this.inActiveIdeasList = this.ideaList.filter(val => !val['is_active']);
   }
 
   public updateActiveIdeaList() {
-    this.activeIdeasList = this.ideaList.filter(val => val['is_active'])
+    this.activeIdeasList = this.ideaList.filter(val => val['is_active']);
   }
 
   public updateInActiveThemeList() {
@@ -80,7 +96,15 @@ export class ListSelectionComponent implements OnInit {
   }
 
   public updateActiveThemeList() {
-    this.activeThemeList = this.themeList.filter(val => val['is_active'])
+    this.activeThemeList = this.themeList.filter(val => val['is_active']);
+  }
+
+  public parseDomString(str: string) {
+    const parser = new DOMParser();
+    const dom = parser.parseFromString(str, 'text/html');
+    this.selectedListTagline = dom.getElementById('tagline').innerText;
+    this.selectedListMoreInfo = dom.getElementById('more').innerText;
+    this.selectedListHowInfo = dom.getElementById('how').innerText;
   }
 
   public parseListObject(list) {

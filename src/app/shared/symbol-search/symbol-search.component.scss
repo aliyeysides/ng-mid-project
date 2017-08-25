@@ -78,27 +78,30 @@
 		display: inherit !important;
 
 		.form-control {
-		    width: 500px;
+		    width: 350px;
 		    font-weight: 300;
 			background-color: transparent;
 			color: #FFFFFF;
+			border-bottom: $border-line--MD !important;
 
 			&:focus {
 			    border-color: transparent;
 			    outline: 0;
 			    box-shadow: inset 0 0px 0px rgba(0,0,0,0), 0 0 0px rgba(0,0,0,0);
+			    background-color: rgba(255,255,255,0.3);
+			    border-bottom: 1px solid #1199ff;
 			}
 		}
 
 		.search-box {
 			height: 50px;
 			text-align: left;
-			padding: 0;
+			padding: 0 5px 0;
 			border:0;
-			font-size: 24px;
+			font-size: 36px;
 			border-radius: 0;
 			outline: none;
-			color: #FFFFFF;
+			color: $font-color;
 		}
 
 		.search-submit {
@@ -131,26 +134,26 @@
 
 
 .list-view__actionbar ::-webkit-input-placeholder { /* Chrome */
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(0, 0, 0, 0.75);
   font-weight: 300;
   font-family: 'Open Sans', sans-serif !important;
 }
 
 .list-view__actionbar :-ms-input-placeholder { /* IE 10+ */
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(0, 0, 0, 0.75);
   font-weight: 300;
   font-family: 'Open Sans', sans-serif !important;
 }
 
 .list-view__actionbar ::-moz-placeholder { /* Firefox 19+ */
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(0, 0, 0, 0.75);
   opacity: 1;
   font-weight: 300;
   font-family: 'Open Sans', sans-serif !important;
 }
 
 .list-view__actionbar :-moz-placeholder { /* Firefox 4 - 18 */
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(0, 0, 0, 0.75);
   opacity: 1;
   font-weight: 300;
   font-family: 'Open Sans', sans-serif !important;
@@ -162,23 +165,23 @@
 
 
 .list-view__actionbar--discovery ::-webkit-input-placeholder { /* Chrome */
-  color: rgba(0,0,0,0.3);
+  color: rgba(0,0,0,0.75);
   font-weight: 400;
   font-family: 'Open Sans', sans-serif !important;
 }
 .list-view__actionbar--discovery :-ms-input-placeholder { /* IE 10+ */
-  color: rgba(0,0,0,0.3);
+  color: rgba(0,0,0,0.75);
   font-weight: 400;
   font-family: 'Open Sans', sans-serif !important;
 }
 .list-view__actionbar--discovery ::-moz-placeholder { /* Firefox 19+ */
-  color: rgba(0,0,0,0.3);
+  color: rgba(0,0,0,0.75);
   opacity: 1;
   font-weight: 400;
   font-family: 'Open Sans', sans-serif !important;
 }
 .list-view__actionbar--discovery :-moz-placeholder { /* Firefox 4 - 18 */
-  color: rgba(0,0,0,0.3);
+  color: rgba(0,0,0,0.75);
   opacity: 1;
   font-weight: 400;
   font-family: 'Open Sans', sans-serif !important;

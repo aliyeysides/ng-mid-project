@@ -45,6 +45,7 @@ export class OnboardingComponent {
   public onHidden():void {
     this.isModalShown = false;
     this.sharedService.triggerOnboardingPopup(true);
+    this.selected = 1;
   }
 
   public switchSlide(slide: number) {

@@ -82,11 +82,6 @@ export class ListSelectionComponent implements OnInit {
     this.parseDomString(htmlStr);
   }
 
-  public getActiveClasses(listName) {
-    let selectedClass = (this.selectedListName == listName) ? ' selected' : '';
-    return this.mappingClassArray[listName]['style'] + `${selectedClass}`;
-  }
-
   public updateInActiveIdeaList() {
     this.inActiveIdeasList = this.ideaList.filter(val => !val['is_active']);
   }

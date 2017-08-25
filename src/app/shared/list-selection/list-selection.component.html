@@ -82,7 +82,8 @@
               <li (click)="selectList(list)" class="list-item"
                   *ngFor="let list of userList;"
                   [ngClass]="{'selected' : list.name == selectedListName, 'bull-list' : checkIfBullList(list.name), 'bear-list' : checkIfBearList(list.name) }">
-                <chaikin-svg path="{{chaikinSVGS[list.name]}}"></chaikin-svg>
+                <!--<chaikin-svg path="{{chaikinSVGS[list.name]}}"></chaikin-svg>-->
+                <div [innerHTML]="chaikinSVGS[list.name]"></div>
                 <p>{{list.name}}</p>
                 <a (click)="manageActiveInactive('activate',list.list_id);$event.stopPropagation()"><i
                   class="fa fa-star" aria-hidden="true"></i></a>

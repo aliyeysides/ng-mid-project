@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'chaikin-svg',
@@ -8,13 +9,12 @@ import {Component, Input, OnInit} from '@angular/core';
 export class ChaikinSvgComponent implements OnInit {
 
   @Input() path: any;
-  @Input() id: string;
-  @Input() type: string;
-  constructor() { }
+  constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    const parser = new DOMParser();
-    this.path = parser.parseFromString(this.path, 'text/xml');
+    // const parser = new DOMParser();
+    // this.svg = parser.parseFromString(this.path, 'text/xml');
+    this.path = this.sanitizer.bypassSecurityTrustHtml(this.path);
     console.log('path', this.path);
   }
 

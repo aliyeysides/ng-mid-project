@@ -10,6 +10,7 @@ import {SupportModalComponent} from './support-modal/support-modal.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { PopoverModule } from 'ngx-bootstrap/popover';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import {SymbolSearchModule} from '../symbol-search/symbol-search.module';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
     ModalModule,
     PopoverModule,
     BsDropdownModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SymbolSearchModule
   ],
   exports: [
     MidTierHeaderComponent

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {SharedService} from '../shared.service';
 import {IdeaListProvider} from '../../providers/idea-list.provider';
 
@@ -8,6 +8,7 @@ import {IdeaListProvider} from '../../providers/idea-list.provider';
   styleUrls: ['./list-selection.component.scss']
 })
 export class ListSelectionComponent implements OnInit {
+  @Output() previewList: EventEmitter<object> = new EventEmitter<object>();
   private userId = '1024494';
   public additionalLists: boolean = false;
   public inActiveIdeasList: Array<object>;
@@ -20,6 +21,7 @@ export class ListSelectionComponent implements OnInit {
   public mappingClassArray: Array<object>;
   public wordPressPosts: Array<object>;
   public whichAdditionalLists: string = 'User';
+  public selectedList: object;
   public selectedListName: string = 'Holding';
   public selectedListId: any;
   public selectedListTagline: string;
@@ -74,7 +76,12 @@ export class ListSelectionComponent implements OnInit {
     }
   }
 
+  public viewList(list) {
+    this.previewList.emit(list);
+  }
+
   public selectList(list) {
+    this.selectedList = list;
     this.selectedListName = list.name;
     this.selectedListId = list.list_id;
     const matchingPost = this.wordPressPosts.filter(post => post['post_title'] === this.selectedListName);

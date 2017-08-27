@@ -7,9 +7,6 @@ import { environment } from 'environments/environment';
 @Injectable()
 export class IdeaListProvider {
 
-  private ideasList: Subject<Array<object>> = new Subject<Array<object>>();
-  ideasList$ = this.ideasList.asObservable();
-
   private mappingClassArray: Subject<Array<object>> = new Subject<Array<object>>();
   mappingClassArray$ = this.mappingClassArray.asObservable();
 
@@ -19,6 +16,7 @@ export class IdeaListProvider {
 
   private wholeIdeasList: Subject<Array<object>> = new Subject<Array<object>>();
   wholeIdeasList$ = this.wholeIdeasList.asObservable();
+
   constructor(private http: Http) {
     this.symbolLookupParams = new URLSearchParams;
   }

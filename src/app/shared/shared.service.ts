@@ -43,16 +43,12 @@ export class SharedService {
     this.getInsightsParams = new URLSearchParams;
   }
 
-  public setSymbolListValues(data) {
-    this.symbolListValues.next(data);
+  public setSymbolListValues(list) {
+    this.symbolListValues.next(list);
   }
 
   public triggerOnboardingPopup(data) {
     this.onboardingPopup.next(data);
-  }
-
-  public updateActiveIdeaList(list: Array<object>) {
-    this.symbolListValues.next(list);
   }
 
   public setPowerBarHeader(data) {

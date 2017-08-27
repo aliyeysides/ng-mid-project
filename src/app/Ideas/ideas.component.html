@@ -10,3 +10,5 @@
 <app-onboarding-modal></app-onboarding-modal>
 
 <app-list-view (toggleAdditionalIdeasLists)="ideas.toggleAdditionalLists()"></app-list-view>
+
+<app-list-selection (previewList)="ideas.selectedIdeasList($event)"></app-list-selection>

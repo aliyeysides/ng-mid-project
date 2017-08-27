@@ -38,13 +38,6 @@ export class PinnedIdeasComponent implements OnInit {
       });
   }
 
-  public parseListObject(obj): Array<object> {
-    this.ideasList = obj[0]['idea_lists'];
-    this.themeList = obj[1]['theme_lists'];
-    this.userList = obj[2]['user_lists'];
-    return this.userList.concat(this.ideasList, this.themeList);
-  }
-
   public getPinnedIdeaLists() {
     this.ideaListLoading = this.ideaListProvider.getIdeasList({uid: this.userId})
       .subscribe(res => {
@@ -60,8 +53,6 @@ export class PinnedIdeasComponent implements OnInit {
   public getActiveClasses(listName) {
      let selectedClass = (this.selected == listName) ? ' selected' : '';
      return this.mappingClassArray[listName]['style'] + `${selectedClass}`;
-     // [ngClass]="getActiveClasses(list.name)"
-     // [src]="'assets/imgs/'+mappingClassArray[list.name].imgName"
   }
 
   public selectedIdeasList(list) {
@@ -69,7 +60,7 @@ export class PinnedIdeasComponent implements OnInit {
     this.selectedActiveList = list;
     this.hideAddingListPanel();
     this.selected = this.selectedActiveList['name'];
-    this.sharedService.updateActiveIdeaList(this.selectedActiveList);
+    this.sharedService.setSymbolListValues(this.selectedActiveList);
     /* Login for hiding Inactive ideas List panel */
     this.additionalLists = this.sharedService.getAdditionalListsMenu().value;
     if (this.additionalLists) {
@@ -95,6 +86,13 @@ export class PinnedIdeasComponent implements OnInit {
   public hideAddingListPanel() {
     this.additionalLists = false;
     this.sharedService.setAdditionalListsMenu(this.additionalLists);
+  }
+
+  private parseListObject(obj): Array<object> {
+    this.ideasList = obj[0]['idea_lists'];
+    this.themeList = obj[1]['theme_lists'];
+    this.userList = obj[2]['user_lists'];
+    return this.userList.concat(this.ideasList, this.themeList);
   }
 
 }

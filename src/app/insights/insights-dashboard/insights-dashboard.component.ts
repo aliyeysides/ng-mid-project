@@ -48,32 +48,28 @@ export class InsightsDashboardComponent implements OnInit {
   }
 
   public openEarningsIdeas() {
-    this.bsModalRef = this.modalService.show(InsightsModalComponent);
-    this.bsModalRef.content.title = 'Earnings Ideas';
-    this.bsModalRef.content.body = this.getInsightPostBody(this.earningsIdea);
+    this.openModal(this.earningsIdea['post_title'], this.earningsIdea);
   }
 
   public openBullsandBearsIdeas() {
-    this.bsModalRef = this.modalService.show(InsightsModalComponent);
-    this.bsModalRef.content.title = 'Bulls & Bears';
-    this.bsModalRef.content.body = this.getInsightPostBody(this.bullsandBears);
+    this.openModal(this.bullsandBears['post_title'], this.bullsandBears);
   }
 
   public openStockoftheWeek() {
-    this.bsModalRef = this.modalService.show(InsightsModalComponent);
-    this.bsModalRef.content.title = 'Stock of the Week';
-    this.bsModalRef.content.body = this.getInsightPostBody(this.stockoftheWeek);
+    this.openModal(this.stockoftheWeek['post_title'], this.stockoftheWeek);
   }
 
   public openMarketInsight(post: object) {
-    this.bsModalRef = this.modalService.show(InsightsModalComponent);
-    this.bsModalRef.content.title = 'Market Insight';
-    this.bsModalRef.content.body = this.getInsightPostBody(post);
+    this.openModal(post['post_title'], post);
   }
 
   public openEducationPost(post: object) {
+    this.openModal(post['post_title'], post);
+  }
+
+  private openModal(title: string, post: object) {
     this.bsModalRef = this.modalService.show(InsightsModalComponent);
-    this.bsModalRef.content.title = 'Expert Education';
+    this.bsModalRef.content.title = title;
     this.bsModalRef.content.body = this.getInsightPostBody(post);
   }
 

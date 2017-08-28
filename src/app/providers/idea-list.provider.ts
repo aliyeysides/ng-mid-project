@@ -7,8 +7,8 @@ import { environment } from 'environments/environment';
 @Injectable()
 export class IdeaListProvider {
 
+  private apiHostName = environment.envProtocol + '://' + environment.envHostName;
   private symbolLookupParams: URLSearchParams;
-  apiHostName = environment.envProtocol + '://' + environment.envHostName;
   private apiPrependText: string = '/CPTRestSecure/app';
 
   private wholeIdeasList: Subject<Array<object>> = new Subject<Array<object>>();
@@ -34,7 +34,7 @@ export class IdeaListProvider {
     this.wholeIdeasList.next(list);
   }
 
-  public getJson(url, params): Observable<Array<object>> {
+  private getJson(url, params): Observable<Array<object>> {
     return this.http.get(url, {
       search: params,
       withCredentials: true
@@ -44,23 +44,13 @@ export class IdeaListProvider {
       .catch(this.handleError)
   }
 
-  public getJsonWithoutCredential(url, params): Observable<Array<object>> {
-    return this.http.get(url, {
-      search: params,
-      withCredentials: false
-    }).map(res => {
-      return res.json();
-    })
-      .catch(this.handleError)
-  }
-
-  public handleError(err: any) {
+  private handleError(err: any): Observable<Error> {
     const errMsg = (err.message) ? err.message :
       err.status ? `${err.status} - ${err.statusText}` : 'Server error';
     return Observable.throw(errMsg);
   }
 
-  public setKeysForAPICall(query) {
+  private setKeysForAPICall(query): void {
     Object.keys(query).forEach((key) => {
       this.symbolLookupParams.set(key, query[key]);
     });

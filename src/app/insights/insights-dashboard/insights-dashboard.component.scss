@@ -4,11 +4,15 @@
 
 
 /*                                      */
-/*              INSIGHTS                */ 
+/*              INSIGHTS                */
 /*                                      */
 
 
-
+.pagination{ display: table; vertical-align: middle; }
+.pagination>li { vertical-align: middle; float:none!important;  display: table-cell!important;     clear: none!important;width: auto!important;}
+.pagination>li>a { background: none; border: none; padding:6px; margin:0px 1px; }
+.pagination>li:first-child{ float:left!important; width:24px; }
+.pagination>li:last-child{ float:right!important; width:24px;}
 
 .body__top--insights.body__top {
   //background-image: linear-gradient(0deg, #6F7689 0%, #313540 97%);

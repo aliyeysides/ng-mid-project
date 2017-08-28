@@ -8,7 +8,7 @@
 
     <div class="insights__container row">
 
-    <!-- MARKET INSIGHTS  -->
+      <!-- MARKET INSIGHTS  -->
       <div class="col-xl-8">
         <div class="insights__post insights__post--marketinsights row">
 
@@ -40,14 +40,15 @@
               </div>
               <div class="post__thumbnail">
                 <div class="thumbnail__gradient"></div>
-                <img class="thumbnail__image" src="/../../assets/imgs/thumb_MI-post1.jpg">
+                <img class="thumbnail__image" src="assets/imgs/thumb_MI-post1.jpg">
               </div>
             </div>
           </div>
 
           <div class="post__content col-md-7">
             <div class="post__title">
-              <p><a>After New Highs in Market, Thursday’s Technology Sell Off Brings Out Bearish Pundits&nbsp;&nbsp;<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></p>
+              <p><a>After New Highs in Market, Thursday’s Technology Sell Off Brings Out Bearish Pundits&nbsp;&nbsp;<i
+                class="fa fa-long-arrow-right" aria-hidden="true"></i></a></p>
             </div>
             <div class="post__author">
               <p class="author"><span>BY</span> Marc Chaikin</p>
@@ -56,12 +57,12 @@
           </div>
         </div>
 
-      <!-- SUBHEADER  -->
+        <!-- SUBHEADER  -->
         <div class="row--subheader row no-gutters">
           <h2>New ideas from the experts…</h2>
         </div>
 
-      <!-- EXPERT PICKS  -->
+        <!-- EXPERT PICKS  -->
         <div class="row">
           <div class="col-lg-4">
             <div (click)="openEarningsIdeas()" class="insights__post insights__post--expertpicks">
@@ -71,7 +72,7 @@
                 </div>
                 <div class="post__thumbnail">
                   <div class="thumbnail__gradient"></div>
-                  <img class="thumbnail__image" src="/../../assets/imgs/thumb_Expert-earningsideas.png">
+                  <img class="thumbnail__image" src="assets/imgs/thumb_Expert-earningsideas.png">
                 </div>
               </div>
             </div>
@@ -84,7 +85,7 @@
                 </div>
                 <div class="post__thumbnail">
                   <div class="thumbnail__gradient"></div>
-                  <img class="thumbnail__image" src="/../../assets/imgs/thumb_Expert-bullandbears.png">
+                  <img class="thumbnail__image" src="assets/imgs/thumb_Expert-bullandbears.png">
                 </div>
               </div>
             </div>
@@ -93,7 +94,7 @@
             <div (click)="openStockoftheWeek()" class="insights__post insights__post--expertpicks">
               <div class="post__image-box stock-of-the-week">
                 <div class="stock-of-the-week__logo">
-                  <img class="logo align-absolute" src="/../../assets/imgs/logo_SOTW.png">
+                  <img class="logo align-absolute" src="assets/imgs/logo_SOTW.png">
                 </div>
                 <div class="post__category-container">
                   <p class="post__category">Stock of the week</p>
@@ -112,58 +113,58 @@
             </div>
           </div>
           <ul class="post__content col-12">
-            <li class="content__article">
+            <li *ngFor="let post of expertEducationPosts" (click)="openEducationPost(post)" class="content__article">
               <div class="post__title">
-                <p><a>Stocks Stage Comeback Straight after Straight Selling&nbsp;&nbsp;<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                <p><a>{{ post['post_title'] }}&nbsp;&nbsp;<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                 </p>
               </div>
               <div class="post__author">
-                <p class="author"><span>BY</span> John Schlitz</p>
-              </div>
-            </li>
-            <li class="content__article">
-              <div class="post__title">
-                <p><a>DJIA Straight Logs 5th Straight Record Close, Straight Probes&nbsp;&nbsp;<i
-                  class="fa fa-long-arrow-right" aria-hidden="true"></i></a></p>
-              </div>
-              <div class="post__author">
-                <p class="author"><span>BY</span> John Schlitz</p>
-              </div>
-            </li>
-            <li class="content__article">
-              <div class="post__title">
-                <p><a>DJIA Logs 5tt Record Straight Close, Probes 22k&nbsp;&nbsp;<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
-                </p>
-              </div>
-              <div class="post__author">
-                <p class="author"><span>BY</span> John Schlitz</p>
+                <p class="author"><span>{{ post.author }}</span></p>
               </div>
             </li>
           </ul>
+
+
           <div class="post__toggle-container col-12">
-            <p class="toggle__text">MORE</p>
-            <ul class="nav nav-justified">
-              <li class="nav-item">
-                <a class="nav-link selected">
-                  <i class="fa fa-circle" aria-hidden="true"></i>
-                </a>
+            <!-- PAGINATION -->
+            <ul *ngIf="pager.pages && pager.pages.length " class="pagination clearfix alerts-toggle">
+              <li [ngClass]="{disabled:pager.currentPage === 1}">
+                <a (click)="setPage(pager.currentPage - 1)"><i class="fa fa-caret-left" aria-hidden="true"></i></a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link">
-                  <i class="fa fa-circle" aria-hidden="true"></i>
-                </a>
+              <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="dots">
+                <i (click)="setPage(page)" class="fa fa-circle" [ngClass]="{selected:pager.currentPage === page}"
+                   aria-hidden="true"></i>
               </li>
-              <li class="nav-item">
-                <a class="nav-link">
-                  <i class="fa fa-circle" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link">
-                  <i class="fa fa-circle" aria-hidden="true"></i>
-                </a>
+              <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                <a (click)="setPage(pager.currentPage + 1)"><i class="fa fa-caret-right" aria-hidden="true"></i></a>
               </li>
             </ul>
+            <!---->
+
+            <!--<p class="toggle__text">MORE</p>-->
+            <!--<ul class="nav nav-justified">-->
+            <!--<li class="nav-item">-->
+            <!--<a class="nav-link selected">-->
+            <!--<i class="fa fa-circle" aria-hidden="true"></i>-->
+            <!--</a>-->
+            <!--</li>-->
+            <!--<li class="nav-item">-->
+            <!--<a class="nav-link">-->
+            <!--<i class="fa fa-circle" aria-hidden="true"></i>-->
+            <!--</a>-->
+            <!--</li>-->
+            <!--<li class="nav-item">-->
+            <!--<a class="nav-link">-->
+            <!--<i class="fa fa-circle" aria-hidden="true"></i>-->
+            <!--</a>-->
+            <!--</li>-->
+            <!--<li class="nav-item">-->
+            <!--<a class="nav-link">-->
+            <!--<i class="fa fa-circle" aria-hidden="true"></i>-->
+            <!--</a>-->
+            <!--</li>-->
+            <!--</ul>-->
+
           </div>
         </div>
       </div>

@@ -37,7 +37,7 @@ export class InsightsDashboardComponent implements OnInit {
     });
   }
 
-  public setPage(page: number) {
+  public setPage(page: number): void {
     if (page < 1 || page > this.pager.totalPages) {
       return;
     }
@@ -47,47 +47,47 @@ export class InsightsDashboardComponent implements OnInit {
     this.pagedItems = this.expertEducationPosts.slice(this.pager.startIndex, this.pager.endIndex + 1);
   }
 
-  public openEarningsIdeas() {
+  public openEarningsIdeas(): void {
     this.openModal(this.earningsIdea['post_title'], this.earningsIdea);
   }
 
-  public openBullsandBearsIdeas() {
+  public openBullsandBearsIdeas(): void {
     this.openModal(this.bullsandBears['post_title'], this.bullsandBears);
   }
 
-  public openStockoftheWeek() {
+  public openStockoftheWeek(): void {
     this.openModal(this.stockoftheWeek['post_title'], this.stockoftheWeek);
   }
 
-  public openMarketInsight(post: object) {
+  public openMarketInsight(post: object): void {
     this.openModal(post['post_title'], post);
   }
 
-  public openEducationPost(post: object) {
+  public openEducationPost(post: object): void {
     this.openModal(post['post_title'], post);
   }
 
-  private openModal(title: string, post: object) {
+  private openModal(title: string, post: object): void {
     this.bsModalRef = this.modalService.show(InsightsModalComponent);
     this.bsModalRef.content.title = title;
     this.bsModalRef.content.body = this.getInsightPostBody(post);
   }
 
-  private getInsightPostDom(obj) {
+  private getInsightPostDom(post: object): Document {
     const parser = new DOMParser();
-    return parser.parseFromString(obj['post_content'], 'text/html');
+    return parser.parseFromString(post['post_content'], 'text/html');
   }
 
-  private getInsightPostBody(obj) {
-    const dom = this.getInsightPostDom(obj);
+  private getInsightPostBody(post: object): string {
+    const dom = this.getInsightPostDom(post);
     return dom.body.innerHTML;
   }
 
-  private assignAuthorProp(arr: object[]) {
-    arr.map(obj => {
-      const dom = this.getInsightPostDom(obj);
+  private assignAuthorProp(postArr: object[]): void {
+    postArr.map(post => {
+      const dom = this.getInsightPostDom(post);
       const author = dom.getElementById('author').innerText;
-      return Object.assign(obj, {author: author})
+      return Object.assign(post, {author: author})
     });
   }
 

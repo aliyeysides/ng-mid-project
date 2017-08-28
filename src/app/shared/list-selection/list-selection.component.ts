@@ -40,7 +40,6 @@ export class ListSelectionComponent implements OnInit {
     this.getIdeasList();
     this.ideaListProvider.wholeIdeasList$
       .subscribe(res => {
-        console.log('res', res);
         this.parseListObject(res);
         this.updateInActiveIdeaList();
         this.updateActiveIdeaList();

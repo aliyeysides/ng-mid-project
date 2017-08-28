@@ -1,4 +1,3 @@
-
 import { Injectable } from '@angular/core';
 import { Http, URLSearchParams } from '@angular/http';
 import * as _ from 'underscore';
@@ -9,11 +8,13 @@ export class PagerProvider {
     private symbolLookupParams: URLSearchParams;
     environmentName = environment.envName;
     apiHostName = environment.envProtocol + '://' + environment.envHostName;
-    private apiPrependText: string = '/CPTRestSecure/app'
+    private apiPrependText: string = '/CPTRestSecure/app';
+
     constructor(private http: Http) {
         this.symbolLookupParams = new URLSearchParams;
     }
-    getPager(totalItems: number, currentPage: number = 1, pageSize: number = 5) {
+
+    public getPager(totalItems: number, currentPage: number = 1, pageSize: number = 5) {
         // calculate total pages
         let totalPages = Math.ceil(totalItems / pageSize);
 

@@ -6,7 +6,7 @@
       <h1 class="col-12">What's new in the market today?</h1>
     </div>
 
-    <div class="insights__container row"> 
+    <div class="insights__container row">
 
     <!-- MARKET INSIGHTS  -->
       <div class="col-xl-8">
@@ -64,7 +64,7 @@
       <!-- EXPERT PICKS  -->
         <div class="row">
           <div class="col-lg-4">
-            <div class="insights__post insights__post--expertpicks">
+            <div (click)="openEarningsIdeas()" class="insights__post insights__post--expertpicks">
               <div class="post__image-box">
                 <div class="post__category-container">
                   <p class="post__category">Earnings Ideas</p>
@@ -77,7 +77,7 @@
             </div>
           </div>
           <div class="col-lg-4">
-            <div class="insights__post insights__post--expertpicks">
+            <div (click)="openBullsandBearsIdeas()" class="insights__post insights__post--expertpicks">
               <div class="post__image-box">
                 <div class="post__category-container">
                   <p class="post__category">Bulls &amp; Bears</p>
@@ -90,7 +90,7 @@
             </div>
           </div>
           <div class="col-lg-4">
-            <div class="insights__post insights__post--expertpicks">
+            <div (click)="openStockoftheWeek()" class="insights__post insights__post--expertpicks">
               <div class="post__image-box stock-of-the-week">
                 <div class="stock-of-the-week__logo">
                   <img class="logo align-absolute" src="/../../assets/imgs/logo_SOTW.png">

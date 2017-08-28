@@ -1,6 +1,9 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import {SharedService} from '../shared.service';
 import {IdeaListProvider} from '../../providers/idea-list.provider';
+import {Router} from '@angular/router';
+
+import {mappingClassArray} from '../../Ideas/pinned-ideas/ideasMappingClassArray';
 
 @Component({
   selector: 'app-list-selection',
@@ -8,9 +11,9 @@ import {IdeaListProvider} from '../../providers/idea-list.provider';
   styleUrls: ['./list-selection.component.scss']
 })
 export class ListSelectionComponent implements OnInit {
-  @Output() previewList: EventEmitter<object> = new EventEmitter<object>();
+  @Output() public previewList: EventEmitter<object> = new EventEmitter<object>();
+  @Input() public additionalLists: boolean;
   private userId = '1024494';
-  public additionalLists: boolean = false;
   public inActiveIdeasList: Array<object>;
   public activeIdeasList: Array<object>;
   public inActiveThemeList: Array<object>;
@@ -18,7 +21,7 @@ export class ListSelectionComponent implements OnInit {
   public ideaList: Array<object>;
   public themeList: Array<object>;
   public userList: Array<object>;
-  public mappingClassArray: Array<object>;
+  public mappingClassArray = mappingClassArray;
   public wordPressPosts: Array<object>;
   public whichAdditionalLists: string = 'User';
   public selectedList: object;
@@ -29,22 +32,20 @@ export class ListSelectionComponent implements OnInit {
   public selectedListHowInfo: string;
 
   constructor(private sharedService: SharedService,
-              private ideaListProvider: IdeaListProvider) {
+              private ideaListProvider: IdeaListProvider,
+              private router: Router) {
   }
 
   ngOnInit() {
+    this.getIdeasList();
     this.ideaListProvider.wholeIdeasList$
       .subscribe(res => {
+        console.log('res', res);
         this.parseListObject(res);
         this.updateInActiveIdeaList();
         this.updateActiveIdeaList();
         this.updateInActiveThemeList();
         this.updateActiveThemeList();
-      });
-
-    this.ideaListProvider.mappingClassArray$
-      .subscribe(res => {
-        this.mappingClassArray = res;
       });
 
     this.sharedService.additionalLists$.subscribe(val => this.additionalLists = val);
@@ -77,6 +78,10 @@ export class ListSelectionComponent implements OnInit {
   }
 
   public viewList(list) {
+    if (!this.isIdeasPage()) {
+      this.router.navigate(['/ideas']);
+      // this.sharedService.setSymbolListValues(list);
+    }
     this.previewList.emit(list);
   }
 
@@ -113,19 +118,16 @@ export class ListSelectionComponent implements OnInit {
     return this.sharedService.checkIfBearList(listName);
   }
 
+  public isIdeasPage(): boolean {
+    return this.router.url === '/ideas';
+  }
+
   private parseDomString(str: string) {
     const parser = new DOMParser();
     const dom = parser.parseFromString(str, 'text/html');
     this.selectedListTagline = dom.getElementById('tagline').innerText;
     this.selectedListMoreInfo = dom.getElementById('more').innerText;
     this.selectedListHowInfo = dom.getElementById('how').innerText;
-    const test = {
-      dom: dom,
-      tagline: this.selectedListTagline,
-      more: this.selectedListMoreInfo,
-      how: this.selectedListHowInfo
-    }
-    console.log('test obj', test);
   }
 
   private parseListObject(list) {

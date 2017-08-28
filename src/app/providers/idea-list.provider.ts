@@ -7,9 +7,6 @@ import { environment } from 'environments/environment';
 @Injectable()
 export class IdeaListProvider {
 
-  private mappingClassArray: Subject<Array<object>> = new Subject<Array<object>>();
-  mappingClassArray$ = this.mappingClassArray.asObservable();
-
   private symbolLookupParams: URLSearchParams;
   apiHostName = environment.envProtocol + '://' + environment.envHostName;
   private apiPrependText: string = '/CPTRestSecure/app';
@@ -35,10 +32,6 @@ export class IdeaListProvider {
 
   public setIdeaListData(list: Array<object>) {
     this.wholeIdeasList.next(list);
-  }
-
-  public setMappingClassArray(list: Array<object>) {
-    this.mappingClassArray.next(list);
   }
 
   public getJson(url, params): Observable<Array<object>> {

@@ -4,7 +4,7 @@
   <!-- ROW: ADD LIST ACTION BAR  -->
   <div class="list-view__actionbar list-view__actionbar--addlist row no-gutters">
     <div class="list__header col-12">
-       <div class="list__drop" (click)="setAdditionalLists(false)">
+       <div *ngIf="isIdeasPage()" class="list__drop" (click)="setAdditionalLists(false)">
         <svg class="align-absolute" width="300px" height="300px" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <defs></defs>
           <g id="icon_listdrop" fill="#000000" stroke="none" stroke-width="1" fill-rule="evenodd">

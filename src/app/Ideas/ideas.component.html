@@ -11,4 +11,4 @@
 
 <app-list-view (toggleAdditionalIdeasLists)="ideas.toggleAdditionalLists()"></app-list-view>
 
-<app-list-selection (previewList)="ideas.selectedIdeasList($event)"></app-list-selection>
+<app-list-selection [additionalLists]="false" (previewList)="ideas.selectedIdeasList($event)"></app-list-selection>

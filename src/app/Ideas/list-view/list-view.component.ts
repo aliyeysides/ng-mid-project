@@ -13,7 +13,7 @@ import {SignalService} from '../../shared/signal.service';
 })
 
 export class ListViewComponent implements OnInit {
-  @Output() toggleAdditionalIdeasLists: EventEmitter<any> = new EventEmitter();
+  @Output() public toggleAdditionalIdeasLists: EventEmitter<any> = new EventEmitter();
   private userId = '1024494';
   public ideaList: Array<object>;
   public additionalLists: boolean = false;
@@ -74,16 +74,16 @@ export class ListViewComponent implements OnInit {
 
   }
 
-  updateChart() {
+  public updateChart() {
     //Not using in code only for future use for ali
     // this.userProfile.sendData();
   }
 
-  onScroll() {
+  public onScroll() {
     this.assignStockData(2);
   }
 
-  selectStock(stock: Idea) {
+  public selectStock(stock: Idea) {
     this.selectedStock = stock;
     if (stock) {
       this.getSelectedStockData(stock, this.assignSelectedStock.bind(this));
@@ -91,7 +91,7 @@ export class ListViewComponent implements OnInit {
     }
   }
 
-  getSelectedStockData(stock: Idea, callback?) {
+  public getSelectedStockData(stock: Idea, callback?) {
     if (stock) {
       this.loading = this.sharedService.getStockCardData(stock.symbol)
         .subscribe(res => {
@@ -100,7 +100,7 @@ export class ListViewComponent implements OnInit {
     }
   }
 
-  getSelectedStockHeadlines(stock: Idea) {
+  public getSelectedStockHeadlines(stock: Idea) {
     if (stock) {
       this.headlinesLoading = this.sharedService.getHeadlines(stock.symbol)
         .subscribe(res => {
@@ -109,30 +109,20 @@ export class ListViewComponent implements OnInit {
     }
   }
 
-  clearOrderByObject() {
-    this.orderByObject = {};
-  }
-
-  setOrderByObject(val: string, order: boolean, e: Event) {
+  public setOrderByObject(val: string, order: boolean, e: Event) {
     e.preventDefault();
     this.orderByObject['field'] = val;
     this.orderByObject['ascending'] = order;
   }
 
-  clearIdeasLists() {
-    this.loadedStockIdeas = 0;
-    this.panelViewIdeasList = [];
-    this.ideaList = [];
-  }
-
-  assignSelectedStock(res) {
+  public assignSelectedStock(res) {
     this.selectedStockPGR = res['pgr'];
     this.selectedStockChartPoints = res['chart-points'];
     this.selectedStockSimilars = res['discovery-similars'].stocks;
     this.intraDayChart(this.selectedStockChartPoints, `${this.selectedStock.symbol}-chart-container`);
   }
 
-  intraDayChart(data, chartClass) {
+  public intraDayChart(data, chartClass) {
     /*
      For ALi understanding( chart for card view )
      Some points need to notice  before draw chart.
@@ -157,7 +147,7 @@ export class ListViewComponent implements OnInit {
 
   }
 
-  drawPanelChart(chartData, chartClass) {
+  public drawPanelChart(chartData, chartClass) {
     if (document.getElementById(chartClass)) {
       let ele = document.getElementById(chartClass);
       ele.removeChild(ele.childNodes[0]);
@@ -165,7 +155,7 @@ export class ListViewComponent implements OnInit {
     this.chartService.interactiveAreaChartControler.init({data: chartData, id: chartClass});
   }
 
-  assignStockData(amount: number) {
+  public assignStockData(amount: number) {
     let loadNum = this.loadedStockIdeas + amount; // 0 + 4
     if (this.ideaList && this.loadedStockIdeas < this.ideaList.length) {
       this.ideaList.map((stock, index) => {
@@ -180,7 +170,7 @@ export class ListViewComponent implements OnInit {
     }
   }
 
-  toggleHoverOptions(idea) {
+  public toggleHoverOptions(idea) {
     if (!this.mouseHoverOptionsMap[idea.symbol] || this.mouseHoverOptionsMap[idea.symbol] == false) {
       this.mouseHoverOptionsMap[idea.symbol] = true;
       return;
@@ -188,7 +178,7 @@ export class ListViewComponent implements OnInit {
     this.mouseHoverOptionsMap[idea.symbol] = !this.mouseHoverOptionsMap[idea.symbol];
   }
 
-  toggleOptions(idea, e) {
+  public toggleOptions(idea, e) {
     e.stopPropagation();
     if (!this.popupOptionsMap[idea.symbol] || this.popupOptionsMap[idea.symbol] == false) {
       this.popupOptionsMap = {};
@@ -199,15 +189,15 @@ export class ListViewComponent implements OnInit {
     this.mouseHoverOptionsMap = {};
   }
 
-  toggleHeadlines() {
+  public toggleHeadlines() {
     this.showHeadlines = !this.showHeadlines;
   }
 
-  toggleAdditionalLists() {
+  public toggleAdditionalLists() {
     this.toggleAdditionalIdeasLists.emit(null);
   }
 
-  goToStockView(stock: (Idea | string), e) {
+  public goToStockView(stock: (Idea | string), e) {
     e.stopPropagation();
     if (typeof stock === 'object') {
       this.router.navigate(['/report', stock.symbol]);
@@ -217,11 +207,11 @@ export class ListViewComponent implements OnInit {
     }
   }
 
-  goToHeadline(headline) {
+  public goToHeadline(headline) {
     window.open(headline.url, '_blank');
   }
 
-  addToHoldingList(stock: any, e) {
+  public addToHoldingList(stock: any, e) {
     e.stopPropagation();
     this.sharedService.addStockIntoHoldingList(stock)
       .subscribe(res => {
@@ -229,7 +219,7 @@ export class ListViewComponent implements OnInit {
       });
   }
 
-  addToWatchingList(stock: any, e) {
+  public addToWatchingList(stock: any, e) {
     e.stopPropagation();
     this.sharedService.addStockIntoWatchingList(stock)
       .subscribe(res => {
@@ -237,7 +227,7 @@ export class ListViewComponent implements OnInit {
       });
   }
 
-  removeFromList(stock: any, listId: string, e) {
+  public removeFromList(stock: any, listId: string, e) {
     e.stopPropagation();
     this.sharedService.deleteSymbolFromList(stock.symbol, listId)
       .subscribe(res => {
@@ -245,27 +235,27 @@ export class ListViewComponent implements OnInit {
       });
   }
 
-  checkIfUserList(listName) {
+  public checkIfUserList(listName) {
     return this.sharedService.checkIfUserList(listName);
   }
 
-  checkIfBullList(listName) {
+  public checkIfBullList(listName) {
     return this.sharedService.checkIfBullList(listName);
   }
 
-  checkIfBearList(listName) {
+  public checkIfBearList(listName) {
     return this.sharedService.checkIfBearList(listName);
   }
 
-  checkIfThemeList(listName) {
+  public checkIfThemeList(listName) {
     return this.sharedService.checkIfThemeList(listName);
   }
 
-  gotoPanelView() {
+  public gotoPanelView() {
     this.currentView = 'panel-view';
   }
 
-  gotoListView() {
+  public gotoListView() {
     this.currentView = 'list-view';
   }
 
@@ -287,6 +277,16 @@ export class ListViewComponent implements OnInit {
 
   public appendSliderBarClass(pgr) {
     return this.signalService.appendSliderBarClass(pgr);
+  }
+
+  private clearOrderByObject() {
+    this.orderByObject = {};
+  }
+
+  private clearIdeasLists() {
+    this.loadedStockIdeas = 0;
+    this.panelViewIdeasList = [];
+    this.ideaList = [];
   }
 
 }

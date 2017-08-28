@@ -12,7 +12,7 @@ export class SharedService {
   private symbolListValues: Subject<Array<object>> = new Subject<Array<object>>();
   symbolListValues$ = this.symbolListValues.asObservable();
 
-  private additionalLists: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private additionalLists: Subject<boolean> = new Subject<boolean>();
   additionalLists$ = this.additionalLists.asObservable();
 
   private powerBarHeader: BehaviorSubject<any> = new BehaviorSubject({name:'Holding'});

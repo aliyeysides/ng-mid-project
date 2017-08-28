@@ -19,8 +19,8 @@ export class PinnedIdeasComponent implements OnInit {
   public themeList: Array<object>;
   public activeIdeasList: Array<object>;
   public selectedActiveList: Array<object>;
-  public selected: string = 'Holding';
-  public additionalLists: boolean = false;
+  public selected: string = 'test';
+  public additionalLists: boolean;
   public loading: Subscription;
   public ideaListLoading: Subscription;
   public mappingClassArray = mappingClassArray;
@@ -61,8 +61,6 @@ export class PinnedIdeasComponent implements OnInit {
     this.hideAddingListPanel();
     this.selected = this.selectedActiveList['name'];
     this.sharedService.setSymbolListValues(this.selectedActiveList);
-    /* Login for hiding Inactive ideas List panel */
-    this.additionalLists = this.sharedService.getAdditionalListsMenu().value;
     if (this.additionalLists) {
       this.sharedService.setAdditionalListsMenu(!this.additionalLists);
     }
@@ -77,8 +75,6 @@ export class PinnedIdeasComponent implements OnInit {
   }
 
   public toggleAdditionalLists() {
-    this.ideaListProvider.setMappingClassArray(this.mappingClassArray);
-    this.additionalLists = this.sharedService.getAdditionalListsMenu().value;
     this.additionalLists = !this.additionalLists;
     this.sharedService.setAdditionalListsMenu(this.additionalLists);
   }

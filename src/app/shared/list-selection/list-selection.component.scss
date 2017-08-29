@@ -263,10 +263,10 @@
       .description__header {
         margin-bottom: 10px;
 
-        svg {
-          margin-right: 20px;
+        img {
+          margin-right: 0px;
           width: 90px;
-          max-height: 95px;
+          height: 90px;
         }
 
         .header__copy {
@@ -296,27 +296,6 @@
           h1.user-title {
             color: #444957;
           }
-        }
-      }
-
-      .description__header.bear-list {
-
-        svg g {
-          fill: #CF263E;
-        }
-      }
-
-      .description__header.bull-list {
-
-        svg g {
-          fill: #2FB71A;
-        }
-      }
-
-      .description__header.theme-list {
-
-        svg g {
-          fill: #7A00A1;
         }
       }
 

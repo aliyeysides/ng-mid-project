@@ -23,4 +23,8 @@ export class MarketInsightsComponent implements OnInit {
     });
   }
 
+  public openMarketInsight(post: object): void {
+    this.insightsService.openModal(post['post_title'], post);
+  }
+
 }

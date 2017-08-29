@@ -29,23 +29,37 @@ export class InsightsDashboardComponent implements OnInit {
     this.sharedService.getWordPressJson('16').subscribe(res => this.earningsIdea = res['0']['16'][0]);
     this.sharedService.getWordPressJson('13').subscribe(res => this.bullsandBears = res['0']['13'][0]);
     this.sharedService.getWordPressJson('22').subscribe(res => this.stockoftheWeek = res['0']['22'][0]);
-    this.sharedService.getWordPressJson('47').subscribe(res => this.marketInsights = res['0']['47']);
+    this.sharedService.getWordPressJson('2').subscribe(res => {
+      this.marketInsights = res['0']['2'];
+      this.assignAuthorProp(this.marketInsights);
+      // this.setMarketInsightsPage(1);
+    });
     this.sharedService.getWordPressJson('46').subscribe(res => {
       this.expertEducationPosts = res['0']['46'];
       this.assignAuthorProp(this.expertEducationPosts);
-      this.setPage(1);
+      // this.setEducationPage(1);
     });
   }
 
-  public setPage(page: number): void {
-    if (page < 1 || page > this.pager.totalPages) {
-      return;
-    }
-    // get pager object from service
-    this.pager = this.pagerProvider.getPager(this.expertEducationPosts.length, page, 8);
-    // get current page of items
-    this.pagedItems = this.expertEducationPosts.slice(this.pager.startIndex, this.pager.endIndex + 1);
-  }
+  // public setEducationPage(page: number): void {
+  //   if (page < 1 || page > this.pager.totalPages) {
+  //     return;
+  //   }
+  //   // get pager object from service
+  //   this.pager = this.pagerProvider.getPager(this.expertEducationPosts.length, page, 8);
+  //   // get current page of items
+  //   this.pagedItems = this.expertEducationPosts.slice(this.pager.startIndex, this.pager.endIndex + 1);
+  // }
+  //
+  // public setMarketInsightsPage(page: number): void {
+  //   if (page < 1 || page > this.pager.totalPages) {
+  //     return;
+  //   }
+  //   // get pager object from service
+  //   this.pager = this.pagerProvider.getPager(this.marketInsights.length, page, 3);
+  //   // get current page of items
+  //   this.pagedItems = this.marketInsights.slice(this.pager.startIndex, this.pager.endIndex + 1);
+  // }
 
   public openEarningsIdeas(): void {
     this.openModal(this.earningsIdea['post_title'], this.earningsIdea);

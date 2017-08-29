@@ -7,6 +7,7 @@ import {InsightsDashboardComponent} from './insights-dashboard/insights-dashboar
 import {InsightsModalComponent} from './insights-modal/insights-modal.component';
 
 import {ModalModule} from 'ngx-bootstrap/modal';
+import {PaginationModule} from 'ngx-bootstrap/pagination';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import {ModalModule} from 'ngx-bootstrap/modal';
     FormsModule,
     BrowserModule,
     ReactiveFormsModule,
-    ModalModule
+    ModalModule,
+    PaginationModule
   ],
   exports: [
     InsightsComponent

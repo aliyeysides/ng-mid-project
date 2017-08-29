@@ -34,13 +34,13 @@ export class MidTierHeaderComponent implements OnInit {
       });
   }
 
-  public toggleNav() {
-    document.getElementById("mySidenav").style.width = "500px";
+  public toggleNav(id: string) {
+    document.getElementById(id).style.width = "500px";
     document.getElementById("search-darken").style.visibility = 'visible';
   }
 
-  public closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
+  public closeNav(id: string) {
+    document.getElementById(id).style.width = "0";
     document.getElementById("search-darken").style.visibility = 'hidden';
   }
 

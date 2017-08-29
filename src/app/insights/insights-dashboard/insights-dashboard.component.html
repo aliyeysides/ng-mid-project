@@ -19,23 +19,39 @@
 
                 <div class="post__toggle-container">
                   <p class="post__date">Jul 4, 2017</p>
-                  <ul class="nav nav-justified">
-                    <li class="nav-item">
-                      <a class="nav-link selected">
-                        <i class="fa fa-circle" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link">
-                        <i class="fa fa-circle" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link">
-                        <i class="fa fa-circle" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                  </ul>
+                  <pagination [boundaryLinks]="true" [totalItems]="totalItems" [(ngModel)]="currentPage" class="pagination"
+                              previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
+                  <!-- PAGINATION -->
+                  <!--<ul *ngIf="pager.pages && pager.pages.length " class="pagination clearfix alerts-toggle">-->
+                    <!--<li [ngClass]="{disabled:pager.currentPage === 1}">-->
+                      <!--<a (click)="setMarketInsightsPage(pager.currentPage - 1)"><i class="fa fa-caret-left" aria-hidden="true"></i></a>-->
+                    <!--</li>-->
+                    <!--<li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="dots">-->
+                      <!--<i (click)="setMarketInsightsPage(page)" class="fa fa-circle" [ngClass]="{selected:pager.currentPage === page}"-->
+                         <!--aria-hidden="true"></i>-->
+                    <!--</li>-->
+                    <!--<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">-->
+                      <!--<a (click)="setMarketInsightsPage(pager.currentPage + 1)"><i class="fa fa-caret-right" aria-hidden="true"></i></a>-->
+                    <!--</li>-->
+                  <!--</ul>-->
+                  <!---->
+                  <!--<ul class="nav nav-justified">-->
+                    <!--<li class="nav-item">-->
+                      <!--<a class="nav-link selected">-->
+                        <!--<i class="fa fa-circle" aria-hidden="true"></i>-->
+                      <!--</a>-->
+                    <!--</li>-->
+                    <!--<li class="nav-item">-->
+                      <!--<a class="nav-link">-->
+                        <!--<i class="fa fa-circle" aria-hidden="true"></i>-->
+                      <!--</a>-->
+                    <!--</li>-->
+                    <!--<li class="nav-item">-->
+                      <!--<a class="nav-link">-->
+                        <!--<i class="fa fa-circle" aria-hidden="true"></i>-->
+                      <!--</a>-->
+                    <!--</li>-->
+                  <!--</ul>-->
                 </div>
               </div>
               <div class="post__thumbnail">
@@ -126,19 +142,21 @@
 
 
           <div class="post__toggle-container col-12">
+            <pagination [boundaryLinks]="true" [totalItems]="totalItems" [(ngModel)]="currentPage" class="pagination"
+                        previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;"></pagination>
             <!-- PAGINATION -->
-            <ul *ngIf="pager.pages && pager.pages.length " class="pagination clearfix alerts-toggle">
-              <li [ngClass]="{disabled:pager.currentPage === 1}">
-                <a (click)="setPage(pager.currentPage - 1)"><i class="fa fa-caret-left" aria-hidden="true"></i></a>
-              </li>
-              <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="dots">
-                <i (click)="setPage(page)" class="fa fa-circle" [ngClass]="{selected:pager.currentPage === page}"
-                   aria-hidden="true"></i>
-              </li>
-              <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
-                <a (click)="setPage(pager.currentPage + 1)"><i class="fa fa-caret-right" aria-hidden="true"></i></a>
-              </li>
-            </ul>
+            <!--<ul *ngIf="pager.pages && pager.pages.length " class="pagination clearfix alerts-toggle">-->
+              <!--<li [ngClass]="{disabled:pager.currentPage === 1}">-->
+                <!--<a (click)="setEducationPage(pager.currentPage - 1)"><i class="fa fa-caret-left" aria-hidden="true"></i></a>-->
+              <!--</li>-->
+              <!--<li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" class="dots">-->
+                <!--<i (click)="setEducationPage(page)" class="fa fa-circle" [ngClass]="{selected:pager.currentPage === page}"-->
+                   <!--aria-hidden="true"></i>-->
+              <!--</li>-->
+              <!--<li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">-->
+                <!--<a (click)="setEducationPage(pager.currentPage + 1)"><i class="fa fa-caret-right" aria-hidden="true"></i></a>-->
+              <!--</li>-->
+            <!--</ul>-->
             <!---->
 
             <!--<p class="toggle__text">MORE</p>-->

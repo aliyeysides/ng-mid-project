@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
-
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from '../app-routing.module';
 import {MidTierHeaderModule} from './Mid-Tier-Header/mid-tier-header.module';
 import {SymbolSearchModule} from './symbol-search/symbol-search.module';
@@ -16,6 +16,8 @@ import {SignalService} from './signal.service';
   imports: [
     CommonModule,
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     MidTierHeaderModule,
     SidePanelModule,
@@ -26,6 +28,8 @@ import {SignalService} from './signal.service';
   exports: [
     CommonModule,
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     MidTierHeaderModule,
     SidePanelModule,

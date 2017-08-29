@@ -4,6 +4,7 @@ import {IdeaListProvider} from '../../providers/idea-list.provider';
 import {Router} from '@angular/router';
 
 import {mappingClassArray} from '../../Ideas/pinned-ideas/ideasMappingClassArray';
+import {InsightsService} from '../../insights/shared/insights.service';
 
 @Component({
   selector: 'app-list-selection',
@@ -32,6 +33,7 @@ export class ListSelectionComponent implements OnInit {
   public selectedListHowInfo: string;
 
   constructor(private sharedService: SharedService,
+              private insightsService: InsightsService,
               private ideaListProvider: IdeaListProvider,
               private router: Router) {
   }
@@ -48,7 +50,7 @@ export class ListSelectionComponent implements OnInit {
       });
 
     this.sharedService.additionalLists$.subscribe(val => this.additionalLists = val);
-    this.sharedService.getWordPressJson('45').subscribe(val => this.wordPressPosts = val['0']['45']);
+    this.insightsService.getWordPressJson('45').subscribe(val => this.wordPressPosts = val['0']['45']);
   }
 
   public setAdditionalLists(val: boolean) {

@@ -1,5 +1,4 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {InsightsService} from '../shared/insights.service';
 
 @Component({
   selector: 'app-insights-dashboard',
@@ -9,15 +8,10 @@ import {InsightsService} from '../shared/insights.service';
 })
 export class InsightsDashboardComponent implements OnInit {
 
-  constructor(private insightsService: InsightsService) {
+  constructor() {
   }
 
   ngOnInit() {
-
-  }
-
-  public openMarketInsight(post: object): void {
-    this.insightsService.openModal(post['post_title'], post);
   }
 
 }

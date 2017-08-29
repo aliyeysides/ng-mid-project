@@ -38,6 +38,7 @@ export class InsightsService {
   }
 
   public getWordPressJson(id: string) {
+    console.log('id: ', id);
     const insightsUrl = `${this.apiHostName}/insights/?json=secursive.get_product_updates&dev=1&count=100`;
     this.getInsightsParams.set('id', id);
     return this.sharedService.getJson(insightsUrl, this.getInsightsParams);

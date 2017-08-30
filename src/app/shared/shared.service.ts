@@ -4,7 +4,6 @@ import {Subject} from "rxjs/Subject";
 import {Observable} from 'rxjs/Rx';
 import { environment } from '../../environments/environment';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {Subscription} from 'rxjs/Subscription';
 
 @Injectable()
 export class SharedService {
@@ -116,6 +115,7 @@ export class SharedService {
   }
 
   public getJson(url, params): Observable<Array<object>>{
+    console.log('url:', url, 'params:', params);
     return this.http.get(url, {
       search: params,
       withCredentials: true

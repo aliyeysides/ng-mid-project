@@ -14,8 +14,8 @@ export class StockOfTheWeekComponent implements OnInit {
 
   ngOnInit() {
     const stockoftheWeekCategoryId = '22';
-    this.insightsService.getWordPressJson(stockoftheWeekCategoryId)
-      .subscribe(res => this.stockoftheWeek = res.find(obj => true)[stockoftheWeekCategoryId].find(obj => true));
+    this.insightsService.getWordPressJson(stockoftheWeekCategoryId, 1)
+      .subscribe(res => this.stockoftheWeek = res['0'][stockoftheWeekCategoryId].find(obj => !!obj));
   }
 
   public openStockoftheWeek(): void {

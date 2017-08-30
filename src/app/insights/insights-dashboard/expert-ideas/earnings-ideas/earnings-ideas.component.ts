@@ -14,8 +14,8 @@ export class EarningsIdeasComponent implements OnInit {
 
   ngOnInit() {
     const earningsIdeaCategoryId = '16';
-    this.insightsService.getWordPressJson(earningsIdeaCategoryId)
-      .subscribe(res => this.earningsIdea = res.find(obj => true)[earningsIdeaCategoryId].find(obj => true));
+    this.insightsService.getWordPressJson(earningsIdeaCategoryId, 1)
+      .subscribe(res => this.earningsIdea = res['0'][earningsIdeaCategoryId].find(obj => !!obj));
   }
 
   public openEarningsIdeas(): void {

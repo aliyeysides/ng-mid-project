@@ -6,8 +6,9 @@
         <p class="post__category">Market Insights</p>
 
         <div class="post__toggle-container">
-          <p class="post__date">Jul 4, 2017</p>
-          <pagination [directionLinks]="false" [itemsPerPage]="itemsPerPage" [totalItems]="totalItems" [(ngModel)]="currentPage"
+          <p class="post__date">{{ marketInsights ? marketInsights[currentPage-1]['post_date_formatted'] : null }}</p>
+          <pagination [directionLinks]="false" [itemsPerPage]="itemsPerPage" [totalItems]="totalItems"
+                      [(ngModel)]="currentPage"
                       (numPages)="smallnumPages = $event"></pagination>
         </div>
       </div>
@@ -18,10 +19,9 @@
     </div>
   </div>
 
-  <div class="post__content col-md-7">
+  <div (click)="openMarketInsight(marketInsights[currentPage-1])" class="post__content col-md-7">
     <div class="post__title">
-      <p><a>After New Highs in Market, Thursday’s Technology Sell Off Brings Out Bearish Pundits&nbsp;&nbsp;<i
-        class="fa fa-long-arrow-right" aria-hidden="true"></i></a></p>
+      <p><a>{{ marketInsights ? marketInsights[currentPage-1]['post_title'] : null }}<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a></p>
     </div>
     <div class="post__author">
       <p class="author"><span>BY</span> Marc Chaikin</p>

@@ -9,7 +9,7 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 /* Modules */
 import {SharedModule} from './shared/shared.module';
-import {IdeasModule} from './Ideas/ideas.module';
+import {IdeasModule} from './ideas/ideas.module';
 import {DiscoveryModule} from './discovery/discovery.module';
 import {InsightsModule} from './insights/insights.module';
 import {StockReportModule} from './stock-report/stock.module';

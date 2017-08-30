@@ -5,7 +5,7 @@
     </div>
   </div>
   <ul class="post__content col-12">
-    <li *ngFor="let post of expertEducationPosts" (click)="openEducationPost(post)" class="content__article">
+    <li *ngFor="let post of educationPages[currentPage-1]" (click)="openEducationPost(post)" class="content__article">
       <div class="post__title">
         <p><a>{{ post['post_title'] }}&nbsp;&nbsp;<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
         </p>

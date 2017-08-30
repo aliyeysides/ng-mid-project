@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {Http, URLSearchParams} from '@angular/http';
 import {InsightsModalComponent} from '../insights-modal/insights-modal.component';
 import {BsModalService} from 'ngx-bootstrap';
 import {SharedService} from '../../shared/shared.service';
@@ -38,7 +39,6 @@ export class InsightsService {
   }
 
   public getWordPressJson(id: string) {
-    console.log('id: ', id);
     const insightsUrl = `${this.apiHostName}/insights/?json=secursive.get_product_updates&dev=1&count=100`;
     this.getInsightsParams.set('id', id);
     return this.sharedService.getJson(insightsUrl, this.getInsightsParams);

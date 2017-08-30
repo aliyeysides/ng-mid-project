@@ -1,5 +1,4 @@
 import {NgModule} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {SharedModule} from '../shared/shared.module';
 import {InsightsDashboardModule} from './insights-dashboard/insights-dashboard.module';
@@ -7,12 +6,12 @@ import {InsightsComponent} from './insights.component';
 import {InsightsModalComponent} from './insights-modal/insights-modal.component';
 
 import {ModalModule} from 'ngx-bootstrap/modal';
+import {DatePipe} from '@angular/common';
 
 @NgModule({
   imports: [
     SharedModule,
     FormsModule,
-    BrowserModule,
     ReactiveFormsModule,
     InsightsDashboardModule,
     ModalModule
@@ -22,7 +21,7 @@ import {ModalModule} from 'ngx-bootstrap/modal';
   ],
   declarations: [InsightsComponent, InsightsModalComponent],
   bootstrap: [InsightsComponent],
-  providers: [],
+  providers: [DatePipe],
   entryComponents: [InsightsModalComponent]
 })
 export class InsightsModule {

@@ -3,7 +3,7 @@ import {SharedService} from '../shared.service';
 import {IdeaListProvider} from '../../providers/idea-list.provider';
 import {Router} from '@angular/router';
 
-import {mappingClassArray} from '../../Ideas/pinned-ideas/ideasMappingClassArray';
+import {mappingClassArray} from '../../ideas/pinned-ideas/ideasMappingClassArray';
 import {InsightsService} from '../../insights/shared/insights.service';
 
 @Component({
@@ -50,7 +50,7 @@ export class ListSelectionComponent implements OnInit {
       });
 
     this.sharedService.additionalLists$.subscribe(val => this.additionalLists = val);
-    this.insightsService.getWordPressJson('45').subscribe(val => this.wordPressPosts = val['0']['45']);
+    this.insightsService.getWordPressJson('45', 50).subscribe(val => this.wordPressPosts = val['0']['45']);
   }
 
   public setAdditionalLists(val: boolean) {

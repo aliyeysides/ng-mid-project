@@ -14,8 +14,8 @@ export class BullsBearsComponent implements OnInit {
 
   ngOnInit() {
     const bullsAndBearsCategoryId = '13';
-    this.insightsService.getWordPressJson(bullsAndBearsCategoryId)
-      .subscribe(res => this.bullsandBears = res.find(obj => true)[bullsAndBearsCategoryId].find(obj => true));
+    this.insightsService.getWordPressJson(bullsAndBearsCategoryId, 1)
+      .subscribe(res => this.bullsandBears = res['0'][bullsAndBearsCategoryId].find(obj => !!obj));
   }
 
   public openBullsandBearsIdeas(): void {

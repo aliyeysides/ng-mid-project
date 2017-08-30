@@ -115,7 +115,6 @@ export class SharedService {
   }
 
   public getJson(url, params): Observable<Array<object>>{
-    console.log('url:', url, 'params:', params);
     return this.http.get(url, {
       search: params,
       withCredentials: true

@@ -20,7 +20,7 @@ import {DatePipe} from '@angular/common';
     InsightsComponent
   ],
   declarations: [InsightsComponent, InsightsModalComponent],
-  bootstrap: [InsightsComponent],
+  bootstrap: [],
   providers: [DatePipe],
   entryComponents: [InsightsModalComponent]
 })

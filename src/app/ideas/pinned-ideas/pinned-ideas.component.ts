@@ -69,7 +69,6 @@ export class PinnedIdeasComponent implements OnInit, OnDestroy {
 
   public selectIdeaList(list) {
     this.ideaListProvider.setSelectedList(list);
-    this.ideaListProvider.setSymbolListValues(list);
     this.listSelectionService.setIsShown(false);
   }
 

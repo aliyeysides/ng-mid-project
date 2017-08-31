@@ -16,9 +16,8 @@ import {IdeaListProvider} from '../../providers/idea-list.provider';
 
 export class ListViewComponent implements OnInit, OnDestroy {
   private userId = '1024494';
-  private additionalListsSub: Subscription;
+  private additionalListsSubscription: Subscription;
   private selectedListSubscription: Subscription;
-  private symbolListValuesSubscription: Subscription;
   private addStockIntoHoldingListSubscription: Subscription;
   private addStockIntoWatchingListSubscription: Subscription;
   private removeFromListSubscription: Subscription;
@@ -61,31 +60,30 @@ export class ListViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.symbolListValuesSubscription = this.ideaListProvider.symbolListValues$
-      .switchMap(val => this.sharedService.symbolList({listId: val['list_id']}))
+    this.selectedListSubscription = this.ideaListProvider.selectedList$
+      .switchMap(val => {
+        this.selectedListName = val['name'];
+        console.log('selectedList', val['name']);
+        return this.sharedService.symbolList({listId: val['list_id']})
+      })
       .subscribe(res => {
           this.clearOrderByObject();
           this.clearIdeasLists();
           this.selectedListId = res['list_id'];
           this.ideaList = res['symbols'];
-          setTimeout(this.assignStockData(4), 0);
-          if (this.ideaList) {
-            this.selectStock(this.ideaList[0] as Idea);
-          }
+          this.assignStockData(4);
+          if (this.ideaList) this.selectStock(this.ideaList[0] as Idea);
         },
         err => {
           this.sharedService.handleError(err);
         }
       );
-
-    this.selectedListSubscription = this.ideaListProvider.selectedList$.subscribe(res => this.selectedListName = res['name']);
-    this.additionalListsSub = this.listSelectionService.isShown$.subscribe(val => this.additionalLists = val);
+    this.additionalListsSubscription = this.listSelectionService.isShown$.subscribe(val => this.additionalLists = val);
   }
 
   ngOnDestroy() {
-    this.additionalListsSub.unsubscribe();
+    this.additionalListsSubscription.unsubscribe();
     this.selectedListSubscription.unsubscribe();
-    this.symbolListValuesSubscription.unsubscribe();
     if (this.loading) this.loading.unsubscribe();
     if (this.headlinesLoading) this.headlinesLoading.unsubscribe();
     if (this.symbolListLoading) this.symbolListLoading.unsubscribe();

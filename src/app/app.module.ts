@@ -24,6 +24,7 @@ import {
 } from 'ngx-bootstrap';
 
 import {BusyConfig, BusyModule} from 'angular2-busy';
+import {IdeaListProvider} from './providers/idea-list.provider';
 
 const loadingMaskConfig: BusyConfig = ({
   message: '',
@@ -61,7 +62,7 @@ const loadingMaskConfig: BusyConfig = ({
     PaginationModule.forRoot(),
     BusyModule.forRoot(loadingMaskConfig)
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, IdeaListProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule {

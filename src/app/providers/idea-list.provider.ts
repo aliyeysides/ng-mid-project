@@ -18,15 +18,8 @@ export class IdeaListProvider {
   private wholeIdeasList: Subject<Array<object>> = new Subject<Array<object>>();
   wholeIdeasList$ = this.wholeIdeasList.asObservable();
 
-  private symbolListValues: Subject<Array<object>> = new Subject<Array<object>>();
-  symbolListValues$ = this.symbolListValues.asObservable();
-
   constructor(private sharedService: SharedService) {
     this.symbolLookupParams = new URLSearchParams;
-  }
-
-  public setSymbolListValues(list) {
-    this.symbolListValues.next(list);
   }
 
   public setSelectedList(list: object) {

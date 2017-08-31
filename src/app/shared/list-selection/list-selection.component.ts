@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, EventEmitter, Input, OnDestroy} from '@angular/core';
+import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 import {SharedService} from '../shared.service';
 import {IdeaListProvider} from '../../providers/idea-list.provider';
 import {Router} from '@angular/router';

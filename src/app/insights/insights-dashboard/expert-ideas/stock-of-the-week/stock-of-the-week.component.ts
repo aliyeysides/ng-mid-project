@@ -1,12 +1,14 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {InsightsService} from '../../../shared/insights.service';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'stock-of-the-week',
   templateUrl: './stock-of-the-week.component.html',
   styleUrls: ['../../insights-dashboard.component.scss']
 })
-export class StockOfTheWeekComponent implements OnInit {
+export class StockOfTheWeekComponent implements OnInit, OnDestroy {
+  private wordPressSubscription: Subscription;
   public stockoftheWeek: object;
 
   constructor(private insightsService: InsightsService) {
@@ -14,8 +16,12 @@ export class StockOfTheWeekComponent implements OnInit {
 
   ngOnInit() {
     const stockoftheWeekCategoryId = '22';
-    this.insightsService.getWordPressJson(stockoftheWeekCategoryId, 1)
+    this.wordPressSubscription = this.insightsService.getWordPressJson(stockoftheWeekCategoryId, 1)
       .subscribe(res => this.stockoftheWeek = res['0'][stockoftheWeekCategoryId].find(obj => !!obj));
+  }
+
+  ngOnDestroy() {
+    this.wordPressSubscription.unsubscribe();
   }
 
   public openStockoftheWeek(): void {

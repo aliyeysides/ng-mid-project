@@ -1,13 +1,14 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {InsightsService} from '../../shared/insights.service';
-import {DatePipe} from '@angular/common';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'market-insights',
   templateUrl: './market-insights.component.html',
   styleUrls: ['../insights-dashboard.component.scss'],
 })
-export class MarketInsightsComponent implements OnInit {
+export class MarketInsightsComponent implements OnInit, OnDestroy {
+  private wordPressSubscription: Subscription;
   public marketInsights: object[];
   public totalItems: number;
   public currentPage: number = 1;
@@ -19,13 +20,17 @@ export class MarketInsightsComponent implements OnInit {
 
   ngOnInit() {
     const marketInsightsCategoryId = '2';
-    this.insightsService.getWordPressJson(marketInsightsCategoryId, 3).subscribe(res => {
+    this.wordPressSubscription = this.insightsService.getWordPressJson(marketInsightsCategoryId, 3).subscribe(res => {
       this.marketInsights = res['0'][marketInsightsCategoryId];
       this.totalItems = this.marketInsights.length;
       this.insightsService.assignWordPressDateProperties(this.marketInsights);
       // TODO: Get 'author' id into market insight posts
       // this.insightsService.assignAuthorProp(this.marketInsights);
     });
+  }
+
+  ngOnDestroy() {
+    this.wordPressSubscription.unsubscribe();
   }
 
   public openMarketInsight(post: object): void {

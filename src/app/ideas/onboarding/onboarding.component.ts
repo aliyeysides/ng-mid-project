@@ -1,30 +1,41 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ModalDirective} from 'ngx-bootstrap/modal';
 import {Idea} from '../../shared/models/idea';
 import {SharedService} from '../../shared/shared.service';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-onboarding-modal',
   templateUrl: './onboarding.component.html',
   styleUrls: ['./onboarding.component.scss']
 })
-export class OnboardingComponent {
+export class OnboardingComponent implements OnInit, OnDestroy {
   @ViewChild('autoShownModal') public autoShownModal:ModalDirective;
+  private userId = '1024494';
+  private symbolListSubscription: Subscription;
+  private onboardingModalSubscription: Subscription;
   public selected: number = 1;
   public holdings: Array<Idea>;
-  private userId = '1024494';
 
   constructor(private sharedService: SharedService) {
+  }
+
+  ngOnInit() {
     const holdingListId = '1220535';
-    this.sharedService.symbolList({listId: holdingListId, userId: this.userId})
+    this.symbolListSubscription = this.sharedService.symbolList({listId: holdingListId, userId: this.userId})
       .subscribe(res => {
         this.holdings = res['symbols'];
       });
 
-    this.sharedService.onboardingModal$
+    this.onboardingModalSubscription = this.sharedService.onboardingModal$
       .subscribe(res => {
         this.isModalShown = res;
       });
+  }
+
+  ngOnDestroy() {
+    this.symbolListSubscription.unsubscribe();
+    this.onboardingModalSubscription.unsubscribe();
   }
 
   public removeFromHolding(ticker: string) {

@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core';
 import {SharedModule} from '../shared/shared.module';
 
 import {IdeasComponent} from './ideas.component';
-import {HomeService} from './service/home.service';
 import {ListViewComponent} from './list-view/list-view.component';
 import {ChartPanelComponent} from './chart-panel/chart-panel.component';
 import {SymbolSearchModule} from '../shared/symbol-search/symbol-search.module';
@@ -30,7 +29,7 @@ import {PinnedIdeasComponent} from './pinned-ideas/pinned-ideas.component';
     PinnedIdeasComponent
   ],
   declarations: [IdeasComponent, PinnedIdeasComponent, ListViewComponent, OnboardingComponent, ChartPanelComponent],
-  providers: [HomeService, ChartService]
+  providers: [ChartService]
 })
 export class IdeasModule {
 }

@@ -1,20 +1,27 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SharedService} from '../../shared/shared.service';
 import {Router} from '@angular/router';
 import {Idea} from '../../shared/models/idea';
 import {Subscription} from 'rxjs/Subscription';
 import {ChartService} from '../../shared/charts/chart.service';
 import {SignalService} from '../../shared/signal.service';
+import {ListSelectionService} from '../../shared/list-selection/list-selection.service';
+import {IdeaListProvider} from '../../providers/idea-list.provider';
 
 @Component({
-  selector: 'app-list-view',
+  selector: 'list-view',
   templateUrl: './list-view.component.html',
   styleUrls: ['./list-view.component.scss'],
 })
 
-export class ListViewComponent implements OnInit {
-  @Output() public toggleAdditionalIdeasLists: EventEmitter<any> = new EventEmitter();
+export class ListViewComponent implements OnInit, OnDestroy {
   private userId = '1024494';
+  private additionalListsSub: Subscription;
+  private selectedListSubscription: Subscription;
+  private symbolListValuesSubscription: Subscription;
+  private addStockIntoHoldingListSubscription: Subscription;
+  private addStockIntoWatchingListSubscription: Subscription;
+  private removeFromListSubscription: Subscription;
   public ideaList: Array<object>;
   public additionalLists: boolean = false;
   public mouseHoverOptionsMap: object = {};
@@ -46,13 +53,15 @@ export class ListViewComponent implements OnInit {
   };
 
   constructor(private sharedService: SharedService,
+              private ideaListProvider: IdeaListProvider,
+              private listSelectionService: ListSelectionService,
               private router: Router,
               private chartService: ChartService,
               private signalService: SignalService) {
   }
 
   ngOnInit() {
-    this.sharedService.symbolListValues$
+    this.symbolListValuesSubscription = this.ideaListProvider.symbolListValues$
       .switchMap(val => this.sharedService.symbolList({listId: val['list_id']}))
       .subscribe(res => {
           this.clearOrderByObject();
@@ -69,9 +78,19 @@ export class ListViewComponent implements OnInit {
         }
       );
 
-    this.sharedService.powerBarHeader$.subscribe(res => this.selectedListName = res['name']);
-    this.sharedService.additionalLists$.subscribe(val => this.additionalLists = val);
+    this.selectedListSubscription = this.ideaListProvider.selectedList$.subscribe(res => this.selectedListName = res['name']);
+    this.additionalListsSub = this.listSelectionService.isShown$.subscribe(val => this.additionalLists = val);
+  }
 
+  ngOnDestroy() {
+    this.additionalListsSub.unsubscribe();
+    this.selectedListSubscription.unsubscribe();
+    this.symbolListValuesSubscription.unsubscribe();
+    if (this.loading) this.loading.unsubscribe();
+    if (this.headlinesLoading) this.headlinesLoading.unsubscribe();
+    if (this.symbolListLoading) this.symbolListLoading.unsubscribe();
+    if (this.addStockIntoHoldingListSubscription) this.addStockIntoHoldingListSubscription.unsubscribe();
+    if (this.addStockIntoWatchingListSubscription) this.addStockIntoWatchingListSubscription.unsubscribe();
   }
 
   public updateChart() {
@@ -193,8 +212,9 @@ export class ListViewComponent implements OnInit {
     this.showHeadlines = !this.showHeadlines;
   }
 
-  public toggleAdditionalLists() {
-    this.toggleAdditionalIdeasLists.emit(null);
+  public toggleListSelectionView() {
+    this.additionalLists = !this.additionalLists;
+    this.listSelectionService.setIsShown(this.additionalLists);
   }
 
   public goToStockView(stock: (Idea | string), e) {
@@ -213,7 +233,7 @@ export class ListViewComponent implements OnInit {
 
   public addToHoldingList(stock: any, e) {
     e.stopPropagation();
-    this.sharedService.addStockIntoHoldingList(stock)
+    this.addStockIntoHoldingListSubscription = this.sharedService.addStockIntoHoldingList(stock)
       .subscribe(res => {
         console.log('res from addToList', res);
       });
@@ -221,7 +241,7 @@ export class ListViewComponent implements OnInit {
 
   public addToWatchingList(stock: any, e) {
     e.stopPropagation();
-    this.sharedService.addStockIntoWatchingList(stock)
+    this.addStockIntoWatchingListSubscription = this.sharedService.addStockIntoWatchingList(stock)
       .subscribe(res => {
         console.log('res from addToList', res);
       });
@@ -229,7 +249,7 @@ export class ListViewComponent implements OnInit {
 
   public removeFromList(stock: any, listId: string, e) {
     e.stopPropagation();
-    this.sharedService.deleteSymbolFromList(stock.symbol, listId)
+    this.removeFromListSubscription = this.sharedService.deleteSymbolFromList(stock.symbol, listId)
       .subscribe(res => {
         console.log('res from removeFromList', res);
       });

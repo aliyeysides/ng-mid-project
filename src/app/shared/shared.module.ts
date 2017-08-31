@@ -11,6 +11,7 @@ import {PipesModule} from './pipes/pipes.module';
 
 import {SharedService} from './shared.service';
 import {SignalService} from './signal.service';
+import {ListSelectionService} from './list-selection/list-selection.service';
 
 @NgModule({
   imports: [
@@ -37,7 +38,7 @@ import {SignalService} from './signal.service';
     ListSelectionModule,
     PipesModule
   ],
-  providers: [SharedService, SignalService],
+  providers: [ListSelectionService, SharedService, SignalService],
   declarations: []
 
 })

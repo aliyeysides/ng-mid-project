@@ -23,8 +23,6 @@ export class MarketInsightsComponent implements OnInit {
       this.marketInsights = res['0'][marketInsightsCategoryId];
       this.totalItems = this.marketInsights.length;
       this.insightsService.assignWordPressDateProperties(this.marketInsights);
-      console.log('this.marketInsights', this.marketInsights);
-
       // TODO: Get 'author' id into market insight posts
       // this.insightsService.assignAuthorProp(this.marketInsights);
     });

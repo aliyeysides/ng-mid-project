@@ -1,9 +1,10 @@
-import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {SharedService} from '../../shared/shared.service';
 import {IdeaListProvider} from 'app/providers/idea-list.provider';
 import {Subscription} from 'rxjs/Subscription';
 
 import {mappingClassArray} from './ideasMappingClassArray';
+import {ListSelectionService} from '../../shared/list-selection/list-selection.service';
 
 @Component({
   selector: 'mid-tier-ideas',
@@ -12,30 +13,45 @@ import {mappingClassArray} from './ideasMappingClassArray';
   encapsulation: ViewEncapsulation.None
 
 })
-export class PinnedIdeasComponent implements OnInit {
+export class PinnedIdeasComponent implements OnInit, OnDestroy {
   private userId = '1024494';
+  private selectedListSubscription: Subscription;
+  private wholeIdeasListSubscription: Subscription;
+  private listManager: Subscription;
   public ideasList: Array<object>;
   public userList: Array<object> = [];
   public themeList: Array<object>;
   public activeIdeasList: Array<object>;
-  public selectedActiveList: Array<object>;
-  public selected: string = 'test';
-  public additionalLists: boolean;
+  public selectedList: object;
   public loading: Subscription;
   public ideaListLoading: Subscription;
   public mappingClassArray = mappingClassArray;
 
   constructor(private sharedService: SharedService,
+              private listSelectionService: ListSelectionService,
               private ideaListProvider: IdeaListProvider) {
   }
 
   ngOnInit() {
     this.getPinnedIdeaLists();
-    this.ideaListProvider.wholeIdeasList$
+    this.selectedListSubscription = this.ideaListProvider.selectedList$
+      .subscribe(res => {
+        this.selectedList = res;
+      });
+
+    this.wholeIdeasListSubscription = this.ideaListProvider.wholeIdeasList$
       .subscribe(res => {
         const list = this.parseListObject(res);
         this.updateActiveIdeaList(list);
-      });
+        Object.keys(this.selectedList).length != 0 ? this.selectIdeaList(this.selectedList) : this.selectIdeaList(this.userList[0]);
+      })
+  }
+
+  ngOnDestroy() {
+    this.selectedListSubscription.unsubscribe();
+    this.wholeIdeasListSubscription.unsubscribe();
+    this.ideaListLoading.unsubscribe();
+    if (this.listManager) this.listManager.unsubscribe();
   }
 
   public getPinnedIdeaLists() {
@@ -43,7 +59,7 @@ export class PinnedIdeasComponent implements OnInit {
       .subscribe(res => {
           this.ideaListProvider.setIdeaListData(res);
         },
-        err => console.log('err', err));
+        err => this.sharedService.handleError);
   }
 
   public updateActiveIdeaList(list) {
@@ -51,37 +67,21 @@ export class PinnedIdeasComponent implements OnInit {
   }
 
   public getActiveClasses(listName) {
-     let selectedClass = (this.selected == listName) ? ' selected' : '';
-     return this.mappingClassArray[listName]['style'] + `${selectedClass}`;
+    const selectedClass = (this.selectedList && this.selectedList['name'] == listName) ? ' selected' : '';
+    return this.mappingClassArray[listName]['style'] + `${selectedClass}`;
   }
 
-  public selectedIdeasList(list) {
-    this.sharedService.setPowerBarHeader(list);
-    this.selectedActiveList = list;
-    this.hideAddingListPanel();
-    this.selected = this.selectedActiveList['name'];
-    this.sharedService.setSymbolListValues(this.selectedActiveList);
-    if (this.additionalLists) {
-      this.sharedService.setAdditionalListsMenu(!this.additionalLists);
-    }
+  public selectIdeaList(list) {
+    this.ideaListProvider.setSelectedList(list);
+    this.listSelectionService.setIsShown(false);
   }
 
   public manageActiveInactive(status, list_id) {
-    this.ideaListProvider.manageActiveInactive({uid: this.userId, listId: list_id, mode: status})
+    this.listManager = this.ideaListProvider.manageActiveInactive({uid: this.userId, listId: list_id, mode: status})
       .subscribe(() => {
           this.getPinnedIdeaLists();
         },
-        err => console.log('err', err));
-  }
-
-  public toggleAdditionalLists() {
-    this.additionalLists = !this.additionalLists;
-    this.sharedService.setAdditionalListsMenu(this.additionalLists);
-  }
-
-  public hideAddingListPanel() {
-    this.additionalLists = false;
-    this.sharedService.setAdditionalListsMenu(this.additionalLists);
+        err => this.sharedService.handleError);
   }
 
   private parseListObject(obj): Array<object> {

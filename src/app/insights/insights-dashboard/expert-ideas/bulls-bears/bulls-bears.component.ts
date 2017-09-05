@@ -1,12 +1,14 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {InsightsService} from '../../../shared/insights.service';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'bulls-bears',
   templateUrl: './bulls-bears.component.html',
   styleUrls: ['../../insights-dashboard.component.scss']
 })
-export class BullsBearsComponent implements OnInit {
+export class BullsBearsComponent implements OnInit, OnDestroy {
+  private wordPressSubscription: Subscription;
   public bullsandBears: object;
 
   constructor(private insightsService: InsightsService) {
@@ -14,8 +16,12 @@ export class BullsBearsComponent implements OnInit {
 
   ngOnInit() {
     const bullsAndBearsCategoryId = '13';
-    this.insightsService.getWordPressJson(bullsAndBearsCategoryId, 1)
+     this.wordPressSubscription = this.insightsService.getWordPressJson(bullsAndBearsCategoryId, 1)
       .subscribe(res => this.bullsandBears = res['0'][bullsAndBearsCategoryId].find(obj => !!obj));
+  }
+
+  ngOnDestroy() {
+    this.wordPressSubscription.unsubscribe();
   }
 
   public openBullsandBearsIdeas(): void {

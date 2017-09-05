@@ -4,11 +4,11 @@
       <h1 class="col-12">Ideas For You</h1>
     </div>
 
-    <mid-tier-ideas #ideas> </mid-tier-ideas>
+    <mid-tier-ideas> </mid-tier-ideas>
 </div>
 
 <app-onboarding-modal></app-onboarding-modal>
 
-<app-list-view (toggleAdditionalIdeasLists)="ideas.toggleAdditionalLists()"></app-list-view>
+<list-view></list-view>
 
-<app-list-selection [additionalLists]="false" (previewList)="ideas.selectedIdeasList($event)"></app-list-selection>
+<list-selection [isShown]="false"></list-selection>

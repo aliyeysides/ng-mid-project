@@ -8,15 +8,6 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 @Injectable()
 export class SharedService {
 
-  private symbolListValues: Subject<Array<object>> = new Subject<Array<object>>();
-  symbolListValues$ = this.symbolListValues.asObservable();
-
-  private additionalLists: Subject<boolean> = new Subject<boolean>();
-  additionalLists$ = this.additionalLists.asObservable();
-
-  private powerBarHeader: BehaviorSubject<any> = new BehaviorSubject({name:'Holding'});
-  powerBarHeader$ = this.powerBarHeader.asObservable();
-
   private onboardingPopup: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   onboardingPopup$ = this.onboardingPopup.asObservable();
 
@@ -43,16 +34,8 @@ export class SharedService {
     return this.apiHostName;
   }
 
-  public setSymbolListValues(list) {
-    this.symbolListValues.next(list);
-  }
-
   public triggerOnboardingPopup(data) {
     this.onboardingPopup.next(data);
-  }
-
-  public setPowerBarHeader(data) {
-    this.powerBarHeader.next(data);
   }
 
   public setOnboardingModal(data: boolean) {
@@ -63,12 +46,6 @@ export class SharedService {
     const symbolLookupUrl = `${this.apiHostName}/CPTRestSecure/app/stocks/symbol-lookupV1?`;
     this.symbolLookupParams.set('q', query);
     this.symbolLookupParams.set('searchColumn', 'symbol');
-    return this.getJson(symbolLookupUrl, this.symbolLookupParams);
-  }
-
-  public userList(query: string): Observable<Array<object>> {
-    const symbolLookupUrl = `${this.apiHostName}/CPTRestSecure/app/portfolio/getMidTierUserLists?`;
-    this.symbolLookupParams.set('uid', query);
     return this.getJson(symbolLookupUrl, this.symbolLookupParams);
   }
 
@@ -128,14 +105,6 @@ export class SharedService {
     let errMsg = (err.message) ? err.message :
       err.status ? `${err.status} - ${err.statusText}` : 'Server error';
       return Observable.throw(errMsg);
-  }
-
-  public getAdditionalListsMenu() {
-    return this.additionalLists;
-  }
-
-  public setAdditionalListsMenu(value: boolean) {
-    this.additionalLists.next(value);
   }
 
   checkIfBullList(listName) {

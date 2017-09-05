@@ -9,6 +9,7 @@ export class AppComponent {
 	constructor() {
 		//this.displayEnvironment();
 	}
+
 	private displayEnvironment(){
 		let url = `${window.location.protocol}://${window.location.hostname}:${window.location.port }`;
 		console.log(url);

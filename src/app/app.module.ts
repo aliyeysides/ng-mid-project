@@ -24,6 +24,7 @@ import {
 } from 'ngx-bootstrap';
 
 import {BusyConfig, BusyModule} from 'angular2-busy';
+import {IdeaListProvider} from './providers/idea-list.provider';
 
 const loadingMaskConfig: BusyConfig = ({
   message: '',

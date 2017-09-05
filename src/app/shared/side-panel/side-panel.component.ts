@@ -1,5 +1,5 @@
 'use strict';
-import {Component, OnInit, ViewEncapsulation, ElementRef} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation, ElementRef, OnDestroy} from '@angular/core';
 import {SharedService} from '../shared.service';
 import {SidePanelProvider} from 'app/providers/side-panel.provider';
 import {PagerProvider} from 'app/providers/paging.provider';
@@ -10,8 +10,6 @@ import * as moment from 'moment-timezone'
 
 import * as d3 from 'd3';
 import {Subscription} from 'rxjs/Subscription';
-//import * as axis from 'd3-axis';
-
 
 @Component({
   selector: 'side-panel',
@@ -34,8 +32,12 @@ import {Subscription} from 'rxjs/Subscription';
   `],
   styleUrls: ['./side-panel.component.scss']
 })
-export class SidePanelComponent implements OnInit {
-
+export class SidePanelComponent implements OnInit, OnDestroy {
+  private wholeIdeasListSubscription: Subscription;
+  private alertsDataSubscription: Subscription;
+  private initialMarketSectorDataSubscription: Subscription;
+  private updateInitialSectorDataSubscription: Subscription;
+  private recentIntraDayPriceSubscription: Subscription;
   public intraDayChartData: Array<object>;
   public initialData: Array<object>;
   public sectorsData: Array<object>;
@@ -92,7 +94,7 @@ export class SidePanelComponent implements OnInit {
     this.symbol = 'SPY';
     this.getIntraDayChartData(this.symbol, '0', `${this.symbol}-chart-container`);
 
-    this.ideaListProvider.wholeIdeasList$
+    this.wholeIdeasListSubscription = this.ideaListProvider.wholeIdeasList$
       .subscribe(res => {
         let ideasListForApiCall;
         ideasListForApiCall = res.filter((key, index, array) => {
@@ -109,6 +111,13 @@ export class SidePanelComponent implements OnInit {
       });
   }
 
+  ngOnDestroy() {
+    this.wholeIdeasListSubscription.unsubscribe();
+    if (this.loading) this.loading.unsubscribe();
+    if (this.alertsDataSubscription) this.alertsDataSubscription.unsubscribe();
+    if (this.initialMarketSectorDataSubscription) this.initialMarketSectorDataSubscription.unsubscribe();
+    if (this.recentIntraDayPriceSubscription) this.recentIntraDayPriceSubscription.unsubscribe();
+  }
 
   public getIntraDayChartData(symbol: string, index, chartClass) {
 
@@ -131,13 +140,13 @@ export class SidePanelComponent implements OnInit {
         xAxisData: data.timeIntervals,
         yAxisData: data.intraDayPrices,
         midValue: parseFloat(data.previousClose)
-      }
+      };
       this.chartService.realTimeAreaChartControler.init({data: chartData, id: chartClass});
     }
   }
 
   public getAlertSidePanelData(query) {
-    this.sidePanelProvider.getAlertsData(query)
+    this.alertsDataSubscription = this.sidePanelProvider.getAlertsData(query)
       .subscribe(res => {
 
           this.alertCount.upCount = 0;
@@ -226,7 +235,7 @@ export class SidePanelComponent implements OnInit {
   }
 
   public initialMarketSectorData() {
-    this.sidePanelProvider.initialMarketSectorData({components: 'majorMarketIndices,sectors'})
+    this.initialMarketSectorDataSubscription = this.sidePanelProvider.initialMarketSectorData({components: 'majorMarketIndices,sectors'})
       .subscribe(res => {
           this.initialData = res;
           this.marketsData = this.initialData['market_indices'];
@@ -245,7 +254,7 @@ export class SidePanelComponent implements OnInit {
   }
 
   public updateInitialSectorData(listId) {
-    this.sidePanelProvider.updateInitialSectorData({'listId': listId})
+    this.updateInitialSectorDataSubscription = this.sidePanelProvider.updateInitialSectorData({'listId': listId})
       .subscribe(res => {
           this.mapSectorData(res);
         },
@@ -304,7 +313,7 @@ export class SidePanelComponent implements OnInit {
   }
 
   public getRecentIntraDayPriceForSymbol(symbol) {
-    this.sidePanelProvider.getRecentIntraDayPriceForSymbol({symbol: symbol})
+    this.recentIntraDayPriceSubscription = this.sidePanelProvider.getRecentIntraDayPriceForSymbol({symbol: symbol})
       .subscribe(res => {
           if (res['isPreMarketTime'] == '0') {
             this.chartService.realTimeAreaChartControler.appendNewData(res)

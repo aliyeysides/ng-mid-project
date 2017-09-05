@@ -4,7 +4,7 @@
     <div class="list-category list-category--ideas">
     </div>
     <ul class="">
-      <li *ngFor="let list of activeIdeasList ; let i = index " (click)="selectedIdeasList(list)" class="list__option"
+      <li *ngFor="let list of activeIdeasList ; let i = index " (click)="selectIdeaList(list)" class="list__option"
           [ngClass]="getActiveClasses(list.name)">
         <div class="list__image">
           <button (click)="manageActiveInactive('deactivate',list.list_id);$event.stopPropagation()" type="button"

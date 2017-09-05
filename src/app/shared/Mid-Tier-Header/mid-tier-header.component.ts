@@ -1,10 +1,9 @@
-import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import { SharedService } from '../shared.service';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
 import {noop} from 'rxjs/util/noop';
-
-declare var $: any;
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'mid-tier-header',
@@ -12,8 +11,9 @@ declare var $: any;
   styleUrls: ['./mid-tier-header.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class MidTierHeaderComponent implements OnInit {
+export class MidTierHeaderComponent implements OnInit, OnDestroy {
   @ViewChild('supportModal') public supportModal: ModalDirective;
+  private onboardingPopupSubscription: Subscription;
   public content: string = "You can get back to the Quick Start walkthrough anytime in your settings!";
   public showPopupTooltip: boolean;
   public items: object[] = [
@@ -28,10 +28,14 @@ export class MidTierHeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.sharedService.onboardingPopup$
+    this.onboardingPopupSubscription = this.sharedService.onboardingPopup$
       .subscribe(res => {
         this.showPopupTooltip = res;
       });
+  }
+
+  ngOnDestroy() {
+    this.onboardingPopupSubscription.unsubscribe();
   }
 
   public toggleNav(id: string) {

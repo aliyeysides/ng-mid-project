@@ -1,10 +1,10 @@
 <!-- SECTION: ADD LIST BOTTOM -->
-<div *ngIf="additionalLists == true" class="body__bottom body__bottom--addlist">
+<div *ngIf="isShown == true" class="body__bottom body__bottom--addlist">
 
   <!-- ROW: ADD LIST ACTION BAR  -->
   <div class="list-view__actionbar list-view__actionbar--addlist row no-gutters">
     <div class="list__header col-12">
-       <div *ngIf="isIdeasPage()" class="list__drop" (click)="setAdditionalLists(false)">
+       <div *ngIf="isIdeasPage()" class="list__drop" (click)="toggleShown(false)">
         <svg class="align-absolute" width="300px" height="300px" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <defs></defs>
           <g id="icon_listdrop" fill="#000000" stroke="none" stroke-width="1" fill-rule="evenodd">
@@ -16,7 +16,7 @@
           <span><i
             tooltip="View all the idea lists and pin them above for quick access"
             class="fa fa-plus-circle"
-            aria-hidden="true"></i>&nbsp;View &amp; Pin lists...</span>
+            aria-hidden="true"></i>&nbsp;View &amp; Favorite lists...</span>
       </p>
     </div>
   </div>

@@ -62,7 +62,7 @@ const loadingMaskConfig: BusyConfig = ({
     PaginationModule.forRoot(),
     BusyModule.forRoot(loadingMaskConfig)
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}, IdeaListProvider],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule {

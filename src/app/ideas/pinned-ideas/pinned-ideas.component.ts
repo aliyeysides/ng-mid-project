@@ -34,13 +34,17 @@ export class PinnedIdeasComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getPinnedIdeaLists();
+    this.selectedListSubscription = this.ideaListProvider.selectedList$
+      .subscribe(res => {
+        this.selectedList = res;
+      });
+
     this.wholeIdeasListSubscription = this.ideaListProvider.wholeIdeasList$
       .subscribe(res => {
         const list = this.parseListObject(res);
-        this.selectedList ? this.selectIdeaList(this.selectedList) : this.selectIdeaList(this.userList[0]);
         this.updateActiveIdeaList(list);
-      });
-    this.selectedListSubscription = this.ideaListProvider.selectedList$.subscribe(val => this.selectedList = val);
+        Object.keys(this.selectedList).length != 0 ? this.selectIdeaList(this.selectedList) : this.selectIdeaList(this.userList[0]);
+      })
   }
 
   ngOnDestroy() {
@@ -63,8 +67,8 @@ export class PinnedIdeasComponent implements OnInit, OnDestroy {
   }
 
   public getActiveClasses(listName) {
-     const selectedClass = (this.selectedList['name'] == listName) ? ' selected' : '';
-     return this.mappingClassArray[listName]['style'] + `${selectedClass}`;
+    const selectedClass = (this.selectedList && this.selectedList['name'] == listName) ? ' selected' : '';
+    return this.mappingClassArray[listName]['style'] + `${selectedClass}`;
   }
 
   public selectIdeaList(list) {

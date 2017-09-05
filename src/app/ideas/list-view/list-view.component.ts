@@ -63,7 +63,6 @@ export class ListViewComponent implements OnInit, OnDestroy {
     this.selectedListSubscription = this.ideaListProvider.selectedList$
       .switchMap(val => {
         this.selectedListName = val['name'];
-        console.log('selectedList', val['name']);
         return this.sharedService.symbolList({listId: val['list_id']})
       })
       .subscribe(res => {
@@ -78,7 +77,8 @@ export class ListViewComponent implements OnInit, OnDestroy {
           this.sharedService.handleError(err);
         }
       );
-    this.additionalListsSubscription = this.listSelectionService.isShown$.subscribe(val => this.additionalLists = val);
+    this.additionalListsSubscription
+      = this.listSelectionService.isShown$.subscribe(val => this.additionalLists = val);
   }
 
   ngOnDestroy() {

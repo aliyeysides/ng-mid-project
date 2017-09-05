@@ -19,6 +19,7 @@ export class ListSelectionComponent implements OnInit, OnDestroy {
   private totalListAmount: number;
   private wordPressSubscription: Subscription;
   private ideaListSubscription: Subscription;
+  private isShownSubscription: Subscription;
   private listManager: Subscription;
   private wholeIdeasListSubscription: Subscription;
   public inActiveIdeasList: Array<object>;
@@ -56,11 +57,16 @@ export class ListSelectionComponent implements OnInit, OnDestroy {
         this.updateActiveThemeList();
         this.getWordPressPostListDescriptions();
       });
+
+    this.isShownSubscription = this.listSelectionService.isShown$.subscribe(val => {
+      this.isShown = val;
+    })
   }
 
   ngOnDestroy() {
     this.wordPressSubscription.unsubscribe();
     this.ideaListSubscription.unsubscribe();
+    this.isShownSubscription.unsubscribe();
     if (this.listManager) this.listManager.unsubscribe();
     this.wholeIdeasListSubscription.unsubscribe();
   }
@@ -93,7 +99,7 @@ export class ListSelectionComponent implements OnInit, OnDestroy {
   public viewList(list) {
     if (!this.isIdeasPage()) {
       this.router.navigate(['/ideas']);
-      // this.sharedService.setSymbolListValues(list);
+      this.ideaListProvider.setSelectedList(list);
     }
   }
 

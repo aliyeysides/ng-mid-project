@@ -8,13 +8,6 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 @Injectable()
 export class SharedService {
 
-  // private symbolListValues: Subject<Array<object>> = new Subject<Array<object>>();
-  // symbolListValues$ = this.symbolListValues.asObservable();
-  //
-  // public setSymbolListValues(list) {
-  //   this.symbolListValues.next(list);
-  // }
-
   private onboardingPopup: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   onboardingPopup$ = this.onboardingPopup.asObservable();
 

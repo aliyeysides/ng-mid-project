@@ -12,7 +12,6 @@ export class ListSelectionService {
 
   public setIsShown(value: boolean) {
     this.isShown.next(value);
-    console.log('isShown', value);
   }
 
 }

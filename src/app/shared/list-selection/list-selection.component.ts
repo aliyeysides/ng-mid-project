@@ -100,7 +100,10 @@ export class ListSelectionComponent implements OnInit, OnDestroy {
     if (!this.isIdeasPage()) {
       this.router.navigate(['/ideas']);
       this.ideaListProvider.setSelectedList(list);
+      return;
     }
+    this.ideaListProvider.setSelectedList(list);
+    this.listSelectionService.setIsShown(false);
   }
 
   public selectList(list) {

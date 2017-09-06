@@ -54,7 +54,7 @@
             <!-- Ideas Lists -->
             <ng-container *ngIf="whichAdditionalLists == 'Ideas'">
               <li (click)="selectList(list)" class="list-item"
-                  *ngFor="let list of ( inActiveIdeasList | evenodd: 'even');let i = index;"
+                  *ngFor="let list of ( inActiveIdeasList );let i = index;"
                   [ngClass]="{'selected' : list.name == selectedListName, 'bull-list' : checkIfBullList(list.name), 'bear-list' : checkIfBearList(list.name)}">
                 <img class="align-absolute" [src]="list.name != selectedListName ? 'assets/imgs/'+mappingClassArray[list.name].greyImgName : 'assets/imgs/'+mappingClassArray[list.name].imgName">
                 <p>{{list.name}}</p>
@@ -67,7 +67,7 @@
             <!-- Themes Lists -->
             <ng-container *ngIf="whichAdditionalLists == 'Themes'">
               <li (click)="selectList(list)" class="list-item"
-                  *ngFor="let list of ( inActiveThemeList | evenodd: 'even');let i = index;"
+                  *ngFor="let list of ( inActiveThemeList );let i = index;"
                   [ngClass]="{'selected' : list.name == selectedListName, 'bull-list' : checkIfBullList(list.name), 'bear-list' : checkIfBearList(list.name) }">
                 <img class="align-absolute" [src]="list.name != selectedListName ? 'assets/imgs/'+mappingClassArray[list.name].greyImgName : 'assets/imgs/'+mappingClassArray[list.name].imgName">
                 <p>{{list.name}}</p>

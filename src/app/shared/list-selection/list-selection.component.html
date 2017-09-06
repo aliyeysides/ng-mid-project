@@ -66,7 +66,7 @@
 
             <!-- Themes Lists -->
             <ng-container *ngIf="whichAdditionalLists == 'Themes'">
-              <li (click)="selectList(list)" class="list-item"
+              <li (click)="selectList(list)" class="list-item theme-list"
                   *ngFor="let list of ( inActiveThemeList );let i = index;"
                   [ngClass]="{'selected' : list.name == selectedListName, 'bull-list' : checkIfBullList(list.name), 'bear-list' : checkIfBearList(list.name) }">
                 <img class="align-absolute" [src]="list.name != selectedListName ? 'assets/imgs/'+mappingClassArray[list.name].greyImgName : 'assets/imgs/'+mappingClassArray[list.name].imgName">
@@ -79,7 +79,7 @@
 
             <!-- User Lists -->
             <ng-container *ngIf="whichAdditionalLists == 'User'">
-              <li (click)="selectList(list)" class="list-item"
+              <li (click)="selectList(list)" class="list-item user-list"
                   *ngFor="let list of userList;"
                   [ngClass]="{'selected' : list.name == selectedListName, 'bull-list' : checkIfBullList(list.name), 'bear-list' : checkIfBearList(list.name) }">
                 <img class="align-absolute" [src]="list.name != selectedListName ? 'assets/imgs/'+mappingClassArray[list.name].greyImgName : 'assets/imgs/'+mappingClassArray[list.name].imgName">

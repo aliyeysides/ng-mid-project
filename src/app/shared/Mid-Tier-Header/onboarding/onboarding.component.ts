@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ModalDirective} from 'ngx-bootstrap/modal';
-import {Idea} from '../../shared/models/idea';
-import {SharedService} from '../../shared/shared.service';
+import {Idea} from '../../models/idea';
+import {SharedService} from '../../shared.service';
 import {Subscription} from 'rxjs/Subscription';
 
 @Component({

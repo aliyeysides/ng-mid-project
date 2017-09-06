@@ -5,7 +5,6 @@ import {IdeasComponent} from './ideas.component';
 import {ListViewComponent} from './list-view/list-view.component';
 import {ChartPanelComponent} from './chart-panel/chart-panel.component';
 import {SymbolSearchModule} from '../shared/symbol-search/symbol-search.module';
-import {OnboardingComponent} from './onboarding/onboarding.component';
 
 import {ModalModule} from 'ngx-bootstrap/modal';
 import {AlertModule} from 'ngx-bootstrap/alert';
@@ -28,7 +27,7 @@ import {PinnedIdeasComponent} from './pinned-ideas/pinned-ideas.component';
   exports: [
     PinnedIdeasComponent
   ],
-  declarations: [IdeasComponent, PinnedIdeasComponent, ListViewComponent, OnboardingComponent, ChartPanelComponent],
+  declarations: [IdeasComponent, PinnedIdeasComponent, ListViewComponent, ChartPanelComponent],
   providers: [ChartService]
 })
 export class IdeasModule {

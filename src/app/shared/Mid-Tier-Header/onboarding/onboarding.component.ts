@@ -3,6 +3,7 @@ import {ModalDirective} from 'ngx-bootstrap/modal';
 import {Idea} from '../../models/idea';
 import {SharedService} from '../../shared.service';
 import {Subscription} from 'rxjs/Subscription';
+import {MidTierHeaderService} from '../mid-tier-header.service';
 
 @Component({
   selector: 'app-onboarding-modal',
@@ -10,14 +11,16 @@ import {Subscription} from 'rxjs/Subscription';
   styleUrls: ['./onboarding.component.scss']
 })
 export class OnboardingComponent implements OnInit, OnDestroy {
-  @ViewChild('autoShownModal') public autoShownModal:ModalDirective;
+  @ViewChild('onboardingModal') public onboardingModal: ModalDirective;
   private userId = '1024494';
   private symbolListSubscription: Subscription;
   private onboardingModalSubscription: Subscription;
   public selected: number = 1;
   public holdings: Array<Idea>;
+  public isModalShown: boolean;
 
-  constructor(private sharedService: SharedService) {
+  constructor(private sharedService: SharedService,
+              private midTierHeaderService: MidTierHeaderService) {
   }
 
   ngOnInit() {
@@ -27,7 +30,7 @@ export class OnboardingComponent implements OnInit, OnDestroy {
         this.holdings = res['symbols'];
       });
 
-    this.onboardingModalSubscription = this.sharedService.onboardingModal$
+    this.onboardingModalSubscription = this.midTierHeaderService.onboardingModal$
       .subscribe(res => {
         this.isModalShown = res;
       });
@@ -43,19 +46,17 @@ export class OnboardingComponent implements OnInit, OnDestroy {
     this.sharedService.deleteSymbolFromList(ticker, holdingListId);
   }
 
-  public isModalShown:boolean = true;
-
   public showModal():void {
-    this.isModalShown = true;
+    this.onboardingModal.show();
   }
 
   public hideModal():void {
-    this.autoShownModal.hide();
+    this.onboardingModal.hide();
   }
 
   public onHidden():void {
     this.isModalShown = false;
-    this.sharedService.triggerOnboardingPopup(true);
+    this.midTierHeaderService.triggerOnboardingPopup(true);
     this.selected = 1;
   }
 

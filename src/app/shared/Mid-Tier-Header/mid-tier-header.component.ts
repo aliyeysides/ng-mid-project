@@ -4,6 +4,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 
 import {noop} from 'rxjs/util/noop';
 import {Subscription} from 'rxjs/Subscription';
+import {MidTierHeaderService} from './mid-tier-header.service';
 
 @Component({
   selector: 'mid-tier-header',
@@ -25,11 +26,11 @@ export class MidTierHeaderComponent implements OnInit, OnDestroy {
     { title: 'Log out', href: '#', target: '', fn: this.logOutSession.bind(this) }
   ];
 
-  constructor(private sharedService: SharedService) {
+  constructor(private midTierHeaderService: MidTierHeaderService) {
   }
 
   ngOnInit() {
-    this.onboardingPopupSubscription = this.sharedService.onboardingPopup$
+    this.onboardingPopupSubscription = this.midTierHeaderService.onboardingPopup$
       .subscribe(res => {
         this.showPopupTooltip = res;
       });
@@ -42,6 +43,7 @@ export class MidTierHeaderComponent implements OnInit, OnDestroy {
   public toggleNav(id: string): void {
     document.getElementById(id).style.width = "500px";
     document.getElementById("search-darken").style.visibility = 'visible';
+    this.popoverClicked();
   }
 
   public closeNav(id: string): void {
@@ -49,13 +51,12 @@ export class MidTierHeaderComponent implements OnInit, OnDestroy {
     document.getElementById("search-darken").style.visibility = 'hidden';
   }
 
-  public popoverClicked(e: Event): void {
-    e.preventDefault();
+  public popoverClicked(): void {
     this.showPopupTooltip = false;
   }
 
   public relaunchOnboarding(): void {
-    this.sharedService.setOnboardingModal(true);
+    this.onboardingModal['onboardingModal'].show();
   }
 
   public openSupportModal(): void {

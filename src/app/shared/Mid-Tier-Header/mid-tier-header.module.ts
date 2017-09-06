@@ -12,6 +12,7 @@ import {ModalModule} from 'ngx-bootstrap/modal';
 import {PopoverModule} from 'ngx-bootstrap/popover';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {SymbolSearchModule} from '../symbol-search/symbol-search.module';
+import {MidTierHeaderService} from './mid-tier-header.service';
 
 @NgModule({
   imports: [
@@ -33,7 +34,7 @@ import {SymbolSearchModule} from '../symbol-search/symbol-search.module';
     SupportModalComponent,
     OnboardingComponent
   ],
-  providers: [SharedService]
+  providers: [SharedService, MidTierHeaderService]
 })
 export class MidTierHeaderModule {
 }

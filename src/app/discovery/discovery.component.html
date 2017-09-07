@@ -1,1258 +1,1224 @@
 <!-- SECTION: BODY  -->
-  <div class="container-fluid">
+<div class="container-fluid">
 
-    <!-- SECTION: DISCOVERY BODY  -->
-    <div class="discovery__body body">
+  <!-- SECTION: DISCOVERY BODY  -->
+  <div class="discovery__body body">
 
-      <!-- SECTION: DISCOVERY BODY TOP  -->
-      <div class="body__top">
+    <!-- SECTION: DISCOVERY BODY TOP  -->
+    <div class="body__top">
 
-        <!-- ROW: DISCOVERY - BASE STOCK  -->
-        <div class="discovery__base-stock container">
-          <div class="row">
-            <div class="base-stock__logo">
-              <img class="align-absolute" src="assets/imgs/logo_CSCO.png">
-            </div>
-            <div class="base-stock__symbol">
-              <p class="ticker">CSCO</p>
-              <p class="company-name">Cisco Systems</p>
-              <p class="company-industry">Computer Office-Equipment</p>
-            </div>
-            <div class="base-stock__price">
-              <p class="last-price up-change">$234.56</p>
-              <p class="change up-change">2.45</p>
-              <p class="percentage up-change">(+1.43%)</p>
-            </div>
-            <div class="base-stock__actions">
-              <a><img src="assets/imgs/icon-stockview.svg" width="" alt=""></a>
-              <a><img src="assets/imgs/icon-watch.svg" width="" alt=""></a>
-              <a><img src="assets/imgs/icon-hold.svg" width="" alt=""></a>
-            </div>
-            <div class="base-stock__PGR">
-              <img src="assets/imgs/bullish.svg">
-              <p class="PGR__text">Bullish</p>
-            </div>
-            <div class="base-stock__factors">
-              <ul>
-                <li>Computer Equipment</li>
-                <li>Very Large Cap Growth</li>
-                <li>Bullish Earnings Activity</li>
-                <li>Strong Earnings Consistency</li>
-                <li>Strong Money Flow</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <!-- END: DISCOVERY - BASE STOCK  -->
-
-      </div>
-      <!-- END: DISCOVERY BODY TOP  -->
-
-      <!-- SECTION: DISCOVERY BODY BOTTOM  -->
-      <div class="body__bottom">
-
-        <!-- ROW: ACTION BAR  -->
-        <div class="list-view__actionbar list-view__actionbar--discovery row no-gutters">
-          <div class="list__header col-md-6">
-            <a (click)="navigateBack()" class="view-toggle"><i class="fa fa-reply align-absolute" aria-hidden="true"></i></a>
-            <p class="list__title list__title--discovery">Stock ideas based on <span>CSCO</span></p>
-          </div>
-
-          <div class="col-md-6">
-            <symbol-search></symbol-search>
-          </div>
-        </div>
-        <!-- END: ACTION BAR  -->
-
-        <!-- ROW: DISCOVERY RESULTS  -->
-        <div class="discovery-results__container container-fluid">
-
-          <!-- ROW: SLIDER  -->
-          <div class="discovery-results__slider row no-gutters">
-            <div class="slider__scroll slider__scroll--right">
-              <img class="align-absolute" src="assets/imgs/scroll-r.svg">
-            </div>
-            <div class="slider__scroll slider__scroll--left">
-              <img class="align-absolute" src="assets/imgs/scroll-l.svg">
-            </div>
-            <div class="discovery-slider__label">
-              <p>Similar <span>Stocks</span></p>
-            </div>
-            <ul class="discovery-slider__tiles">
-              <li class="tile__wrapper">
-                <div class="discovery__tile">
-                  <div class="tile__front">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="logo clearfix">
-                        <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/pgr-bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                      </div>
-                      <div class="price clearfix">
-                        <p class="last-price up-change">$852.18</p>
-                        <p class="percentage up-change">(+3.23%)</p>
-                      </div>
-                      <div class="mainFactor">
-                        <p class="factor">New 52 Week High</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tile__back">
-                    <div class="tile__contents">
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/pgr-bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                        <div class="">
-                        </div>
-                      </div>
-                      <div class="tile__actions">
-                        <ul class="nav">
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="tile__wrapper">
-                <div class="discovery__tile">
-                  <div class="tile__front">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="logo clearfix">
-                        <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/pgr-bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                      </div>
-                      <div class="price clearfix">
-                        <p class="last-price up-change">$852.18</p>
-                        <p class="percentage up-change">(+3.23%)</p>
-                      </div>
-                      <div class="mainFactor">
-                        <p class="factor">New 52 Week High</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tile__back">
-                    <div class="tile__contents">
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/pgr-bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                        <div class="">
-                        </div>
-                      </div>
-                      <div class="tile__actions">
-                        <ul class="nav">
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="tile__wrapper">
-                <div class="discovery__tile">
-                  <div class="tile__front">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="logo clearfix">
-                        <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/pgr-bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                      </div>
-                      <div class="price clearfix">
-                        <p class="last-price up-change">$852.18</p>
-                        <p class="percentage up-change">(+3.23%)</p>
-                      </div>
-                      <div class="mainFactor">
-                        <p class="factor">New 52 Week High</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tile__back">
-                    <div class="tile__contents">
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/pgr-bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                        <div class="">
-                        </div>
-                      </div>
-                      <div class="tile__actions">
-                        <ul class="nav">
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="tile__wrapper">
-                <div class="discovery__tile">
-                  <div class="tile__front">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="logo clearfix">
-                        <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/pgr-bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                      </div>
-                      <div class="price clearfix">
-                        <p class="last-price up-change">$852.18</p>
-                        <p class="percentage up-change">(+3.23%)</p>
-                      </div>
-                      <div class="mainFactor">
-                        <p class="factor">New 52 Week High</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tile__back">
-                    <div class="tile__contents">
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/pgr-bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                        <div class="">
-                        </div>
-                      </div>
-                      <div class="tile__actions">
-                        <ul class="nav">
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="tile__wrapper">
-                <div class="discovery__tile">
-                  <div class="tile__front">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="logo clearfix">
-                        <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/pgr-bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                      </div>
-                      <div class="price clearfix">
-                        <p class="last-price up-change">$852.18</p>
-                        <p class="percentage up-change">(+3.23%)</p>
-                      </div>
-                      <div class="mainFactor">
-                        <p class="factor">New 52 Week High</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tile__back">
-                    <div class="tile__contents">
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/pgr-bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                        <div class="">
-                        </div>
-                      </div>
-                      <div class="tile__actions">
-                        <ul class="nav">
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="tile__wrapper">
-                <div class="discovery__tile">
-                  <div class="tile__front">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="logo clearfix">
-                        <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/pgr-bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                      </div>
-                      <div class="price clearfix">
-                        <p class="last-price up-change">$852.18</p>
-                        <p class="percentage up-change">(+3.23%)</p>
-                      </div>
-                      <div class="mainFactor">
-                        <p class="factor">New 52 Week High</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tile__back">
-                    <div class="tile__contents">
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/pgr-bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                        <div class="">
-                        </div>
-                      </div>
-                      <div class="tile__actions">
-                        <ul class="nav">
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="tile__wrapper">
-                <div class="discovery__tile">
-                  <div class="tile__front">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="logo clearfix">
-                        <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/pgr-bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                      </div>
-                      <div class="price clearfix">
-                        <p class="last-price up-change">$852.18</p>
-                        <p class="percentage up-change">(+3.23%)</p>
-                      </div>
-                      <div class="mainFactor">
-                        <p class="factor">New 52 Week High</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tile__back">
-                    <div class="tile__contents">
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/pgr-bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                        <div class="">
-                        </div>
-                      </div>
-                      <div class="tile__actions">
-                        <ul class="nav">
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="tile__wrapper">
-                <div class="discovery__tile">
-                  <div class="tile__front">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="logo clearfix">
-                        <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/pgr-bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                      </div>
-                      <div class="price clearfix">
-                        <p class="last-price up-change">$852.18</p>
-                        <p class="percentage up-change">(+3.23%)</p>
-                      </div>
-                      <div class="mainFactor">
-                        <p class="factor">New 52 Week High</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tile__back">
-                    <div class="tile__contents">
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/pgr-bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                        <div class="">
-                        </div>
-                      </div>
-                      <div class="tile__actions">
-                        <ul class="nav">
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <!-- END: SLIDER  -->
-
-          <!-- ROW: SLIDER  -->
-          <div class="discovery-results__slider row no-gutters">
-            <div class="slider__scroll slider__scroll--right">
-              <img class="align-absolute" src="assets/imgs/scroll-r.svg">
-            </div>
-            <div class="slider__scroll slider__scroll--left">
-              <img class="align-absolute" src="assets/imgs/scroll-l.svg">
-            </div>
-            <div class="discovery-slider__label">
-              <p>Potential <span>Swaps</span></p>
-            </div>
-            <ul class="discovery-slider__tiles">
-              <li class="tile__wrapper">
-                <div class="discovery__tile">
-                  <div class="tile__front">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="logo clearfix">
-                        <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/arc_bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                      </div>
-                      <div class="price clearfix">
-                        <p class="last-price up-change">$852.18</p>
-                        <p class="percentage up-change">(+3.23%)</p>
-                      </div>
-                      <div class="mainFactor">
-                        <p class="factor">New 52 Week High</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tile__back">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/arc_bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                        <div class="">
-                        </div>
-                      </div>
-                      <div class="tile__actions">
-                        <ul class="nav">
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="tile__wrapper">
-                <div class="discovery__tile">
-                  <div class="tile__front">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="logo clearfix">
-                        <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/arc_bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                      </div>
-                      <div class="price clearfix">
-                        <p class="last-price up-change">$852.18</p>
-                        <p class="percentage up-change">(+3.23%)</p>
-                      </div>
-                      <div class="mainFactor">
-                        <p class="factor">New 52 Week High</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tile__back">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/arc_bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                        <div class="">
-                        </div>
-                      </div>
-                      <div class="tile__actions">
-                        <ul class="nav">
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="tile__wrapper">
-                <div class="discovery__tile">
-                  <div class="tile__front">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="logo clearfix">
-                        <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/arc_bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                      </div>
-                      <div class="price clearfix">
-                        <p class="last-price up-change">$852.18</p>
-                        <p class="percentage up-change">(+3.23%)</p>
-                      </div>
-                      <div class="mainFactor">
-                        <p class="factor">New 52 Week High</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tile__back">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/arc_bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                        <div class="">
-                        </div>
-                      </div>
-                      <div class="tile__actions">
-                        <ul class="nav">
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="tile__wrapper">
-                <div class="discovery__tile">
-                  <div class="tile__front">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="logo clearfix">
-                        <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/arc_bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                      </div>
-                      <div class="price clearfix">
-                        <p class="last-price up-change">$852.18</p>
-                        <p class="percentage up-change">(+3.23%)</p>
-                      </div>
-                      <div class="mainFactor">
-                        <p class="factor">New 52 Week High</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tile__back">
-                    <div class="tile__contents">
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/arc_bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                        <div class="">
-                        </div>
-                      </div>
-                      <div class="tile__actions">
-                        <ul class="nav">
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="tile__wrapper">
-                <div class="discovery__tile">
-                  <div class="tile__front">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="logo clearfix">
-                        <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/arc_bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                      </div>
-                      <div class="price clearfix">
-                        <p class="last-price up-change">$852.18</p>
-                        <p class="percentage up-change">(+3.23%)</p>
-                      </div>
-                      <div class="mainFactor">
-                        <p class="factor">New 52 Week High</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tile__back">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/arc_bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                        <div class="">
-                        </div>
-                      </div>
-                      <div class="tile__actions">
-                        <ul class="nav">
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="tile__wrapper">
-                <div class="discovery__tile">
-                  <div class="tile__front">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="logo clearfix">
-                        <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/arc_bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                      </div>
-                      <div class="price clearfix">
-                        <p class="last-price up-change">$852.18</p>
-                        <p class="percentage up-change">(+3.23%)</p>
-                      </div>
-                      <div class="mainFactor">
-                        <p class="factor">New 52 Week High</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tile__back">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/arc_bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                        <div class="">
-                        </div>
-                      </div>
-                      <div class="tile__actions">
-                        <ul class="nav">
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <!-- END: SLIDER  -->
-
-          <!-- ROW: SLIDER  -->
-          <div class="discovery-results__slider row no-gutters">
-            <div class="slider__scroll slider__scroll--right">
-              <img class="align-absolute" src="assets/imgs/scroll-r.svg">
-            </div>
-            <div class="slider__scroll slider__scroll--left">
-              <img class="align-absolute" src="assets/imgs/scroll-l.svg">
-            </div>
-            <div class="discovery-slider__label">
-              <p>Similar <span>Bulls</span></p>
-            </div>
-            <ul class="discovery-slider__tiles">
-              <li class="tile__wrapper">
-                <div class="discovery__tile">
-                  <div class="tile__front">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="logo clearfix">
-                        <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/arc_bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                      </div>
-                      <div class="price clearfix">
-                        <p class="last-price up-change">$852.18</p>
-                        <p class="percentage up-change">(+3.23%)</p>
-                      </div>
-                      <div class="mainFactor">
-                        <p class="factor">New 52 Week High</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tile__back">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/arc_bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                        <div class="">
-                        </div>
-                      </div>
-                      <div class="tile__actions">
-                        <ul class="nav">
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="tile__wrapper">
-                <div class="discovery__tile">
-                  <div class="tile__front">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="logo clearfix">
-                        <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/arc_bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                      </div>
-                      <div class="price clearfix">
-                        <p class="last-price up-change">$852.18</p>
-                        <p class="percentage up-change">(+3.23%)</p>
-                      </div>
-                      <div class="mainFactor">
-                        <p class="factor">New 52 Week High</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tile__back">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/arc_bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                        <div class="">
-                        </div>
-                      </div>
-                      <div class="tile__actions">
-                        <ul class="nav">
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="tile__wrapper">
-                <div class="discovery__tile">
-                  <div class="tile__front">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="logo clearfix">
-                        <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/arc_bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                      </div>
-                      <div class="price clearfix">
-                        <p class="last-price up-change">$852.18</p>
-                        <p class="percentage up-change">(+3.23%)</p>
-                      </div>
-                      <div class="mainFactor">
-                        <p class="factor">New 52 Week High</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tile__back">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/arc_bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                        <div class="">
-                        </div>
-                      </div>
-                      <div class="tile__actions">
-                        <ul class="nav">
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="tile__wrapper">
-                <div class="discovery__tile">
-                  <div class="tile__front">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="logo clearfix">
-                        <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/arc_bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                      </div>
-                      <div class="price clearfix">
-                        <p class="last-price up-change">$852.18</p>
-                        <p class="percentage up-change">(+3.23%)</p>
-                      </div>
-                      <div class="mainFactor">
-                        <p class="factor">New 52 Week High</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tile__back">
-                    <div class="tile__contents">
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/arc_bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                        <div class="">
-                        </div>
-                      </div>
-                      <div class="tile__actions">
-                        <ul class="nav">
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="tile__wrapper">
-                <div class="discovery__tile">
-                  <div class="tile__front">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="logo clearfix">
-                        <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/arc_bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                      </div>
-                      <div class="price clearfix">
-                        <p class="last-price up-change">$852.18</p>
-                        <p class="percentage up-change">(+3.23%)</p>
-                      </div>
-                      <div class="mainFactor">
-                        <p class="factor">New 52 Week High</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tile__back">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/arc_bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                        <div class="">
-                        </div>
-                      </div>
-                      <div class="tile__actions">
-                        <ul class="nav">
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="tile__wrapper">
-                <div class="discovery__tile">
-                  <div class="tile__front">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="logo clearfix">
-                        <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/arc_bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                      </div>
-                      <div class="price clearfix">
-                        <p class="last-price up-change">$852.18</p>
-                        <p class="percentage up-change">(+3.23%)</p>
-                      </div>
-                      <div class="mainFactor">
-                        <p class="factor">New 52 Week High</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="tile__back">
-                    <div class="tile__contents">
-                      <div class="cornerFlip">
-                        <a></a>
-                      </div>
-                      <div class="symbol clearfix">
-                        <div class="rating">
-                          <img src="assets/imgs/arc_bullish.svg">
-                          <p class="ticker">AMZN</p>
-                        </div>
-                        <div class="">
-                        </div>
-                      </div>
-                      <div class="tile__actions">
-                        <ul class="nav">
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
-                          </li>
-                          <li class="nav-item">
-                            <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <!-- END: SLIDER  -->
-
-        </div>
-        <!-- END: DISCOVERY RESULTS  -->
-
-      </div>
-      <!-- END: DISCOVERY BODY BOTTOM  -->
+      <!-- ROW: DISCOVERY - BASE STOCK  -->
+      <app-discovery-stock></app-discovery-stock>
+      <!-- END: DISCOVERY - BASE STOCK  -->
 
     </div>
-    <!-- END: DISCOVERY BODY  -->
+    <!-- END: DISCOVERY BODY TOP  -->
+
+    <!-- SECTION: DISCOVERY BODY BOTTOM  -->
+    <div class="body__bottom">
+
+      <!-- ROW: ACTION BAR  -->
+      <div class="list-view__actionbar list-view__actionbar--discovery row no-gutters">
+        <div class="list__header col-md-6">
+          <a (click)="navigateBack()" class="view-toggle"><i class="fa fa-reply align-absolute" aria-hidden="true"></i></a>
+          <p class="list__title list__title--discovery">Stock ideas based on <span>CSCO</span></p>
+        </div>
+
+        <div class="col-md-6">
+          <symbol-search></symbol-search>
+        </div>
+      </div>
+      <!-- END: ACTION BAR  -->
+
+      <!-- ROW: DISCOVERY RESULTS  -->
+      <div class="discovery-results__container container-fluid">
+
+        <!-- ROW: SLIDER  -->
+        <div class="discovery-results__slider row no-gutters">
+          <div class="slider__scroll slider__scroll--right">
+            <img class="align-absolute" src="assets/imgs/scroll-r.svg">
+          </div>
+          <div class="slider__scroll slider__scroll--left">
+            <img class="align-absolute" src="assets/imgs/scroll-l.svg">
+          </div>
+          <div class="discovery-slider__label">
+            <p>Similar <span>Stocks</span></p>
+          </div>
+          <ul class="discovery-slider__tiles">
+            <li class="tile__wrapper">
+              <div class="discovery__tile">
+                <div class="tile__front">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="logo clearfix">
+                      <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/pgr-bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                    </div>
+                    <div class="price clearfix">
+                      <p class="last-price up-change">$852.18</p>
+                      <p class="percentage up-change">(+3.23%)</p>
+                    </div>
+                    <div class="mainFactor">
+                      <p class="factor">New 52 Week High</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="tile__back">
+                  <div class="tile__contents">
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/pgr-bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                      <div class="">
+                      </div>
+                    </div>
+                    <div class="tile__actions">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="tile__wrapper">
+              <div class="discovery__tile">
+                <div class="tile__front">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="logo clearfix">
+                      <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/pgr-bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                    </div>
+                    <div class="price clearfix">
+                      <p class="last-price up-change">$852.18</p>
+                      <p class="percentage up-change">(+3.23%)</p>
+                    </div>
+                    <div class="mainFactor">
+                      <p class="factor">New 52 Week High</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="tile__back">
+                  <div class="tile__contents">
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/pgr-bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                      <div class="">
+                      </div>
+                    </div>
+                    <div class="tile__actions">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="tile__wrapper">
+              <div class="discovery__tile">
+                <div class="tile__front">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="logo clearfix">
+                      <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/pgr-bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                    </div>
+                    <div class="price clearfix">
+                      <p class="last-price up-change">$852.18</p>
+                      <p class="percentage up-change">(+3.23%)</p>
+                    </div>
+                    <div class="mainFactor">
+                      <p class="factor">New 52 Week High</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="tile__back">
+                  <div class="tile__contents">
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/pgr-bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                      <div class="">
+                      </div>
+                    </div>
+                    <div class="tile__actions">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="tile__wrapper">
+              <div class="discovery__tile">
+                <div class="tile__front">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="logo clearfix">
+                      <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/pgr-bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                    </div>
+                    <div class="price clearfix">
+                      <p class="last-price up-change">$852.18</p>
+                      <p class="percentage up-change">(+3.23%)</p>
+                    </div>
+                    <div class="mainFactor">
+                      <p class="factor">New 52 Week High</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="tile__back">
+                  <div class="tile__contents">
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/pgr-bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                      <div class="">
+                      </div>
+                    </div>
+                    <div class="tile__actions">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="tile__wrapper">
+              <div class="discovery__tile">
+                <div class="tile__front">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="logo clearfix">
+                      <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/pgr-bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                    </div>
+                    <div class="price clearfix">
+                      <p class="last-price up-change">$852.18</p>
+                      <p class="percentage up-change">(+3.23%)</p>
+                    </div>
+                    <div class="mainFactor">
+                      <p class="factor">New 52 Week High</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="tile__back">
+                  <div class="tile__contents">
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/pgr-bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                      <div class="">
+                      </div>
+                    </div>
+                    <div class="tile__actions">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="tile__wrapper">
+              <div class="discovery__tile">
+                <div class="tile__front">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="logo clearfix">
+                      <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/pgr-bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                    </div>
+                    <div class="price clearfix">
+                      <p class="last-price up-change">$852.18</p>
+                      <p class="percentage up-change">(+3.23%)</p>
+                    </div>
+                    <div class="mainFactor">
+                      <p class="factor">New 52 Week High</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="tile__back">
+                  <div class="tile__contents">
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/pgr-bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                      <div class="">
+                      </div>
+                    </div>
+                    <div class="tile__actions">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="tile__wrapper">
+              <div class="discovery__tile">
+                <div class="tile__front">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="logo clearfix">
+                      <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/pgr-bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                    </div>
+                    <div class="price clearfix">
+                      <p class="last-price up-change">$852.18</p>
+                      <p class="percentage up-change">(+3.23%)</p>
+                    </div>
+                    <div class="mainFactor">
+                      <p class="factor">New 52 Week High</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="tile__back">
+                  <div class="tile__contents">
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/pgr-bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                      <div class="">
+                      </div>
+                    </div>
+                    <div class="tile__actions">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="tile__wrapper">
+              <div class="discovery__tile">
+                <div class="tile__front">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="logo clearfix">
+                      <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/pgr-bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                    </div>
+                    <div class="price clearfix">
+                      <p class="last-price up-change">$852.18</p>
+                      <p class="percentage up-change">(+3.23%)</p>
+                    </div>
+                    <div class="mainFactor">
+                      <p class="factor">New 52 Week High</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="tile__back">
+                  <div class="tile__contents">
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/pgr-bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                      <div class="">
+                      </div>
+                    </div>
+                    <div class="tile__actions">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!-- END: SLIDER  -->
+
+        <!-- ROW: SLIDER  -->
+        <div class="discovery-results__slider row no-gutters">
+          <div class="slider__scroll slider__scroll--right">
+            <img class="align-absolute" src="assets/imgs/scroll-r.svg">
+          </div>
+          <div class="slider__scroll slider__scroll--left">
+            <img class="align-absolute" src="assets/imgs/scroll-l.svg">
+          </div>
+          <div class="discovery-slider__label">
+            <p>Potential <span>Swaps</span></p>
+          </div>
+          <ul class="discovery-slider__tiles">
+            <li class="tile__wrapper">
+              <div class="discovery__tile">
+                <div class="tile__front">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="logo clearfix">
+                      <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/arc_bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                    </div>
+                    <div class="price clearfix">
+                      <p class="last-price up-change">$852.18</p>
+                      <p class="percentage up-change">(+3.23%)</p>
+                    </div>
+                    <div class="mainFactor">
+                      <p class="factor">New 52 Week High</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="tile__back">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/arc_bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                      <div class="">
+                      </div>
+                    </div>
+                    <div class="tile__actions">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="tile__wrapper">
+              <div class="discovery__tile">
+                <div class="tile__front">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="logo clearfix">
+                      <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/arc_bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                    </div>
+                    <div class="price clearfix">
+                      <p class="last-price up-change">$852.18</p>
+                      <p class="percentage up-change">(+3.23%)</p>
+                    </div>
+                    <div class="mainFactor">
+                      <p class="factor">New 52 Week High</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="tile__back">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/arc_bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                      <div class="">
+                      </div>
+                    </div>
+                    <div class="tile__actions">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="tile__wrapper">
+              <div class="discovery__tile">
+                <div class="tile__front">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="logo clearfix">
+                      <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/arc_bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                    </div>
+                    <div class="price clearfix">
+                      <p class="last-price up-change">$852.18</p>
+                      <p class="percentage up-change">(+3.23%)</p>
+                    </div>
+                    <div class="mainFactor">
+                      <p class="factor">New 52 Week High</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="tile__back">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/arc_bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                      <div class="">
+                      </div>
+                    </div>
+                    <div class="tile__actions">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="tile__wrapper">
+              <div class="discovery__tile">
+                <div class="tile__front">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="logo clearfix">
+                      <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/arc_bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                    </div>
+                    <div class="price clearfix">
+                      <p class="last-price up-change">$852.18</p>
+                      <p class="percentage up-change">(+3.23%)</p>
+                    </div>
+                    <div class="mainFactor">
+                      <p class="factor">New 52 Week High</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="tile__back">
+                  <div class="tile__contents">
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/arc_bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                      <div class="">
+                      </div>
+                    </div>
+                    <div class="tile__actions">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="tile__wrapper">
+              <div class="discovery__tile">
+                <div class="tile__front">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="logo clearfix">
+                      <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/arc_bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                    </div>
+                    <div class="price clearfix">
+                      <p class="last-price up-change">$852.18</p>
+                      <p class="percentage up-change">(+3.23%)</p>
+                    </div>
+                    <div class="mainFactor">
+                      <p class="factor">New 52 Week High</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="tile__back">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/arc_bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                      <div class="">
+                      </div>
+                    </div>
+                    <div class="tile__actions">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="tile__wrapper">
+              <div class="discovery__tile">
+                <div class="tile__front">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="logo clearfix">
+                      <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/arc_bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                    </div>
+                    <div class="price clearfix">
+                      <p class="last-price up-change">$852.18</p>
+                      <p class="percentage up-change">(+3.23%)</p>
+                    </div>
+                    <div class="mainFactor">
+                      <p class="factor">New 52 Week High</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="tile__back">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/arc_bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                      <div class="">
+                      </div>
+                    </div>
+                    <div class="tile__actions">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!-- END: SLIDER  -->
+
+        <!-- ROW: SLIDER  -->
+        <div class="discovery-results__slider row no-gutters">
+          <div class="slider__scroll slider__scroll--right">
+            <img class="align-absolute" src="assets/imgs/scroll-r.svg">
+          </div>
+          <div class="slider__scroll slider__scroll--left">
+            <img class="align-absolute" src="assets/imgs/scroll-l.svg">
+          </div>
+          <div class="discovery-slider__label">
+            <p>Similar <span>Bulls</span></p>
+          </div>
+          <ul class="discovery-slider__tiles">
+            <li class="tile__wrapper">
+              <div class="discovery__tile">
+                <div class="tile__front">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="logo clearfix">
+                      <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/arc_bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                    </div>
+                    <div class="price clearfix">
+                      <p class="last-price up-change">$852.18</p>
+                      <p class="percentage up-change">(+3.23%)</p>
+                    </div>
+                    <div class="mainFactor">
+                      <p class="factor">New 52 Week High</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="tile__back">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/arc_bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                      <div class="">
+                      </div>
+                    </div>
+                    <div class="tile__actions">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="tile__wrapper">
+              <div class="discovery__tile">
+                <div class="tile__front">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="logo clearfix">
+                      <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/arc_bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                    </div>
+                    <div class="price clearfix">
+                      <p class="last-price up-change">$852.18</p>
+                      <p class="percentage up-change">(+3.23%)</p>
+                    </div>
+                    <div class="mainFactor">
+                      <p class="factor">New 52 Week High</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="tile__back">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/arc_bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                      <div class="">
+                      </div>
+                    </div>
+                    <div class="tile__actions">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="tile__wrapper">
+              <div class="discovery__tile">
+                <div class="tile__front">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="logo clearfix">
+                      <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/arc_bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                    </div>
+                    <div class="price clearfix">
+                      <p class="last-price up-change">$852.18</p>
+                      <p class="percentage up-change">(+3.23%)</p>
+                    </div>
+                    <div class="mainFactor">
+                      <p class="factor">New 52 Week High</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="tile__back">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/arc_bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                      <div class="">
+                      </div>
+                    </div>
+                    <div class="tile__actions">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="tile__wrapper">
+              <div class="discovery__tile">
+                <div class="tile__front">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="logo clearfix">
+                      <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/arc_bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                    </div>
+                    <div class="price clearfix">
+                      <p class="last-price up-change">$852.18</p>
+                      <p class="percentage up-change">(+3.23%)</p>
+                    </div>
+                    <div class="mainFactor">
+                      <p class="factor">New 52 Week High</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="tile__back">
+                  <div class="tile__contents">
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/arc_bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                      <div class="">
+                      </div>
+                    </div>
+                    <div class="tile__actions">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="tile__wrapper">
+              <div class="discovery__tile">
+                <div class="tile__front">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="logo clearfix">
+                      <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/arc_bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                    </div>
+                    <div class="price clearfix">
+                      <p class="last-price up-change">$852.18</p>
+                      <p class="percentage up-change">(+3.23%)</p>
+                    </div>
+                    <div class="mainFactor">
+                      <p class="factor">New 52 Week High</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="tile__back">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/arc_bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                      <div class="">
+                      </div>
+                    </div>
+                    <div class="tile__actions">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="tile__wrapper">
+              <div class="discovery__tile">
+                <div class="tile__front">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="logo clearfix">
+                      <img class="align-absolute" src="assets/imgs/logo_AMZN.png">
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/arc_bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                    </div>
+                    <div class="price clearfix">
+                      <p class="last-price up-change">$852.18</p>
+                      <p class="percentage up-change">(+3.23%)</p>
+                    </div>
+                    <div class="mainFactor">
+                      <p class="factor">New 52 Week High</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="tile__back">
+                  <div class="tile__contents">
+                    <div class="cornerFlip">
+                      <a></a>
+                    </div>
+                    <div class="symbol clearfix">
+                      <div class="rating">
+                        <img src="assets/imgs/arc_bullish.svg">
+                        <p class="ticker">AMZN</p>
+                      </div>
+                      <div class="">
+                      </div>
+                    </div>
+                    <div class="tile__actions">
+                      <ul class="nav">
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-hold.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-watch.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-discover--white.svg"></a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link"><img src="assets/imgs/icon-stockview.svg"></a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <!-- END: SLIDER  -->
+
+      </div>
+      <!-- END: DISCOVERY RESULTS  -->
+
+    </div>
+    <!-- END: DISCOVERY BODY BOTTOM  -->
 
   </div>
-  <!-- END: BODY  -->
+  <!-- END: DISCOVERY BODY  -->
+
+</div>
+<!-- END: BODY  -->

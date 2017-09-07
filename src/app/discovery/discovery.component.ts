@@ -1,33 +1,18 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Location} from '@angular/common';
-import {DiscoveryService} from './discovery.service';
-import {Subscription} from 'rxjs/Subscription';
 
 @Component({
   selector: 'mid-tier-component',
   templateUrl: './discovery.component.html',
-  styleUrls: ['./discovery.component.scss']
+  styleUrls: ['./discovery.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
-export class DiscoveryComponent implements OnInit, OnDestroy {
+export class DiscoveryComponent implements OnInit {
 
-  private discoveryResultsSubscription: Subscription;
-  public discoveryResults: any;
-
-  constructor(private location: Location,
-              private discoveryService: DiscoveryService) {
-
+  constructor(private location: Location) {
   }
 
   ngOnInit() {
-    this.discoveryResultsSubscription = this.discoveryService.getDiscoveryResultLists('AAPL')
-      .subscribe(res => {
-        this.discoveryResults = res;
-        console.log('res', this.discoveryResults);
-      })
-  }
-
-  ngOnDestroy() {
-    this.discoveryResultsSubscription.unsubscribe();
   }
 
   public navigateBack() {

@@ -1,0 +1,31 @@
+<div class="discovery__base-stock container">
+  <div class="row">
+    <div class="base-stock__logo">
+      <img class="align-absolute" src="{{metaInfo ? metaInfo['logo_url'] : null }}">
+    </div>
+    <div class="base-stock__symbol">
+      <p class="ticker">{{ metaInfo ? metaInfo['symbol'] : null }}</p>
+      <p class="company-name">{{ metaInfo ? metaInfo['name'] : null }}</p>
+      <p class="company-industry">I don't know what industry</p>
+    </div>
+    <div class="base-stock__price">
+      <p class="last-price" [ngClass]="{'up-change' : metaInfo?.Change > 0, 'down-change' : metaInfo?.Change < 0 }">{{ metaInfo ? metaInfo['Last'] : null }}</p>
+      <p class="change" [ngClass]="{'up-change' : metaInfo?.Change > 0, 'down-change' : metaInfo?.Change < 0 }">{{ metaInfo ? metaInfo['Change'] : null }}</p>
+      <p class="percentage"[ngClass]="{'up-change' : metaInfo?.Change > 0, 'down-change' : metaInfo?.Change < 0 }">{{ metaInfo ? metaInfo['Percentage'] : null }}</p>
+    </div>
+    <div class="base-stock__actions">
+      <a (click)="viewStockReport(metaInfo['symbol'])"><img src="assets/imgs/icon-stockview.svg" width="" alt=""></a>
+      <a (click)="addToWatchingList(metaInfo['symbol'])"><img src="assets/imgs/icon-watch.svg" width="" alt=""></a>
+      <a (click)="addToHoldingList(metaInfo['symbol'])"><img src="assets/imgs/icon-hold.svg" width="" alt=""></a>
+    </div>
+    <div class="base-stock__PGR">
+      <img src="{{ appendPGRImage(metaInfo ? metaInfo['PGR'] : null) }}">
+      <p class="PGR__text">{{ appendPGRText(metaInfo ? metaInfo['PGR'] : null ) }}</p>
+    </div>
+    <div class="base-stock__factors">
+      <ul>
+        <li *ngFor="let factor of metaInfo ? metaInfo['significant_factors'] : null ">{{ factor }}</li>
+      </ul>
+    </div>
+  </div>
+</div>

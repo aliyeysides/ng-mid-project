@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {URLSearchParams} from '@angular/http';
 import {SharedService} from '../shared/shared.service';
 import {Observable} from 'rxjs/Observable';
 
@@ -11,8 +12,6 @@ export class DiscoveryService {
   constructor(private sharedService: SharedService) {
     this.discoveryResultListsParams = new URLSearchParams;
   }
-
-  // CPTRestSecure/app/midTier/getDiscoveryResultLists?stock=AAPL&uid=9580
 
   public getDiscoveryResultLists(ticker: string): Observable<object> {
     const url = `${this.apiHost}/CPTRestSecure/app/midTier/getDiscoveryResultLists?`;

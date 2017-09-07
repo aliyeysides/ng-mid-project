@@ -1,10 +1,11 @@
-import {Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import { SharedService } from '../shared.service';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
 import {noop} from 'rxjs/util/noop';
 import {Subscription} from 'rxjs/Subscription';
 import {MidTierHeaderService} from './mid-tier-header.service';
+import {PopoverConfig} from 'ngx-bootstrap';
 
 @Component({
   selector: 'mid-tier-header',
@@ -15,6 +16,9 @@ import {MidTierHeaderService} from './mid-tier-header.service';
 export class MidTierHeaderComponent implements OnInit, OnDestroy {
   @ViewChild('supportModal') public supportModal: ModalDirective;
   @ViewChild('onboardingModal') public onboardingModal: ModalDirective;
+  @HostListener('document:click', ['$event']) public offClick(e: Event) {
+    if (!this.el.nativeElement.contains(e.target)) this.dismissPopover();
+  }
   private onboardingPopupSubscription: Subscription;
   public content: string = "You can get back to the Quick Start walkthrough anytime in your settings!";
   public showPopupTooltip: boolean;
@@ -26,7 +30,11 @@ export class MidTierHeaderComponent implements OnInit, OnDestroy {
     { title: 'Log out', href: '#', target: '', fn: this.logOutSession.bind(this) }
   ];
 
-  constructor(private midTierHeaderService: MidTierHeaderService) {
+  constructor(private midTierHeaderService: MidTierHeaderService,
+              private popoverConfig: PopoverConfig,
+              private el: ElementRef) {
+    this.popoverConfig.placement="left";
+    this.popoverConfig.triggers = "";
   }
 
   ngOnInit() {
@@ -43,7 +51,7 @@ export class MidTierHeaderComponent implements OnInit, OnDestroy {
   public toggleNav(id: string): void {
     document.getElementById(id).style.width = "500px";
     document.getElementById("search-darken").style.visibility = 'visible';
-    this.popoverClicked();
+    this.dismissPopover();
   }
 
   public closeNav(id: string): void {
@@ -51,7 +59,7 @@ export class MidTierHeaderComponent implements OnInit, OnDestroy {
     document.getElementById("search-darken").style.visibility = 'hidden';
   }
 
-  public popoverClicked(): void {
+  public dismissPopover(): void {
     this.showPopupTooltip = false;
   }
 

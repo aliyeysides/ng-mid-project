@@ -26,7 +26,7 @@
         </svg>
       </a>
     </li>
-    <li (click)="toggleNav('settingsSideNav')" class="nav-item" triggers="" [popover]="content" placement="left"
+    <li (click)="toggleNav('settingsSideNav')" (focusout)="popoverClicked($event)" class="nav-item" [popover]="content"
         [isOpen]="showPopupTooltip">
       <svg width="300px" height="300px" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg"
            xmlns:xlink="http://www.w3.org/1999/xlink">

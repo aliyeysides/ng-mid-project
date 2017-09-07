@@ -7,6 +7,7 @@ import {ChartService} from '../../shared/charts/chart.service';
 import {SignalService} from '../../shared/signal.service';
 import {ListSelectionService} from '../../shared/list-selection/list-selection.service';
 import {IdeaListProvider} from '../../providers/idea-list.provider';
+import {Subject} from 'rxjs/Subject';
 
 @Component({
   selector: 'list-view',
@@ -16,11 +17,8 @@ import {IdeaListProvider} from '../../providers/idea-list.provider';
 
 export class ListViewComponent implements OnInit, OnDestroy {
   private userId = '1024494';
-  private additionalListsSubscription: Subscription;
-  private selectedListSubscription: Subscription;
-  private addStockIntoHoldingListSubscription: Subscription;
-  private addStockIntoWatchingListSubscription: Subscription;
-  private removeFromListSubscription: Subscription;
+  private ngUnsubscribe: Subject<void> = new Subject();
+
   public ideaList: Array<object>;
   public additionalLists: boolean = false;
   public mouseHoverOptionsMap: object = {};
@@ -60,11 +58,12 @@ export class ListViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.selectedListSubscription = this.ideaListProvider.selectedList$
+    this.ideaListProvider.selectedList$
       .switchMap(val => {
         this.selectedListName = val['name'];
         return this.sharedService.symbolList({listId: val['list_id']})
       })
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
           this.clearOrderByObject();
           this.clearIdeasLists();
@@ -77,18 +76,14 @@ export class ListViewComponent implements OnInit, OnDestroy {
           this.sharedService.handleError(err);
         }
       );
-    this.additionalListsSubscription
-      = this.listSelectionService.isShown$.subscribe(val => this.additionalLists = val);
+    this.listSelectionService.isShown$
+      .takeUntil(this.ngUnsubscribe)
+      .subscribe(val => this.additionalLists = val);
   }
 
   ngOnDestroy() {
-    this.additionalListsSubscription.unsubscribe();
-    this.selectedListSubscription.unsubscribe();
-    if (this.loading) this.loading.unsubscribe();
-    if (this.headlinesLoading) this.headlinesLoading.unsubscribe();
-    if (this.symbolListLoading) this.symbolListLoading.unsubscribe();
-    if (this.addStockIntoHoldingListSubscription) this.addStockIntoHoldingListSubscription.unsubscribe();
-    if (this.addStockIntoWatchingListSubscription) this.addStockIntoWatchingListSubscription.unsubscribe();
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
   public updateChart() {
@@ -110,7 +105,8 @@ export class ListViewComponent implements OnInit, OnDestroy {
 
   public getSelectedStockData(stock: Idea, callback?) {
     if (stock) {
-      this.loading = this.sharedService.getStockCardData(stock.symbol)
+      this.sharedService.getStockCardData(stock.symbol)
+        .takeUntil(this.ngUnsubscribe)
         .subscribe(res => {
           return callback(res);
         });
@@ -119,7 +115,8 @@ export class ListViewComponent implements OnInit, OnDestroy {
 
   public getSelectedStockHeadlines(stock: Idea) {
     if (stock) {
-      this.headlinesLoading = this.sharedService.getHeadlines(stock.symbol)
+      this.sharedService.getHeadlines(stock.symbol)
+        .takeUntil(this.ngUnsubscribe)
         .subscribe(res => {
           this.headlines = res['headlines'].filter((item, index) => index < 7);
         })
@@ -231,7 +228,8 @@ export class ListViewComponent implements OnInit, OnDestroy {
 
   public addToHoldingList(stock: any, e) {
     e.stopPropagation();
-    this.addStockIntoHoldingListSubscription = this.sharedService.addStockIntoHoldingList(stock)
+    this.sharedService.addStockIntoHoldingList(stock)
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
         console.log('res from addToList', res);
       });
@@ -239,7 +237,8 @@ export class ListViewComponent implements OnInit, OnDestroy {
 
   public addToWatchingList(stock: any, e) {
     e.stopPropagation();
-    this.addStockIntoWatchingListSubscription = this.sharedService.addStockIntoWatchingList(stock)
+    this.sharedService.addStockIntoWatchingList(stock)
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
         console.log('res from addToList', res);
       });
@@ -247,7 +246,8 @@ export class ListViewComponent implements OnInit, OnDestroy {
 
   public removeFromList(stock: any, listId: string, e) {
     e.stopPropagation();
-    this.removeFromListSubscription = this.sharedService.deleteSymbolFromList(stock.symbol, listId)
+    this.sharedService.deleteSymbolFromList(stock.symbol, listId)
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
         console.log('res from removeFromList', res);
       });

@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
 import {mappingClassArray} from '../../ideas/pinned-ideas/ideasMappingClassArray';
 import {InsightsService} from '../../insights/shared/insights.service';
 import {ListSelectionService} from './list-selection.service';
-import {Subscription} from 'rxjs/Subscription';
+import {Subject} from 'rxjs/Subject';
 
 @Component({
   selector: 'list-selection',
@@ -17,11 +17,8 @@ export class ListSelectionComponent implements OnInit, OnDestroy {
   @Input() public isShown: boolean;
   private userId = '1024494';
   private totalListAmount: number;
-  private wordPressSubscription: Subscription;
-  private ideaListSubscription: Subscription;
-  private isShownSubscription: Subscription;
-  private listManager: Subscription;
-  private wholeIdeasListSubscription: Subscription;
+  private ngUnsubscribe: Subject<void> = new Subject();
+
   public inActiveIdeasList: Array<object>;
   public activeIdeasList: Array<object>;
   public inActiveThemeList: Array<object>;
@@ -48,7 +45,8 @@ export class ListSelectionComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getIdeasList();
-    this.wholeIdeasListSubscription = this.ideaListProvider.wholeIdeasList$
+    this.ideaListProvider.wholeIdeasList$
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
         this.parseListObject(res);
         this.updateInActiveIdeaList();
@@ -58,17 +56,16 @@ export class ListSelectionComponent implements OnInit, OnDestroy {
         this.getWordPressPostListDescriptions();
       });
 
-    this.isShownSubscription = this.listSelectionService.isShown$.subscribe(val => {
+    this.listSelectionService.isShown$
+      .takeUntil(this.ngUnsubscribe)
+      .subscribe(val => {
       this.isShown = val;
     })
   }
 
   ngOnDestroy() {
-    this.wordPressSubscription.unsubscribe();
-    this.ideaListSubscription.unsubscribe();
-    this.isShownSubscription.unsubscribe();
-    if (this.listManager) this.listManager.unsubscribe();
-    this.wholeIdeasListSubscription.unsubscribe();
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
   public toggleShown(val: boolean) {
@@ -76,7 +73,8 @@ export class ListSelectionComponent implements OnInit, OnDestroy {
   }
 
   public getIdeasList() {
-    this.ideaListSubscription = this.ideaListProvider.getIdeasList({uid: this.userId})
+    this.ideaListProvider.getIdeasList({uid: this.userId})
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
           this.ideaListProvider.setIdeaListData(res);
         },
@@ -85,7 +83,8 @@ export class ListSelectionComponent implements OnInit, OnDestroy {
 
   public manageActiveInactive(status, list_id) {
     if (this.activeIdeasList.length < 10) {
-      this.listManager = this.ideaListProvider.manageActiveInactive({uid: this.userId, listId: list_id, mode: status})
+      this.ideaListProvider.manageActiveInactive({uid: this.userId, listId: list_id, mode: status})
+        .takeUntil(this.ngUnsubscribe)
         .subscribe(() => {
             this.getIdeasList();
           },
@@ -159,7 +158,9 @@ export class ListSelectionComponent implements OnInit, OnDestroy {
   }
 
   private getWordPressPostListDescriptions() {
-    this.wordPressSubscription = this.insightsService.getWordPressJson('45', this.totalListAmount).subscribe(val => this.wordPressPosts = val['0']['45']);
+    this.insightsService.getWordPressJson('45', this.totalListAmount)
+      .takeUntil(this.ngUnsubscribe)
+      .subscribe(val => this.wordPressPosts = val['0']['45']);
   }
 
 }

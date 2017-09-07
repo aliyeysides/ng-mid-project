@@ -1,10 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from 'rxjs/Subscription';
 import {DiscoveryService} from '../discovery.service';
 import {SignalService} from '../../shared/signal.service';
 import {Router} from '@angular/router';
 import {SharedService} from '../../shared/shared.service';
 import {Idea} from '../../shared/models/idea';
+import {Subject} from 'rxjs/Subject';
 
 @Component({
   selector: 'app-discovery-stock',
@@ -12,10 +12,8 @@ import {Idea} from '../../shared/models/idea';
   styleUrls: ['../discovery.component.scss']
 })
 export class DiscoveryStockComponent implements OnInit, OnDestroy {
+  private ngUnsubscribe: Subject<void> = new Subject();
 
-  private discoveryResultsSubscription: Subscription;
-  private addStockIntoHoldingListSubscription: Subscription;
-  private addStockIntoWatchingListSubscription: Subscription;
   public discoveryResults: any;
   public metaInfo: Idea;
 
@@ -26,7 +24,8 @@ export class DiscoveryStockComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.discoveryResultsSubscription = this.discoveryService.getDiscoveryResultLists('OKE')
+    this.discoveryService.getDiscoveryResultLists('OKE')
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
         this.discoveryResults = res;
         console.log('res', this.discoveryResults);
@@ -35,9 +34,8 @@ export class DiscoveryStockComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.discoveryResultsSubscription.unsubscribe();
-    if (this.addStockIntoWatchingListSubscription) this.addStockIntoWatchingListSubscription.unsubscribe();
-    if (this.addStockIntoHoldingListSubscription) this.addStockIntoHoldingListSubscription.unsubscribe();
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
   public appendPGRImage(pgr: number) {
@@ -53,14 +51,16 @@ export class DiscoveryStockComponent implements OnInit, OnDestroy {
   }
 
   public addToHoldingList(stock: string) {
-    this.addStockIntoHoldingListSubscription = this.sharedService.addStockIntoHoldingList(stock)
+    this.sharedService.addStockIntoHoldingList(stock)
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
         console.log('res from addToList', res);
       });
   }
 
   public addToWatchingList(stock: string) {
-    this.addStockIntoWatchingListSubscription = this.sharedService.addStockIntoWatchingList(stock)
+    this.sharedService.addStockIntoWatchingList(stock)
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
         console.log('res from addToList', res);
       });

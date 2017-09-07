@@ -2,8 +2,8 @@ import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ModalDirective} from 'ngx-bootstrap/modal';
 import {Idea} from '../../models/idea';
 import {SharedService} from '../../shared.service';
-import {Subscription} from 'rxjs/Subscription';
 import {MidTierHeaderService} from '../mid-tier-header.service';
+import {Subject} from 'rxjs/Subject';
 
 @Component({
   selector: 'app-onboarding-modal',
@@ -13,8 +13,8 @@ import {MidTierHeaderService} from '../mid-tier-header.service';
 export class OnboardingComponent implements OnInit, OnDestroy {
   @ViewChild('onboardingModal') public onboardingModal: ModalDirective;
   private userId = '1024494';
-  private symbolListSubscription: Subscription;
-  private onboardingModalSubscription: Subscription;
+  private ngUnsubscribe: Subject<void> = new Subject();
+
   public selected: number = 1;
   public holdings: Array<Idea>;
   public isModalShown: boolean;
@@ -25,20 +25,22 @@ export class OnboardingComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     const holdingListId = '1220535';
-    this.symbolListSubscription = this.sharedService.symbolList({listId: holdingListId, userId: this.userId})
+    this.sharedService.symbolList({listId: holdingListId, userId: this.userId})
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
         this.holdings = res['symbols'];
       });
 
-    this.onboardingModalSubscription = this.midTierHeaderService.onboardingModal$
+    this.midTierHeaderService.onboardingModal$
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
         this.isModalShown = res;
       });
   }
 
   ngOnDestroy() {
-    this.symbolListSubscription.unsubscribe();
-    this.onboardingModalSubscription.unsubscribe();
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
   public removeFromHolding(ticker: string) {

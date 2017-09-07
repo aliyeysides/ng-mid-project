@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {SharedService} from '../shared.service';
 import {FormControl} from '@angular/forms';
 import {Router} from '@angular/router';
-import {Subscription} from 'rxjs/Subscription';
+import {Subject} from 'rxjs/Subject';
 
 @Component({
   selector: 'symbol-search',
@@ -11,9 +11,7 @@ import {Subscription} from 'rxjs/Subscription';
   encapsulation: ViewEncapsulation.None
 })
 export class SymbolSearchComponent implements OnInit, OnDestroy {
-  private symbolSearchSubscription: Subscription;
-  private addStockIntoWatchingSubscription: Subscription;
-  private addStockIntoHoldingSubscription: Subscription;
+  private ngUnsubscribe: Subject<void> = new Subject();
   public symbolSearchForm: FormControl;
   public searchResults: Array<any>;
   public focus: boolean = false;
@@ -25,18 +23,18 @@ export class SymbolSearchComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.searchResults = [];
-    this.symbolSearchSubscription = this.symbolSearchForm.valueChanges
+    this.symbolSearchForm.valueChanges
       .debounceTime(500)
       .switchMap(val => this.sharedService.symbolLookup(val))
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(val => {
         this.searchResults = val;
       });
   }
 
   ngOnDestroy() {
-    this.symbolSearchSubscription.unsubscribe();
-    if (this.addStockIntoWatchingSubscription) this.addStockIntoWatchingSubscription.unsubscribe();
-    if (this.addStockIntoHoldingSubscription) this.addStockIntoHoldingSubscription.unsubscribe();
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
   gotoReport(symbol: string) {
@@ -59,7 +57,8 @@ export class SymbolSearchComponent implements OnInit, OnDestroy {
 
   addToWatchingList(stock: any, e ) {
     e.stopPropagation();
-    this.addStockIntoWatchingSubscription = this.sharedService.addStockIntoWatchingList(stock)
+    this.sharedService.addStockIntoWatchingList(stock)
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
         console.log('res from addToList', res);
       });
@@ -67,7 +66,8 @@ export class SymbolSearchComponent implements OnInit, OnDestroy {
 
   addToHoldingList(stock: any, e) {
     e.stopPropagation();
-    this.addStockIntoHoldingSubscription = this.sharedService.addStockIntoHoldingList(stock)
+    this.sharedService.addStockIntoHoldingList(stock)
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
         console.log('res from addToList', res);
       })

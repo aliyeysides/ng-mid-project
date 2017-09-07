@@ -2,8 +2,8 @@ import {Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild, ViewE
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
 import {noop} from 'rxjs/util/noop';
-import {Subscription} from 'rxjs/Subscription';
 import {MidTierHeaderService} from './mid-tier-header.service';
+import {Subject} from 'rxjs/Subject';
 
 @Component({
   selector: 'mid-tier-header',
@@ -17,7 +17,9 @@ export class MidTierHeaderComponent implements OnInit, OnDestroy {
   @HostListener('document:click', ['$event']) public offClick(e: Event) {
     if (!this.el.nativeElement.contains(e.target)) this.dismissPopover();
   }
-  private onboardingPopupSubscription: Subscription;
+
+  private ngUnsubscribe: Subject<void> = new Subject();
+
   public content: string = "You can get back to the Quick Start walkthrough anytime in your settings!";
   public showPopupTooltip: boolean;
   public items: object[] = [
@@ -33,14 +35,16 @@ export class MidTierHeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.onboardingPopupSubscription = this.midTierHeaderService.onboardingPopup$
+    this.midTierHeaderService.onboardingPopup$
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
         this.showPopupTooltip = res;
       });
   }
 
   ngOnDestroy() {
-    this.onboardingPopupSubscription.unsubscribe();
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
   public toggleNav(id: string): void {

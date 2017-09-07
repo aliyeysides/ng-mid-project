@@ -5,6 +5,7 @@ import {Subscription} from 'rxjs/Subscription';
 
 import {mappingClassArray} from './ideasMappingClassArray';
 import {ListSelectionService} from '../../shared/list-selection/list-selection.service';
+import {Subject} from 'rxjs/Subject';
 
 @Component({
   selector: 'mid-tier-ideas',
@@ -15,9 +16,8 @@ import {ListSelectionService} from '../../shared/list-selection/list-selection.s
 })
 export class PinnedIdeasComponent implements OnInit, OnDestroy {
   private userId = '1024494';
-  private selectedListSubscription: Subscription;
-  private wholeIdeasListSubscription: Subscription;
-  private listManager: Subscription;
+  private ngUnsubscribe: Subject<void> = new Subject();
+
   public ideasList: Array<object>;
   public userList: Array<object> = [];
   public themeList: Array<object>;
@@ -34,12 +34,14 @@ export class PinnedIdeasComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.getPinnedIdeaLists();
-    this.selectedListSubscription = this.ideaListProvider.selectedList$
+    this.ideaListProvider.selectedList$
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
         this.selectedList = res;
       });
 
-    this.wholeIdeasListSubscription = this.ideaListProvider.wholeIdeasList$
+    this.ideaListProvider.wholeIdeasList$
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
         const list = this.parseListObject(res);
         this.updateActiveIdeaList(list);
@@ -48,14 +50,13 @@ export class PinnedIdeasComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.selectedListSubscription.unsubscribe();
-    this.wholeIdeasListSubscription.unsubscribe();
-    this.ideaListLoading.unsubscribe();
-    if (this.listManager) this.listManager.unsubscribe();
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
   public getPinnedIdeaLists() {
-    this.ideaListLoading = this.ideaListProvider.getIdeasList({uid: this.userId})
+    this.ideaListProvider.getIdeasList({uid: this.userId})
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
           this.ideaListProvider.setIdeaListData(res);
         },
@@ -77,7 +78,8 @@ export class PinnedIdeasComponent implements OnInit, OnDestroy {
   }
 
   public manageActiveInactive(status, list_id) {
-    this.listManager = this.ideaListProvider.manageActiveInactive({uid: this.userId, listId: list_id, mode: status})
+    this.ideaListProvider.manageActiveInactive({uid: this.userId, listId: list_id, mode: status})
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(() => {
           this.getPinnedIdeaLists();
         },

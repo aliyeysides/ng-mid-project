@@ -1,19 +1,22 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 
-import { SharedModule } from '../shared/shared.module';
+import {SharedModule} from '../shared/shared.module';
 
-import { DiscoveryComponent } from './discovery.component';
+import {DiscoveryComponent} from './discovery.component';
 import {DiscoveryService} from './discovery.service';
+import {DiscoveryStockModule} from './discovery-stock/discovery-stock.module';
 
 @NgModule({
-	imports: [
-		SharedModule
-	],
-	exports: [
-		DiscoveryComponent
-	],
-	declarations: [DiscoveryComponent],
-	providers: [DiscoveryService]
+  imports: [
+    SharedModule,
+    DiscoveryStockModule
+  ],
+  exports: [
+    DiscoveryComponent,
+    DiscoveryStockModule
+  ],
+  declarations: [DiscoveryComponent],
+  providers: [DiscoveryService]
 })
 export class DiscoveryModule {
 }

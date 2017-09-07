@@ -25,7 +25,6 @@ export class IdeaListProvider {
 
   public setSelectedList(list: object) {
     this.selectedList.next(list);
-    console.log('this.selectedList in provider', list);
   }
 
   public getIdeasList(query): Observable<Array<object>> {

@@ -4,6 +4,7 @@ import {DiscoveryService} from '../discovery.service';
 import {SignalService} from '../../shared/signal.service';
 import {Router} from '@angular/router';
 import {SharedService} from '../../shared/shared.service';
+import {Idea} from '../../shared/models/idea';
 
 @Component({
   selector: 'app-discovery-stock',
@@ -16,7 +17,7 @@ export class DiscoveryStockComponent implements OnInit, OnDestroy {
   private addStockIntoHoldingListSubscription: Subscription;
   private addStockIntoWatchingListSubscription: Subscription;
   public discoveryResults: any;
-  public metaInfo: object;
+  public metaInfo: Idea;
 
   constructor(private discoveryService: DiscoveryService,
               private signalService: SignalService,
@@ -66,7 +67,7 @@ export class DiscoveryStockComponent implements OnInit, OnDestroy {
   }
 
   private parseDiscoveryResults(results: object) {
-    this.metaInfo = results['metainfo'];
+    this.metaInfo = results['metainfo'] as Idea;
     console.log('metainfo', this.metaInfo);
   }
 

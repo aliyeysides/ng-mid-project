@@ -348,7 +348,9 @@
               </div>
               <div class="stock-panel__industry row">
                 <p>Industry: <span class="industry">{{selectedStock?.industry_name}}</span></p>
-                <p>Ind.&nbsp;Strength: <span class="industry-strength strong"> Strong</span></p>
+                <p>Ind.&nbsp;Strength: <span class="industry-strength"
+                                             [ngClass]="{'strong' : translateIndustryStrength(selectedStock?.list_rating) == 'Strong', 'weak' : translateIndustryStrength(selectedStock?.list_rating) == 'Weak'}">{{ translateIndustryStrength(selectedStock?.list_rating) }}</span>
+                </p>
               </div>
               <div class="stock-panel__details row">
                 <div class="col-lg-6">
@@ -570,7 +572,9 @@
               </div>
               <div class="stock-panel__industry row">
                 <p>Industry: <span class="industry">{{idea['meta-info'].industry_name}}</span></p>
-                <p>Ind.&nbsp;Strength: <span class="industry-strength strong"> Strong</span></p>
+                <p>Ind.&nbsp;Strength: <span class="industry-strength"
+                                             [ngClass]="{'strong' : translateIndustryStrength(idea['meta-info'].listRating) == 'Strong', 'weak' : translateIndustryStrength(idea['meta-info'].listRating) == 'Weak'}">{{ translateIndustryStrength(idea['meta-info'].listRating) }}</span>
+                </p>
               </div>
               <div class="stock-panel__details row">
                 <div class="col-lg-6">

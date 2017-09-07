@@ -277,6 +277,10 @@ export class ListViewComponent implements OnInit, OnDestroy {
     this.currentView = 'list-view';
   }
 
+  public translateIndustryStrength(listRating: number): string {
+    return listRating >= 50 ? 'Strong' : 'Weak';
+  }
+
   public appendPGRImage(pgr) {
     return this.signalService.appendPGRImage(pgr);
   }

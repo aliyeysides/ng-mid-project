@@ -1,5 +1,5 @@
-import { Component, AfterViewInit, ViewChild } from '@angular/core';
-import { ModalDirective } from 'ngx-bootstrap/modal';
+import {Component, AfterViewInit, ViewChild} from '@angular/core';
+import {ModalDirective} from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-support-modal',
@@ -8,14 +8,12 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 })
 export class SupportModalComponent implements AfterViewInit {
 
-  @ViewChild('supportModal') supportModal: ModalDirective;
-  constructor() { }
+  @ViewChild('supportModal') public supportModal: ModalDirective;
 
-  ngAfterViewInit() {
+  constructor() {
   }
 
-  showModal() {
-    this.supportModal.show();
+  ngAfterViewInit() {
   }
 
 }

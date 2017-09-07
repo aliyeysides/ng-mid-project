@@ -1,18 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Http, URLSearchParams} from '@angular/http';
-import {Subject} from "rxjs/Subject";
+import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Rx';
-import { environment } from '../../environments/environment';
+import {environment} from '../../environments/environment';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class SharedService {
-
-  private onboardingPopup: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  onboardingPopup$ = this.onboardingPopup.asObservable();
-
-  private onboardingModal: Subject<boolean> = new Subject<boolean>();
-  onboardingModal$ = this.onboardingModal.asObservable();
 
   private symbolLookupParams: URLSearchParams;
   private addStockIntoListParams: URLSearchParams;
@@ -34,14 +28,6 @@ export class SharedService {
     return this.apiHostName;
   }
 
-  public triggerOnboardingPopup(data) {
-    this.onboardingPopup.next(data);
-  }
-
-  public setOnboardingModal(data: boolean) {
-    this.onboardingModal.next(data);
-  }
-
   public symbolLookup(query: string): Observable<Array<object>> {
     const symbolLookupUrl = `${this.apiHostName}/CPTRestSecure/app/stocks/symbol-lookupV1?`;
     this.symbolLookupParams.set('q', query);
@@ -49,7 +35,7 @@ export class SharedService {
     return this.getJson(symbolLookupUrl, this.symbolLookupParams);
   }
 
-  public symbolList(query: any): Observable<Array<object>>{
+  public symbolList(query: any): Observable<Array<object>> {
     const symbolLookupUrl = `${this.apiHostName}/CPTRestSecure/app/midTier/getListSymbols?${Math.random()}`;
     this.symbolLookupParams.set('listId', query.listId);
     this.symbolLookupParams.set('uid', query.userId);
@@ -58,7 +44,7 @@ export class SharedService {
 
   public addStockIntoHoldingList(symbol: string) {
     const addStockToListUrl = `${this.apiHostName}/CPTRestSecure/app/portfolio/addStockIntoList?`;
-    const holdingListId = "1220535";
+    const holdingListId = '1220535';
     this.addStockIntoListParams.set('symbol', symbol);
     this.addStockIntoListParams.set('listId', holdingListId);
     return this.getJson(addStockToListUrl, this.addStockIntoListParams);
@@ -66,7 +52,7 @@ export class SharedService {
 
   public addStockIntoWatchingList(symbol: string) {
     const addStockToListUrl = `${this.apiHostName}/CPTRestSecure/app/portfolio/addStockIntoList?`;
-    const watchingListId = "1220536";
+    const watchingListId = '1220536';
     this.addStockIntoListParams.set('symbol', symbol);
     this.addStockIntoListParams.set('listId', watchingListId);
     return this.getJson(addStockToListUrl, this.addStockIntoListParams);
@@ -91,23 +77,23 @@ export class SharedService {
     return this.getJson(getHeadlinesUrl, this.getHeadlinesParams);
   }
 
-  public getJson(url, params): Observable<Array<object>>{
+  public getJson(url, params): Observable<Array<object>> {
     return this.http.get(url, {
       search: params,
       withCredentials: true
     }).map(res => {
       return res.json();
     })
-    .catch(this.handleError);
+      .catch(this.handleError);
   }
 
   public handleError(err: any) {
     let errMsg = (err.message) ? err.message :
       err.status ? `${err.status} - ${err.statusText}` : 'Server error';
-      return Observable.throw(errMsg);
+    return Observable.throw(errMsg);
   }
 
-  checkIfBullList(listName) {
+  public checkIfBullList(listName) {
     switch (listName) {
       case 'Bulls of the Week':
       case 'Best Growth Stocks':
@@ -132,7 +118,7 @@ export class SharedService {
     }
   }
 
-  checkIfBearList(listName) {
+  public checkIfBearList(listName) {
     switch (listName) {
       case 'Sell the Rallies':
       case 'Bears of the Week':
@@ -146,7 +132,7 @@ export class SharedService {
     }
   }
 
-  checkIfUserList(listName) {
+  public checkIfUserList(listName) {
     switch (listName) {
       case 'Ideas for You':
       case 'Holding':
@@ -157,7 +143,7 @@ export class SharedService {
     }
   }
 
-  checkIfThemeList(listName) {
+  public checkIfThemeList(listName) {
     switch (listName) {
       case 'Big Data':
       case 'China Shops':

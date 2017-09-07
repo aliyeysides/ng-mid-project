@@ -1,11 +1,9 @@
 import {Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
-import { SharedService } from '../shared.service';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 
 import {noop} from 'rxjs/util/noop';
 import {Subscription} from 'rxjs/Subscription';
 import {MidTierHeaderService} from './mid-tier-header.service';
-import {PopoverConfig} from 'ngx-bootstrap';
 
 @Component({
   selector: 'mid-tier-header',
@@ -31,10 +29,7 @@ export class MidTierHeaderComponent implements OnInit, OnDestroy {
   ];
 
   constructor(private midTierHeaderService: MidTierHeaderService,
-              private popoverConfig: PopoverConfig,
               private el: ElementRef) {
-    this.popoverConfig.placement="left";
-    this.popoverConfig.triggers = "";
   }
 
   ngOnInit() {

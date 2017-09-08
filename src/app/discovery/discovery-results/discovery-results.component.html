@@ -13,7 +13,7 @@
     </div>
     <ul class="discovery-slider__tiles">
       <li *ngFor="let stock of list['stocks']" class="tile__wrapper">
-        <div class="discovery__tile">
+        <div class="discovery__tile" (mouseover)="showDogEar == true" [ngClass]="{'selected' : showDogEar == true}">
           <div class="tile__front">
             <div class="tile__contents">
               <div class="cornerFlip">

@@ -23,7 +23,6 @@ export class PinnedIdeasComponent implements OnInit, OnDestroy {
   public themeList: Array<object>;
   public activeIdeasList: Array<object>;
   public selectedList: object;
-  public loading: Subscription;
   public ideaListLoading: Subscription;
   public mappingClassArray = mappingClassArray;
 
@@ -55,7 +54,7 @@ export class PinnedIdeasComponent implements OnInit, OnDestroy {
   }
 
   public getPinnedIdeaLists() {
-    this.ideaListProvider.getIdeasList({uid: this.userId})
+    this.ideaListLoading = this.ideaListProvider.getIdeasList({uid: this.userId})
       .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
           this.ideaListProvider.setIdeaListData(res);

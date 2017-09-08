@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {DiscoveryService} from '../discovery.service';
 import {SignalService} from '../../shared/signal.service';
 import {Router} from '@angular/router';
@@ -12,6 +12,7 @@ import {Subject} from 'rxjs/Subject';
   styleUrls: ['../discovery.component.scss']
 })
 export class DiscoveryStockComponent implements OnInit, OnDestroy {
+  @Input('stock') public stock: string;
   private ngUnsubscribe: Subject<void> = new Subject();
 
   public discoveryResults: any;
@@ -24,7 +25,8 @@ export class DiscoveryStockComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.discoveryService.getDiscoveryResultLists('OKE')
+    console.log('this.stock', this.stock);
+    this.discoveryService.getDiscoveryResultLists(this.stock)
       .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
         this.discoveryResults = res;

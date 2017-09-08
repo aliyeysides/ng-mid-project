@@ -17,9 +17,8 @@ export class SharedService {
 
   private email: string;
   private uid : string;
-  environmentName = environment.envName;
-  protected apiHostName = environment.envProtocol + '://' + environment.envHostName;
 
+  protected apiHostName = environment.envProtocol + '://' + environment.envHostName;
 
   constructor(private http: Http) {
     this.symbolLookupParams = new URLSearchParams;
@@ -31,19 +30,6 @@ export class SharedService {
     this.getLoginParams = new URLSearchParams;
     this.getInsightsParams = new URLSearchParams;
   }
-
- /* public setSymbolListValues(list) {
-    this.symbolListValues.next(list);
-  }
-
-  public triggerOnboardingPopup(data) {
-    this.onboardingPopup.next(data);
-  }
-
-  public setPowerBarHeader(data) {
-    this.powerBarHeader.next(data);
-
-  }*/
 
   public getApiHostName() {
     return this.apiHostName;
@@ -104,12 +90,6 @@ export class SharedService {
     const getHeadlinesUrl = `${this.apiHostName}/CPTRestSecure/app/xigniteNews/getHeadlines?`;
     this.getHeadlinesParams.set('symbol', symbol);
     return this.getJson(getHeadlinesUrl, this.getHeadlinesParams);
-  }
-
-  public getWordPressJson(id: string) {
-    const insightsUrl = `${this.apiHostName}/insights/?json=secursive.get_product_updates&dev=1&count=100`;
-    this.getInsightsParams.set('id', id);
-    return this.getJson(insightsUrl, this.getInsightsParams);
   }
 
   public killSession() : any {

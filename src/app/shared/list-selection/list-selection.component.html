@@ -28,19 +28,19 @@
     <div class="list-selection__container container-fluid">
       <div class="list-selection__toggle row no-gutters">
         <ul class="col-12 nav nav-justified">
-          <li (click)="whichAdditionalLists = 'Ideas'" class="nav-item"
+          <li (click)="selectWhichAdditionalList('Ideas')" class="nav-item"
               [ngClass]="{'selected' : whichAdditionalLists == 'Ideas'}">
             <a class="nav-link"><i class="fa fa-lightbulb-o" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Idea Lists</a>
             <div class="underline">
             </div>
           </li>
-          <li (click)="whichAdditionalLists = 'Themes'" class="nav-item"
+          <li (click)="selectWhichAdditionalList('Themes')" class="nav-item"
               [ngClass]="{'selected' : whichAdditionalLists == 'Themes'}">
             <a class="nav-link"><i class="fa fa-flag" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;Theme Lists</a>
             <div class="underline">
             </div>
           </li>
-          <li (click)="whichAdditionalLists = 'User'" class="nav-item"
+          <li (click)="selectWhichAdditionalList('User')" class="nav-item"
               [ngClass]="{'selected' : whichAdditionalLists == 'User'}">
             <a class="nav-link"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;My Lists</a>
             <div class="underline">

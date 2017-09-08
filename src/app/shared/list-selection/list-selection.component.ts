@@ -28,7 +28,7 @@ export class ListSelectionComponent implements OnInit, OnDestroy {
   public userList: Array<object>;
   public mappingClassArray = mappingClassArray;
   public wordPressPosts: Array<object>;
-  public whichAdditionalLists: string = 'User';
+  public whichAdditionalLists: string = 'Ideas';
   public selectedList: object;
   public selectedListName: string = 'Holding';
   public selectedListId: any;
@@ -54,6 +54,7 @@ export class ListSelectionComponent implements OnInit, OnDestroy {
         this.updateInActiveThemeList();
         this.updateActiveThemeList();
         this.getWordPressPostListDescriptions();
+        this.selectList(this.ideaList[0]);
       });
 
     this.listSelectionService.isShown$
@@ -112,6 +113,17 @@ export class ListSelectionComponent implements OnInit, OnDestroy {
     const matchingPost = this.wordPressPosts.filter(post => post['post_title'] === this.selectedListName);
     const htmlStr = matchingPost[0]['post_content'];
     this.parseDomString(htmlStr);
+  }
+
+  public selectWhichAdditionalList(list: string) {
+    this.whichAdditionalLists = list;
+    if (list == 'Ideas') {
+      this.selectList(this.ideaList[0]);
+    } else if (list == 'Themes') {
+      this.selectList(this.themeList[0]);
+    } else if (list == 'User') {
+      this.selectList(this.userList[0]);
+    }
   }
 
   public updateInActiveIdeaList() {

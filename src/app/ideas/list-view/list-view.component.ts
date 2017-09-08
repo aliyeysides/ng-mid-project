@@ -105,7 +105,7 @@ export class ListViewComponent implements OnInit, OnDestroy {
 
   public getSelectedStockData(stock: Idea, callback?) {
     if (stock) {
-      this.sharedService.getStockCardData(stock.symbol)
+      this.loading = this.sharedService.getStockCardData(stock.symbol)
         .takeUntil(this.ngUnsubscribe)
         .subscribe(res => {
           return callback(res);
@@ -115,7 +115,7 @@ export class ListViewComponent implements OnInit, OnDestroy {
 
   public getSelectedStockHeadlines(stock: Idea) {
     if (stock) {
-      this.sharedService.getHeadlines(stock.symbol)
+      this.headlinesLoading = this.sharedService.getHeadlines(stock.symbol)
         .takeUntil(this.ngUnsubscribe)
         .subscribe(res => {
           this.headlines = res['headlines'].filter((item, index) => index < 7);
@@ -219,6 +219,16 @@ export class ListViewComponent implements OnInit, OnDestroy {
     }
     if (typeof stock === 'string') {
       this.router.navigate(['/report', stock]);
+    }
+  }
+
+  public goToStockDiscovery(stock: (Idea | string), e: Event) {
+    e.stopPropagation();
+    if (typeof stock === 'object') {
+      this.router.navigate(['/discovery', stock.symbol]);
+    }
+    if (typeof stock === 'string') {
+      this.router.navigate(['/discovery', stock]);
     }
   }
 

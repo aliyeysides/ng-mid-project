@@ -22,7 +22,7 @@ export class DiscoveryResultsComponent implements AfterViewInit {
     return this._results.getValue();
   }
 
-  public stockList: object[];
+  public lists: object[];
 
   constructor(private signalService: SignalService,
               private sharedService: SharedService) {
@@ -32,7 +32,7 @@ export class DiscoveryResultsComponent implements AfterViewInit {
     this._results
       .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
-        this.stockList = res;
+        this.lists = res;
       })
   }
 

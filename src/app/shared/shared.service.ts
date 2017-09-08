@@ -16,6 +16,7 @@ export class SharedService {
   private getLoginParams: URLSearchParams;
 
   private email: string;
+  private uid : string;
   environmentName = environment.envName;
   protected apiHostName = environment.envProtocol + '://' + environment.envHostName;
 
@@ -31,7 +32,7 @@ export class SharedService {
     this.getInsightsParams = new URLSearchParams;
   }
 
-  public setSymbolListValues(list) {
+ /* public setSymbolListValues(list) {
     this.symbolListValues.next(list);
   }
 
@@ -42,10 +43,18 @@ export class SharedService {
   public setPowerBarHeader(data) {
     this.powerBarHeader.next(data);
 
-  }
+  }*/
 
   public getApiHostName() {
     return this.apiHostName;
+  }
+
+  public setUID(UID : string){
+    this.uid = UID;
+  }
+
+  public getUID(){
+    return this.uid;
   }
 
   public symbolLookup(query: string): Observable<Array<object>> {
@@ -117,8 +126,6 @@ export class SharedService {
  }
 
   public getJson(url, params): Observable<Array<object>>{
-
-  public getJson(url, params): Observable<Array<object>> {
     return this.http.get(url, {
       search: params,
       withCredentials: true

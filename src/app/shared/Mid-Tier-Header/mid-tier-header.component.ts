@@ -72,10 +72,10 @@ export class MidTierHeaderComponent implements OnInit, OnDestroy {
 
   public logOutSession(): void {
     // TODO: log out session.
-    this.sharedService.killSession()
+    /*this.sharedService.killSession()
       .subscribe(res => {
         console.log(res);
-      });
+      });*/
       
   }
 

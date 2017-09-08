@@ -4,6 +4,7 @@ import {SidePanelProvider} from 'app/providers/side-panel.provider';
 import {PagerProvider} from 'app/providers/paging.provider';
 import {IdeaListProvider} from 'app/providers/idea-list.provider';
 import {ChartService} from '../charts/chart.service';
+import {SharedService} from '../shared.service';
 
 import * as moment from 'moment-timezone'
 
@@ -112,10 +113,10 @@ export class SidePanelComponent implements OnInit, OnDestroy {
   }
   public login(){
     let loginEmail:any = localStorage.getItem('email');
-    console.log(loginEmail);
     this.sharedService.login(loginEmail)
       .subscribe(res => {
-        console.log('login success');
+        this.sharedService.setUID(res.UID);
+        console.log(this.sharedService.getUID());
      });
   }
   public logOutSession() {

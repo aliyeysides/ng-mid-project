@@ -59,6 +59,11 @@ export class MidTierHeaderComponent implements OnInit {
 
   logOutSession() {
     // TODO: log out session.
+    this.sharedService.killSession()
+      .subscribe(res => {
+        console.log(res);
+      });
+      
   }
 
 }

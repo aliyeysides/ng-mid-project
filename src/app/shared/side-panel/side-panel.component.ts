@@ -77,7 +77,8 @@ export class SidePanelComponent implements OnInit {
 
   public symbol: string = 'SPY';
 
-  constructor(private sidePanelProvider: SidePanelProvider, private ideaListProvider: IdeaListProvider, private pagerProvider: PagerProvider, private chartService: ChartService) {
+  constructor(private sidePanelProvider: SidePanelProvider, private ideaListProvider: IdeaListProvider, private pagerProvider: PagerProvider,
+    private chartService: ChartService, private sharedService: SharedService) {
     setInterval(() => {
       this.presentDate = moment.tz(new Date, 'America/New_York');
       this.date = this.presentDate.format('ddd MMM DD');
@@ -86,6 +87,8 @@ export class SidePanelComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    this.login();
     this.initialMarketSectorData();
 
     /*Call intraDay chart and set symbol*/
@@ -108,8 +111,23 @@ export class SidePanelComponent implements OnInit {
         });
       });
   }
+  public login(){
+    let loginEmail:any = localStorage.getItem('email');
+    console.log(loginEmail);
+    this.sharedService.login(loginEmail)
+      .subscribe(res => {
+        console.log('login success');
+     });
+  }
+  public logOutSession() {
+    // TODO: log out session.
+    this.sharedService.killSession()
+      .subscribe(res => {
+          let localhostAddress = window.location.protocol + "//" + window.location.host;
+          location.replace(`${localhostAddress}/`);
+      });
 
-
+  }
   public getIntraDayChartData(symbol: string, index, chartClass) {
 
     this.loading = this.sidePanelProvider.getIntraDayChartData({symbol: symbol})

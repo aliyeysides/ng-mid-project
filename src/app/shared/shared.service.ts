@@ -30,7 +30,10 @@ export class SharedService {
   private getStockCardDataParams: URLSearchParams;
   private getHeadlinesParams: URLSearchParams;
   private getInsightsParams: URLSearchParams;
+  private getLogoutParams: URLSearchParams;
+  private getLoginParams: URLSearchParams;
 
+  private email: string;
   environmentName = environment.envName;
   apiHostName = environment.envProtocol + '://' + environment.envHostName;
 
@@ -40,6 +43,8 @@ export class SharedService {
     this.deleteSymbolFromListParams = new URLSearchParams;
     this.getStockCardDataParams = new URLSearchParams;
     this.getHeadlinesParams = new URLSearchParams;
+    this.getLogoutParams = new URLSearchParams;
+    this.getLoginParams = new URLSearchParams;
     this.getInsightsParams = new URLSearchParams;
   }
 
@@ -119,6 +124,19 @@ export class SharedService {
     this.getInsightsParams.set('id', id);
     return this.getJson(insightsUrl, this.getInsightsParams);
   }
+
+  public killSession() : any {
+    const getLogoutUrl = `${this.apiHostName}/CPTRestSecure/app/session/killsessions?`;
+    this.getLogoutParams.set('uuid', this.email);
+    return this.getJson(getLogoutUrl, this.getLogoutParams);
+ }
+
+ public login(emailID) : any {
+   this.email = emailID;
+   const getLoginUrl = `${this.apiHostName}/CPTRestSecure/app/user/login?`;
+   this.getLoginParams.set('deviceId', emailID);
+   return this.getJson(getLoginUrl, this.getLoginParams);
+ }
 
   public getJson(url, params): Observable<Array<object>>{
     return this.http.get(url, {

@@ -24,13 +24,13 @@
               </div>
               <div class="symbol clearfix">
                 <div class="rating">
-                  <img src="assets/imgs/pgr-bullish.svg">
+                  <img src="{{ appendPGRImage(stock ? stock['PGR'] : null) }}">
                   <p class="ticker">{{ stock.symbol }}</p>
                 </div>
               </div>
               <div class="price clearfix">
-                <p class="last-price up-change">{{ stock.Change }}</p>
-                <p class="percentage up-change">{{ stock.Percentage }}</p>
+                <p class="last-price" [ngClass]="{'up-change' : stock?.Change > 0, 'down-change' : stock?.Change < 0 }">{{ stock.Change }}</p>
+                <p class="percentage" [ngClass]="{'up-change' : stock?.Change > 0, 'down-change' : stock?.Change < 0 }">{{ stock.Percentage }}</p>
               </div>
               <div class="mainFactor">
                 <p class="factor">{{ stock.most_significant_shared_factor }}</p>
@@ -41,7 +41,7 @@
             <div class="tile__contents">
               <div class="symbol clearfix">
                 <div class="rating">
-                  <img src="assets/imgs/pgr-bullish.svg">
+                  <img src="{{ appendPGRImage(stock ? stock['PGR'] : null) }}">
                   <p class="ticker">{{ stock.symbol }}</p>
                 </div>
                 <div class="">

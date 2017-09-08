@@ -21,19 +21,6 @@
     <!-- SECTION: DISCOVERY BODY BOTTOM  -->
     <div class="body__bottom">
 
-      <!-- ROW: ACTION BAR  -->
-      <div class="list-view__actionbar list-view__actionbar--discovery row no-gutters">
-        <div class="list__header col-md-6">
-          <a (click)="navigateBack()" class="view-toggle"><i class="fa fa-reply align-absolute" aria-hidden="true"></i></a>
-          <p class="list__title list__title--discovery">Stock ideas based on <span>{{symbol | uppercase }}</span></p>
-        </div>
-
-        <div class="col-md-6">
-          <symbol-search></symbol-search>
-        </div>
-      </div>
-      <!-- END: ACTION BAR  -->
-
       <!-- ROW: DISCOVERY RESULTS  -->
       <app-discovery-results [results]="results"></app-discovery-results>
       <!-- END: DISCOVERY RESULTS  -->

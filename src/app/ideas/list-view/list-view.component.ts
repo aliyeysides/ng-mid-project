@@ -1,20 +1,24 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SharedService} from '../../shared/shared.service';
 import {Router} from '@angular/router';
 import {Idea} from '../../shared/models/idea';
 import {Subscription} from 'rxjs/Subscription';
 import {ChartService} from '../../shared/charts/chart.service';
 import {SignalService} from '../../shared/signal.service';
+import {ListSelectionService} from '../../shared/list-selection/list-selection.service';
+import {IdeaListProvider} from '../../providers/idea-list.provider';
+import {Subject} from 'rxjs/Subject';
 
 @Component({
-  selector: 'app-list-view',
+  selector: 'list-view',
   templateUrl: './list-view.component.html',
   styleUrls: ['./list-view.component.scss'],
 })
 
-export class ListViewComponent implements OnInit {
-  @Output() public toggleAdditionalIdeasLists: EventEmitter<any> = new EventEmitter();
+export class ListViewComponent implements OnInit, OnDestroy {
   private userId = '1024494';
+  private ngUnsubscribe: Subject<void> = new Subject();
+
   public ideaList: Array<object>;
   public additionalLists: boolean = false;
   public mouseHoverOptionsMap: object = {};
@@ -46,32 +50,40 @@ export class ListViewComponent implements OnInit {
   };
 
   constructor(private sharedService: SharedService,
+              private ideaListProvider: IdeaListProvider,
+              private listSelectionService: ListSelectionService,
               private router: Router,
               private chartService: ChartService,
               private signalService: SignalService) {
   }
 
   ngOnInit() {
-    this.sharedService.symbolListValues$
-      .switchMap(val => this.sharedService.symbolList({listId: val['list_id']}))
+    this.ideaListProvider.selectedList$
+      .switchMap(val => {
+        this.selectedListName = val['name'];
+        return this.sharedService.symbolList({listId: val['list_id']})
+      })
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
           this.clearOrderByObject();
           this.clearIdeasLists();
           this.selectedListId = res['list_id'];
           this.ideaList = res['symbols'];
-          setTimeout(this.assignStockData(4), 0);
-          if (this.ideaList) {
-            this.selectStock(this.ideaList[0] as Idea);
-          }
+          this.assignStockData(4);
+          if (this.ideaList) this.selectStock(this.ideaList[0] as Idea);
         },
         err => {
           this.sharedService.handleError(err);
         }
       );
+    this.listSelectionService.isShown$
+      .takeUntil(this.ngUnsubscribe)
+      .subscribe(val => this.additionalLists = val);
+  }
 
-    this.sharedService.powerBarHeader$.subscribe(res => this.selectedListName = res['name']);
-    this.sharedService.additionalLists$.subscribe(val => this.additionalLists = val);
-
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
   public updateChart() {
@@ -93,7 +105,8 @@ export class ListViewComponent implements OnInit {
 
   public getSelectedStockData(stock: Idea, callback?) {
     if (stock) {
-      this.loading = this.sharedService.getStockCardData(stock.symbol)
+      this.sharedService.getStockCardData(stock.symbol)
+        .takeUntil(this.ngUnsubscribe)
         .subscribe(res => {
           return callback(res);
         });
@@ -102,7 +115,8 @@ export class ListViewComponent implements OnInit {
 
   public getSelectedStockHeadlines(stock: Idea) {
     if (stock) {
-      this.headlinesLoading = this.sharedService.getHeadlines(stock.symbol)
+      this.sharedService.getHeadlines(stock.symbol)
+        .takeUntil(this.ngUnsubscribe)
         .subscribe(res => {
           this.headlines = res['headlines'].filter((item, index) => index < 7);
         })
@@ -193,8 +207,9 @@ export class ListViewComponent implements OnInit {
     this.showHeadlines = !this.showHeadlines;
   }
 
-  public toggleAdditionalLists() {
-    this.toggleAdditionalIdeasLists.emit(null);
+  public toggleListSelectionView() {
+    this.additionalLists = !this.additionalLists;
+    this.listSelectionService.setIsShown(this.additionalLists);
   }
 
   public goToStockView(stock: (Idea | string), e) {
@@ -214,6 +229,7 @@ export class ListViewComponent implements OnInit {
   public addToHoldingList(stock: any, e) {
     e.stopPropagation();
     this.sharedService.addStockIntoHoldingList(stock)
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
         console.log('res from addToList', res);
       });
@@ -222,6 +238,7 @@ export class ListViewComponent implements OnInit {
   public addToWatchingList(stock: any, e) {
     e.stopPropagation();
     this.sharedService.addStockIntoWatchingList(stock)
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
         console.log('res from addToList', res);
       });
@@ -230,6 +247,7 @@ export class ListViewComponent implements OnInit {
   public removeFromList(stock: any, listId: string, e) {
     e.stopPropagation();
     this.sharedService.deleteSymbolFromList(stock.symbol, listId)
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
         console.log('res from removeFromList', res);
       });
@@ -257,6 +275,10 @@ export class ListViewComponent implements OnInit {
 
   public gotoListView() {
     this.currentView = 'list-view';
+  }
+
+  public translateIndustryStrength(listRating: number): string {
+    return listRating >= 50 ? 'Strong' : 'Weak';
   }
 
   public appendPGRImage(pgr) {

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 /*import { AppComponent } from './app.component';*/
-import { IdeasComponent } from './Ideas/ideas.component';
+import { IdeasComponent } from './ideas/ideas.component';
 /*import { IdeasComponent } from './ideas/ideas.component';*/
 import { DiscoveryComponent } from './discovery/discovery.component';
 import { InsightsComponent } from './insights/insights.component';

@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
-
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from '../app-routing.module';
 import {MidTierHeaderModule} from './Mid-Tier-Header/mid-tier-header.module';
 import {SymbolSearchModule} from './symbol-search/symbol-search.module';
@@ -11,11 +11,15 @@ import {PipesModule} from './pipes/pipes.module';
 
 import {SharedService} from './shared.service';
 import {SignalService} from './signal.service';
+import {ListSelectionService} from './list-selection/list-selection.service';
+import {IdeaListProvider} from '../providers/idea-list.provider';
 
 @NgModule({
   imports: [
     CommonModule,
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     MidTierHeaderModule,
     SidePanelModule,
@@ -26,6 +30,8 @@ import {SignalService} from './signal.service';
   exports: [
     CommonModule,
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     MidTierHeaderModule,
     SidePanelModule,
@@ -33,7 +39,7 @@ import {SignalService} from './signal.service';
     ListSelectionModule,
     PipesModule
   ],
-  providers: [SharedService, SignalService],
+  providers: [ListSelectionService, SharedService, SignalService, IdeaListProvider],
   declarations: []
 
 })

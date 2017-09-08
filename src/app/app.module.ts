@@ -1,6 +1,5 @@
-import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {BrowserModule} from '@angular/platform-browser';
 import {HttpModule} from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -10,7 +9,7 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 /* Modules */
 import {SharedModule} from './shared/shared.module';
-import {IdeasModule} from './Ideas/ideas.module';
+import {IdeasModule} from './ideas/ideas.module';
 import {DiscoveryModule} from './discovery/discovery.module';
 import {InsightsModule} from './insights/insights.module';
 import {StockReportModule} from './stock-report/stock.module';
@@ -20,7 +19,8 @@ import {
   AlertModule,
   PopoverModule,
   TooltipModule,
-  BsDropdownModule
+  BsDropdownModule,
+  PaginationModule,
 } from 'ngx-bootstrap';
 
 import {BusyConfig, BusyModule} from 'angular2-busy';
@@ -46,8 +46,6 @@ const loadingMaskConfig: BusyConfig = ({
   ],
   imports: [
     BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
     HttpModule,
     SharedModule,
     IdeasModule,
@@ -60,6 +58,7 @@ const loadingMaskConfig: BusyConfig = ({
     PopoverModule.forRoot(),
     TooltipModule.forRoot(),
     BsDropdownModule.forRoot(),
+    PaginationModule.forRoot(),
     BusyModule.forRoot(loadingMaskConfig)
   ],
   providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],

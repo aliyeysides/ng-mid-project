@@ -1,30 +1,46 @@
-import {Component, ViewChild} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ModalDirective} from 'ngx-bootstrap/modal';
-import {Idea} from '../../shared/models/idea';
-import {SharedService} from '../../shared/shared.service';
+import {Idea} from '../../models/idea';
+import {SharedService} from '../../shared.service';
+import {MidTierHeaderService} from '../mid-tier-header.service';
+import {Subject} from 'rxjs/Subject';
 
 @Component({
   selector: 'app-onboarding-modal',
   templateUrl: './onboarding.component.html',
   styleUrls: ['./onboarding.component.scss']
 })
-export class OnboardingComponent {
-  @ViewChild('autoShownModal') public autoShownModal:ModalDirective;
+export class OnboardingComponent implements OnInit, OnDestroy {
+  @ViewChild('onboardingModal') public onboardingModal: ModalDirective;
+  private userId = '1024494';
+  private ngUnsubscribe: Subject<void> = new Subject();
+
   public selected: number = 1;
   public holdings: Array<Idea>;
-  private userId = '1024494';
+  public isModalShown: boolean;
 
-  constructor(private sharedService: SharedService) {
+  constructor(private sharedService: SharedService,
+              private midTierHeaderService: MidTierHeaderService) {
+  }
+
+  ngOnInit() {
     const holdingListId = '1220535';
     this.sharedService.symbolList({listId: holdingListId, userId: this.userId})
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
         this.holdings = res['symbols'];
       });
 
-    this.sharedService.onboardingModal$
+    this.midTierHeaderService.onboardingModal$
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
         this.isModalShown = res;
       });
+  }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
   public removeFromHolding(ticker: string) {
@@ -32,19 +48,17 @@ export class OnboardingComponent {
     this.sharedService.deleteSymbolFromList(ticker, holdingListId);
   }
 
-  public isModalShown:boolean = true;
-
   public showModal():void {
-    this.isModalShown = true;
+    this.onboardingModal.show();
   }
 
   public hideModal():void {
-    this.autoShownModal.hide();
+    this.onboardingModal.hide();
   }
 
   public onHidden():void {
     this.isModalShown = false;
-    this.sharedService.triggerOnboardingPopup(true);
+    this.midTierHeaderService.triggerOnboardingPopup(true);
     this.selected = 1;
   }
 

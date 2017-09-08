@@ -7,17 +7,22 @@
        class="list-view__actionbar row no-gutters">
     <div class="list__header col-lg-6">
 
-      <div class="list__drop" (click)="toggleAdditionalLists(); $event.stopPropagation()">
-        <svg class="align-absolute" width="300px" height="300px" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <div class="list__drop" (click)="toggleListSelectionView(); $event.stopPropagation()">
+        <svg class="align-absolute" width="300px" height="300px" viewBox="0 0 300 300" version="1.1"
+             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <defs></defs>
           <g id="icon_listdrop" fill="#000000" stroke="none" stroke-width="1" fill-rule="evenodd">
-              <path d="M2.76228097,165.829042 L140.754043,28.1876852 C145.612908,23.3411585 153.387092,23.3411585 158.245957,28.1876852 L296.237719,165.829042 C301.096584,170.675569 299.347393,174.55279 292.544982,174.55279 L6.45501827,174.55279 C-0.347392548,174.55279 -2.0965839,170.675569 2.76228097,165.829042 Z M286.541667,275.335407 L12.4583333,275.335407 C5.64518229,275.335407 9.9475983e-14,269.671345 9.9475983e-14,262.835407 L9.9475983e-14,212.835407 C9.9475983e-14,205.99947 5.64518229,200.335407 12.4583333,200.335407 L286.541667,200.335407 C293.354818,200.335407 299,205.99947 299,212.835407 L299,262.835407 C299,269.671345 293.354818,275.335407 286.541667,275.335407 Z" id="icon" transform="translate(149.500000, 150.000000) scale(1, -1) translate(-149.500000, -150.000000) "></path>
+            <path
+              d="M2.76228097,165.829042 L140.754043,28.1876852 C145.612908,23.3411585 153.387092,23.3411585 158.245957,28.1876852 L296.237719,165.829042 C301.096584,170.675569 299.347393,174.55279 292.544982,174.55279 L6.45501827,174.55279 C-0.347392548,174.55279 -2.0965839,170.675569 2.76228097,165.829042 Z M286.541667,275.335407 L12.4583333,275.335407 C5.64518229,275.335407 9.9475983e-14,269.671345 9.9475983e-14,262.835407 L9.9475983e-14,212.835407 C9.9475983e-14,205.99947 5.64518229,200.335407 12.4583333,200.335407 L286.541667,200.335407 C293.354818,200.335407 299,205.99947 299,212.835407 L299,262.835407 C299,269.671345 293.354818,275.335407 286.541667,275.335407 Z"
+              id="icon"
+              transform="translate(149.500000, 150.000000) scale(1, -1) translate(-149.500000, -150.000000) "></path>
           </g>
         </svg>
       </div>
 
       <p class="list__title">
-        <span><i tooltip="This is a user list." *ngIf="checkIfUserList(selectedListName)" class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;{{selectedListName}}</span>
+        <span><i tooltip="This is a user list." *ngIf="checkIfUserList(selectedListName)" class="fa fa-user-circle"
+                 aria-hidden="true"></i>&nbsp;{{selectedListName}}</span>
       </p>
 
       <ul class="list-sort__container">
@@ -31,11 +36,12 @@
                 Rating</a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
                 <li [ngClass]="{'selected' : orderByObject['field'] == 'PGR' && orderByObject['ascending'] == false }"
-                    (click)="setOrderByObject('PGR', false, $event)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Bullish</a>
+                    (click)="setOrderByObject('PGR', false, $event)"><a class="dropdown-subtoggle" tabindex="-1"
+                                                                        href="#">Bullish</a>
                 </li>
                 <li [ngClass]="{'selected' : orderByObject['field'] == 'PGR' && orderByObject['ascending'] == true }"
                     (click)="setOrderByObject('PGR', true, $event)"><a class="dropdown-subtoggle" tabindex="-1"
-                                                               href="#">Bearish</a></li>
+                                                                       href="#">Bearish</a></li>
               </ul>
             </li>
             <li [ngClass]="{'selected' : orderByObject['field'] == '' }" class="dropdown-submenu">
@@ -55,10 +61,10 @@
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
                 <li [ngClass]="{'selected' : orderByObject['field'] == 'name' && orderByObject['ascending'] == true }"
                     (click)="setOrderByObject('name', true, $event)"><a class="dropdown-subtoggle" tabindex="-1"
-                                                                href="#">A-Z</a></li>
+                                                                        href="#">A-Z</a></li>
                 <li [ngClass]="{'selected' : orderByObject['field'] == 'name' && orderByObject['ascending'] == false }"
                     (click)="setOrderByObject('name', false, $event)"><a class="dropdown-subtoggle" tabindex="-1"
-                                                                 href="#">Z-A</a></li>
+                                                                         href="#">Z-A</a></li>
               </ul>
             </li>
             <li [ngClass]="{'selected' : orderByObject['field'] == 'Last' }" class="dropdown-submenu">
@@ -66,10 +72,12 @@
                 Price</a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
                 <li [ngClass]="{'selected' : orderByObject['field'] == 'Last' && orderByObject['ascending'] == false }"
-                    (click)="setOrderByObject('Last', false, $event)"><a class="dropdown-subtoggle" tabindex="-1" href="#">High
+                    (click)="setOrderByObject('Last', false, $event)"><a class="dropdown-subtoggle" tabindex="-1"
+                                                                         href="#">High
                   to Low</a></li>
                 <li [ngClass]="{'selected' : orderByObject['field'] == 'Last' && orderByObject['ascending'] == true }"
-                    (click)="setOrderByObject('Last', true, $event)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Low to
+                    (click)="setOrderByObject('Last', true, $event)"><a class="dropdown-subtoggle" tabindex="-1"
+                                                                        href="#">Low to
                   High</a></li>
               </ul>
             </li>
@@ -78,11 +86,13 @@
               <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
                 <li
                   [ngClass]="{'selected' : orderByObject['field'] == 'Percentage ' && orderByObject['ascending'] == false }"
-                  (click)="setOrderByObject('Percentage ', false, $event)"><a class="dropdown-subtoggle" tabindex="-1" href="#">High
+                  (click)="setOrderByObject('Percentage ', false, $event)"><a class="dropdown-subtoggle" tabindex="-1"
+                                                                              href="#">High
                   to Low</a></li>
                 <li
                   [ngClass]="{'selected' : orderByObject['field'] == 'Percentage ' && orderByObject['ascending'] == true }"
-                  (click)="setOrderByObject('Percentage ', true, $event)"><a class="dropdown-subtoggle" tabindex="-1" href="#">Low
+                  (click)="setOrderByObject('Percentage ', true, $event)"><a class="dropdown-subtoggle" tabindex="-1"
+                                                                             href="#">Low
                   to High</a></li>
               </ul>
             </li>
@@ -95,11 +105,11 @@
 
       <a (click)="gotoListView()" [ngClass]="{'active selected' : currentView == 'list-view'}"
          class="view-toggle view-toggle--list-view active">
-         <i class="fa fa-list align-absolute" aria-hidden="true"></i>
+        <i class="fa fa-list align-absolute" aria-hidden="true"></i>
       </a>
       <a (click)="gotoPanelView()" [ngClass]="{'active selected' : currentView == 'panel-view'}"
          class="view-toggle view-toggle--panel-view">
-         <i class="fa fa-th-large align-absolute" aria-hidden="true"></i>
+        <i class="fa fa-th-large align-absolute" aria-hidden="true"></i>
       </a>
     </div>
   </div>
@@ -338,7 +348,9 @@
               </div>
               <div class="stock-panel__industry row">
                 <p>Industry: <span class="industry">{{selectedStock?.industry_name}}</span></p>
-                <p>Ind.&nbsp;Strength: <span class="industry-strength strong"> Strong</span></p>
+                <p>Ind.&nbsp;Strength: <span class="industry-strength"
+                                             [ngClass]="{'strong' : translateIndustryStrength(selectedStock?.list_rating) == 'Strong', 'weak' : translateIndustryStrength(selectedStock?.list_rating) == 'Weak'}">{{ translateIndustryStrength(selectedStock?.list_rating) }}</span>
+                </p>
               </div>
               <div class="stock-panel__details row">
                 <div class="col-lg-6">
@@ -560,7 +572,9 @@
               </div>
               <div class="stock-panel__industry row">
                 <p>Industry: <span class="industry">{{idea['meta-info'].industry_name}}</span></p>
-                <p>Ind.&nbsp;Strength: <span class="industry-strength strong"> Strong</span></p>
+                <p>Ind.&nbsp;Strength: <span class="industry-strength"
+                                             [ngClass]="{'strong' : translateIndustryStrength(idea['meta-info'].listRating) == 'Strong', 'weak' : translateIndustryStrength(idea['meta-info'].listRating) == 'Weak'}">{{ translateIndustryStrength(idea['meta-info'].listRating) }}</span>
+                </p>
               </div>
               <div class="stock-panel__details row">
                 <div class="col-lg-6">

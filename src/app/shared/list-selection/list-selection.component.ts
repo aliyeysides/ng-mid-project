@@ -1,19 +1,24 @@
-import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
+import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 import {SharedService} from '../shared.service';
 import {IdeaListProvider} from '../../providers/idea-list.provider';
 import {Router} from '@angular/router';
 
-import {mappingClassArray} from '../../Ideas/pinned-ideas/ideasMappingClassArray';
+import {mappingClassArray} from '../../ideas/pinned-ideas/ideasMappingClassArray';
+import {InsightsService} from '../../insights/shared/insights.service';
+import {ListSelectionService} from './list-selection.service';
+import {Subject} from 'rxjs/Subject';
 
 @Component({
-  selector: 'app-list-selection',
+  selector: 'list-selection',
   templateUrl: './list-selection.component.html',
   styleUrls: ['./list-selection.component.scss']
 })
-export class ListSelectionComponent implements OnInit {
-  @Output() public previewList: EventEmitter<object> = new EventEmitter<object>();
-  @Input() public additionalLists: boolean;
+export class ListSelectionComponent implements OnInit, OnDestroy {
+  @Input() public isShown: boolean;
   private userId = '1024494';
+  private totalListAmount: number;
+  private ngUnsubscribe: Subject<void> = new Subject();
+
   public inActiveIdeasList: Array<object>;
   public activeIdeasList: Array<object>;
   public inActiveThemeList: Array<object>;
@@ -32,6 +37,8 @@ export class ListSelectionComponent implements OnInit {
   public selectedListHowInfo: string;
 
   constructor(private sharedService: SharedService,
+              private listSelectionService: ListSelectionService,
+              private insightsService: InsightsService,
               private ideaListProvider: IdeaListProvider,
               private router: Router) {
   }
@@ -39,24 +46,35 @@ export class ListSelectionComponent implements OnInit {
   ngOnInit() {
     this.getIdeasList();
     this.ideaListProvider.wholeIdeasList$
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
         this.parseListObject(res);
         this.updateInActiveIdeaList();
         this.updateActiveIdeaList();
         this.updateInActiveThemeList();
         this.updateActiveThemeList();
+        this.getWordPressPostListDescriptions();
       });
 
-    this.sharedService.additionalLists$.subscribe(val => this.additionalLists = val);
-    this.sharedService.getWordPressJson('45').subscribe(val => this.wordPressPosts = val['0']['45']);
+    this.listSelectionService.isShown$
+      .takeUntil(this.ngUnsubscribe)
+      .subscribe(val => {
+      this.isShown = val;
+    })
   }
 
-  public setAdditionalLists(val: boolean) {
-    this.sharedService.setAdditionalListsMenu(val);
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+  }
+
+  public toggleShown(val: boolean) {
+    this.listSelectionService.setIsShown(val);
   }
 
   public getIdeasList() {
     this.ideaListProvider.getIdeasList({uid: this.userId})
+      .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
           this.ideaListProvider.setIdeaListData(res);
         },
@@ -66,6 +84,7 @@ export class ListSelectionComponent implements OnInit {
   public manageActiveInactive(status, list_id) {
     if (this.activeIdeasList.length < 10) {
       this.ideaListProvider.manageActiveInactive({uid: this.userId, listId: list_id, mode: status})
+        .takeUntil(this.ngUnsubscribe)
         .subscribe(() => {
             this.getIdeasList();
           },
@@ -79,9 +98,11 @@ export class ListSelectionComponent implements OnInit {
   public viewList(list) {
     if (!this.isIdeasPage()) {
       this.router.navigate(['/ideas']);
-      // this.sharedService.setSymbolListValues(list);
+      this.ideaListProvider.setSelectedList(list);
+      return;
     }
-    this.previewList.emit(list);
+    this.ideaListProvider.setSelectedList(list);
+    this.listSelectionService.setIsShown(false);
   }
 
   public selectList(list) {
@@ -133,6 +154,13 @@ export class ListSelectionComponent implements OnInit {
     this.ideaList = list[0]['idea_lists'];
     this.themeList = list[1]['theme_lists'];
     this.userList = list[2]['user_lists'];
+    this.totalListAmount = this.ideaList.length + this.themeList.length + this.userList.length;
+  }
+
+  private getWordPressPostListDescriptions() {
+    this.insightsService.getWordPressJson('45', this.totalListAmount)
+      .takeUntil(this.ngUnsubscribe)
+      .subscribe(val => this.wordPressPosts = val['0']['45']);
   }
 
 }

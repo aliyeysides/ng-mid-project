@@ -1,21 +1,30 @@
-import { Injectable } from '@angular/core';
-import { Http, URLSearchParams } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
-import { Subject } from "rxjs/Subject";
-import { environment } from 'environments/environment';
+import {Injectable} from '@angular/core';
+import {URLSearchParams} from '@angular/http';
+import {Observable} from 'rxjs/Rx';
+import {Subject} from 'rxjs/Subject';
+import {environment} from 'environments/environment';
+import {SharedService} from '../shared/shared.service';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class IdeaListProvider {
 
+  private apiHostName = environment.envProtocol + '://' + environment.envHostName;
   private symbolLookupParams: URLSearchParams;
-  apiHostName = environment.envProtocol + '://' + environment.envHostName;
   private apiPrependText: string = '/CPTRestSecure/app';
+
+  private selectedList: BehaviorSubject<object> = new BehaviorSubject<object>({});
+  selectedList$ = this.selectedList.asObservable();
 
   private wholeIdeasList: Subject<Array<object>> = new Subject<Array<object>>();
   wholeIdeasList$ = this.wholeIdeasList.asObservable();
 
-  constructor(private http: Http) {
+  constructor(private sharedService: SharedService) {
     this.symbolLookupParams = new URLSearchParams;
+  }
+
+  public setSelectedList(list: object) {
+    this.selectedList.next(list);
   }
 
   public getIdeasList(query): Observable<Array<object>> {
@@ -34,33 +43,11 @@ export class IdeaListProvider {
     this.wholeIdeasList.next(list);
   }
 
-  public getJson(url, params): Observable<Array<object>> {
-    return this.http.get(url, {
-      search: params,
-      withCredentials: true
-    }).map(res => {
-      return res.json();
-    })
-      .catch(this.handleError)
+  private getJson(url, params): Observable<Array<object>> {
+    return this.sharedService.getJson(url, params);
   }
 
-  public getJsonWithoutCredential(url, params): Observable<Array<object>> {
-    return this.http.get(url, {
-      search: params,
-      withCredentials: false
-    }).map(res => {
-      return res.json();
-    })
-      .catch(this.handleError)
-  }
-
-  public handleError(err: any) {
-    const errMsg = (err.message) ? err.message :
-      err.status ? `${err.status} - ${err.statusText}` : 'Server error';
-    return Observable.throw(errMsg);
-  }
-
-  public setKeysForAPICall(query) {
+  private setKeysForAPICall(query): void {
     Object.keys(query).forEach((key) => {
       this.symbolLookupParams.set(key, query[key]);
     });

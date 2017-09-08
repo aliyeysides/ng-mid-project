@@ -1,39 +1,38 @@
-import {AfterViewInit, Component, Input, OnDestroy} from '@angular/core';
-import {Idea} from '../../shared/models/idea';
-import {Subject} from 'rxjs/Subject';
+import {AfterViewInit, Component, Input} from '@angular/core';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {Subject} from 'rxjs/Subject';
 import {SignalService} from '../../shared/signal.service';
-import {SharedService} from '../../shared/shared.service';
+import {SharedService} from 'app/shared/shared.service';
 
 @Component({
-  selector: 'app-discovery-stock',
-  templateUrl: './discovery-stock.component.html',
+  selector: 'app-discovery-results',
+  templateUrl: './discovery-results.component.html',
   styleUrls: ['../discovery.component.scss']
 })
-export class DiscoveryStockComponent implements AfterViewInit, OnDestroy {
-
-  private _metaInfo: BehaviorSubject<Idea> = new BehaviorSubject<Idea>({} as Idea);
-  @Input('metaInfo')
-  set metaInfo(val: Idea) {
-    this._metaInfo.next(val);
-  }
-
-  get metaInfo() {
-    return this._metaInfo.getValue();
-  }
+export class DiscoveryResultsComponent implements AfterViewInit {
 
   private ngUnsubscribe: Subject<void> = new Subject();
-  public stock: Idea;
+  private _results: BehaviorSubject<object[]> = new BehaviorSubject<object[]>([]);
+  @Input('results')
+  set results(val: object[]) {
+    this._results.next(val);
+  }
+
+  get results() {
+    return this._results.getValue();
+  }
+
+  public stockList: object[];
 
   constructor(private signalService: SignalService,
               private sharedService: SharedService) {
   }
 
   ngAfterViewInit() {
-    this._metaInfo
+    this._results
       .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
-        this.stock = res;
+        this.stockList = res;
       })
   }
 
@@ -65,4 +64,5 @@ export class DiscoveryStockComponent implements AfterViewInit, OnDestroy {
         console.log('res from addToList', res);
       });
   }
+
 }

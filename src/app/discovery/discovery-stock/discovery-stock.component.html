@@ -1,20 +1,20 @@
 <div class="discovery__base-stock container">
   <div class="row">
     <div class="base-stock__logo">
-      <img class="align-absolute" src="{{metaInfo ? metaInfo['logo_url'] : null }}">
+      <img class="align-absolute" src="{{stock ? stock['logo_url'] : null }}">
     </div>
     <div class="base-stock__symbol">
-      <p class="ticker">{{ metaInfo ? metaInfo['symbol'] : null }}</p>
-      <p class="company-name">{{ metaInfo ? metaInfo['name'] : null }}</p>
+      <p class="ticker">{{ stock ? stock['symbol'] : null }}</p>
+      <p class="company-name">{{ stock ? stock['name'] : null }}</p>
       <p class="company-industry">I don't know what industry</p>
     </div>
     <div class="base-stock__price">
-      <p class="last-price" [ngClass]="{'up-change' : metaInfo?.Change > 0, 'down-change' : metaInfo?.Change < 0 }">{{ metaInfo ? metaInfo['Last'] : null }}</p>
-      <p class="change" [ngClass]="{'up-change' : metaInfo?.Change > 0, 'down-change' : metaInfo?.Change < 0 }">{{ metaInfo ? metaInfo['Change'] : null }}</p>
-      <p class="percentage"[ngClass]="{'up-change' : metaInfo?.Change > 0, 'down-change' : metaInfo?.Change < 0 }">{{ metaInfo ? metaInfo['Percentage'] : null }}</p>
+      <p class="last-price" [ngClass]="{'up-change' : stock?.Change > 0, 'down-change' : stock?.Change < 0 }">{{ stock ? stock['Last'] : null }}</p>
+      <p class="change" [ngClass]="{'up-change' : stock?.Change > 0, 'down-change' : stock?.Change < 0 }">{{ stock ? stock['Change'] : null }}</p>
+      <p class="percentage"[ngClass]="{'up-change' : stock?.Change > 0, 'down-change' : stock?.Change < 0 }">{{ stock ? stock['Percentage'] : null }}</p>
     </div>
     <div class="base-stock__actions">
-      <a (click)="viewStockReport(metaInfo['symbol'])">
+      <a (click)="viewStockReport(stock?.symbol)"><img src="assets/imgs/icon-stockview.svg" width="" alt="">
         <svg width="300px" height="300px" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <defs></defs>
           <g  id="icon_stockview" fill="#000000" stroke="none" stroke-width="1" fill-rule="evenodd">
@@ -22,7 +22,7 @@
           </g>
         </svg>
       </a>
-      <a (click)="addToWatchingList(metaInfo['symbol'])">
+      <a (click)="addToWatchingList(stock?.symbol)"><img src="assets/imgs/icon-watch.svg" width="" alt="">
         <svg width="300px" height="300px" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <defs></defs>
           <g id="icon_watching" stroke="none" stroke-width="1" fill="#000000" fill-rule="evenodd">
@@ -30,7 +30,7 @@
           </g>
         </svg>
       </a>
-      <a (click)="addToHoldingList(metaInfo['symbol'])">
+      <a (click)="addToHoldingList(stock?.symbol)"><img src="assets/imgs/icon-hold.svg" width="" alt="">
         <svg width="300px" height="300px" viewBox="0 0 300 300" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <defs></defs>
           <g id="icon_portfolio" fill="#000000" stroke="none" stroke-width="1" fill-rule="evenodd">
@@ -40,12 +40,12 @@
       </a>
     </div>
     <div class="base-stock__PGR">
-      <img src="{{ appendPGRImage(metaInfo ? metaInfo['PGR'] : null) }}">
-      <p class="PGR__text">{{ appendPGRText(metaInfo ? metaInfo['PGR'] : null ) }}</p>
+      <img src="{{ appendPGRImage(stock ? stock['PGR'] : null) }}">
+      <p class="PGR__text">{{ appendPGRText(stock ? stock['PGR'] : null ) }}</p>
     </div>
     <div class="base-stock__factors">
       <ul>
-        <li *ngFor="let factor of metaInfo ? metaInfo['significant_factors'] : null ">{{ factor }}</li>
+        <li *ngFor="let factor of stock ? stock['significant_factors'] : null ">{{ factor }}</li>
       </ul>
     </div>
   </div>

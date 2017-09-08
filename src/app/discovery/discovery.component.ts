@@ -1,6 +1,9 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {Location} from '@angular/common';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {DiscoveryService} from './discovery.service';
+import {Subject} from 'rxjs/Subject';
+import {Idea} from '../shared/models/idea';
 
 @Component({
   selector: 'mid-tier-component',
@@ -10,28 +13,42 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class DiscoveryComponent implements OnInit {
 
-  public symbol: string;
+  private ngUnsubscribe: Subject<void> = new Subject();
+  public metaInfo: Idea;
+  public results: object[];
 
   constructor(private location: Location,
+              private router: Router,
+              private discoveryService: DiscoveryService,
               private route: ActivatedRoute) {
   }
 
   ngOnInit() {
     this.route.params
-      .subscribe(params => {
-          params.symbol;
-          // console.log('activated route', params);
-          // if (params.symbol) {
-          //   this.symbol = params.symbol;
-          // } else {
-          //   this.symbol = 'AAPL';
-          // }
-        }
-      )
+      .map(params => params.symbol)
+      .switchMap(val => this.discoveryService.getDiscoveryResultLists(val))
+      .takeUntil(this.ngUnsubscribe)
+      .subscribe(res => {
+        this.parseDiscoveryResponse(res);
+      })
+  }
+
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
   }
 
   public navigateBack() {
     this.location.back();
+  }
+
+  public viewStockReport(ticker: string) {
+    this.router.navigate(['/report', ticker]);
+  }
+
+  private parseDiscoveryResponse(res: object) {
+    this.metaInfo = res['metainfo'] as Idea;
+    this.results = res['results'];
   }
 
 }

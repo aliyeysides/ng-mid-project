@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'home', component: InsightsComponent },
   { path: 'ideas', component: IdeasComponent },
   { path: 'discovery', component: DiscoveryComponent },
+  { path: 'discovery/:symbol', component: DiscoveryComponent },
 	{ path: 'report', component: StockComponent },
   { path: 'report/:symbol', component: StockComponent }
 ];

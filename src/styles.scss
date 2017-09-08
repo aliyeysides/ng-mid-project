@@ -1,6 +1,6 @@
 @import 'variables';
 
- 
+
 
 p, h1, h2, h3, h4 span, label, li, a, button {
   font-family: $font-stack;
@@ -231,7 +231,7 @@ display: none;
           fill: #ffffff;
           opacity: 0.8;
       }
-      
+
       &:hover  {
         background-color: rgba(255,255,255,0.2);
 
@@ -712,7 +712,7 @@ input:focus {
             line-height: 1.3;
         }
     }
-} 
+}
 
 
 

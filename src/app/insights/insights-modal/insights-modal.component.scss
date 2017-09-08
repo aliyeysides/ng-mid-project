@@ -3,15 +3,20 @@
 
 
 .modal-header {
+    background-color: $link-blue;
 	
     .modal-title {
+        font-size: 22px;
+        font-weight: 400px;
+        color:#FFFFFF;
+        border-bottom: 0px solid #e5e5e5;
+    }
 
-        .close {
-            margin-top: -2px;
-            font-size: 34px;
-            line-height: 1;
-            margin-right: -30px;
-        }
+    .close {
+        margin-top: -2px;
+        font-size: 34px;
+        line-height: 1;
+        margin-right: -30px;
     }
 }
 

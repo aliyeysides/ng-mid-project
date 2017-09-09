@@ -10,7 +10,7 @@ import {PipesModule} from './pipes/pipes.module';
 import {SharedService} from './services/shared.service';
 import {SignalService} from './services/signal.service';
 import {ListSelectionService} from './components/list-selection/list-selection.service';
-import {IdeaListProvider} from './services/idea-list.service';
+import {IdeaListProvider} from '../core/ideas/idea-list.service';
 
 @NgModule({
   imports: [

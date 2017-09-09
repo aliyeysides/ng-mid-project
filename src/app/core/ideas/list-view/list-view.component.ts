@@ -6,7 +6,7 @@ import {Subscription} from 'rxjs/Subscription';
 import {ChartService} from '../../../shared/services/chart.service';
 import {SignalService} from '../../../shared/services/signal.service';
 import {ListSelectionService} from '../../../shared/components/list-selection/list-selection.service';
-import {IdeaListProvider} from '../../../shared/services/idea-list.service';
+import {IdeaListProvider} from '../idea-list.service';
 import {Subject} from 'rxjs/Subject';
 
 @Component({

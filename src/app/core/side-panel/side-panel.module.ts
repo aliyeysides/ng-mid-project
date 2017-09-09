@@ -5,7 +5,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {SidePanelComponent} from './side-panel.component';
 import {SidePanelProvider} from 'app/shared/services/side-panel.service'
-import {IdeaListProvider} from 'app/shared/services/idea-list.service';
+import {IdeaListProvider} from 'app/core/ideas/idea-list.service';
 import {PagerProvider} from 'app/shared/services/paging.service';
 import {BusyModule} from 'angular2-busy';
 import {SharedService} from '../../shared/services/shared.service';

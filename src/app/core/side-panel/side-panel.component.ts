@@ -2,7 +2,7 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {SidePanelProvider} from 'app/shared/services/side-panel.service';
 import {PagerProvider} from 'app/shared/services/paging.service';
-import {IdeaListProvider} from 'app/shared/services/idea-list.service';
+import {IdeaListProvider} from 'app/core/ideas/idea-list.service';
 import {ChartService} from '../../shared/services/chart.service';
 import {SharedService} from '../../shared/services/shared.service';
 

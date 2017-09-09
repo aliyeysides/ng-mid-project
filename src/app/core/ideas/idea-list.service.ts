@@ -3,7 +3,7 @@ import {URLSearchParams} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import {Subject} from 'rxjs/Subject';
 import {environment} from 'environments/environment';
-import {SharedService} from './shared.service';
+import {SharedService} from '../../shared/services/shared.service';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()

@@ -1,6 +1,6 @@
 import {Component, OnInit, Input, OnDestroy} from '@angular/core';
 import {SharedService} from '../../services/shared.service';
-import {IdeaListProvider} from '../../services/idea-list.service';
+import {IdeaListProvider} from '../../../core/ideas/idea-list.service';
 import {Router} from '@angular/router';
 
 import {mappingClassArray} from '../../../models/ideasMappingClassArray';

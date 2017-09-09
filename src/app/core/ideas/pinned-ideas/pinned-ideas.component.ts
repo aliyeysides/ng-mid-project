@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {SharedService} from '../../../shared/services/shared.service';
-import {IdeaListProvider} from 'app/shared/services/idea-list.service';
+import {IdeaListProvider} from 'app/core/ideas/idea-list.service';
 import {Subscription} from 'rxjs/Subscription';
 
 import {mappingClassArray} from '../../../models/ideasMappingClassArray';

@@ -1,8 +1,7 @@
-import {AfterViewInit, Component, Input} from '@angular/core';
+import {AfterViewInit, Component, EventEmitter, Input, Output} from '@angular/core';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Subject} from 'rxjs/Subject';
 import {SignalService} from '../../../shared/services/signal.service';
-import {SharedService} from 'app/shared/services/shared.service';
 
 @Component({
   selector: 'app-discovery-results',
@@ -13,6 +12,7 @@ export class DiscoveryResultsComponent implements AfterViewInit {
 
   private ngUnsubscribe: Subject<void> = new Subject();
   private _results: BehaviorSubject<object[]> = new BehaviorSubject<object[]>([]);
+  @Output('addToListClicked') public addToListClicked = new EventEmitter();
   @Input('results')
   set results(val: object[]) {
     this._results.next(val);
@@ -24,8 +24,7 @@ export class DiscoveryResultsComponent implements AfterViewInit {
 
   public lists: object[];
 
-  constructor(private signalService: SignalService,
-              private sharedService: SharedService) {
+  constructor(private signalService: SignalService) {
   }
 
   ngAfterViewInit() {
@@ -49,20 +48,8 @@ export class DiscoveryResultsComponent implements AfterViewInit {
     return this.signalService.appendPGRText(pgr);
   }
 
-  public addToHoldingList(stock: string) {
-    this.sharedService.addStockIntoHoldingList(stock)
-      .takeUntil(this.ngUnsubscribe)
-      .subscribe(res => {
-        console.log('res from addToList', res);
-      });
-  }
-
-  public addToWatchingList(stock: string) {
-    this.sharedService.addStockIntoWatchingList(stock)
-      .takeUntil(this.ngUnsubscribe)
-      .subscribe(res => {
-        console.log('res from addToList', res);
-      });
+  public addToList(val: {symbol, listName}) {
+    this.addToListClicked.emit(val);
   }
 
 }

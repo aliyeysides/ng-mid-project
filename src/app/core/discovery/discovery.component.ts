@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {DiscoveryService} from './discovery.service';
 import {Subject} from 'rxjs/Subject';
 import {Idea} from '../../models/idea';
+import {SharedService} from '../../shared/services/shared.service';
 
 @Component({
   selector: 'mid-tier-component',
@@ -17,8 +18,7 @@ export class DiscoveryComponent implements OnInit {
   public metaInfo: Idea;
   public results: object[];
 
-  constructor(private location: Location,
-              private router: Router,
+  constructor(private router: Router,
               private discoveryService: DiscoveryService,
               private route: ActivatedRoute) {
   }
@@ -38,12 +38,12 @@ export class DiscoveryComponent implements OnInit {
     this.ngUnsubscribe.complete();
   }
 
-  public navigateBack() {
-    this.location.back();
-  }
-
   public viewStockReport(ticker: string) {
     this.router.navigate(['/report', ticker]);
+  }
+
+  public addToList(params: {symbol, listName}) {
+    this.discoveryService.addToList(params);
   }
 
   private parseDiscoveryResponse(res: object) {

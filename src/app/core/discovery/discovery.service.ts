@@ -13,6 +13,20 @@ export class DiscoveryService {
     this.discoveryResultListsParams = new URLSearchParams;
   }
 
+  public addToList(params: {symbol, listName}) {
+    if (params.listName === 'Holding') {
+      this.sharedService.addStockIntoHoldingList(params.symbol)
+        .take(1)
+        .subscribe(res => console.log(res));
+      return;
+    }
+    if (params.listName === 'Watching') {
+      this.sharedService.addStockIntoWatchingList(params.symbol)
+        .take(1)
+        .subscribe(res => console.log(res));
+    }
+  }
+
   public getDiscoveryResultLists(ticker: string): Observable<object> {
     const url = `${this.apiHost}/CPTRestSecure/app/midTier/getDiscoveryResultLists?`;
     this.discoveryResultListsParams.set('stock', ticker);

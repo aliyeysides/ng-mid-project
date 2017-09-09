@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 /*import { AppComponent } from './app.component';*/
-import { IdeasComponent } from './ideas/ideas.component';
+import { IdeasComponent } from './core/ideas/ideas.component';
 /*import { IdeasComponent } from './ideas/ideas.component';*/
-import { DiscoveryComponent } from './discovery/discovery.component';
-import { InsightsComponent } from './insights/insights.component';
-import { StockComponent } from './stock-report/stock.component';
+import { DiscoveryComponent } from './core/discovery/discovery.component';
+import { InsightsComponent } from './core/insights/insights.component';
+import { StockComponent } from './core/stock-report/stock.component';
 /*import { ProfileComponent } from './profile/profile.component';*/
 
 

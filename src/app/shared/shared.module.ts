@@ -3,16 +3,14 @@ import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AppRoutingModule} from '../app-routing.module';
-import {MidTierHeaderModule} from './Mid-Tier-Header/mid-tier-header.module';
-import {SymbolSearchModule} from './symbol-search/symbol-search.module';
-import {SidePanelModule} from './side-panel/side-panel.module';
-import {ListSelectionModule} from './list-selection/list-selection.module';
+import {SymbolSearchModule} from './components/symbol-search/symbol-search.module';
+import {ListSelectionModule} from './components/list-selection/list-selection.module';
 import {PipesModule} from './pipes/pipes.module';
 
-import {SharedService} from './shared.service';
-import {SignalService} from './signal.service';
-import {ListSelectionService} from './list-selection/list-selection.service';
-import {IdeaListProvider} from '../providers/idea-list.provider';
+import {SharedService} from './services/shared.service';
+import {SignalService} from './services/signal.service';
+import {ListSelectionService} from './components/list-selection/list-selection.service';
+import {IdeaListProvider} from './services/idea-list.service';
 
 @NgModule({
   imports: [
@@ -21,8 +19,6 @@ import {IdeaListProvider} from '../providers/idea-list.provider';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    MidTierHeaderModule,
-    SidePanelModule,
     SymbolSearchModule,
     ListSelectionModule,
     PipesModule
@@ -33,8 +29,6 @@ import {IdeaListProvider} from '../providers/idea-list.provider';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    MidTierHeaderModule,
-    SidePanelModule,
     SymbolSearchModule,
     ListSelectionModule,
     PipesModule

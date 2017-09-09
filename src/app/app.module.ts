@@ -9,10 +9,10 @@ import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 
 /* Modules */
 import {SharedModule} from './shared/shared.module';
-import {IdeasModule} from './ideas/ideas.module';
-import {DiscoveryModule} from './discovery/discovery.module';
-import {InsightsModule} from './insights/insights.module';
-import {StockReportModule} from './stock-report/stock.module';
+import {IdeasModule} from './core/ideas/ideas.module';
+import {DiscoveryModule} from './core/discovery/discovery.module';
+import {InsightsModule} from './core/insights/insights.module';
+import {StockReportModule} from './core/stock-report/stock.module';
 
 import {
   ModalModule,
@@ -24,6 +24,8 @@ import {
 } from 'ngx-bootstrap';
 
 import {BusyConfig, BusyModule} from 'angular2-busy';
+import {MidTierHeaderModule} from './core/mid-tier-header/mid-tier-header.module';
+import {SidePanelModule} from './core/side-panel/side-panel.module';
 
 const loadingMaskConfig: BusyConfig = ({
   message: '',
@@ -53,6 +55,8 @@ const loadingMaskConfig: BusyConfig = ({
     InsightsModule,
     StockReportModule,
     BrowserAnimationsModule,
+    MidTierHeaderModule,
+    SidePanelModule,
     ModalModule.forRoot(),
     AlertModule.forRoot(),
     PopoverModule.forRoot(),

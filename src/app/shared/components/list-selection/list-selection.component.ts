@@ -3,10 +3,10 @@ import {SharedService} from '../../services/shared.service';
 import {IdeaListProvider} from '../../../core/ideas/idea-list.service';
 import {Router} from '@angular/router';
 
-import {mappingClassArray} from '../../../models/ideasMappingClassArray';
 import {InsightsService} from '../../../core/insights/insights.service';
 import {ListSelectionService} from './list-selection.service';
 import {Subject} from 'rxjs/Subject';
+import {ClassMap, IDEAS_LIST_CLASSMAP} from '../../../models/ideas-list-class-map';
 
 @Component({
   selector: 'list-selection',
@@ -26,7 +26,7 @@ export class ListSelectionComponent implements OnInit, OnDestroy {
   public ideaList: Array<object>;
   public themeList: Array<object>;
   public userList: Array<object>;
-  public mappingClassArray = mappingClassArray;
+  public classMap: ClassMap = IDEAS_LIST_CLASSMAP;
   public wordPressPosts: Array<object>;
   public whichAdditionalLists: string = 'Ideas';
   public selectedList: object;

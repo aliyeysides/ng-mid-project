@@ -1,4 +1,16 @@
-export const mappingClassArray: any = {
+export interface ClassMapObject {
+  style: string;
+  imgName: string;
+  coloredImgName: string;
+  greyImgName: string;
+  description: string;
+}
+
+export interface ClassMap {
+  [propName: string]: ClassMapObject;
+}
+
+export const IDEAS_LIST_CLASSMAP: ClassMap = {
   'Holding': {
     'style': 'list__option--userlist',
     'imgName': 'img_list-holding.svg',

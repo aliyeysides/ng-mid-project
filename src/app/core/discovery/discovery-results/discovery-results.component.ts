@@ -2,6 +2,7 @@ import {AfterViewInit, Component, EventEmitter, Input, Output} from '@angular/co
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Subject} from 'rxjs/Subject';
 import {SignalService} from '../../../shared/services/signal.service';
+import {addListConfig} from '../discovery.service';
 
 @Component({
   selector: 'app-discovery-results',
@@ -48,7 +49,7 @@ export class DiscoveryResultsComponent implements AfterViewInit {
     return this.signalService.appendPGRText(pgr);
   }
 
-  public addToList(val: {symbol, listName}) {
+  public addToList(val: addListConfig) {
     this.addToListClicked.emit(val);
   }
 

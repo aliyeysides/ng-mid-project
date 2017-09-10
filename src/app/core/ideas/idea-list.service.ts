@@ -5,6 +5,7 @@ import {Subject} from 'rxjs/Subject';
 import {environment} from 'environments/environment';
 import {SharedService} from '../../shared/services/shared.service';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {IdeaList} from '../../models/idea';
 
 @Injectable()
 export class IdeaListProvider {
@@ -13,7 +14,7 @@ export class IdeaListProvider {
   private symbolLookupParams: URLSearchParams;
   private apiPrependText: string = '/CPTRestSecure/app';
 
-  private selectedList: BehaviorSubject<object> = new BehaviorSubject<object>({});
+  private selectedList: BehaviorSubject<IdeaList> = new BehaviorSubject<IdeaList>({} as IdeaList);
   selectedList$ = this.selectedList.asObservable();
 
   private wholeIdeasList: Subject<Array<object>> = new Subject<Array<object>>();
@@ -23,7 +24,7 @@ export class IdeaListProvider {
     this.symbolLookupParams = new URLSearchParams;
   }
 
-  public setSelectedList(list: object) {
+  public setSelectedList(list: IdeaList) {
     this.selectedList.next(list);
   }
 

@@ -1,47 +1,63 @@
-import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {AfterViewInit, Component, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {SharedService} from '../../../shared/services/shared.service';
 import {IdeaListProvider} from 'app/core/ideas/idea-list.service';
 import {Subscription} from 'rxjs/Subscription';
 
-import {mappingClassArray} from '../../../models/ideasMappingClassArray';
 import {ListSelectionService} from '../../../shared/components/list-selection/list-selection.service';
 import {Subject} from 'rxjs/Subject';
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
+import {IdeaList} from '../../../models/idea';
+import {ClassMap, IDEAS_LIST_CLASSMAP} from '../../../models/ideas-list-class-map';
 
 @Component({
-  selector: 'mid-tier-ideas',
+  selector: 'pinned-ideas',
   templateUrl: './pinned-ideas.component.html',
   styleUrls: ['./pinned-ideas.component.scss'],
   encapsulation: ViewEncapsulation.None
 
 })
-export class PinnedIdeasComponent implements OnInit, OnDestroy {
+export class PinnedIdeasComponent implements AfterViewInit, OnDestroy {
   private userId = '1024494';
   private ngUnsubscribe: Subject<void> = new Subject();
 
-  public ideasList: Array<object>;
-  public userList: Array<object> = [];
-  public themeList: Array<object>;
-  public activeIdeasList: Array<object>;
-  public selectedList: object;
+  private _wholeIdeasList: BehaviorSubject<object[]> = new BehaviorSubject<object[]>([{}]);
+  @Input('wholeIdeasList')
+  set wholeIdeasList(list: object[]) {
+    console.log('list',list);
+    this._wholeIdeasList.next(list);
+  }
+
+  get wholeIdeasList() {
+    return this._wholeIdeasList.getValue();
+  }
+
+  public ideasList: Array<IdeaList>;
+  public userList: Array<IdeaList> = [];
+  public themeList: Array<IdeaList>;
+
+  public activeIdeasList: Array<IdeaList>;
+  public selectedList: IdeaList;
   public ideaListLoading: Subscription;
-  public mappingClassArray = mappingClassArray;
+  public classMap: ClassMap = IDEAS_LIST_CLASSMAP;
 
   constructor(private sharedService: SharedService,
               private listSelectionService: ListSelectionService,
               private ideaListProvider: IdeaListProvider) {
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.getPinnedIdeaLists();
     this.ideaListProvider.selectedList$
       .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
-        this.selectedList = res;
+        this.selectedList = <IdeaList>res;
       });
 
-    this.ideaListProvider.wholeIdeasList$
+    this._wholeIdeasList
       .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
+        console.log('res',res);
+        console.log('this.wholeIdeasList', this.wholeIdeasList);
         const list = this.parseListObject(res);
         this.updateActiveIdeaList(list);
         Object.keys(this.selectedList).length != 0 ? this.selectIdeaList(this.selectedList) : this.selectIdeaList(this.userList[0]);
@@ -68,7 +84,7 @@ export class PinnedIdeasComponent implements OnInit, OnDestroy {
 
   public getActiveClasses(listName) {
     const selectedClass = (this.selectedList && this.selectedList['name'] == listName) ? ' selected' : '';
-    return this.mappingClassArray[listName]['style'] + `${selectedClass}`;
+    return this.classMap[listName]['style'] + `${selectedClass}`;
   }
 
   public selectIdeaList(list) {

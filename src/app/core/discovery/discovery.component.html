@@ -12,7 +12,9 @@
       </div>
 
       <!-- ROW: DISCOVERY - BASE STOCK  -->
-      <app-discovery-stock (addToListClicked)="addToList($event)" [metaInfo]="metaInfo"></app-discovery-stock>
+      <app-discovery-stock (addToListClicked)="addToList($event)"
+                           (viewStockReportClicked)="viewStockReport($event)"
+                           [metaInfo]="metaInfo"></app-discovery-stock>
       <!-- END: DISCOVERY - BASE STOCK  -->
 
     </div>
@@ -22,7 +24,9 @@
     <div class="body__bottom">
 
       <!-- ROW: DISCOVERY RESULTS  -->
-      <app-discovery-results (addToListClicked)="addToList($event)" [results]="results"></app-discovery-results>
+      <app-discovery-results (addToListClicked)="addToList($event)"
+                             (viewStockReportClicked)="viewStockReport($event)"
+                             [results]="results"></app-discovery-results>
       <!-- END: DISCOVERY RESULTS  -->
 
     </div>

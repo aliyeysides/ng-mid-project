@@ -12,8 +12,10 @@ import {AddListConfig} from '../discovery.service';
 })
 export class DiscoveryStockComponent implements AfterViewInit, OnDestroy {
 
-  private _metaInfo: BehaviorSubject<Idea> = new BehaviorSubject<Idea>({} as Idea);
   @Output('addToListClicked') public addToListClicked = new EventEmitter<object>();
+  @Output('viewStockReportClicked') public viewStockReportClicked = new EventEmitter();
+
+  private _metaInfo: BehaviorSubject<Idea> = new BehaviorSubject<Idea>({} as Idea);
   @Input('metaInfo')
   set metaInfo(val: Idea) {
     this._metaInfo.next(val);
@@ -52,6 +54,10 @@ export class DiscoveryStockComponent implements AfterViewInit, OnDestroy {
 
   public addToList(val: AddListConfig) {
     this.addToListClicked.emit(val);
+  }
+
+  public viewStockReport(symbol: string) {
+    this.viewStockReportClicked.emit(symbol);
   }
 
 }

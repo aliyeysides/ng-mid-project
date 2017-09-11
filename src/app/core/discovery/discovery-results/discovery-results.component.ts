@@ -2,7 +2,7 @@ import {AfterViewInit, Component, EventEmitter, Input, Output} from '@angular/co
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Subject} from 'rxjs/Subject';
 import {SignalService} from '../../../shared/services/signal.service';
-import {addListConfig} from '../discovery.service';
+import {AddListConfig} from '../discovery.service';
 
 @Component({
   selector: 'app-discovery-results',
@@ -12,8 +12,11 @@ import {addListConfig} from '../discovery.service';
 export class DiscoveryResultsComponent implements AfterViewInit {
 
   private ngUnsubscribe: Subject<void> = new Subject();
-  private _results: BehaviorSubject<object[]> = new BehaviorSubject<object[]>([]);
+
   @Output('addToListClicked') public addToListClicked = new EventEmitter();
+  @Output('viewStockReportClicked') public viewStockReportClicked = new EventEmitter();
+
+  private _results: BehaviorSubject<object[]> = new BehaviorSubject<object[]>([]);
   @Input('results')
   set results(val: object[]) {
     this._results.next(val);
@@ -49,8 +52,12 @@ export class DiscoveryResultsComponent implements AfterViewInit {
     return this.signalService.appendPGRText(pgr);
   }
 
-  public addToList(val: addListConfig) {
+  public addToList(val: AddListConfig) {
     this.addToListClicked.emit(val);
+  }
+
+  public viewStockReport(symbol: string) {
+    this.viewStockReportClicked.emit(symbol)
   }
 
 }

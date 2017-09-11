@@ -12,7 +12,7 @@
                   *ngIf=" list.name!='Holding' && list.name!='Watching' && list.name!='Ideas for You'">
             <i class="fa fa-star" aria-hidden="true"></i>
           </button>
-          <img class="" [src]="'assets/imgs/'+mappingClassArray[list.name].imgName">
+          <img class="" [src]="'assets/imgs/'+classMap[list.name].imgName">
         </div>
         <p class="list__label"> {{list.name}}</p>
       </li>

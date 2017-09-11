@@ -1,11 +1,10 @@
-import {AfterViewInit, Component, Input, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {SharedService} from '../../../shared/services/shared.service';
 import {IdeaListProvider} from 'app/core/ideas/idea-list.service';
 import {Subscription} from 'rxjs/Subscription';
 
 import {ListSelectionService} from '../../../shared/components/list-selection/list-selection.service';
 import {Subject} from 'rxjs/Subject';
-import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {IdeaList} from '../../../models/idea';
 import {ClassMap, IDEAS_LIST_CLASSMAP} from '../../../models/ideas-list-class-map';
 
@@ -14,22 +13,10 @@ import {ClassMap, IDEAS_LIST_CLASSMAP} from '../../../models/ideas-list-class-ma
   templateUrl: './pinned-ideas.component.html',
   styleUrls: ['./pinned-ideas.component.scss'],
   encapsulation: ViewEncapsulation.None
-
 })
-export class PinnedIdeasComponent implements AfterViewInit, OnDestroy {
+export class PinnedIdeasComponent implements OnInit, OnDestroy {
   private userId = '1024494';
   private ngUnsubscribe: Subject<void> = new Subject();
-
-  private _wholeIdeasList: BehaviorSubject<object[]> = new BehaviorSubject<object[]>([{}]);
-  @Input('wholeIdeasList')
-  set wholeIdeasList(list: object[]) {
-    console.log('list',list);
-    this._wholeIdeasList.next(list);
-  }
-
-  get wholeIdeasList() {
-    return this._wholeIdeasList.getValue();
-  }
 
   public ideasList: Array<IdeaList>;
   public userList: Array<IdeaList> = [];
@@ -45,19 +32,17 @@ export class PinnedIdeasComponent implements AfterViewInit, OnDestroy {
               private ideaListProvider: IdeaListProvider) {
   }
 
-  ngAfterViewInit() {
+  ngOnInit() {
     this.getPinnedIdeaLists();
     this.ideaListProvider.selectedList$
       .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
-        this.selectedList = <IdeaList>res;
+        this.selectedList = res as IdeaList;
       });
 
-    this._wholeIdeasList
+    this.ideaListProvider.wholeIdeasList$
       .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
-        console.log('res',res);
-        console.log('this.wholeIdeasList', this.wholeIdeasList);
         const list = this.parseListObject(res);
         this.updateActiveIdeaList(list);
         Object.keys(this.selectedList).length != 0 ? this.selectIdeaList(this.selectedList) : this.selectIdeaList(this.userList[0]);

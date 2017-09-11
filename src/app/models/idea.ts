@@ -26,8 +26,3 @@ export interface IdeaList {
   pgr_rating_order: number;
   power_Bar: string;
 }
-
-export interface addListConfig {
-  symbol: string;
-  listName: string;
-}

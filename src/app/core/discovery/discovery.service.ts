@@ -2,7 +2,11 @@ import { Injectable } from '@angular/core';
 import {URLSearchParams} from '@angular/http';
 import {SharedService} from '../../shared/services/shared.service';
 import {Observable} from 'rxjs/Observable';
-import {addListConfig} from '../../models/idea';
+
+export interface AddListConfig {
+  symbol: string;
+  listName: string;
+}
 
 @Injectable()
 export class DiscoveryService {
@@ -14,7 +18,7 @@ export class DiscoveryService {
     this.discoveryResultListsParams = new URLSearchParams;
   }
 
-  public addToList(params: addListConfig): void {
+  public addToList(params: AddListConfig): void {
     if (params.listName === 'Holding') {
       this.sharedService.addStockIntoHoldingList(params.symbol)
         .take(1)

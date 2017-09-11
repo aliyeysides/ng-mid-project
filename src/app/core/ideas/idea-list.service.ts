@@ -28,6 +28,10 @@ export class IdeaListProvider {
     this.selectedList.next(list);
   }
 
+  public setIdeaListData(list: Array<object>) {
+    this.wholeIdeasList.next(list);
+  }
+
   public getIdeasList(query): Observable<Array<object>> {
     const symbolLookupUrl = `${this.apiHostName}${this.apiPrependText}/portfolio/getMidTierUserLists?`;
     this.symbolLookupParams.set('uid', query.uid);
@@ -38,10 +42,6 @@ export class IdeaListProvider {
     const symbolLookupUrl = `${this.apiHostName}${this.apiPrependText}/midTier/manageIdeaListActiveInactiveState?`;
     this.setKeysForAPICall(query);
     return this.getJson(symbolLookupUrl, this.symbolLookupParams);
-  }
-
-  public setIdeaListData(list: Array<object>) {
-    this.wholeIdeasList.next(list);
   }
 
   private getJson(url, params): Observable<Array<object>> {

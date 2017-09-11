@@ -1,8 +1,9 @@
 import {AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output} from '@angular/core';
-import {addListConfig, Idea} from '../../../models/idea';
+import {Idea} from '../../../models/idea';
 import {Subject} from 'rxjs/Subject';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {SignalService} from '../../../shared/services/signal.service';
+import {AddListConfig} from '../discovery.service';
 
 @Component({
   selector: 'app-discovery-stock',
@@ -32,7 +33,7 @@ export class DiscoveryStockComponent implements AfterViewInit, OnDestroy {
     this._metaInfo
       .takeUntil(this.ngUnsubscribe)
       .subscribe(res => {
-        this.stock = <Idea>res;
+        this.stock = res as Idea;
       })
   }
 
@@ -49,7 +50,7 @@ export class DiscoveryStockComponent implements AfterViewInit, OnDestroy {
     return this.signalService.appendPGRText(pgr);
   }
 
-  public addToList(val: addListConfig) {
+  public addToList(val: AddListConfig) {
     this.addToListClicked.emit(val);
   }
 

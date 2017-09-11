@@ -9,6 +9,7 @@ import {IdeaListProvider} from './idea-list.service';
 })
 export class IdeasComponent implements OnInit, OnDestroy {
 
+  private userId = '1024494';
   private ngUnsubscribe: Subject<void> = new Subject();
   public wholeIdeasList: object[];
 
@@ -16,15 +17,25 @@ export class IdeasComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.ideaListProvider.wholeIdeasList$
-      .takeUntil(this.ngUnsubscribe)
-      .subscribe(res => {
-        this.wholeIdeasList = res;
-      })
+    // this.ideaListProvider.wholeIdeasList$
+    //   .takeUntil(this.ngUnsubscribe)
+    //   .subscribe(res => {
+    //     this.wholeIdeasList = res;
+    //   })
+    this.getIdeasList();
   }
 
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
+  }
+
+  public getIdeasList() {
+    this.ideaListProvider.getIdeasList({uid: this.userId})
+      .takeUntil(this.ngUnsubscribe)
+      .subscribe(res => {
+          this.wholeIdeasList = res;
+        },
+        err => console.log('err', err));
   }
 }

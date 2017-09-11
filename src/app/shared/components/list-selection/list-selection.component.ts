@@ -15,17 +15,21 @@ import {ClassMap, IDEAS_LIST_CLASSMAP} from '../../../models/ideas-list-class-ma
 })
 export class ListSelectionComponent implements OnInit, OnDestroy {
   @Input() public isShown: boolean;
+
   private userId = '1024494';
   private totalListAmount: number;
   private ngUnsubscribe: Subject<void> = new Subject();
 
   public inActiveIdeasList: Array<object>;
   public activeIdeasList: Array<object>;
+
   public inActiveThemeList: Array<object>;
   public activeThemeList: Array<object>;
+
   public ideaList: Array<object>;
   public themeList: Array<object>;
   public userList: Array<object>;
+
   public classMap: ClassMap = IDEAS_LIST_CLASSMAP;
   public wordPressPosts: Array<object>;
   public whichAdditionalLists: string = 'Ideas';

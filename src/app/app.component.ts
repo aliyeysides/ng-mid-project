@@ -8,6 +8,9 @@ import {UserService} from './shared/services/user.service';
 export class AppComponent {
 
 	constructor(private userService: UserService) {
-    this.userService.login('');
+    this.userService.login('shashankpunuru@flexisphere.com')
+      .subscribe(res => {
+        // this.userService
+      });
 	}
 }

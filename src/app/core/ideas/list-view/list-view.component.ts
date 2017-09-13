@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {SharedService} from '../../../shared/services/shared.service';
 import {Router} from '@angular/router';
-import {Idea} from '../../../models/idea';
+import {Idea} from '../../../shared/models/idea';
 import {Subscription} from 'rxjs/Subscription';
 import {ChartService} from '../../../shared/services/chart.service';
 import {SignalService} from '../../../shared/services/signal.service';

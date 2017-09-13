@@ -4,7 +4,7 @@ import {Observable} from 'rxjs/Rx';
 import {Subject} from 'rxjs/Subject';
 import {environment} from 'environments/environment';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
-import {IdeaList} from '../../models/idea';
+import {IdeaList} from '../../shared/models/idea';
 import {UtilService} from '../../shared/services/util.service';
 
 @Injectable()

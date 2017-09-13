@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {ModalDirective} from 'ngx-bootstrap/modal';
 import {MidTierHeaderService} from '../mid-tier-header.service';
 import {Subject} from 'rxjs/Subject';
-import {Idea} from '../../../models/idea';
+import {Idea} from '../../../shared/models/idea';
 import {SharedService} from '../../../shared/services/shared.service';
 
 @Component({

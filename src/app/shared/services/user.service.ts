@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
+import {URLSearchParams} from '@angular/http';
 import {SharedService} from './shared.service';
 import {Subject} from 'rxjs/Subject';
-import {User} from '../../models/user';
+import {User} from '../models/user';
 import {UtilService} from './util.service';
 
 @Injectable()

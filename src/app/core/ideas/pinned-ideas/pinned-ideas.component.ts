@@ -5,8 +5,8 @@ import {Subscription} from 'rxjs/Subscription';
 
 import {ListSelectionService} from '../../../shared/components/list-selection/list-selection.service';
 import {Subject} from 'rxjs/Subject';
-import {IdeaList} from '../../../models/idea';
-import {ClassMap, IDEAS_LIST_CLASSMAP} from '../../../models/ideas-list-class-map';
+import {IdeaList} from '../../../shared/models/idea';
+import {ClassMap, IDEAS_LIST_CLASSMAP} from '../../../shared/models/ideas-list-class-map';
 import {UtilService} from '../../../shared/services/util.service';
 
 @Component({

@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output} from '@angular/core';
-import {Idea} from '../../../models/idea';
+import {Idea} from '../../../shared/models/idea';
 import {Subject} from 'rxjs/Subject';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {SignalService} from '../../../shared/services/signal.service';

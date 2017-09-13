@@ -10,9 +10,7 @@ import {DiscoveryStockComponent} from './discovery-stock/discovery-stock.compone
     SharedModule
   ],
   exports: [
-    DiscoveryComponent,
-    DiscoveryResultsComponent,
-    DiscoveryStockComponent
+    DiscoveryComponent
   ],
   declarations: [DiscoveryComponent, DiscoveryStockComponent, DiscoveryResultsComponent],
   providers: [DiscoveryService]

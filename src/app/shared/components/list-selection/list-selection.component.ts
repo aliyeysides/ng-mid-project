@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
 import {InsightsService} from '../../../core/insights/insights.service';
 import {ListSelectionService} from './list-selection.service';
 import {Subject} from 'rxjs/Subject';
-import {ClassMap, IDEAS_LIST_CLASSMAP} from '../../../models/ideas-list-class-map';
+import {ClassMap, IDEAS_LIST_CLASSMAP} from '../../models/ideas-list-class-map';
 import {UtilService} from '../../services/util.service';
 
 @Component({

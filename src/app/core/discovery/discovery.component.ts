@@ -1,10 +1,8 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {Location} from '@angular/common';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DiscoveryService} from './discovery.service';
 import {Subject} from 'rxjs/Subject';
-import {Idea} from '../../models/idea';
-import {SharedService} from '../../shared/services/shared.service';
+import {Idea} from '../../shared/models/idea';
 
 @Component({
   selector: 'mid-tier-component',

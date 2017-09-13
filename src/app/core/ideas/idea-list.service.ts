@@ -3,9 +3,9 @@ import {URLSearchParams} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import {Subject} from 'rxjs/Subject';
 import {environment} from 'environments/environment';
-import {SharedService} from '../../shared/services/shared.service';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {IdeaList} from '../../models/idea';
+import {UtilService} from '../../shared/services/util.service';
 
 @Injectable()
 export class IdeaListProvider {
@@ -20,7 +20,7 @@ export class IdeaListProvider {
   private wholeIdeasList: Subject<Array<object>> = new Subject<Array<object>>();
   wholeIdeasList$ = this.wholeIdeasList.asObservable();
 
-  constructor(private sharedService: SharedService) {
+  constructor(private utilService: UtilService) {
     this.symbolLookupParams = new URLSearchParams;
   }
 
@@ -45,7 +45,7 @@ export class IdeaListProvider {
   }
 
   private getJson(url, params): Observable<Array<object>> {
-    return this.sharedService.getJson(url, params);
+    return this.utilService.getJson(url, params);
   }
 
   private setKeysForAPICall(query): void {

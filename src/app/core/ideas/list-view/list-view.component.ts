@@ -8,6 +8,7 @@ import {SignalService} from '../../../shared/services/signal.service';
 import {ListSelectionService} from '../../../shared/components/list-selection/list-selection.service';
 import {IdeaListProvider} from '../idea-list.service';
 import {Subject} from 'rxjs/Subject';
+import {UtilService} from '../../../shared/services/util.service';
 
 @Component({
   selector: 'list-view',
@@ -54,7 +55,8 @@ export class ListViewComponent implements OnInit, OnDestroy {
               private listSelectionService: ListSelectionService,
               private router: Router,
               private chartService: ChartService,
-              private signalService: SignalService) {
+              private signalService: SignalService,
+              private utilService: UtilService) {
   }
 
   ngOnInit() {
@@ -73,7 +75,7 @@ export class ListViewComponent implements OnInit, OnDestroy {
           if (this.ideaList) this.selectStock(this.ideaList[0] as Idea);
         },
         err => {
-          this.sharedService.handleError(err);
+          this.utilService.handleError(err);
         }
       );
     this.listSelectionService.isShown$
@@ -264,19 +266,19 @@ export class ListViewComponent implements OnInit, OnDestroy {
   }
 
   public checkIfUserList(listName) {
-    return this.sharedService.checkIfUserList(listName);
+    return this.utilService.checkIfUserList(listName);
   }
 
   public checkIfBullList(listName) {
-    return this.sharedService.checkIfBullList(listName);
+    return this.utilService.checkIfBullList(listName);
   }
 
   public checkIfBearList(listName) {
-    return this.sharedService.checkIfBearList(listName);
+    return this.utilService.checkIfBearList(listName);
   }
 
   public checkIfThemeList(listName) {
-    return this.sharedService.checkIfThemeList(listName);
+    return this.utilService.checkIfThemeList(listName);
   }
 
   public gotoPanelView() {

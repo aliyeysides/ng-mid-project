@@ -4,6 +4,7 @@ import {InsightsModalComponent} from './insights-modal/insights-modal.component'
 import {BsModalService} from 'ngx-bootstrap';
 import {DatePipe} from '@angular/common';
 import {SharedService} from '../../shared/services/shared.service';
+import {UtilService} from '../../shared/services/util.service';
 
 @Injectable()
 export class InsightsService {
@@ -12,7 +13,8 @@ export class InsightsService {
 
   constructor(private modalService: BsModalService,
               private sharedService: SharedService,
-              private datePipe: DatePipe) {
+              private datePipe: DatePipe,
+              private utilService: UtilService) {
     this.getInsightsParams = new URLSearchParams();
   }
 
@@ -73,7 +75,7 @@ export class InsightsService {
     const insightsUrl = `${this.apiHostName}/insights/?json=secursive.get_product_updates&dev=1`;
     this.getInsightsParams.set('id', id);
     this.getInsightsParams.set('count', count.toString());
-    return this.sharedService.getJson(insightsUrl, this.getInsightsParams);
+    return this.utilService.getJson(insightsUrl, this.getInsightsParams);
   }
 
 }

@@ -7,6 +7,7 @@ import {InsightsService} from '../../../core/insights/insights.service';
 import {ListSelectionService} from './list-selection.service';
 import {Subject} from 'rxjs/Subject';
 import {ClassMap, IDEAS_LIST_CLASSMAP} from '../../../models/ideas-list-class-map';
+import {UtilService} from '../../services/util.service';
 
 @Component({
   selector: 'list-selection',
@@ -44,7 +45,8 @@ export class ListSelectionComponent implements OnInit, OnDestroy {
               private listSelectionService: ListSelectionService,
               private insightsService: InsightsService,
               private ideaListProvider: IdeaListProvider,
-              private router: Router) {
+              private router: Router,
+              private utilService: UtilService) {
   }
 
   ngOnInit() {
@@ -147,11 +149,11 @@ export class ListSelectionComponent implements OnInit, OnDestroy {
   }
 
   public checkIfBullList(listName) {
-    return this.sharedService.checkIfBullList(listName);
+    return this.utilService.checkIfBullList(listName);
   }
 
   public checkIfBearList(listName) {
-    return this.sharedService.checkIfBearList(listName);
+    return this.utilService.checkIfBearList(listName);
   }
 
   public isIdeasPage(): boolean {

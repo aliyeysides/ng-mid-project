@@ -10,6 +10,7 @@ import * as moment from 'moment-timezone'
 
 import {Subscription} from 'rxjs/Subscription';
 import {Subject} from 'rxjs/Subject';
+import {UserService} from '../../shared/services/user.service';
 
 @Component({
   selector: 'side-panel',
@@ -76,8 +77,11 @@ export class SidePanelComponent implements OnInit, OnDestroy {
 
   public symbol: string = 'SPY';
 
-  constructor(private sidePanelProvider: SidePanelProvider, private ideaListProvider: IdeaListProvider, private pagerProvider: PagerProvider,
-    private chartService: ChartService, private sharedService: SharedService) {
+  constructor(private sidePanelProvider: SidePanelProvider,
+              private ideaListProvider: IdeaListProvider,
+              private pagerProvider: PagerProvider,
+              private chartService: ChartService,
+              private userService: UserService) {
     setInterval(() => {
       this.presentDate = moment.tz(new Date, 'America/New_York');
       this.date = this.presentDate.format('ddd MMM DD');
@@ -87,7 +91,6 @@ export class SidePanelComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.login();
     this.initialMarketSectorData();
 
     /*Call intraDay chart and set symbol*/
@@ -111,27 +114,14 @@ export class SidePanelComponent implements OnInit, OnDestroy {
         });
       });
   }
-  public login(){
-    let loginEmail:any = localStorage.getItem('email');
-    this.sharedService.login(loginEmail)
-      .subscribe(res => {
-        this.sharedService.setUID(res.UID);
-        console.log(this.sharedService.getUID());
-     });
-  }
-  public logOutSession() {
-    // TODO: log out session.
-    this.sharedService.killSession()
-      .subscribe(res => {
-          let localhostAddress = window.location.protocol + "//" + window.location.host;
-          location.replace(`${localhostAddress}/`);
-      });
-
-  }
 
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
+  }
+
+  public logOutSession() {
+    this.userService.logOutSession();
   }
 
   public getIntraDayChartData(symbol: string, index, chartClass) {

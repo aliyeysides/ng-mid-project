@@ -11,6 +11,8 @@ import {SharedService} from './services/shared.service';
 import {SignalService} from './services/signal.service';
 import {ListSelectionService} from './components/list-selection/list-selection.service';
 import {IdeaListProvider} from '../core/ideas/idea-list.service';
+import {UserService} from './services/user.service';
+import {UtilService} from './services/util.service';
 
 @NgModule({
   imports: [
@@ -33,7 +35,7 @@ import {IdeaListProvider} from '../core/ideas/idea-list.service';
     ListSelectionModule,
     PipesModule
   ],
-  providers: [ListSelectionService, SharedService, SignalService, IdeaListProvider],
+  providers: [ListSelectionService, SharedService, SignalService, IdeaListProvider, UserService, UtilService],
   declarations: []
 
 })

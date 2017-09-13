@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {URLSearchParams} from '@angular/http';
 import {SharedService} from '../../shared/services/shared.service';
 import {Observable} from 'rxjs/Observable';
+import {UtilService} from '../../shared/services/util.service';
 
 export interface AddListConfig {
   symbol: string;
@@ -14,7 +15,8 @@ export class DiscoveryService {
   private apiHost = this.sharedService.getApiHostName();
   private discoveryResultListsParams: URLSearchParams;
 
-  constructor(private sharedService: SharedService) {
+  constructor(private sharedService: SharedService,
+              private utilService: UtilService) {
     this.discoveryResultListsParams = new URLSearchParams;
   }
 
@@ -35,6 +37,6 @@ export class DiscoveryService {
   public getDiscoveryResultLists(ticker: string): Observable<object> {
     const url = `${this.apiHost}/CPTRestSecure/app/midTier/getDiscoveryResultLists?`;
     this.discoveryResultListsParams.set('stock', ticker);
-    return this.sharedService.getJson(url, this.discoveryResultListsParams);
+    return this.utilService.getJson(url, this.discoveryResultListsParams);
   }
 }

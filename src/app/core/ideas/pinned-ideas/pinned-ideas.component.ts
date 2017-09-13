@@ -7,6 +7,7 @@ import {ListSelectionService} from '../../../shared/components/list-selection/li
 import {Subject} from 'rxjs/Subject';
 import {IdeaList} from '../../../models/idea';
 import {ClassMap, IDEAS_LIST_CLASSMAP} from '../../../models/ideas-list-class-map';
+import {UtilService} from '../../../shared/services/util.service';
 
 @Component({
   selector: 'pinned-ideas',
@@ -29,7 +30,8 @@ export class PinnedIdeasComponent implements OnInit, OnDestroy {
 
   constructor(private sharedService: SharedService,
               private listSelectionService: ListSelectionService,
-              private ideaListProvider: IdeaListProvider) {
+              private ideaListProvider: IdeaListProvider,
+              private utilService: UtilService) {
   }
 
   ngOnInit() {
@@ -60,7 +62,7 @@ export class PinnedIdeasComponent implements OnInit, OnDestroy {
       .subscribe(res => {
           this.ideaListProvider.setIdeaListData(res);
         },
-        err => this.sharedService.handleError);
+        err => this.utilService.handleError);
   }
 
   public updateActiveIdeaList(list) {
@@ -83,7 +85,7 @@ export class PinnedIdeasComponent implements OnInit, OnDestroy {
       .subscribe(() => {
           this.getPinnedIdeaLists();
         },
-        err => this.sharedService.handleError);
+        err => this.utilService.handleError);
   }
 
   private parseListObject(obj): Array<object> {
